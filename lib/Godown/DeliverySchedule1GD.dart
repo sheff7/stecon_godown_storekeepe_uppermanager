@@ -140,9 +140,6 @@ class DeliverySchedule extends StatelessWidget {
               // )
             ],
           ),
-
-
-
           Container(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
