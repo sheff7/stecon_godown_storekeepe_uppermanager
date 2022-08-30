@@ -81,7 +81,7 @@ class ViewStockGD extends StatelessWidget {
                                     Padding(
                                       padding: EdgeInsets.only(top: 1.5.h),
                                       child: Text(
-                                        "2115-BROWN-GENTS",
+                                        "2116-BROWN-GENTS",
                                         style: GoogleFonts.radioCanada(
                                             fontSize: 17,
                                             fontWeight: FontWeight.bold,

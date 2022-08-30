@@ -352,7 +352,7 @@ class DeliverySchedule extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) {
-                    return Divider(height: .5, color: Colors.grey);
+                    return SizedBox();
                   },
                 ),
               ),

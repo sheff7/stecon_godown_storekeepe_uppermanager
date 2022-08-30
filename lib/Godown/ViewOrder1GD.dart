@@ -322,7 +322,7 @@ class ViewOrder1GD extends StatelessWidget {
                                                   child: Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
-                                                      NormalText(text: 'Box : '),
+                                                      NormalText(text: 'Box  : '),
                                                       SizedBox(
                                                         height: 2.h,
                                                       ),

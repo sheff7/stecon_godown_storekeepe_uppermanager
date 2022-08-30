@@ -82,7 +82,7 @@ class ViewOrdersGD extends StatelessWidget {
                                             MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "7854 65498 565",
+                                                "7854 65498 595",
                                                 style: GoogleFonts.radioCanada(
                                                   fontSize: 17,
                                                   color:

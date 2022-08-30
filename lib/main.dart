@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import 'Godown/DeliverySchedule1GD.dart';
+import 'Godown/DeliveryScheduleGD.dart';
+import 'Godown/HomeGoDown.dart';
+import 'Godown/ViewOrder1GD.dart';
+import 'Godown/ViewOrdersGD.dart';
+import 'Godown/ViewStockGD.dart';
 import 'StoreKeeper/HomePageSk.dart';
 
 void main() {
@@ -23,7 +29,7 @@ class MyApp extends StatelessWidget {
         // child:
         MaterialApp(
           theme: ThemeData(),
-          home: HomePageSk(),
+          home: DeliverySchedule(),
         );
       // );
     });

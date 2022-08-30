@@ -136,7 +136,7 @@ class DeliveryScheduleGD extends StatelessWidget {
                         );
                       },
                       separatorBuilder: (context, index) {
-                        return Container();
+                        return SizedBox();
                       },
                     ),
                   ),
