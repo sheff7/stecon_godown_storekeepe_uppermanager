@@ -39,6 +39,10 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_bloc: ^8.0.1
   dio: ^4.0.4
+  shared_preferences: ^2.0.15
+  get: ^4.6.5
+  connectivity_plus: ^2.3.5
+  internet_connection_checker: ^0.0.1+3
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +75,8 @@ flutter:
     - Assets/HomePageIcons/Group 51.png
     - Assets/HomePageIcons/Group 49.png
     - Assets/HomePageIcons/Group 74.png
+    - Assets/STECON LOGO SPLASH MOB1.svg
+    - Assets/stecon 1-01.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

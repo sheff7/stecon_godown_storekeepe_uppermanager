@@ -1,5 +1,11 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+
+import '../CustomFont/SubHeading.dart';
+import '../LoginPage/View/LoginPage.dart';
+import 'DeliveryScheduleGD.dart';
 
 class HomeGodown extends StatelessWidget {
   const HomeGodown({Key? key}) : super(key: key);
@@ -61,7 +67,7 @@ class HomeGodown extends StatelessWidget {
                   ],
                 ),
               ),
-              ListTile()
+              _drawerList()
             ],
           ),
         ),
@@ -276,52 +282,57 @@ class HomeGodown extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 1,
-                              child: Container(
-                                height: 16.5.h,
-                                child: ClipPath(
-                                  child: Card(
-                                    elevation: 2,
-                                    shape: Border(
-                                      left: BorderSide(
-                                          color: Color(0xFFF3A84F), width: 1.7.w),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              2.h, 0.7.h, 0.h, 0.h),
-                                          alignment: Alignment.topLeft,
-                                          height: 8.h,
-                                          width: 8.h,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "Assets/HomePageIcons/Group 49.png"),
+                              child: InkWell(
+                                onTap: (){
+                                    Get.to(DeliveryScheduleGD());
+                                },
+                                child: Container(
+                                  height: 16.5.h,
+                                  child: ClipPath(
+                                    child: Card(
+                                      elevation: 2,
+                                      shape: Border(
+                                        left: BorderSide(
+                                            color: Color(0xFFF3A84F), width: 1.7.w),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                2.h, 0.7.h, 0.h, 0.h),
+                                            alignment: Alignment.topLeft,
+                                            height: 8.h,
+                                            width: 8.h,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "Assets/HomePageIcons/Group 49.png"),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                2.5.h, 1.h, 0.h, 0.h),
-                                            child: Text(
-                                              "View Delivery\nSchedule",
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  2.5.h, 1.h, 0.h, 0.h),
+                                              child: Text(
+                                                "View Delivery\nSchedule",
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,),
+                                              ),
                                             ),
-                                          ),
-                                        )
-                                      ],
+                                          )
+                                        ],
+                                      ),
                                     ),
+                                    clipper: ShapeBorderClipper(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(20))),
                                   ),
-                                  clipper: ShapeBorderClipper(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(20))),
                                 ),
                               ),
                             )
@@ -406,4 +417,63 @@ class HomeGodown extends StatelessWidget {
       ),
     );
   }
+  Widget _drawerList(){
+    return Container(
+      padding: EdgeInsets.only(top: 15),
+      child: Column(
+        children: [
+          // menuItem(),
+          menuItem(1, 'Profile', Icons.person),
+          menuItem(2, 'About us', Icons.info),
+          menuItem(3, 'Logout', Icons.logout),
+        ],
+      ),
+    );
+  }
+  _logout() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    _prefs.remove('username');
+    _prefs.remove('password');
+    _prefs.remove('user_id');
+    _prefs.remove('user_type');
+    _prefs.remove('user_status');
+    _prefs.remove('user_name');
+    _prefs.remove('user_email');
+    Get.offAll(LoginScreen());
+  }
+  Widget menuItem(int id, String title, IconData icon) {
+    return Material(
+      child: InkWell(
+        onTap: () {
+          if (id == 1) {
+
+          } else if (id == 2) {
+
+          } else if (id == 3) {
+            _logout();
+          }
+        },
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Row(
+            children: [
+              // Expanded(
+              //     child: Icon(
+              //       icon,
+              //       size: 20,
+              //       color: ColorConstants.,
+              //     )),
+              Expanded(
+                flex: 3,
+                child: SubHeadingText(
+                  text: title,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 }

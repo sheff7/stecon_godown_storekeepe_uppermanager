@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
-import 'Godown/DeliverySchedule1GD.dart';
-import 'Godown/DeliveryScheduleGD.dart';
-import 'Godown/HomeGoDown.dart';
-import 'Godown/ViewOrder1GD.dart';
-import 'Godown/ViewOrdersGD.dart';
-import 'Godown/ViewStockGD.dart';
-import 'StoreKeeper/HomePageSk.dart';
+import 'SplashScreen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -27,9 +23,12 @@ class MyApp extends StatelessWidget {
         //   // BlocProvider<CategoryBloc>(create: (context) => CategoryBloc(),)
         // ],
         // child:
-        MaterialApp(
-          theme: ThemeData(),
-          home: DeliverySchedule(),
+        GetMaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            // primarySwatch: Colors.blue,
+          ),
+          home:SplashScreen(),
         );
       // );
     });
