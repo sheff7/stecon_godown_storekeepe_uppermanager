@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../CustomFont/SubHeading.dart';
 import '../LoginPage/View/LoginPage.dart';
-import 'DeliveryScheduleGD.dart';
+import 'DeliverySchedulefn/View/DeliveryScheduleListGd.dart';
 
 class HomeGodown extends StatelessWidget {
   const HomeGodown({Key? key}) : super(key: key);
