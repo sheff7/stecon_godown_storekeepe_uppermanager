@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_single_view_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Repository/DeliveryScheduleSingleViewGdServices.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Utils/InternetConnectivity.dart';
+
+import '../Model/update_order_entity.dart';
 
 class DeliveryScheduleSingleViewController extends GetxController{
   final String id;
@@ -29,7 +32,9 @@ class DeliveryScheduleSingleViewController extends GetxController{
   final size13controller = TextEditingController();
   final BoxController = TextEditingController();
 
+  RxList<Map<String,dynamic>>? producctList=(List<Map<String,dynamic>>.of([])).obs;
   DeliveryScheduleSingleViewController({required this.id});
+  Rx<UpdateOrderEntity>updateOrderEntity=UpdateOrderEntity().obs;
 
 
 
@@ -49,23 +54,36 @@ class DeliveryScheduleSingleViewController extends GetxController{
       deliveryScheduleSingleViewGdEntity.value = (await DeliveryScheduleSingleViewtGd().getbyiddeliveryschedule(id))!;
       loadingBool.value= false;
       print(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length);
-    //   if(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length!=0){
-    //
-    //     "s1": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0]. s1.toString();
-    // "s2": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0]. s2.toString();
-    // "s3": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0]. s3.toString();
-    // "s4":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0]. s4.toString();
-    // "s5": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s5.toString();
-    // "s6": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s6.toString();
-    // "s7": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s7.toString();
-    // "s8": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s8.toString();
-    // "s9": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s9.toString();
-    // "s10": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s10.toString();
-    // "s11":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0]. s11.toString();
-    // "s12": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0]. s12.toString();
-    // "s13": deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0]. s3.toString();
     }
 
+    }
+    updateOrder()async{
+      bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+      if (nBool == true){
+        if(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length!=0){
+          for(int i=0;i<deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length;i++){
+            Map<String, dynamic> json={
+              "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].did.toString(),
+              "orderno":"",
+              "distributorid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].distributorid.toString(),
+              "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid.toString()
+            };
+            producctList!.add(json);
+          }
+          CustomSnackbar().LoadingBottomSheet();
+          updateOrderEntity.value=(await DeliveryScheduleSingleViewtGd().UpdateOrderGod(deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].did.toString()
+              , deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].distributorid.toString(), producctList!))!;
+          Get.back();
+          if(updateOrderEntity.value!=null){
+            if(updateOrderEntity.value.response.toString()=='Updated successfully'){
+              Get.back();
+            }
+            else{
+              CustomSnackbar().InfoSnackBar('Update Order', updateOrderEntity.value.response.toString());
+            }
+          }
+        }
+      }
     }
 
 

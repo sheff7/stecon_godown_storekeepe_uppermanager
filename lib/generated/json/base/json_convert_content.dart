@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_single_view_gd_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
@@ -17,6 +18,8 @@ class JsonConvert {
 		(DeliveryScheduleListDeliveryschedulelist).toString(): DeliveryScheduleListDeliveryschedulelist.fromJson,
 		(DeliveryScheduleSingleViewGdEntity).toString(): DeliveryScheduleSingleViewGdEntity.fromJson,
 		(DeliveryScheduleSingleViewGdDeliveryschedule).toString(): DeliveryScheduleSingleViewGdDeliveryschedule.fromJson,
+		(UpdateOrderEntity).toString(): UpdateOrderEntity.fromJson,
+		(UpdateOrderList).toString(): UpdateOrderList.fromJson,
 		(LoginPageEntity).toString(): LoginPageEntity.fromJson,
 	};
 
@@ -104,6 +107,12 @@ class JsonConvert {
 		}
 		if(<DeliveryScheduleSingleViewGdDeliveryschedule>[] is M){
 			return data.map<DeliveryScheduleSingleViewGdDeliveryschedule>((Map<String, dynamic> e) => DeliveryScheduleSingleViewGdDeliveryschedule.fromJson(e)).toList() as M;
+		}
+		if(<UpdateOrderEntity>[] is M){
+			return data.map<UpdateOrderEntity>((Map<String, dynamic> e) => UpdateOrderEntity.fromJson(e)).toList() as M;
+		}
+		if(<UpdateOrderList>[] is M){
+			return data.map<UpdateOrderList>((Map<String, dynamic> e) => UpdateOrderList.fromJson(e)).toList() as M;
 		}
 		if(<LoginPageEntity>[] is M){
 			return data.map<LoginPageEntity>((Map<String, dynamic> e) => LoginPageEntity.fromJson(e)).toList() as M;
