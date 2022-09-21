@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../CustomWidget/CustomSnackBar.dart';
 
 import '../../Godown/HomeGoDown.dart';
+import '../../UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
 import '../../Utils/InternetConnectivity.dart';
 import '../Model/login_page_entity.dart';
 import '../Repository/LoginPageServices.dart';
@@ -55,6 +56,31 @@ class LoginController extends GetxController {
 
           }
         }
+        else if(loginEntity.value.userType=='Upper Manager'){
+          if(loginEntity.value.userStatus=='Active'){
+            SharedPreferences _prefs = await SharedPreferences.getInstance();
+            _prefs.setString('usernameUM', username);
+            _prefs.setString('passwordUM', password);
+            _prefs.setString('user_typeUM', loginEntity.value.userType.toString());
+            _prefs.setString('user_idUM', loginEntity.value.userId.toString());
+            _prefs.setString('idUM', loginEntity.value.id.toString());
+            _prefs.setString('user_statusUM', loginEntity.value.userStatus.toString());
+            _prefs.setString(
+                'user_emailUM', loginEntity.value.userEmail.toString());
+            print("show"+loginEntity.value.userId.toString(),);
+            Get.to(HomeUpperManager(
+               uid:loginEntity.value.userId.toString(),
+
+            ));
+
+          }
+          else if(loginEntity.value.userStatus=='Inactive'){
+            return CustomSnackbar().InfoSnackBar('Inactive', ' Please Contact to Office');
+
+          }
+
+        }
+
 
       }
       else if (loginEntity.value.status == 'Failed') {

@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 import 'CustomWidget/CustomSnackBar.dart';
 import 'Godown/HomeGoDown.dart';
 import 'LoginPage/View/LoginPage.dart';
+import 'UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -52,13 +53,13 @@ class _SplashScreenState extends State<SplashScreen> {
       // var distrubutename = _prefs.getString('distributorname');
 
 
-      // var usernameR = _prefs.getString('usernameR');
-      // var passwordR = _prefs.getString('passwordR');
-      // var typeR = _prefs.getString('user_typeR');
-      // var statusR = _prefs.getString('user_statusR');
-      // var uidR = _prefs.getString('user_idR');
-      // var idR = _prefs.getString('idR');
-      //
+      var usernameUM = _prefs.getString('usernameUM');
+      var passwordUM = _prefs.getString('passwordUM');
+      var typeUM = _prefs.getString('user_typeUM');
+      var statusUM = _prefs.getString('user_statusUM');
+      var uidUM = _prefs.getString('user_idUM');
+      var idUM = _prefs.getString('idUM');
+
 
       print(status);
       if (username != null && password != null) {
@@ -73,19 +74,21 @@ class _SplashScreenState extends State<SplashScreen> {
           }
         }
       }
-      // else if (usernameR != null && passwordR != null) {
-      //   if (typeR == 'Representative') {
-      //     if (statusR == 'Active') {
-      //       Get.to(RepresentativeHome(uidR: uidR.toString(),
-      //       ));
-      //     }
-      //     else
-      //     if (typeR == 'Representative') {} else if (statusR == 'Inactive') {
-      //       return CustomSnackbar()
-      //           .InfoSnackBar('Warning', 'Please Contact Office');
-      //     }
-      //   }
-      // }
+      else if (usernameUM != null && passwordUM != null) {
+        if (typeUM == 'Upper Manager') {
+          if (statusUM == 'Active') {
+            print(uid);
+            Get.to(HomeUpperManager(
+              uid: uidUM.toString(),
+            ));
+          }
+          else
+          if (typeUM == 'Upper Manger') {} else if (statusUM == 'Inactive') {
+            return CustomSnackbar()
+                .InfoSnackBar('Warning', 'Please Contact Office');
+          }
+        }
+      }
       else {
         Get.to(LoginScreen());
       }

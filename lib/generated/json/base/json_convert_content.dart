@@ -8,6 +8,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_single_view_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UmProfileFn/Model/um_profile_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperMangerHomeFn/Model/get_login_by_statusa_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -21,6 +23,10 @@ class JsonConvert {
 		(UpdateOrderEntity).toString(): UpdateOrderEntity.fromJson,
 		(UpdateOrderList).toString(): UpdateOrderList.fromJson,
 		(LoginPageEntity).toString(): LoginPageEntity.fromJson,
+		(UmProfileEntity).toString(): UmProfileEntity.fromJson,
+		(UmProfileRepresentativelist).toString(): UmProfileRepresentativelist.fromJson,
+		(GetLoginByStatusaEntity).toString(): GetLoginByStatusaEntity.fromJson,
+		(GetLoginByStatusaLoginlist).toString(): GetLoginByStatusaLoginlist.fromJson,
 	};
 
   T? convert<T>(dynamic value) {
@@ -116,6 +122,18 @@ class JsonConvert {
 		}
 		if(<LoginPageEntity>[] is M){
 			return data.map<LoginPageEntity>((Map<String, dynamic> e) => LoginPageEntity.fromJson(e)).toList() as M;
+		}
+		if(<UmProfileEntity>[] is M){
+			return data.map<UmProfileEntity>((Map<String, dynamic> e) => UmProfileEntity.fromJson(e)).toList() as M;
+		}
+		if(<UmProfileRepresentativelist>[] is M){
+			return data.map<UmProfileRepresentativelist>((Map<String, dynamic> e) => UmProfileRepresentativelist.fromJson(e)).toList() as M;
+		}
+		if(<GetLoginByStatusaEntity>[] is M){
+			return data.map<GetLoginByStatusaEntity>((Map<String, dynamic> e) => GetLoginByStatusaEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetLoginByStatusaLoginlist>[] is M){
+			return data.map<GetLoginByStatusaLoginlist>((Map<String, dynamic> e) => GetLoginByStatusaLoginlist.fromJson(e)).toList() as M;
 		}
 
 		debugPrint("${M.toString()} not found");

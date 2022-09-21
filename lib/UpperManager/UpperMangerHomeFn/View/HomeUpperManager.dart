@@ -3,12 +3,19 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
-import '../CustomFont/SubHeading.dart';
-import '../LoginPage/View/LoginPage.dart';
+import '../../../CustomFont/SubHeading.dart';
+import '../../../LoginPage/View/LoginPage.dart';
+import '../../UmProfileFn/View/ProfileUm.dart';
+import '../Controller/HomePageController.dart';
 
 
 class HomeUpperManager extends StatelessWidget {
-  const HomeUpperManager({Key? key}) : super(key: key);
+
+  final String uid;
+   HomeUpperManager({Key? key, required this.uid}) : super(key: key);
+
+  late final _umHomeController = Get.put(
+      UmHomeController(uid: uid));
 
   @override
   Widget build(BuildContext context) {
@@ -71,22 +78,33 @@ class HomeUpperManager extends StatelessWidget {
             ],
           ),
         ),
-        body: Column(
+        body:
+        Obx(()=>
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 5.h, 0.h),
               child: Row(
-                children: const [
+                children:  [
                   Text(
                     "Hello There..!",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Spacer(),
-                  Image(
-                      image: AssetImage(
-                        "Assets/HomePageIcons/Group 51.png",
-                      )),
+                  InkWell(
+                    onTap: () {
+                      // Get.to(DisProfileScreen(uid:_loginByStatusController
+                      //     .loginByStatusEntity.value
+                      //     .loginlist![0].distributorid
+                      //     .toString(), id: id.toString(), logid: uid.toString(),
+                      Get.to(ProfileUm(upperamanagerid: _umHomeController.loginByStatusEntity.value.loginlist![0].uppermanagerid.toString(), uid: uid.toString(),));
+                    },
+                    child: Image(
+                        image: AssetImage(
+                          "Assets/HomePageIcons/Group 51.png",
+                        )),
+                  ),
                 ],
               ),
             ),
@@ -286,6 +304,7 @@ class HomeUpperManager extends StatelessWidget {
                                     ],
                                   );
                                 }),
+                            Text(_umHomeController.txt.value.toString()),
                             // SizedBox(height:2.h ,),
                           ],
                         )
@@ -298,7 +317,7 @@ class HomeUpperManager extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
   Widget _drawerList(){
     return Container(
@@ -307,21 +326,23 @@ class HomeUpperManager extends StatelessWidget {
         children: [
           // menuItem(),
           menuItem(1, 'Profile', Icons.person),
-          menuItem(2, 'Logout', Icons.logout),
-
+          menuItem(2, 'About us', Icons.info),
+          menuItem(3, 'Logout', Icons.logout),
         ],
       ),
     );
   }
   _logout() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _prefs.remove('username');
-    _prefs.remove('password');
-    _prefs.remove('user_id');
-    _prefs.remove('user_type');
-    _prefs.remove('user_status');
-    _prefs.remove('user_name');
-    _prefs.remove('user_email');
+    _prefs.remove('usernameUM');
+    _prefs.remove('passwordUM');
+    _prefs.remove('user_idUM');
+    _prefs.remove('user_typeUM');
+    _prefs.remove('user_statusUM');
+    _prefs.remove('user_nameUM');
+    _prefs.remove('user_emailUM');
+    _prefs.remove('uppermanagername');
+    _prefs.remove('uppermanagerid');
     Get.offAll(LoginScreen());
   }
   Widget menuItem(int id, String title, IconData icon) {
@@ -331,6 +352,8 @@ class HomeUpperManager extends StatelessWidget {
           if (id == 1) {
 
           } else if (id == 2) {
+
+          } else if (id == 3) {
             _logout();
           }
         },
@@ -356,5 +379,4 @@ class HomeUpperManager extends StatelessWidget {
       ),
     );
   }
-
 }
