@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import 'SplashScreen.dart';
-import 'UpperManager/AddProductionPlanUPM.dart';
-import 'UpperManager/CreatePlanUPM.dart';
+import 'UpperManager/UpperPurchasePlan/View/AddProductionPlanUPM.dart';
+import 'UpperManager/UpperPurchasePlan/View/CreatePlanUPM.dart';
 import 'UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
 import 'UpperManager/PendingOrderUPM.dart';
 import 'UpperManager/ProfileUPM.dart';

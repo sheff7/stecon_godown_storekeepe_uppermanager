@@ -10,6 +10,9 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UmProfileFn/Model/um_profile_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperMangerHomeFn/Model/get_login_by_statusa_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_comapany_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_upper_order_no_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_uppper_plan_no_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -27,6 +30,10 @@ class JsonConvert {
 		(UmProfileRepresentativelist).toString(): UmProfileRepresentativelist.fromJson,
 		(GetLoginByStatusaEntity).toString(): GetLoginByStatusaEntity.fromJson,
 		(GetLoginByStatusaLoginlist).toString(): GetLoginByStatusaLoginlist.fromJson,
+		(GetComapanyEntity).toString(): GetComapanyEntity.fromJson,
+		(GetComapanyCompanylist).toString(): GetComapanyCompanylist.fromJson,
+		(GetUpperOrderNoEntity).toString(): GetUpperOrderNoEntity.fromJson,
+		(GetUppperPlanNoEntity).toString(): GetUppperPlanNoEntity.fromJson,
 	};
 
   T? convert<T>(dynamic value) {
@@ -134,6 +141,18 @@ class JsonConvert {
 		}
 		if(<GetLoginByStatusaLoginlist>[] is M){
 			return data.map<GetLoginByStatusaLoginlist>((Map<String, dynamic> e) => GetLoginByStatusaLoginlist.fromJson(e)).toList() as M;
+		}
+		if(<GetComapanyEntity>[] is M){
+			return data.map<GetComapanyEntity>((Map<String, dynamic> e) => GetComapanyEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetComapanyCompanylist>[] is M){
+			return data.map<GetComapanyCompanylist>((Map<String, dynamic> e) => GetComapanyCompanylist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperOrderNoEntity>[] is M){
+			return data.map<GetUpperOrderNoEntity>((Map<String, dynamic> e) => GetUpperOrderNoEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUppperPlanNoEntity>[] is M){
+			return data.map<GetUppperPlanNoEntity>((Map<String, dynamic> e) => GetUppperPlanNoEntity.fromJson(e)).toList() as M;
 		}
 
 		debugPrint("${M.toString()} not found");

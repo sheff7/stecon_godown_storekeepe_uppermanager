@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
+import '../../UpperPurchasePlan/View/AddProductionPlanUPM.dart';
 import '../../UmProfileFn/View/ProfileUm.dart';
 import '../../UpperPurchaseOrder1UPM.dart';
 import '../../UpperPurchaseOrderUPM.dart';
@@ -143,7 +144,8 @@ class HomeUpperManager extends StatelessWidget {
                               flex: 1,
                               child: InkWell(
                                onTap: () async {
-                                 Get.to(UpperPurchaseOrderUPM());
+                                 // Get.to(UpperPurchaseOrderUPM());
+                                 Get.to(AddProductionPlanUPM(upmId: _umHomeController.loginByStatusEntity.value.loginlist![0].uppermanagerid.toString(),));
                                },
                                 child: Container(
                                   height: 16.5.h,

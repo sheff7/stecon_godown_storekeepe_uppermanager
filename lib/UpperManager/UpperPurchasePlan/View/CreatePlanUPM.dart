@@ -4,20 +4,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/PendingOrderUPM.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/ViewStockUPM.dart';
-import '../CustomFont/Header.dart';
-import '../CustomFont/NormalText.dart';
-import '../CustomFont/SubHeading.dart';
-import '../CustomWidget/CustomField.dart';
+import '../../../CustomFont/Header.dart';
+import '../../../CustomFont/NormalText.dart';
+import '../../../CustomFont/SubHeading.dart';
+import '../../../CustomWidget/CustomField.dart';
+import '../Controller/CreatePlanUPMController.dart';
 
 
-class CreatePlanUPM extends StatefulWidget {
-  CreatePlanUPM({Key? key}) : super(key: key);
+class CreatePlanUPM extends StatelessWidget {
+  final String upmId;
+  final String companyId;
+  CreatePlanUPM({Key? key, required this.upmId, required this.companyId}) : super(key: key);
+  late final _controller =Get.put(CreatePlanUPMController(upmId: upmId,companyId: companyId));
 
-  @override
-  _CreatePlanUPMState createState() => _CreatePlanUPMState();
-}
-
-class _CreatePlanUPMState extends State<CreatePlanUPM> {
+//   @override
+//   _CreatePlanUPMState createState() => _CreatePlanUPMState();
+// }
+//
+// class _CreatePlanUPMState extends State<CreatePlanUPM> {
   String? ChooseArtNumber;
   List ArtBumberList = [
     '2115-BROWN-GENTS',
@@ -57,11 +61,12 @@ class _CreatePlanUPMState extends State<CreatePlanUPM> {
             size: 17,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
         ),
       ),
-      body: ListView(
+      body:
+      ListView(
         children: [
           SizedBox(
             height: 2.h,
@@ -102,7 +107,7 @@ class _CreatePlanUPMState extends State<CreatePlanUPM> {
                   ),
                   Row(
                     children: [
-                      NormalText(text: 'Plan no : ' + '567687 857688'),
+                      NormalText(text: 'Plan no : ' + _controller.upperPlanNo.value.toString()),
                     ],
                   ),
                   SizedBox(
@@ -228,7 +233,7 @@ class _CreatePlanUPMState extends State<CreatePlanUPM> {
                                 firstDate: DateTime(1900),
                                 lastDate: DateTime(2100));
                             if (newDate == null) return;
-                            setState(() => date = newDate);
+                            // setState(() => date = newDate);
                           },
                         )
                       ],
@@ -284,7 +289,7 @@ class _CreatePlanUPMState extends State<CreatePlanUPM> {
                     height: 7.h,
                     child: ElevatedButton(
                       onPressed: () {
-                        openDialog();
+                        // openDialog();
                       },
                       child: Text(
                         "Continue with Order",
@@ -305,41 +310,41 @@ class _CreatePlanUPMState extends State<CreatePlanUPM> {
     );
   }
 
-  Future openDialog() => showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          'Pending Order  alredy exist in this Art number. Do you want to proceed?',
-          style: TextStyle(fontSize: 15),
-          textAlign: TextAlign.center,
-        ),
-        content: SizedBox(
-          width: double.infinity,
-          height: 5.h,
-          child: ElevatedButton(
-            onPressed: () {
-              openDialog();
-            },
-            child: Text(
-              "Continue with Order",
-              style: TextStyle(color: Colors.white, fontSize: 14),
-            ),
-            style: ElevatedButton.styleFrom(
-                primary: const Color(0xFFEC4E52),
-                textStyle:
-                TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-          ),
-        ),
-        contentPadding: EdgeInsets.only(top: 4.h, left: 3.h, right: 3.h),
-        actionsAlignment: MainAxisAlignment.center,
-        // actionsPadding: EdgeInsets.only(bottom: 1.h),
-        actions: [
-          TextButton(
-            child: Text('View Pending Order', style: TextStyle(color: Colors.red),),
-            onPressed: () {
-              Get.to(PendingOrderUPM());
-            },
-          )
-        ],
-      ));
+  // Future openDialog() => showDialog(
+  //     context: context,
+  //     builder: (context) => AlertDialog(
+  //       title: Text(
+  //         'Pending Order  alredy exist in this Art number. Do you want to proceed?',
+  //         style: TextStyle(fontSize: 15),
+  //         textAlign: TextAlign.center,
+  //       ),
+  //       content: SizedBox(
+  //         width: double.infinity,
+  //         height: 5.h,
+  //         child: ElevatedButton(
+  //           onPressed: () {
+  //             openDialog();
+  //           },
+  //           child: Text(
+  //             "Continue with Order",
+  //             style: TextStyle(color: Colors.white, fontSize: 14),
+  //           ),
+  //           style: ElevatedButton.styleFrom(
+  //               primary: const Color(0xFFEC4E52),
+  //               textStyle:
+  //               TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+  //         ),
+  //       ),
+  //       contentPadding: EdgeInsets.only(top: 4.h, left: 3.h, right: 3.h),
+  //       actionsAlignment: MainAxisAlignment.center,
+  //       // actionsPadding: EdgeInsets.only(bottom: 1.h),
+  //       actions: [
+  //         TextButton(
+  //           child: Text('View Pending Order', style: TextStyle(color: Colors.red),),
+  //           onPressed: () {
+  //             Get.to(PendingOrderUPM());
+  //           },
+  //         )
+  //       ],
+  //     ));
 }
