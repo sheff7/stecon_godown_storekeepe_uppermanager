@@ -20,19 +20,19 @@ class DeliverySchedule1GD extends StatelessWidget {
 
   late final _deliveryScheduleSingleViewController =
       Get.put(DeliveryScheduleSingleViewController(id: id));
-  final size1controller = TextEditingController();
-  final size2controller = TextEditingController();
-  final size3controller = TextEditingController();
-  final size4controller = TextEditingController();
-  final size5controller = TextEditingController();
-  final size6controller = TextEditingController();
-  final size7controller = TextEditingController();
-  final size8controller = TextEditingController();
-  final size9controller = TextEditingController();
-  final size10controller = TextEditingController();
-  final size11controller = TextEditingController();
-  final size12controller = TextEditingController();
-  final size13controller = TextEditingController();
+  // final size1controller = TextEditingController();
+  // final size2controller = TextEditingController();
+  // final size3controller = TextEditingController();
+  // final size4controller = TextEditingController();
+  // final size5controller = TextEditingController();
+  // final size6controller = TextEditingController();
+  // final size7controller = TextEditingController();
+  // final size8controller = TextEditingController();
+  // final size9controller = TextEditingController();
+  // final size10controller = TextEditingController();
+  // final size11controller = TextEditingController();
+  // final size12controller = TextEditingController();
+  // final size13controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -373,15 +373,18 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                     children: [
                                                       CustomBox(
                                                           controller:
-                                                              size7controller,
+                                                          _deliveryScheduleSingleViewController
+                                                              .size7controller,
                                                           label: "Size-7"),
                                                       CustomBox(
                                                           controller:
-                                                              size8controller,
+                                                          _deliveryScheduleSingleViewController
+                                                              .size8controller,
                                                           label: "Size-8"),
                                                       CustomBox(
                                                           controller:
-                                                              size9controller,
+                                                          _deliveryScheduleSingleViewController
+                                                              .size9controller,
                                                           label: "Size-9")
                                                     ],
                                                   ),
