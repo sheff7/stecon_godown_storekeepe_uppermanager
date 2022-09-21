@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
-import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/BoldText.dart';
 
 import '../CustomFont/Header.dart';
+import '../CustomFont/Heading.dart';
 import '../CustomFont/NormalText.dart';
 import '../CustomFont/SubHeading.dart';
 import '../CustomWidget/CustomBox.dart';
 
-class ViewOrder1GD extends StatelessWidget {
-  ViewOrder1GD({Key? key}) : super(key: key);
+class UpperPuchaseOrder1UPM extends StatelessWidget {
+  UpperPuchaseOrder1UPM({Key? key}) : super(key: key);
   final size1controller = TextEditingController();
   final size2controller = TextEditingController();
   final size3controller = TextEditingController();
@@ -26,7 +26,6 @@ class ViewOrder1GD extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xFFF7FBFC),
       appBar: AppBar(
@@ -34,7 +33,7 @@ class ViewOrder1GD extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Header(
-          text: 'View Orders',
+          text: 'Upper Purchase Order',
         ),
         centerTitle: true,
         leading: IconButton(
@@ -62,110 +61,56 @@ class ViewOrder1GD extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      NormalText(text: "Order no:"),
-                      NormalText(text: "17-11-22")
+                    children: [
+                      HeadingText(
+                        text: 'Codsair Technologies',
+                      ),
                     ],
                   ),
-                  SizedBox(height: 1.h),
+                  SizedBox(height: 2.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      NormalText(text: 'Plan no : ' + '546578 85756'),
                       Text(
-                        "7854 65498 565",
-                        style: GoogleFonts.radioCanada(
-                          fontSize: 17,
-                          color: const Color(0xFFEC4E52),
-                        ),
-                      ),
-                      Text(
-                        "Confirmed",
+                        "Approved",
                         style: GoogleFonts.radioCanada(
                           fontSize: 15,
                           // fontWeight: FontWeight.bold,
                           color: const Color(0xFF4FE138),
                         ),
-                      )
+                      ),
                     ],
                   ),
-                  SizedBox(height: 1.h),
+                  SizedBox(
+                    height: 1.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      NormalText(text: 'Order no : ' + '546578 85756'),
+                      NormalText(text: '17-11-2022')
+                    ],
+                  ),
+                  SizedBox(height: 2.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      NormalText(text: "Note: "),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 0.5.h,
+                  ),
+                  NormalText(
+                      text:
+                          "Quisque hendrerit mi sed arcu varius, in lacinia ex scelerisque. Cras quis blandit dui"),
+                  SizedBox(
+                    height: 2.h,
+                  ),
                 ],
               ),
             ),
-          ),
-          Divider(
-            height: 1.5.h,
-            color: Colors.grey[200],
-          ),
-          Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 3.h, vertical: 3.h),
-                  color: Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      NormalText(text: 'Rep Name : '),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      NormalText(text: 'ID Number : '),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      NormalText(text: 'Distributor Name : '),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      NormalText(text: 'Contact No : '),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      NormalText(text: 'Email : '),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      NormalText(text: 'Area Code : '),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 0.h, vertical: 3.h),
-                  color: Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BoldText(text: 'Yadu Krishnan'),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      BoldText(text: '65757 4758'),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      BoldText(text: 'Pranav N K'),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      BoldText(text: '78909 786467'),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      BoldText(text: 'yadukrishnan@gmail.com'),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      BoldText(text: '505'),
-                    ],
-                  ),
-                ),
-              )
-            ],
           ),
           Divider(
             height: 1.5.h,
@@ -202,7 +147,7 @@ class ViewOrder1GD extends StatelessWidget {
                                     Padding(
                                       padding: EdgeInsets.only(top: 1.5.h),
                                       child: Text(
-                                        "2115-BROWN-GENTS",
+                                        "Plan No - 1",
                                         style: GoogleFonts.radioCanada(
                                             fontSize: 17,
                                             fontWeight: FontWeight.bold,
@@ -212,7 +157,7 @@ class ViewOrder1GD extends StatelessWidget {
                                     SizedBox(
                                       height: 1.h,
                                     ),
-                                    NormalText(text: 'Brown, Gents'),
+                                    NormalText(text: '2115-BROWN-GENTS'),
                                     SizedBox(
                                       height: 1.h,
                                     ),
@@ -222,6 +167,154 @@ class ViewOrder1GD extends StatelessWidget {
                               children: [
                                 Column(
                                   children: [
+                                    Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            0.h, 0.h, 0.h, 0.h),
+                                        color: Colors.white,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              // HeadingText(text: "2115-BROWN-GENTS"),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          NormalText(
+                                                              text:
+                                                                  "Category : "),
+                                                          SizedBox(
+                                                            height: 2.h,
+                                                          ),
+                                                          NormalText(
+                                                              text: "Color : "),
+                                                          SizedBox(
+                                                            height: 2.h,
+                                                          ),
+                                                          NormalText(
+                                                              text: "Size : "),
+                                                          SizedBox(
+                                                            height: 2.h,
+                                                          ),
+                                                          NormalText(
+                                                              text:
+                                                                  "Cut of date : "),
+                                                          SizedBox(
+                                                            height: 2.h,
+                                                          ),
+                                                          NormalText(
+                                                              text: "Total : "),
+                                                          SizedBox(
+                                                            height: 2.h,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 2,
+                                                    child: Container(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                2.h,
+                                                                0.h,
+                                                                0.h,
+                                                                0.h),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            NormalText(
+                                                                text: "Gents"),
+                                                            SizedBox(
+                                                              height: 2.h,
+                                                            ),
+                                                            NormalText(
+                                                                text: "Black"),
+                                                            SizedBox(
+                                                              height: 2.h,
+                                                            ),
+                                                            NormalText(
+                                                                text: "1*5"),
+                                                            SizedBox(
+                                                              height: 2.h,
+                                                            ),
+                                                            NormalText(
+                                                                text:
+                                                                    "17-11-2022"),
+                                                            SizedBox(
+                                                              height: 2.h,
+                                                            ),
+                                                            NormalText(
+                                                                text: "500"),
+                                                            SizedBox(
+                                                              height: 2.h,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Divider(
+                                                color: Colors.grey[400],
+                                              ),
+                                              SizedBox(
+                                                height: 2.h,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              NormalText(
+                                                                  text:
+                                                                      "Note: "),
+                                                            ],
+                                                          ),
+                                                          SizedBox(
+                                                            height: 2.h,
+                                                          ),
+                                                          NormalText(
+                                                              text:
+                                                                  "Quisque hendrerit mi sed arcu varius, in lacinia ex scelerisque. Cras quis blandit dui"),
+                                                          SizedBox(
+                                                            height: 2.h,
+                                                          ),
+                                                          Divider(
+                                                            color: Colors
+                                                                .grey[400],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        )),
                                     Container(
                                       color: Colors.white,
                                       margin: EdgeInsets.fromLTRB(
@@ -313,57 +406,32 @@ class ViewOrder1GD extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                flex: 2,
-                                                child: Container(
-                                                  padding: EdgeInsets.symmetric(horizontal: 3.h, vertical: 3.h),
-                                                  color: Colors.white,
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      NormalText(text: 'Box  : '),
-                                                      SizedBox(
-                                                        height: 2.h,
-                                                      ),
-                                                      NormalText(text: 'Box Count : '),
-                                                      SizedBox(
-                                                        height: 2.h,
-                                                      ),
-
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 2,
-                                                child: Container(
-                                                  padding: EdgeInsets.symmetric(horizontal: 0.h, vertical: 3.h),
-                                                  color: Colors.white,
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      BoldText(text: '500'),
-                                                      SizedBox(
-                                                        height: 2.h,
-                                                      ),
-                                                      BoldText(text: '500'),
-                                                      SizedBox(
-                                                        height: 2.h,
-                                                      ),
-
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
-                                            ],
+                                          SizedBox(
+                                            height: 4.h,
                                           ),
-
                                         ]),
                                       ),
                                     ),
-
+                                    Container(
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 3.h),
+                                      child: SizedBox(
+                                        height: 5.h,
+                                        width: double.infinity,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              primary: const Color(0xFFEC4E52),
+                                              textStyle: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                          onPressed: () {},
+                                          child: Text('Cancel Plan'),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 3.h,
+                                    )
                                   ],
                                 )
                               ],
@@ -580,7 +648,6 @@ class ViewOrder1GD extends StatelessWidget {
           // ),
         ],
       ),
-
     );
   }
 }
