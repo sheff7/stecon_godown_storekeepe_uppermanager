@@ -6,6 +6,8 @@ import 'package:sizer/sizer.dart';
 import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../UmProfileFn/View/ProfileUm.dart';
+import '../../UpperPurchaseOrder1UPM.dart';
+import '../../UpperPurchaseOrderUPM.dart';
 import '../Controller/HomePageController.dart';
 
 
@@ -139,49 +141,54 @@ class HomeUpperManager extends StatelessWidget {
                             SizedBox(height: 1.h),
                             Expanded(
                               flex: 1,
-                              child: Container(
-                                height: 16.5.h,
-                                child: ClipPath(
-                                  child: Card(
-                                    elevation: 2,
-                                    shape: Border(
-                                      left: BorderSide(
-                                          color: Color(0xFFFA6367), width: 1.7.w),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              2.h, 1.h, 0.h, 0.h),
-                                          alignment: Alignment.topLeft,
-                                          height: 8.h,
-                                          width: 8.h,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "Assets/HomePageIcons/Group 33.png"),
+                              child: InkWell(
+                               onTap: () async {
+                                 Get.to(UpperPurchaseOrderUPM());
+                               },
+                                child: Container(
+                                  height: 16.5.h,
+                                  child: ClipPath(
+                                    child: Card(
+                                      elevation: 2,
+                                      shape: Border(
+                                        left: BorderSide(
+                                            color: Color(0xFFFA6367), width: 1.7.w),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                2.h, 1.h, 0.h, 0.h),
+                                            alignment: Alignment.topLeft,
+                                            height: 8.h,
+                                            width: 8.h,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "Assets/HomePageIcons/Group 33.png"),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.fromLTRB(
-                                              2.5.h, 0.7.h, 0.h, 0.h),
-                                          child: Text(
-                                            "Upper\nPurchase Order",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        )
-                                      ],
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                2.5.h, 0.7.h, 0.h, 0.h),
+                                            child: Text(
+                                              "Upper\nPurchase Order",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
+                                    clipper: ShapeBorderClipper(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(20))),
                                   ),
-                                  clipper: ShapeBorderClipper(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(20))),
                                 ),
                               ),
                             ),
