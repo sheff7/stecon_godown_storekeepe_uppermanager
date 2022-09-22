@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/response_entity_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Repository/AddProductionPlanUMPService.dart';
 
 import '../../../Utils/InternetConnectivity.dart';
@@ -19,9 +20,11 @@ class AddProductionPlanUPMController extends GetxController{
   Rx<GetComapanyEntity>companyEntity=GetComapanyEntity().obs;
   Rx<GetUppperPlanNoEntity>upperPlanEntity=GetUppperPlanNoEntity().obs;
   RxString upperPlanNo=''.obs;
+  RxInt count=0.obs;
 
   RxList<Map<String,dynamic>>? producctList=(List<Map<String,dynamic>>.of([])).obs;
   RxList<Map<String,dynamic>>? producctListShow=(List<Map<String,dynamic>>.of([])).obs;
+  Rx<ResponseEntityEntity>responseEntity=ResponseEntityEntity().obs;
 
 
   AddProductionPlanUPMController({required this.upmId});
@@ -46,6 +49,24 @@ class AddProductionPlanUPMController extends GetxController{
       }
     }
   }
+  addPurchsePlan(List<Map<String, dynamic>> pList)async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      CustomSnackbar().LoadingBottomSheet();
+      responseEntity.value=(await AddProductionPlanUPMSevice().addUpperPurchase(orderNo.value.toString(),
+          companyIdSelected.value.toString(),
+          upperPlanNo.value.toString(),
+          upmId, pList))!;
+      Get.back();
+      if(responseEntity.value.response=='Added successfully'){
+        Get.back();
+        CustomSnackbar().InfoSnackBar('AddOrder', responseEntity.value.response.toString());
+      }
+      else{
+        CustomSnackbar().InfoSnackBar('AddOrder', responseEntity.value.response.toString());
+      }
+    }
+  }
   getCompnay()async{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true){
@@ -61,6 +82,7 @@ class AddProductionPlanUPMController extends GetxController{
       }
     }
   }
+
   getUpperPlanNo(String comapnyId)async{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true){

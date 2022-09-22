@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
-import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/PendingOrderUPM.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/View/PendingOrderUPM.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/ViewStockUPM.dart';
 import '../../../AppConstants/ApiConstants.dart';
 import '../../../CustomFont/Header.dart';
@@ -445,80 +445,15 @@ class CreatePlanUPM extends StatelessWidget {
                         width: double.infinity,
                         height: 7.h,
                         child: ElevatedButton(
-                          onPressed: () {
-                            if (_controller.artNoIdeSelected.value == '') {
-                              CustomSnackbar().InfoSnackBar(
-                                  'Add Order', "Select Art Number");
-                            } else if (_controller.cutOffDate == '') {
-                              CustomSnackbar().InfoSnackBar(
-                                  'Add Order', "Select Cutoff Date");
-                            } else if (TotalController.text.isEmpty) {
-                              CustomSnackbar()
-                                  .InfoSnackBar('Add Order', "Enter Total");
-                            } else {
-                              Map<String, dynamic> json = {
-                                "planno":
-                                _controller.upperPlanNo.value.toString(),
-                                "cutofdate":
-                                _controller.cutOffDate.value.toString(),
-                                "artno":
-                                _controller.artNoIdeSelected.value.toString(),
-                                "s1": size1controller.text.toString(),
-                                "s2": size2controller.text.toString(),
-                                "s3": size3controller.text.toString(),
-                                "s4": size4controller.text.toString(),
-                                "s5": size5controller.text.toString(),
-                                "s6": size6controller.text.toString(),
-                                "s7": size7controller.text.toString(),
-                                "s8": size8controller.text.toString(),
-                                "s9": size9controller.text.toString(),
-                                "s10": size10controller.text.toString(),
-                                "s11": size11controller.text.toString(),
-                                "s12": size12controller.text.toString(),
-                                "s13": size13controller.text.toString(),
-                                "totalpairs": TotalController.text.toString(),
-                                "status": "Pending",
-                                "note": NoteController.text.toString()
-                              };
-                              Map<String, dynamic> json1 = {
-                                "planno":
-                                _controller.upperPlanNo.value.toString(),
-                                "cutofdate":
-                                _controller.cutOffDate.value.toString(),
-                                "artno":
-                                _controller.artNoIdeSelected.value.toString(),
-                                "artnoname":
-                                _controller.artNoisSelected.value.toString(),
-                                "categoryname":
-                                _controller.categoryName.value.toString(),
-                                "colorname":
-                                _controller.colorName.value.toString(),
-                                "s1": size1controller.text.toString(),
-                                "s2": size2controller.text.toString(),
-                                "s3": size3controller.text.toString(),
-                                "s4": size4controller.text.toString(),
-                                "s5": size5controller.text.toString(),
-                                "s6": size6controller.text.toString(),
-                                "s7": size7controller.text.toString(),
-                                "s8": size8controller.text.toString(),
-                                "s9": size9controller.text.toString(),
-                                "s10": size10controller.text.toString(),
-                                "s11": size11controller.text.toString(),
-                                "s12": size12controller.text.toString(),
-                                "s13": size13controller.text.toString(),
-                                "totalpairs": TotalController.text.toString(),
-                                "status": "Pending",
-                                "note": NoteController.text.toString()
-                              };
-                              final addController =
-                              Get.find<AddProductionPlanUPMController>();
-                              addController.producctList!.value.add(json);
-                              addController.producctList!.refresh();
-                              addController.producctListShow!.value.add(json1);
-                              addController.producctListShow!.refresh();
-                              Get.back();
-                            }
-
+                          onPressed: () async{
+                          // addToList();
+                          String res=await _controller.checkPendingOrder();
+                          if(res=='Pending order found on this ARTNO'){
+                            openDialog(context);
+                          }
+                          else if(res=='No pending orders found'){
+                            addToList();
+                          }
                             // openDialog();
                           },
                           child: Text(
@@ -553,41 +488,133 @@ class CreatePlanUPM extends StatelessWidget {
     }
   }
 
-// Future openDialog() => showDialog(
-//     context: context,
-//     builder: (context) => AlertDialog(
-//       title: Text(
-//         'Pending Order  alredy exist in this Art number. Do you want to proceed?',
-//         style: TextStyle(fontSize: 15),
-//         textAlign: TextAlign.center,
-//       ),
-//       content: SizedBox(
-//         width: double.infinity,
-//         height: 5.h,
-//         child: ElevatedButton(
-//           onPressed: () {
-//             openDialog();
-//           },
-//           child: Text(
-//             "Continue with Order",
-//             style: TextStyle(color: Colors.white, fontSize: 14),
-//           ),
-//           style: ElevatedButton.styleFrom(
-//               primary: const Color(0xFFEC4E52),
-//               textStyle:
-//               TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-//         ),
-//       ),
-//       contentPadding: EdgeInsets.only(top: 4.h, left: 3.h, right: 3.h),
-//       actionsAlignment: MainAxisAlignment.center,
-//       // actionsPadding: EdgeInsets.only(bottom: 1.h),
-//       actions: [
-//         TextButton(
-//           child: Text('View Pending Order', style: TextStyle(color: Colors.red),),
-//           onPressed: () {
-//             Get.to(PendingOrderUPM());
-//           },
-//         )
-//       ],
-//     ));
+  Future openDialog(BuildContext context) => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          'Pending Order  alredy exist in this Art number. Do you want to proceed?',
+          style: TextStyle(fontSize: 15),
+          textAlign: TextAlign.center,
+        ),
+        content: SizedBox(
+          width: double.infinity,
+          height: 5.h,
+          child: ElevatedButton(
+            onPressed: () {
+
+              Get.back();
+              addToList();
+
+            },
+            child: Text(
+              "Continue with Order",
+              style: TextStyle(color: Colors.white, fontSize: 14),
+            ),
+            style: ElevatedButton.styleFrom(
+                primary: const Color(0xFFEC4E52),
+                textStyle:
+                TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+          ),
+        ),
+        contentPadding: EdgeInsets.only(top: 4.h, left: 3.h, right: 3.h),
+        actionsAlignment: MainAxisAlignment.center,
+        // actionsPadding: EdgeInsets.only(bottom: 1.h),
+        actions: [
+          TextButton(
+            child: Text(
+              'View Pending Order',
+              style: TextStyle(color: Colors.red),
+            ),
+            onPressed: () {
+              Get.back();
+              Get.to(PendingOrderUPM(upmId: upmId,companyId: companyId,artNo: _controller.artNoIdeSelected.value.toString(),));
+            },
+          )
+        ],
+      ));
+
+   addToList() {
+     print("kooi"+TotalController.text.toString());
+    if (_controller.artNoIdeSelected.value == '') {
+      CustomSnackbar().InfoSnackBar(
+          'Add Order', "Select Art Number");
+    } else if (_controller.cutOffDate == '') {
+      CustomSnackbar().InfoSnackBar(
+          'Add Order', "Select Cutoff Date");
+    }
+    else if (TotalController.text.toString().isEmpty) {
+      CustomSnackbar()
+          .InfoSnackBar('Add Order', "Enter Total");
+    }
+    else {
+      String plan=_controller.upperPlanNo.value.toString();
+      String result = plan.substring(5);
+      Map<String, dynamic> json = {
+        "planno":
+        _controller.upperPlanNo.value.toString(),
+        "cutofdate":
+        _controller.cutOffDate.value.toString(),
+        "artno":
+        _controller.artNoIdeSelected.value.toString(),
+        "s1": size1controller.text.toString(),
+        "s2": size2controller.text.toString(),
+        "s3": size3controller.text.toString(),
+        "s4": size4controller.text.toString(),
+        "s5": size5controller.text.toString(),
+        "s6": size6controller.text.toString(),
+        "s7": size7controller.text.toString(),
+        "s8": size8controller.text.toString(),
+        "s9": size9controller.text.toString(),
+        "s10": size10controller.text.toString(),
+        "s11": size11controller.text.toString(),
+        "s12": size12controller.text.toString(),
+        "s13": size13controller.text.toString(),
+        "totalpairs": TotalController.text.toString(),
+        "status": "Pending",
+        "note": NoteController.text.toString()
+      };
+      Map<String, dynamic> json1 = {
+        "planno":
+        _controller.upperPlanNo.value.toString(),
+        "cutofdate":
+        _controller.cutOffDate.value.toString(),
+        "artno":
+        _controller.artNoIdeSelected.value.toString(),
+        "artnoname":
+        _controller.artNoisSelected.value.toString(),
+        "categoryname":
+        _controller.categoryName.value.toString(),
+        "colorname":
+        _controller.colorName.value.toString(),
+        "s1": size1controller.text.toString(),
+        "s2": size2controller.text.toString(),
+        "s3": size3controller.text.toString(),
+        "s4": size4controller.text.toString(),
+        "s5": size5controller.text.toString(),
+        "s6": size6controller.text.toString(),
+        "s7": size7controller.text.toString(),
+        "s8": size8controller.text.toString(),
+        "s9": size9controller.text.toString(),
+        "s10": size10controller.text.toString(),
+        "s11": size11controller.text.toString(),
+        "s12": size12controller.text.toString(),
+        "s13": size13controller.text.toString(),
+        "totalpairs": TotalController.text.toString(),
+        "status": "Pending",
+        "note": NoteController.text.toString()
+      };
+      final addController =
+      Get.find<AddProductionPlanUPMController>();
+      addController.producctList!.value.add(json);
+      addController.producctList!.refresh();
+      addController.producctListShow!.value.add(json1);
+      addController.producctListShow!.refresh();
+      addController.count.value=int.parse(result.toString());
+      Get.back();
+    }
+  }
+
+
+
+
 }

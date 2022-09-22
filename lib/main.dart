@@ -6,7 +6,7 @@ import 'SplashScreen.dart';
 import 'UpperManager/UpperPurchasePlan/View/AddProductionPlanUPM.dart';
 import 'UpperManager/UpperPurchasePlan/View/CreatePlanUPM.dart';
 import 'UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
-import 'UpperManager/PendingOrderUPM.dart';
+import 'UpperManager/UpperPurchasePlan/View/PendingOrderUPM.dart';
 import 'UpperManager/ProfileUPM.dart';
 import 'UpperManager/UpperHistoryUPM.dart';
 import 'UpperManager/UpperPurchaseOrderUPM.dart';

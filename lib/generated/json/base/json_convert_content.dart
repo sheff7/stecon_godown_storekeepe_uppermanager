@@ -15,6 +15,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchase
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_product_by_artno_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_upper_order_no_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_uppper_plan_no_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/pending_order_u_p_m_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/response_entity_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -41,6 +43,9 @@ class JsonConvert {
 		(GetProductByArtnoSizelist).toString(): GetProductByArtnoSizelist.fromJson,
 		(GetUpperOrderNoEntity).toString(): GetUpperOrderNoEntity.fromJson,
 		(GetUppperPlanNoEntity).toString(): GetUppperPlanNoEntity.fromJson,
+		(PendingOrderUPMEntity).toString(): PendingOrderUPMEntity.fromJson,
+		(PendingOrderUPMPendingorderslist).toString(): PendingOrderUPMPendingorderslist.fromJson,
+		(ResponseEntityEntity).toString(): ResponseEntityEntity.fromJson,
 	};
 
   T? convert<T>(dynamic value) {
@@ -175,6 +180,15 @@ class JsonConvert {
 		}
 		if(<GetUppperPlanNoEntity>[] is M){
 			return data.map<GetUppperPlanNoEntity>((Map<String, dynamic> e) => GetUppperPlanNoEntity.fromJson(e)).toList() as M;
+		}
+		if(<PendingOrderUPMEntity>[] is M){
+			return data.map<PendingOrderUPMEntity>((Map<String, dynamic> e) => PendingOrderUPMEntity.fromJson(e)).toList() as M;
+		}
+		if(<PendingOrderUPMPendingorderslist>[] is M){
+			return data.map<PendingOrderUPMPendingorderslist>((Map<String, dynamic> e) => PendingOrderUPMPendingorderslist.fromJson(e)).toList() as M;
+		}
+		if(<ResponseEntityEntity>[] is M){
+			return data.map<ResponseEntityEntity>((Map<String, dynamic> e) => ResponseEntityEntity.fromJson(e)).toList() as M;
 		}
 
 		debugPrint("${M.toString()} not found");

@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/BoldText.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/View/CreatePlanUPM.dart';
 
 import '../../../CustomFont/Header.dart';
@@ -189,6 +190,59 @@ class AddProductionPlanUPM extends StatelessWidget {
             ],
           )
       ),
+      bottomNavigationBar: Container(
+        height: 6.h,
+        child: ElevatedButton(
+          onPressed: () {
+            if(_controller.companyIdSelected==''){
+              CustomSnackbar().InfoSnackBar('AddOrder', 'Select Company');
+            }
+            else if(_controller.producctListShow!.length==0){
+              CustomSnackbar().InfoSnackBar('AddOrder', 'No Prducts Foubd , Add products');
+
+            }
+            else{
+              List<Map<String,dynamic>>? producctList=[];
+              for(int i=0;i<_controller.producctList!.length;i++){
+                int p=_controller.count.value;
+                p=p+i;
+                Map<String, dynamic> json={
+                  "planno":"Plan-"+p.toString(),
+                  "cutofdate":_controller.producctList!.value[i]['cutofdate'].toString(),
+                  "artno":_controller.producctList!.value[i]['artno'].toString(),
+                  "s1":_controller.producctList!.value[i]['s1'].toString(),
+                  "s2":_controller.producctList!.value[i]['s2'].toString(),
+                  "s3":_controller.producctList!.value[i]['s3'].toString(),
+                  "s4":_controller.producctList!.value[i]['s4'].toString(),
+                  "s5":_controller.producctList!.value[i]['s5'].toString(),
+                  "s6":_controller.producctList!.value[i]['s6'].toString(),
+                  "s7":_controller.producctList!.value[i]['s7'].toString(),
+                  "s8":_controller.producctList!.value[i]['s8'].toString(),
+                  "s9":_controller.producctList!.value[i]['s9'].toString(),
+                  "s10":_controller.producctList!.value[i]['s10'].toString(),
+                  "s11":_controller.producctList!.value[i]['s11'].toString(),
+                  "s12":_controller.producctList!.value[i]['s12'].toString(),
+                  "s13":_controller.producctList!.value[i]['s13'].toString(),
+                  "totalpairs":_controller.producctList!.value[i]['totalpairs'].toString(),
+                  "status":_controller.producctList!.value[i]['status'].toString(),
+                  "note":_controller.producctList!.value[i]['note'].toString(),
+                };
+                producctList.add(json);
+              }
+              _controller.addPurchsePlan(producctList);
+            }
+            // openDialog();
+          },
+          child: Text(
+            "Place Order",
+            style: TextStyle(color: Colors.white, fontSize: 14),
+          ),
+          style: ElevatedButton.styleFrom(
+              primary: const Color(0xFFEC4E52),
+              textStyle: TextStyle(
+                  fontSize: 14, fontWeight: FontWeight.bold)),
+        ),
+      ),
     );
   }
   _productList(){
@@ -198,19 +252,7 @@ class AddProductionPlanUPM extends StatelessWidget {
       );
     }
     else if(_controller.producctListShow!.length!=0){
-      final size1controller = TextEditingController();
-      final size2controller = TextEditingController();
-      final size3controller = TextEditingController();
-      final size4controller = TextEditingController();
-      final size5controller = TextEditingController();
-      final size6controller = TextEditingController();
-      final size7controller = TextEditingController();
-      final size8controller = TextEditingController();
-      final size9controller = TextEditingController();
-      final size10controller = TextEditingController();
-      final size11controller = TextEditingController();
-      final size12controller = TextEditingController();
-      final size13controller = TextEditingController();
+      String plan='Plan-';
       return  Container(
         color: Colors.white,
         child: ListView.separated(
@@ -218,6 +260,19 @@ class AddProductionPlanUPM extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           itemCount: _controller.producctListShow!.length,
           itemBuilder: (BuildContext context, int index) {
+            final size1controller = TextEditingController();
+            final size2controller = TextEditingController();
+            final size3controller = TextEditingController();
+            final size4controller = TextEditingController();
+            final size5controller = TextEditingController();
+            final size6controller = TextEditingController();
+            final size7controller = TextEditingController();
+            final size8controller = TextEditingController();
+            final size9controller = TextEditingController();
+            final size10controller = TextEditingController();
+            final size11controller = TextEditingController();
+            final size12controller = TextEditingController();
+            final size13controller = TextEditingController();
             size1controller.text=_controller.producctListShow!.value[index]['s1'].toString();
             size2controller.text=_controller.producctListShow!.value[index]['s2'].toString();
             size3controller.text=_controller.producctListShow!.value[index]['s3'].toString();
@@ -231,6 +286,8 @@ class AddProductionPlanUPM extends StatelessWidget {
             size11controller.text=_controller.producctListShow!.value[index]['s11'].toString();
             size12controller.text=_controller.producctListShow!.value[index]['s12'].toString();
             size13controller.text=_controller.producctListShow!.value[index]['s13'].toString();
+            int ic=index+1;
+            int planNo=_controller.count.value+index;
             return Column(
               children: [
                 Material(
@@ -254,7 +311,7 @@ class AddProductionPlanUPM extends StatelessWidget {
                               padding: EdgeInsets.only(
                                   top: 1.5.h, bottom: 1.h),
                               child: Text(
-                                _controller.producctListShow!.value[index]['planno'].toString(),
+                                plan+planNo.toString(),
                                 style: GoogleFonts.radioCanada(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
@@ -565,13 +622,19 @@ class AddProductionPlanUPM extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 3,
+                                    flex: 1,
                                     child: Container(
                                       //  padding: EdgeInsets.fromLTRB(0.h, 0.h, 3.h, 0.h),
                                         height: 6.h,
                                         width: double.infinity,
                                         child: ElevatedButton(
-                                          onPressed: () async {},
+                                          onPressed: () async {
+                                            _controller.producctList!.value.removeAt(index);
+                                            _controller.producctListShow!.value.removeAt(index);
+                                            _controller.producctList!.refresh();
+                                            _controller.producctListShow!.refresh();
+
+                                          },
                                           child: Text(
                                             "Delete",
                                             style: TextStyle(
@@ -588,24 +651,24 @@ class AddProductionPlanUPM extends StatelessWidget {
                                                       .bold)),
                                         )),
                                   ),
-                                  SizedBox(
-                                    width: 3.h,
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      margin: EdgeInsets.fromLTRB(4.h, 0, 0, 0),
-                                      child: Text(
-                                        "Edit",
-                                        style: TextStyle(
-                                            color: const Color(
-                                                0xFFEC4E52),
-                                            fontSize: 14,
-                                            fontWeight:
-                                            FontWeight.bold),
-                                      ),
-                                    ),
-                                  ),
+                                  // SizedBox(
+                                  //   width: 3.h,
+                                  // ),
+                                  // Expanded(
+                                  //   flex: 2,
+                                  //   child: Container(
+                                  //     margin: EdgeInsets.fromLTRB(4.h, 0, 0, 0),
+                                  //     child: Text(
+                                  //       "Edit",
+                                  //       style: TextStyle(
+                                  //           color: const Color(
+                                  //               0xFFEC4E52),
+                                  //           fontSize: 14,
+                                  //           fontWeight:
+                                  //           FontWeight.bold),
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
@@ -628,4 +691,5 @@ class AddProductionPlanUPM extends StatelessWidget {
       );
     }
   }
+
 }

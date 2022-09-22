@@ -5,6 +5,7 @@ import '../../../Utils/InternetConnectivity.dart';
 import '../Model/get_art_no_entity.dart';
 import '../Model/get_product_by_artno_entity.dart';
 import '../Model/get_uppper_plan_no_entity.dart';
+import '../Model/response_entity_entity.dart';
 import '../Repository/AddProductionPlanUMPService.dart';
 
 class CreatePlanUPMController extends GetxController{
@@ -26,6 +27,8 @@ class CreatePlanUPMController extends GetxController{
 
 
 
+
+
   CreatePlanUPMController({required this.upmId, required this.companyId});
 
 
@@ -40,6 +43,21 @@ class CreatePlanUPMController extends GetxController{
         upperPlanNo.value=upperPlanEntity.value.upperplanno.toString();
       }
     }
+  }
+
+
+  Future<String> checkPendingOrder()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      CustomSnackbar().LoadingBottomSheet();
+      ResponseEntityEntity entity=ResponseEntityEntity();
+      entity=(await AddProductionPlanUPMSevice().checkPendingOrder(companyId, artNoIdeSelected.value.toString()))!;
+      Get.back();
+      if(entity!=null){
+        return entity.response.toString();
+      }
+    }
+    return 'error';
   }
 
   getArtNo() async {
@@ -93,6 +111,7 @@ class CreatePlanUPMController extends GetxController{
   @override
   void onInit() {
     // TODO: implement onInit
+
     getUpperPlanNo(companyId);
     getArtNo();
     super.onInit();
