@@ -20,6 +20,10 @@ class AddProductionPlanUPMController extends GetxController{
   Rx<GetUppperPlanNoEntity>upperPlanEntity=GetUppperPlanNoEntity().obs;
   RxString upperPlanNo=''.obs;
 
+  RxList<Map<String,dynamic>>? producctList=(List<Map<String,dynamic>>.of([])).obs;
+  RxList<Map<String,dynamic>>? producctListShow=(List<Map<String,dynamic>>.of([])).obs;
+
+
   AddProductionPlanUPMController({required this.upmId});
 
   checkNetworkStatus() async {
