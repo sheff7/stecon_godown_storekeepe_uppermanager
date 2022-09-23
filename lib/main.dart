@@ -9,7 +9,7 @@ import 'UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
 import 'UpperManager/UpperPurchasePlan/View/PendingOrderUPM.dart';
 import 'UpperManager/ProfileUPM.dart';
 import 'UpperManager/UpperHistoryUPM.dart';
-import 'UpperManager/UpperPurchaseOrderUPM.dart';
+import 'UpperManager/UpperPurchaseOrder/View/UpperPurchaseOrderUPM.dart';
 
 
 void main() {

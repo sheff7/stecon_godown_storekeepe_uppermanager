@@ -10,6 +10,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UmProfileFn/Model/um_profile_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperMangerHomeFn/Model/get_login_by_statusa_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder/Model/get_upper_purchse_plan_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder/Model/get_upper_purchse_plan_single_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_art_no_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_comapany_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_product_by_artno_entity.dart';
@@ -34,6 +36,11 @@ class JsonConvert {
 		(UmProfileRepresentativelist).toString(): UmProfileRepresentativelist.fromJson,
 		(GetLoginByStatusaEntity).toString(): GetLoginByStatusaEntity.fromJson,
 		(GetLoginByStatusaLoginlist).toString(): GetLoginByStatusaLoginlist.fromJson,
+		(GetUpperPurchsePlanEntity).toString(): GetUpperPurchsePlanEntity.fromJson,
+		(GetUpperPurchsePlanPurchaseplanlist).toString(): GetUpperPurchsePlanPurchaseplanlist.fromJson,
+		(GetUpperPurchsePlanSingleEntity).toString(): GetUpperPurchsePlanSingleEntity.fromJson,
+		(GetUpperPurchsePlanSinglePurchaseplanlist).toString(): GetUpperPurchsePlanSinglePurchaseplanlist.fromJson,
+		(GetUpperPurchsePlanSinglePurchaseproductlist).toString(): GetUpperPurchsePlanSinglePurchaseproductlist.fromJson,
 		(GetArtNoEntity).toString(): GetArtNoEntity.fromJson,
 		(GetArtNoProductlist).toString(): GetArtNoProductlist.fromJson,
 		(GetComapanyEntity).toString(): GetComapanyEntity.fromJson,
@@ -153,6 +160,21 @@ class JsonConvert {
 		}
 		if(<GetLoginByStatusaLoginlist>[] is M){
 			return data.map<GetLoginByStatusaLoginlist>((Map<String, dynamic> e) => GetLoginByStatusaLoginlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchsePlanEntity>[] is M){
+			return data.map<GetUpperPurchsePlanEntity>((Map<String, dynamic> e) => GetUpperPurchsePlanEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchsePlanPurchaseplanlist>[] is M){
+			return data.map<GetUpperPurchsePlanPurchaseplanlist>((Map<String, dynamic> e) => GetUpperPurchsePlanPurchaseplanlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchsePlanSingleEntity>[] is M){
+			return data.map<GetUpperPurchsePlanSingleEntity>((Map<String, dynamic> e) => GetUpperPurchsePlanSingleEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchsePlanSinglePurchaseplanlist>[] is M){
+			return data.map<GetUpperPurchsePlanSinglePurchaseplanlist>((Map<String, dynamic> e) => GetUpperPurchsePlanSinglePurchaseplanlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchsePlanSinglePurchaseproductlist>[] is M){
+			return data.map<GetUpperPurchsePlanSinglePurchaseproductlist>((Map<String, dynamic> e) => GetUpperPurchsePlanSinglePurchaseproductlist.fromJson(e)).toList() as M;
 		}
 		if(<GetArtNoEntity>[] is M){
 			return data.map<GetArtNoEntity>((Map<String, dynamic> e) => GetArtNoEntity.fromJson(e)).toList() as M;

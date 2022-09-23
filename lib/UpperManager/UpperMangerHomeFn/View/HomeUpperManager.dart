@@ -7,8 +7,8 @@ import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../UpperPurchasePlan/View/AddProductionPlanUPM.dart';
 import '../../UmProfileFn/View/ProfileUm.dart';
-import '../../UpperPurchaseOrder1UPM.dart';
-import '../../UpperPurchaseOrderUPM.dart';
+import '../../UpperPurchaseOrder/View/UpperPurchaseOrder1UPM.dart';
+import '../../UpperPurchaseOrder/View/UpperPurchaseOrderUPM.dart';
 import '../Controller/HomePageController.dart';
 
 
@@ -200,49 +200,54 @@ class HomeUpperManager extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 1,
-                              child: Container(
-                                height: 16.5.h,
-                                child: ClipPath(
-                                  child: Card(
-                                    elevation: 2,
-                                    shape: Border(
-                                      left: BorderSide(
-                                          color: Color(0xFF7A70E9), width: 1.7.w),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              2.h, 1.h, 0.h, 0.h),
-                                          alignment: Alignment.topLeft,
-                                          height: 8.h,
-                                          width: 8.h,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "Assets/HomePageIcons/Group 50.png"),
+                              child: InkWell(
+                                onTap: (){
+                                  Get.to(UpperPurchaseOrderUPM(upmId: _umHomeController.loginByStatusEntity.value.loginlist![0].uppermanagerid.toString(),));
+                                },
+                                child: Container(
+                                  height: 16.5.h,
+                                  child: ClipPath(
+                                    child: Card(
+                                      elevation: 2,
+                                      shape: Border(
+                                        left: BorderSide(
+                                            color: Color(0xFF7A70E9), width: 1.7.w),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                2.h, 1.h, 0.h, 0.h),
+                                            alignment: Alignment.topLeft,
+                                            height: 8.h,
+                                            width: 8.h,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "Assets/HomePageIcons/Group 50.png"),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.fromLTRB(
-                                              2.5.h, 0.7.h, 0.h, 0.h),
-                                          child: Text(
-                                            "Upper\nReturn Products",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        )
-                                      ],
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                2.5.h, 0.7.h, 0.h, 0.h),
+                                            child: Text(
+                                              "Upper\nReturn Products",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
+                                    clipper: ShapeBorderClipper(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(20))),
                                   ),
-                                  clipper: ShapeBorderClipper(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(20))),
                                 ),
                               ),
                             )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder1UPM.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder/View/UpperPurchaseOrder1UPM.dart';
 
 import '../CustomFont/Header.dart';
 import '../CustomFont/Heading.dart';
