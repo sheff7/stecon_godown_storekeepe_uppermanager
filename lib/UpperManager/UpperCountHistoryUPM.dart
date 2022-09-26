@@ -6,7 +6,7 @@ import '../CustomFont/Header.dart';
 import '../CustomFont/NormalText.dart';
 import 'AddUpperCountStatus0UPM.dart';
 import 'UpperCountHistory1UPM.dart';
-import 'UpperCountStatus1UPM.dart';
+import 'UpperPurchaseCount/View/UpperCountStatus1UPM.dart';
 
 
 class UpperCountHistory0UPM extends StatelessWidget {

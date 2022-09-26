@@ -3,12 +3,18 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import 'SplashScreen.dart';
+import 'UpperManager/AddUpperCountStatus0UPM.dart';
+import 'UpperManager/AddUpperCountStatus1UPM.dart';
+import 'UpperManager/AddUpperCountStatus2UPM.dart';
+import 'UpperManager/UpperCountHistory1UPM.dart';
+import 'UpperManager/UpperCountHistory2UPM.dart';
+import 'UpperManager/UpperPurchaseCount/View/UpperCountStatus0UPM.dart';
 import 'UpperManager/UpperPurchasePlan/View/AddProductionPlanUPM.dart';
 import 'UpperManager/UpperPurchasePlan/View/CreatePlanUPM.dart';
 import 'UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
 import 'UpperManager/UpperPurchasePlan/View/PendingOrderUPM.dart';
 import 'UpperManager/ProfileUPM.dart';
-import 'UpperManager/UpperHistoryUPM.dart';
+import 'UpperManager/UpperPurchaseHistory/View/UpperHistoryUPM.dart';
 import 'UpperManager/UpperPurchaseOrder/View/UpperPurchaseOrderUPM.dart';
 
 

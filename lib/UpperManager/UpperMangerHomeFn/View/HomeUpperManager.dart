@@ -5,6 +5,8 @@ import 'package:sizer/sizer.dart';
 
 import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
+import '../../UpperPurchaseCount/View/UpperCountStatus0UPM.dart';
+import '../../UpperPurchaseHistory/View/UpperHistoryUPM.dart';
 import '../../UpperPurchasePlan/View/AddProductionPlanUPM.dart';
 import '../../UmProfileFn/View/ProfileUm.dart';
 import '../../UpperPurchaseOrder/View/UpperPurchaseOrder1UPM.dart';
@@ -340,8 +342,10 @@ class HomeUpperManager extends StatelessWidget {
         children: [
           // menuItem(),
           menuItem(1, 'Profile', Icons.person),
-          menuItem(2, 'About us', Icons.info),
-          menuItem(3, 'Logout', Icons.logout),
+          menuItem(2, 'History', Icons.info),
+          menuItem(3, 'Upper Purchase Count', Icons.info),
+          menuItem(4, 'About us', Icons.info),
+          menuItem(5, 'Logout', Icons.logout),
         ],
       ),
     );
@@ -366,8 +370,12 @@ class HomeUpperManager extends StatelessWidget {
           if (id == 1) {
 
           } else if (id == 2) {
+            Get.to(UpperHistoryUPM(upmId: _umHomeController.loginByStatusEntity.value.loginlist![0].uppermanagerid.toString(),));
 
-          } else if (id == 3) {
+          } else if(id==3){
+            Get.to(UpperCountStatus0UPM(upmId: _umHomeController.loginByStatusEntity.value.loginlist![0].uppermanagerid.toString(),));
+          }
+          else if (id == 5) {
             _logout();
           }
         },

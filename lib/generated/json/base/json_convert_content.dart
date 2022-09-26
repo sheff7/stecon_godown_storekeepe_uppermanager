@@ -10,6 +10,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UmProfileFn/Model/um_profile_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperMangerHomeFn/Model/get_login_by_statusa_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseCount/Model/get_purchse_plan_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseCount/Model/get_upper_purchase_plan_for_count_single_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder/Model/get_upper_purchse_plan_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder/Model/get_upper_purchse_plan_single_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_art_no_entity.dart';
@@ -36,6 +38,11 @@ class JsonConvert {
 		(UmProfileRepresentativelist).toString(): UmProfileRepresentativelist.fromJson,
 		(GetLoginByStatusaEntity).toString(): GetLoginByStatusaEntity.fromJson,
 		(GetLoginByStatusaLoginlist).toString(): GetLoginByStatusaLoginlist.fromJson,
+		(GetPurchsePlanEntity).toString(): GetPurchsePlanEntity.fromJson,
+		(GetPurchsePlanPurchaseplanlist).toString(): GetPurchsePlanPurchaseplanlist.fromJson,
+		(GetUpperPurchasePlanForCountSingleEntity).toString(): GetUpperPurchasePlanForCountSingleEntity.fromJson,
+		(GetUpperPurchasePlanForCountSinglePurchaseplanlist).toString(): GetUpperPurchasePlanForCountSinglePurchaseplanlist.fromJson,
+		(GetUpperPurchasePlanForCountSinglePurchaseproductlist).toString(): GetUpperPurchasePlanForCountSinglePurchaseproductlist.fromJson,
 		(GetUpperPurchsePlanEntity).toString(): GetUpperPurchsePlanEntity.fromJson,
 		(GetUpperPurchsePlanPurchaseplanlist).toString(): GetUpperPurchsePlanPurchaseplanlist.fromJson,
 		(GetUpperPurchsePlanSingleEntity).toString(): GetUpperPurchsePlanSingleEntity.fromJson,
@@ -160,6 +167,21 @@ class JsonConvert {
 		}
 		if(<GetLoginByStatusaLoginlist>[] is M){
 			return data.map<GetLoginByStatusaLoginlist>((Map<String, dynamic> e) => GetLoginByStatusaLoginlist.fromJson(e)).toList() as M;
+		}
+		if(<GetPurchsePlanEntity>[] is M){
+			return data.map<GetPurchsePlanEntity>((Map<String, dynamic> e) => GetPurchsePlanEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetPurchsePlanPurchaseplanlist>[] is M){
+			return data.map<GetPurchsePlanPurchaseplanlist>((Map<String, dynamic> e) => GetPurchsePlanPurchaseplanlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchasePlanForCountSingleEntity>[] is M){
+			return data.map<GetUpperPurchasePlanForCountSingleEntity>((Map<String, dynamic> e) => GetUpperPurchasePlanForCountSingleEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchasePlanForCountSinglePurchaseplanlist>[] is M){
+			return data.map<GetUpperPurchasePlanForCountSinglePurchaseplanlist>((Map<String, dynamic> e) => GetUpperPurchasePlanForCountSinglePurchaseplanlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPurchasePlanForCountSinglePurchaseproductlist>[] is M){
+			return data.map<GetUpperPurchasePlanForCountSinglePurchaseproductlist>((Map<String, dynamic> e) => GetUpperPurchasePlanForCountSinglePurchaseproductlist.fromJson(e)).toList() as M;
 		}
 		if(<GetUpperPurchsePlanEntity>[] is M){
 			return data.map<GetUpperPurchsePlanEntity>((Map<String, dynamic> e) => GetUpperPurchsePlanEntity.fromJson(e)).toList() as M;
