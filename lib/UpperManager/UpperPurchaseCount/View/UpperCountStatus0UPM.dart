@@ -91,7 +91,7 @@ class UpperCountStatus0UPM extends StatelessWidget {
                               onTap: (){
                                 Get.to(UpperCountStatus1UPM(upmId: upmId,
                                   id: _controller.orderNoEntity.value.purchaseplanlist![index].id.toString(),
-                                  orderno: _controller.orderNoEntity.value.purchaseplanlist![index].id.toString(),
+                                  orderno: _controller.orderNoEntity.value.purchaseplanlist![index].orderno.toString(),
 
                                 ));
                               },

@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 import 'SplashScreen.dart';
 import 'UpperManager/AddUpperCountStatus0UPM.dart';
 import 'UpperManager/AddUpperCountStatus1UPM.dart';
-import 'UpperManager/AddUpperCountStatus2UPM.dart';
+import 'UpperManager/UpperPurchaseCount/View/AddUpperCountStatus2UPM.dart';
 import 'UpperManager/UpperCountHistory1UPM.dart';
 import 'UpperManager/UpperCountHistory2UPM.dart';
 import 'UpperManager/UpperPurchaseCount/View/UpperCountStatus0UPM.dart';

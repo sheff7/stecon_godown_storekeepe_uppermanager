@@ -8,6 +8,7 @@ import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomBox.dart';
+import 'AddUpperCountStatus2UPM.dart';
 import '../../UpperCountStatus2UPM.dart';
 import '../Controller/UpperCountStatus1UPMController.dart';
 
@@ -300,6 +301,29 @@ class UpperCountStatus1UPM extends StatelessWidget {
                                       height: 4.h,
                                     ),
                                   ]),
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                EdgeInsets.symmetric(horizontal: 3.h),
+                                child: SizedBox(
+                                  height: 5.h,
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: const Color(0xFFEC4E52),
+                                        textStyle: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold)),
+                                    onPressed: () {
+                                      Get.to(AddUpperCountStatus2UPM(
+                                        upmId: upmId,
+                                        id: _controller.orderNoEntity.value.purchaseproductlist![index].id.toString(),
+                                        orderno: _controller.orderNoEntity.value.purchaseproductlist![index].orderno.toString(),
+                                      ));
+                                    },
+                                    child: Text('Add Upper Count'),
+                                  ),
                                 ),
                               )
                             ],

@@ -6,7 +6,7 @@ import 'package:sizer/sizer.dart';
 import '../CustomFont/Header.dart';
 import '../CustomFont/Heading.dart';
 import '../CustomFont/NormalText.dart';
-import 'AddUpperCountStatus2UPM.dart';
+import 'UpperPurchaseCount/View/AddUpperCountStatus2UPM.dart';
 import 'UpperCountStatus2UPM.dart';
 
 
@@ -114,9 +114,9 @@ class AddUpperCountStatus1UPM extends StatelessWidget {
                               itemBuilder: (BuildContext Context, int index) {
                                 return InkWell(
                                   onTap: (){
-                                    Get.to(
-                                        AddUpperCountStatus2UPM()
-                                    );
+                                    // Get.to(
+                                    //     AddUpperCountStatus2UPM()
+                                    // );
                                   },
                                   child: Container(
                                     margin: EdgeInsets.symmetric(horizontal: 2.h, vertical: 3.h),
