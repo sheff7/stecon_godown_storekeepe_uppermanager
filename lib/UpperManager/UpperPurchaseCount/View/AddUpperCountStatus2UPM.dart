@@ -151,7 +151,7 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                                 final DateFormat formatter1 = DateFormat('yyyy-MM-dd');
                                 // String  date1=formatter.format(date);
                                String formatted = formatter.format(selectedDate);
-                               _controller.cuttoffDate.value=formatted;
+                               _controller.dateofcounting.value=formatted;
                                 // setState(() => date = newDate);
                               },
                             )
@@ -933,7 +933,7 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                     onPressed: () {
                       List<Map<String,dynamic>>rcList=[];
                       Map<String,dynamic>rcJson={
-                        "artnumber":"",
+                        "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
                         "s1":RC1Controller.text.toString(),
                         "s2":RC2Controller.text.toString(),
                         "s3":RC3Controller.text.toString(),
@@ -946,12 +946,12 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                         "s10":RC10Controller.text.toString(),
                         "s11":RC11Controller.text.toString(),
                         "s12":RC12Controller.text.toString(),
-                        "s12":RC12Controller.text.toString(),
+                        "s13":RC13Controller.text.toString(),
                       };
                       rcList.add(rcJson);
                       List<Map<String,dynamic>>dcList=[];
                       Map<String,dynamic>dcJson={
-                        "artnumber":"",
+                        "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
                         "s1":DC1Controller.text.toString(),
                         "s2":DC2Controller.text.toString(),
                         "s3":DC3Controller.text.toString(),
@@ -964,9 +964,11 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                         "s10":DC10Controller.text.toString(),
                         "s11":DC11Controller.text.toString(),
                         "s12":DC12Controller.text.toString(),
-                        "s12":DC12Controller.text.toString(),
+                        "s13":DC13Controller.text.toString(),
                       };
-                      rcList.add(rcJson);
+                      dcList.add(dcJson);
+
+                      _controller.addUpperCount(rcList, dcList, CommentsController.text.toString());
                     },
                     child: Text(
                       "Submit",

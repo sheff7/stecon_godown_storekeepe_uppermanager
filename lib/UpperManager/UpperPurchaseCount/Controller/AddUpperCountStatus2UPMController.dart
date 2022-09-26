@@ -16,10 +16,11 @@ class AddUpperCountStatus2UPMController  extends GetxController{
   RxString artnoName=''.obs;
   RxString categoryName=''.obs;
   RxString colorName=''.obs;
-  RxString cuttoffDate=''.obs;
+  RxString dateofcounting=''.obs;
   RxString comapnyPlanno=''.obs;
   RxString upperOrderId=''.obs;
   RxString companyid=''.obs;
+  RxString planNo=''.obs;
   Rx<GetUpperPlanCountEntity>orderNoEntity=GetUpperPlanCountEntity().obs;
   RxList<String> dynamicChips=(List<String>.of([])).obs;
   RxList<String> filters=(List<String>.of([])).obs;
@@ -64,7 +65,14 @@ class AddUpperCountStatus2UPMController  extends GetxController{
           artnoName.value=orderNoEntity.value.purchaseproductlist![0].artnoname.toString();
           categoryName.value=orderNoEntity.value.purchaseproductlist![0].categoryname.toString();
           colorName.value=orderNoEntity.value.purchaseproductlist![0].colorname.toString();
-          cuttoffDate.value=orderNoEntity.value.purchaseproductlist![0].cutofdate.toString();
+          comapnyPlanno.value=orderNoEntity.value.purchaseproductlist![0].companyplanno.toString();
+          companyid.value=orderNoEntity.value.purchaseproductlist![0].companyid.toString();
+          planNo.value=orderNoEntity.value.purchaseproductlist![0].planno.toString();
+          upperOrderId.value=orderNoEntity.value.purchaseproductlist![0].porderid.toString();
+
+
+
+          // dateofcounting.value=orderNoEntity.value.purchaseproductlist![0].cutofdate.toString();
           oc1.value=orderNoEntity.value.purchaseproductlist![0].s1.toString();
           oc2.value=orderNoEntity.value.purchaseproductlist![0].s2.toString();
           oc3.value=orderNoEntity.value.purchaseproductlist![0].s3.toString();
@@ -84,7 +92,7 @@ class AddUpperCountStatus2UPMController  extends GetxController{
       }
     }
   }
-  addUpperCount(List<Map<String,dynamic>> rcList,List<Map<String,dynamic>> dcList)async{
+  addUpperCount(List<Map<String,dynamic>> rcList,List<Map<String,dynamic>> dcList,String comment)async{
     List<Map<String,dynamic>>staffList=[];
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true){
@@ -98,7 +106,13 @@ class AddUpperCountStatus2UPMController  extends GetxController{
          }
        }
      }
-     responseEntity.value=(await UpperCountStatus0UPMServie().addUpperCount(orderno, comnpanyPlanNo, upperorderid, companyid, dateofcounting, comments, planno, rcList, dcList, staffList))!;
+     CustomSnackbar().LoadingBottomSheet();
+     responseEntity.value=(await UpperCountStatus0UPMServie().addUpperCount(orderno, comapnyPlanno.value, upperOrderId.value, companyid.value, dateofcounting.value, comment, planNo.value, rcList, dcList, staffList))!;
+     Get.back();
+     if(responseEntity.value.response=='Added successfully')
+       {
+         Get.back();
+       }
     }
   }
   getUpperStaf()async{
