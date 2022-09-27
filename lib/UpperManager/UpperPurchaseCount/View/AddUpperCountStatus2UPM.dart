@@ -18,8 +18,11 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
   final String id;
   final String upmId;
   final String orderno;
-  AddUpperCountStatus2UPM({Key? key, required this.id, required this.upmId, required this.orderno}) : super(key: key);
-  late final _controller=Get.put(AddUpperCountStatus2UPMController(umpId: upmId,id: id,orderno: orderno));
+  final String companyid;
+  final String planNo;
+  final String upperOrderId;
+  AddUpperCountStatus2UPM({Key? key, required this.id, required this.upmId, required this.orderno, required this.companyid, required this.planNo, required this.upperOrderId}) : super(key: key);
+  late final _controller=Get.put(AddUpperCountStatus2UPMController(umpId: upmId,id: id,orderno: orderno,plan: planNo,company: companyid,upperOrder: upperOrderId));
   DateTime date = DateTime(2022, 12, 24);
   String? ChooseStaffName;
   List StaffList = ['1367855', '8574758', '7758584'];
@@ -30,35 +33,7 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final CommentsController = TextEditingController();
-    final RC1Controller = TextEditingController();
-    final RC2Controller = TextEditingController();
-    final RC3Controller = TextEditingController();
-    final RC4Controller = TextEditingController();
-    final RC5Controller = TextEditingController();
-    final RC6Controller = TextEditingController();
-    final RC7Controller = TextEditingController();
-    final RC8Controller = TextEditingController();
-    final RC9Controller = TextEditingController();
-    final RC10Controller = TextEditingController();
-    final RC11Controller = TextEditingController();
-    final RC12Controller = TextEditingController();
-    final RC13Controller = TextEditingController();
 
-
-    final DC1Controller = TextEditingController();
-    final DC2Controller = TextEditingController();
-    final DC3Controller = TextEditingController();
-    final DC4Controller = TextEditingController();
-    final DC5Controller = TextEditingController();
-    final DC6Controller = TextEditingController();
-    final DC7Controller = TextEditingController();
-    final DC8Controller = TextEditingController();
-    final DC9Controller = TextEditingController();
-    final DC10Controller = TextEditingController();
-    final DC11Controller = TextEditingController();
-    final DC12Controller = TextEditingController();
-    final DC13Controller = TextEditingController();
 
 
     return Scaffold(
@@ -133,7 +108,7 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${date.year}/${date.month}/${date.day}'),
+                            Text(_controller.dateofcounting.value.toString()),
                             IconButton(
                               icon: Icon(Icons.calendar_month),
                               onPressed: () async {
@@ -231,7 +206,7 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                         height: 2.h,
                       ),
                       CustomField(
-                          controller: CommentsController, label: 'Add Comments')
+                          controller: _controller.CommentsController, label: 'Add Comments')
                     ],
                   ),
                 ),
@@ -349,14 +324,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC1Controller,
+                                controller: _controller.RC1Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC1Controller,
+                                controller: _controller.DC1Controller,
                                 label: 'Enter ',
                                 Enabled: true,
                               ))
@@ -395,14 +370,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC2Controller,
+                                controller: _controller.RC2Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC2Controller,
+                                controller: _controller.DC2Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -441,14 +416,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC3Controller,
+                                controller: _controller.RC3Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC3Controller,
+                                controller: _controller.DC3Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -487,14 +462,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC4Controller,
+                                controller: _controller.RC4Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC4Controller,
+                                controller: _controller.DC4Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -533,14 +508,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC5Controller,
+                                controller: _controller.RC5Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC5Controller,
+                                controller: _controller.DC5Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -579,14 +554,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC6Controller,
+                                controller: _controller.RC6Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC6Controller,
+                                controller: _controller.DC6Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -625,14 +600,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC7Controller,
+                                controller: _controller.RC7Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC7Controller,
+                                controller: _controller.DC7Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -671,14 +646,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC8Controller,
+                                controller: _controller.RC8Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC8Controller,
+                                controller: _controller.DC8Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -717,14 +692,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC9Controller,
+                                controller:_controller. RC9Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC9Controller,
+                                controller: _controller.DC9Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -763,14 +738,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC10Controller,
+                                controller:_controller. RC10Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC10Controller,
+                                controller: _controller.DC10Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -809,14 +784,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC11Controller,
+                                controller:_controller. RC11Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC11Controller,
+                                controller:_controller. DC11Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -855,14 +830,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC12Controller,
+                                controller:_controller. RC12Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC12Controller,
+                                controller: _controller.DC12Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -901,14 +876,14 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: RC13Controller,
+                                controller: _controller.RC13Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               )),
                           Expanded(
                               flex: 1,
                               child: CustomBox1(
-                                controller: DC13Controller,
+                                controller: _controller.DC13Controller,
                                 label: 'Enter',
                                 Enabled: true,
                               ))
@@ -934,41 +909,46 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                       List<Map<String,dynamic>>rcList=[];
                       Map<String,dynamic>rcJson={
                         "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
-                        "s1":RC1Controller.text.toString(),
-                        "s2":RC2Controller.text.toString(),
-                        "s3":RC3Controller.text.toString(),
-                        "s4":RC4Controller.text.toString(),
-                        "s5":RC5Controller.text.toString(),
-                        "s6":RC6Controller.text.toString(),
-                        "s7":RC7Controller.text.toString(),
-                        "s8":RC8Controller.text.toString(),
-                        "s9":RC9Controller.text.toString(),
-                        "s10":RC10Controller.text.toString(),
-                        "s11":RC11Controller.text.toString(),
-                        "s12":RC12Controller.text.toString(),
-                        "s13":RC13Controller.text.toString(),
+                        "s1":_controller.RC1Controller.text.toString(),
+                        "s2":_controller.RC2Controller.text.toString(),
+                        "s3":_controller.RC3Controller.text.toString(),
+                        "s4":_controller.RC4Controller.text.toString(),
+                        "s5":_controller.RC5Controller.text.toString(),
+                        "s6":_controller.RC6Controller.text.toString(),
+                        "s7":_controller.RC7Controller.text.toString(),
+                        "s8":_controller.RC8Controller.text.toString(),
+                        "s9":_controller.RC9Controller.text.toString(),
+                        "s10":_controller.RC10Controller.text.toString(),
+                        "s11":_controller.RC11Controller.text.toString(),
+                        "s12":_controller.RC12Controller.text.toString(),
+                        "s13":_controller.RC13Controller.text.toString(),
                       };
                       rcList.add(rcJson);
                       List<Map<String,dynamic>>dcList=[];
                       Map<String,dynamic>dcJson={
                         "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
-                        "s1":DC1Controller.text.toString(),
-                        "s2":DC2Controller.text.toString(),
-                        "s3":DC3Controller.text.toString(),
-                        "s4":DC4Controller.text.toString(),
-                        "s5":DC5Controller.text.toString(),
-                        "s6":DC6Controller.text.toString(),
-                        "s7":DC7Controller.text.toString(),
-                        "s8":DC8Controller.text.toString(),
-                        "s9":DC9Controller.text.toString(),
-                        "s10":DC10Controller.text.toString(),
-                        "s11":DC11Controller.text.toString(),
-                        "s12":DC12Controller.text.toString(),
-                        "s13":DC13Controller.text.toString(),
+                        "s1":_controller.DC1Controller.text.toString(),
+                        "s2":_controller.DC2Controller.text.toString(),
+                        "s3":_controller.DC3Controller.text.toString(),
+                        "s4":_controller.DC4Controller.text.toString(),
+                        "s5":_controller.DC5Controller.text.toString(),
+                        "s6":_controller.DC6Controller.text.toString(),
+                        "s7":_controller.DC7Controller.text.toString(),
+                        "s8":_controller.DC8Controller.text.toString(),
+                        "s9":_controller.DC9Controller.text.toString(),
+                        "s10":_controller.DC10Controller.text.toString(),
+                        "s11":_controller.DC11Controller.text.toString(),
+                        "s12":_controller.DC12Controller.text.toString(),
+                        "s13":_controller.DC13Controller.text.toString(),
                       };
                       dcList.add(dcJson);
+                      if(_controller.rcId.value=='' &&_controller.dcId.value==''){
+                        _controller.addUpperCount(rcList, dcList, _controller.CommentsController.text.toString());
+                      }
+                      else if(_controller.rcId.value!='' && _controller.dcId.value!=''){
+                        _controller.editUpperCount(rcList, dcList, _controller.CommentsController.text.toString());
+                      }
 
-                      _controller.addUpperCount(rcList, dcList, CommentsController.text.toString());
                     },
                     child: Text(
                       "Submit",

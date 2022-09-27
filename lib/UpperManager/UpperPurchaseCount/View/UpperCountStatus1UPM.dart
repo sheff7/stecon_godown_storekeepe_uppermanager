@@ -320,6 +320,9 @@ class UpperCountStatus1UPM extends StatelessWidget {
                                         upmId: upmId,
                                         id: _controller.orderNoEntity.value.purchaseproductlist![index].id.toString(),
                                         orderno: _controller.orderNoEntity.value.purchaseproductlist![index].orderno.toString(),
+                                        companyid: _controller.orderNoEntity.value.purchaseproductlist![index].companyid.toString(),
+                                        planNo: _controller.orderNoEntity.value.purchaseproductlist![index].planno.toString(),
+                                        upperOrderId: _controller.orderNoEntity.value.purchaseproductlist![index].porderid.toString(),
                                       ));
                                     },
                                     child: Text('Add Upper Count'),

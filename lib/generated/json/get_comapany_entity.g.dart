@@ -7,9 +7,9 @@ GetComapanyEntity $GetComapanyEntityFromJson(Map<String, dynamic> json) {
 	if (response != null) {
 		getComapanyEntity.response = response;
 	}
-	final List<GetComapanyCompanylist>? companylist = jsonConvert.convertListNotNull<GetComapanyCompanylist>(json['companylist']);
-	if (companylist != null) {
-		getComapanyEntity.companylist = companylist;
+	final List<GetComapanyUpperproductionmanagerlist>? upperproductionmanagerlist = jsonConvert.convertListNotNull<GetComapanyUpperproductionmanagerlist>(json['upperproductionmanagerlist']);
+	if (upperproductionmanagerlist != null) {
+		getComapanyEntity.upperproductionmanagerlist = upperproductionmanagerlist;
 	}
 	return getComapanyEntity;
 }
@@ -17,101 +17,131 @@ GetComapanyEntity $GetComapanyEntityFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> $GetComapanyEntityToJson(GetComapanyEntity entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['response'] = entity.response;
-	data['companylist'] =  entity.companylist?.map((v) => v.toJson()).toList();
+	data['upperproductionmanagerlist'] =  entity.upperproductionmanagerlist?.map((v) => v.toJson()).toList();
 	return data;
 }
 
-GetComapanyCompanylist $GetComapanyCompanylistFromJson(Map<String, dynamic> json) {
-	final GetComapanyCompanylist getComapanyCompanylist = GetComapanyCompanylist();
+GetComapanyUpperproductionmanagerlist $GetComapanyUpperproductionmanagerlistFromJson(Map<String, dynamic> json) {
+	final GetComapanyUpperproductionmanagerlist getComapanyUpperproductionmanagerlist = GetComapanyUpperproductionmanagerlist();
 	final int? id = jsonConvert.convert<int>(json['id']);
 	if (id != null) {
-		getComapanyCompanylist.id = id;
+		getComapanyUpperproductionmanagerlist.id = id;
 	}
-	final String? companyname = jsonConvert.convert<String>(json['companyname']);
-	if (companyname != null) {
-		getComapanyCompanylist.companyname = companyname;
+	final String? name = jsonConvert.convert<String>(json['name']);
+	if (name != null) {
+		getComapanyUpperproductionmanagerlist.name = name;
+	}
+	final String? dob = jsonConvert.convert<String>(json['dob']);
+	if (dob != null) {
+		getComapanyUpperproductionmanagerlist.dob = dob;
+	}
+	final String? age = jsonConvert.convert<String>(json['age']);
+	if (age != null) {
+		getComapanyUpperproductionmanagerlist.age = age;
 	}
 	final String? address = jsonConvert.convert<String>(json['address']);
 	if (address != null) {
-		getComapanyCompanylist.address = address;
-	}
-	final String? category = jsonConvert.convert<String>(json['category']);
-	if (category != null) {
-		getComapanyCompanylist.category = category;
+		getComapanyUpperproductionmanagerlist.address = address;
 	}
 	final String? contactno = jsonConvert.convert<String>(json['contactno']);
 	if (contactno != null) {
-		getComapanyCompanylist.contactno = contactno;
+		getComapanyUpperproductionmanagerlist.contactno = contactno;
 	}
-	final String? email = jsonConvert.convert<String>(json['email']);
-	if (email != null) {
-		getComapanyCompanylist.email = email;
+	final String? adharno = jsonConvert.convert<String>(json['adharno']);
+	if (adharno != null) {
+		getComapanyUpperproductionmanagerlist.adharno = adharno;
 	}
 	final String? country = jsonConvert.convert<String>(json['country']);
 	if (country != null) {
-		getComapanyCompanylist.country = country;
+		getComapanyUpperproductionmanagerlist.country = country;
 	}
 	final String? state = jsonConvert.convert<String>(json['state']);
 	if (state != null) {
-		getComapanyCompanylist.state = state;
+		getComapanyUpperproductionmanagerlist.state = state;
 	}
 	final String? district = jsonConvert.convert<String>(json['district']);
 	if (district != null) {
-		getComapanyCompanylist.district = district;
+		getComapanyUpperproductionmanagerlist.district = district;
 	}
 	final String? city = jsonConvert.convert<String>(json['city']);
 	if (city != null) {
-		getComapanyCompanylist.city = city;
+		getComapanyUpperproductionmanagerlist.city = city;
 	}
-	final String? pincode = jsonConvert.convert<String>(json['pincode']);
-	if (pincode != null) {
-		getComapanyCompanylist.pincode = pincode;
+	final String? nationality = jsonConvert.convert<String>(json['nationality']);
+	if (nationality != null) {
+		getComapanyUpperproductionmanagerlist.nationality = nationality;
+	}
+	final String? idcardno = jsonConvert.convert<String>(json['idcardno']);
+	if (idcardno != null) {
+		getComapanyUpperproductionmanagerlist.idcardno = idcardno;
+	}
+	final String? idproofurl = jsonConvert.convert<String>(json['idproofurl']);
+	if (idproofurl != null) {
+		getComapanyUpperproductionmanagerlist.idproofurl = idproofurl;
+	}
+	final String? joiningdate = jsonConvert.convert<String>(json['joiningdate']);
+	if (joiningdate != null) {
+		getComapanyUpperproductionmanagerlist.joiningdate = joiningdate;
+	}
+	final String? resignationdate = jsonConvert.convert<String>(json['resignationdate']);
+	if (resignationdate != null) {
+		getComapanyUpperproductionmanagerlist.resignationdate = resignationdate;
+	}
+	final String? username = jsonConvert.convert<String>(json['username']);
+	if (username != null) {
+		getComapanyUpperproductionmanagerlist.username = username;
+	}
+	final String? loginid = jsonConvert.convert<String>(json['loginid']);
+	if (loginid != null) {
+		getComapanyUpperproductionmanagerlist.loginid = loginid;
 	}
 	final String? status = jsonConvert.convert<String>(json['status']);
 	if (status != null) {
-		getComapanyCompanylist.status = status;
+		getComapanyUpperproductionmanagerlist.status = status;
 	}
 	final String? createddate = jsonConvert.convert<String>(json['createddate']);
 	if (createddate != null) {
-		getComapanyCompanylist.createddate = createddate;
+		getComapanyUpperproductionmanagerlist.createddate = createddate;
 	}
-	final String? countryname = jsonConvert.convert<String>(json['countryname']);
-	if (countryname != null) {
-		getComapanyCompanylist.countryname = countryname;
+	final String? email = jsonConvert.convert<String>(json['email']);
+	if (email != null) {
+		getComapanyUpperproductionmanagerlist.email = email;
 	}
-	final String? statename = jsonConvert.convert<String>(json['statename']);
-	if (statename != null) {
-		getComapanyCompanylist.statename = statename;
+	final String? pincode = jsonConvert.convert<String>(json['pincode']);
+	if (pincode != null) {
+		getComapanyUpperproductionmanagerlist.pincode = pincode;
 	}
-	final String? districtname = jsonConvert.convert<String>(json['districtname']);
-	if (districtname != null) {
-		getComapanyCompanylist.districtname = districtname;
+	final String? designation = jsonConvert.convert<String>(json['designation']);
+	if (designation != null) {
+		getComapanyUpperproductionmanagerlist.designation = designation;
 	}
-	final String? categoryname = jsonConvert.convert<String>(json['categoryname']);
-	if (categoryname != null) {
-		getComapanyCompanylist.categoryname = categoryname;
-	}
-	return getComapanyCompanylist;
+	return getComapanyUpperproductionmanagerlist;
 }
 
-Map<String, dynamic> $GetComapanyCompanylistToJson(GetComapanyCompanylist entity) {
+Map<String, dynamic> $GetComapanyUpperproductionmanagerlistToJson(GetComapanyUpperproductionmanagerlist entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['id'] = entity.id;
-	data['companyname'] = entity.companyname;
+	data['name'] = entity.name;
+	data['dob'] = entity.dob;
+	data['age'] = entity.age;
 	data['address'] = entity.address;
-	data['category'] = entity.category;
 	data['contactno'] = entity.contactno;
-	data['email'] = entity.email;
+	data['adharno'] = entity.adharno;
 	data['country'] = entity.country;
 	data['state'] = entity.state;
 	data['district'] = entity.district;
 	data['city'] = entity.city;
-	data['pincode'] = entity.pincode;
+	data['nationality'] = entity.nationality;
+	data['idcardno'] = entity.idcardno;
+	data['idproofurl'] = entity.idproofurl;
+	data['joiningdate'] = entity.joiningdate;
+	data['resignationdate'] = entity.resignationdate;
+	data['username'] = entity.username;
+	data['loginid'] = entity.loginid;
 	data['status'] = entity.status;
 	data['createddate'] = entity.createddate;
-	data['countryname'] = entity.countryname;
-	data['statename'] = entity.statename;
-	data['districtname'] = entity.districtname;
-	data['categoryname'] = entity.categoryname;
+	data['email'] = entity.email;
+	data['pincode'] = entity.pincode;
+	data['designation'] = entity.designation;
 	return data;
 }

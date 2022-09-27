@@ -74,9 +74,9 @@ class AddProductionPlanUPMController extends GetxController{
       companyEntity.value=(await AddProductionPlanUPMSevice().getCompany())!;
       Get.back();
       if(companyEntity.value.response=='Success'){
-        if(companyEntity.value.companylist!.length!=0){
-          for(int i=0;i<companyEntity.value.companylist!.length;i++){
-            companyList.add(companyEntity.value.companylist![i].companyname.toString());
+        if(companyEntity.value.upperproductionmanagerlist!.length!=0){
+          for(int i=0;i<companyEntity.value.upperproductionmanagerlist!.length;i++){
+            companyList.add(companyEntity.value.upperproductionmanagerlist![i].name.toString());
           }
         }
       }
@@ -96,9 +96,9 @@ class AddProductionPlanUPMController extends GetxController{
   }
   compnayType(String value){
     comapanySelected.value=value;
-    for(int i=0;i<companyEntity.value.companylist!.length;i++){
-      if(comapanySelected.value.toString()==companyEntity.value.companylist![i].companyname.toString()){
-        companyIdSelected.value=companyEntity.value.companylist![i].id.toString();
+    for(int i=0;i<companyEntity.value.upperproductionmanagerlist!.length;i++){
+      if(comapanySelected.value.toString()==companyEntity.value.upperproductionmanagerlist![i].name.toString()){
+        companyIdSelected.value=companyEntity.value.upperproductionmanagerlist![i].id.toString();
         getUpperPlanNo(companyIdSelected.value.toString());
       }
     }

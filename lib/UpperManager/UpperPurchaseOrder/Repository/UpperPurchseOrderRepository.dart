@@ -10,7 +10,7 @@ class UpperPurchseOrderService{
   Dio _dio = Dio(DioConfig.options);
   Future<GetUpperPurchsePlanEntity?>getUpperPurchseOrder(String upmId)async{
     try{
-      final response=await _dio.post('apigetupperpurchaseplan',data: {"id":upmId});
+      final response=await _dio.post('apigetaupperpurchaseplan',data: {"id":upmId});
       if(response.statusCode==200){
         var data=response.data;
         print(response.data.toString());

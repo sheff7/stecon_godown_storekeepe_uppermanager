@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/View/OrderList.dart';
 
 import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
@@ -344,8 +345,9 @@ class HomeUpperManager extends StatelessWidget {
           menuItem(1, 'Profile', Icons.person),
           menuItem(2, 'History', Icons.info),
           menuItem(3, 'Upper Purchase Count', Icons.info),
-          menuItem(4, 'About us', Icons.info),
-          menuItem(5, 'Logout', Icons.logout),
+          menuItem(4, 'Orders', Icons.info),
+          menuItem(5, 'About us', Icons.info),
+          menuItem(6, 'Logout', Icons.logout),
         ],
       ),
     );
@@ -375,7 +377,10 @@ class HomeUpperManager extends StatelessWidget {
           } else if(id==3){
             Get.to(UpperCountStatus0UPM(upmId: _umHomeController.loginByStatusEntity.value.loginlist![0].uppermanagerid.toString(),));
           }
-          else if (id == 5) {
+          else if(id==4){
+            Get.to(OrderList());
+          }
+          else if (id == 6) {
             _logout();
           }
         },

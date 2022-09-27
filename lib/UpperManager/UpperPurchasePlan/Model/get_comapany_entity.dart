@@ -6,7 +6,7 @@ import 'dart:convert';
 class GetComapanyEntity {
 
 	String? response;
-	List<GetComapanyCompanylist>? companylist;
+	List<GetComapanyUpperproductionmanagerlist>? upperproductionmanagerlist;
   
   GetComapanyEntity();
 
@@ -21,31 +21,37 @@ class GetComapanyEntity {
 }
 
 @JsonSerializable()
-class GetComapanyCompanylist {
+class GetComapanyUpperproductionmanagerlist {
 
 	int? id;
-	String? companyname;
+	String? name;
+	String? dob;
+	String? age;
 	String? address;
-	String? category;
 	String? contactno;
-	String? email;
+	String? adharno;
 	String? country;
 	String? state;
 	String? district;
 	String? city;
-	String? pincode;
+	String? nationality;
+	String? idcardno;
+	String? idproofurl;
+	String? joiningdate;
+	String? resignationdate;
+	String? username;
+	String? loginid;
 	String? status;
 	String? createddate;
-	String? countryname;
-	String? statename;
-	String? districtname;
-	String? categoryname;
+	String? email;
+	String? pincode;
+	String? designation;
   
-  GetComapanyCompanylist();
+  GetComapanyUpperproductionmanagerlist();
 
-  factory GetComapanyCompanylist.fromJson(Map<String, dynamic> json) => $GetComapanyCompanylistFromJson(json);
+  factory GetComapanyUpperproductionmanagerlist.fromJson(Map<String, dynamic> json) => $GetComapanyUpperproductionmanagerlistFromJson(json);
 
-  Map<String, dynamic> toJson() => $GetComapanyCompanylistToJson(this);
+  Map<String, dynamic> toJson() => $GetComapanyUpperproductionmanagerlistToJson(this);
 
   @override
   String toString() {

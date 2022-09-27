@@ -20,7 +20,6 @@ class UpperCountStatus0UPMServie{
         var data=response.data;
         print(response.data.toString());
         return JsonConvert.fromJsonAsT<GetPurchsePlanEntity>(data);
-
       }
     }
     catch(e){
@@ -46,12 +45,18 @@ class UpperCountStatus0UPMServie{
     }
   }
 
-  Future<GetUpperPlanCountEntity?>getUpperPlan(String id,String orderno)async{
+  Future<GetUpperPlanCountEntity?>getUpperPlan(String id,String orderno,String comapnyId,String palnno,String upperOrder)async{
     print(id);
     print(orderno);
 
     try{
-      final response=await _dio.post('apigetbyidinpsupperpurchaseplanforcount',data: {"id":id,"orderno":orderno});
+      final response=await _dio.post('apigetcuppercount',data: {
+        "id":id,
+        "orderno":orderno,
+        "companyid":comapnyId,
+        "palnno":palnno,
+        "upperorderid":upperOrder
+      });
       if(response.statusCode==200){
         var data=response.data;
         print(response.data.toString());
@@ -104,6 +109,50 @@ class UpperCountStatus0UPMServie{
     });
     try{
       final response=await _dio.post('apiaddcuppercount',data: formData);
+      if(response.statusCode==200){
+        var data=response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<ResponseEntityEntity>(data);
+
+      }
+    }
+    catch(e){
+      CustomSnackbar().InfoSnackBar('Error', e.toString());
+    }
+  }
+
+  Future<ResponseEntityEntity?>editUpperCount(String orderno,
+      String comnpanyPlanNo,
+      String upperorderid,
+      String companyid,
+      String dateofcounting,
+      String comments,
+      String planno,
+      List<Map<String,dynamic>>rcList,
+      List<Map<String,dynamic>>dcList,
+      List<Map<String,dynamic>>staffList,
+      String countid,
+      String receivedid,
+      String damagedid,
+
+      )async{
+    FormData formData=FormData.fromMap({
+      "countid":countid,
+      "receivedid":receivedid,
+      "damagedid":damagedid,
+      "orderno":orderno,
+      "companyplanno":comnpanyPlanNo,
+      "upperorderid":upperorderid,
+      "companyid":companyid,
+      "dateofcounting":dateofcounting,
+      "comments":comments,
+      "planno":planno,
+      "receivedcountlist":jsonEncode(rcList),
+      "damagedcountlist":jsonEncode(dcList),
+      "countstafflist":jsonEncode(staffList)
+    });
+    try{
+      final response=await _dio.post('apieditcuppercount',data: formData);
       if(response.statusCode==200){
         var data=response.data;
         print(response.data.toString());
