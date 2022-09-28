@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../CustomWidget/CustomSnackBar.dart';
@@ -24,6 +25,9 @@ class CreatePlanUPMController extends GetxController{
   RxString cutOffDate=''.obs;
   RxString categoryName=''.obs;
   RxString colorName=''.obs;
+  RxInt total=0.obs;
+  final TotalController = TextEditingController();
+
 
 
 

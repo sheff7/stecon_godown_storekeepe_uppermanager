@@ -64,7 +64,6 @@ class CreatePlanUPM extends StatelessWidget {
   DateTime date = DateTime(2022, 12, 24);
   final NoteController = TextEditingController();
 
-  final TotalController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -336,59 +335,126 @@ class CreatePlanUPM extends StatelessWidget {
                               children: [
                                 CustomBoxEditable(
                                     controller: size1controller,
-                                    label: "Size-1"),
+                                    label: "Size-1", onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.total.value=_controller.total.value+t;
+                                        _controller.total.refresh();
+                                        print(_controller.total.value.toString());
+                                      }
+                                },),
                                 CustomBoxEditable(
                                     controller: size2controller,
-                                    label: "Size-2"),
+                                    label: "Size-2", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 CustomBoxEditable(
                                     controller: size3controller,
-                                    label: "Size-3")
+                                    label: "Size-3", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },)
                               ],
                             ),
                             Row(
                               children: [
                                 CustomBoxEditable(
                                     controller: size4controller,
-                                    label: "Size-4"),
+                                    label: "Size-4", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 CustomBoxEditable(
                                     controller: size5controller,
-                                    label: "Size-5"),
+                                    label: "Size-5", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 CustomBoxEditable(
                                     controller: size6controller,
-                                    label: "Size-6")
+                                    label: "Size-6", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },)
                               ],
                             ),
                             Row(
                               children: [
                                 CustomBoxEditable(
                                     controller: size7controller,
-                                    label: "Size-7"),
+                                    label: "Size-7", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 CustomBoxEditable(
                                     controller: size8controller,
-                                    label: "Size-8"),
+                                    label: "Size-8", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 CustomBoxEditable(
                                     controller: size9controller,
-                                    label: "Size-9")
+                                    label: "Size-9", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },)
                               ],
                             ),
                             Row(
                               children: [
                                 CustomBoxEditable(
                                     controller: size10controller,
-                                    label: "Size-10"),
+                                    label: "Size-10", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 CustomBoxEditable(
                                     controller: size11controller,
-                                    label: "Size-11"),
+                                    label: "Size-11", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 CustomBoxEditable(
                                     controller: size12controller,
-                                    label: "Size-12")
+                                    label: "Size-12", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },)
                               ],
                             ),
                             Row(
                               children: [
                                 CustomBoxEditable(
                                     controller: size13controller,
-                                    label: "Size-13"),
+                                    label: "Size-13", onValueChange: (String value) {
+                                  if(value.isNotEmpty ||value.toString().length!=0){
+                                    int t=int.parse(value.toString());
+                                    _controller.total.value=_controller.total.value+t;
+                                  }
+                                },),
                                 Expanded(
                                   flex: 1,
                                   child: Container(),
@@ -417,7 +483,7 @@ class CreatePlanUPM extends StatelessWidget {
                         child: TextFormField(
                           // readOnly: true,
                           keyboardType: TextInputType.number,
-                          controller: TotalController,
+                          controller: _controller.TotalController,
                           style: GoogleFonts.roboto(),
                           decoration: InputDecoration(
                               hintText: 'Enter here..!',
@@ -534,7 +600,7 @@ class CreatePlanUPM extends StatelessWidget {
       ));
 
    addToList() {
-     print("kooi"+TotalController.text.toString());
+     print("kooi"+_controller.TotalController.text.toString());
     if (_controller.artNoIdeSelected.value == '') {
       CustomSnackbar().InfoSnackBar(
           'Add Order', "Select Art Number");
@@ -542,7 +608,7 @@ class CreatePlanUPM extends StatelessWidget {
       CustomSnackbar().InfoSnackBar(
           'Add Order', "Select Cutoff Date");
     }
-    else if (TotalController.text.toString().isEmpty) {
+    else if (_controller.TotalController.text.toString().isEmpty) {
       CustomSnackbar()
           .InfoSnackBar('Add Order', "Enter Total");
     }
@@ -569,7 +635,7 @@ class CreatePlanUPM extends StatelessWidget {
         "s11": size11controller.text.toString(),
         "s12": size12controller.text.toString(),
         "s13": size13controller.text.toString(),
-        "totalpairs": TotalController.text.toString(),
+        "totalpairs": _controller.TotalController.text.toString(),
         "status": "Pending",
         "note": NoteController.text.toString()
       };
@@ -599,7 +665,7 @@ class CreatePlanUPM extends StatelessWidget {
         "s11": size11controller.text.toString(),
         "s12": size12controller.text.toString(),
         "s13": size13controller.text.toString(),
-        "totalpairs": TotalController.text.toString(),
+        "totalpairs": _controller.TotalController.text.toString(),
         "status": "Pending",
         "note": NoteController.text.toString()
       };
