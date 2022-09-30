@@ -23,78 +23,84 @@ class PendingOrderUPM extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-        backgroundColor: const Color(0xFFF7FBFC),
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Header(
-            text: 'Pending Order',
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              size: 17,
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.back();
+        return true;
+      },
+      child: Scaffold(
+          backgroundColor: const Color(0xFFF7FBFC),
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: Header(
+              text: 'Pending Order',
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+            centerTitle: true,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                size: 17,
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
           ),
-        ),
-        body:
-        Obx(()=>
-           _body() ,
-        )
-        ,
-        bottomNavigationBar: Container(
-          margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 1.h),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  // margin: EdgeInsets.fromLTRB(5.h, 3.h, 5.h, 1.h),
-                    height: 6.h,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        CreatePlanUPM createupm=CreatePlanUPM(upmId: upmId,companyId: companyId,);
-                        Get.back();
-                        createupm.addToList();
-                      },
-                      child: Text(
-                        "Continue with Order",
-                        style: TextStyle(color: Colors.white, fontSize: 14),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          primary: const Color(0xFFEC4E52),
-                          textStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold)),
-                    )),
-              ),
-              SizedBox(
-                width: 3.h,
-              ),
-              Expanded(
-                flex: 1,
-                child: InkWell(
-                  onTap: (){
-                    Get.back();
-                  },
-                  child: Text(
-                    "Go Back",
-                    style: TextStyle(
-                        color: const Color(0xFFEC4E52),
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
+          body:
+          Obx(()=>
+             _body() ,
+          )
+          ,
+          bottomNavigationBar: Container(
+            margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 1.h),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(5.h, 3.h, 5.h, 1.h),
+                      height: 6.h,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          CreatePlanUPM createupm=CreatePlanUPM(upmId: upmId,companyId: companyId,);
+                          Get.back();
+                          createupm.addToList();
+                        },
+                        child: Text(
+                          "Continue with Order",
+                          style: TextStyle(color: Colors.white, fontSize: 14),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: const Color(0xFFEC4E52),
+                            textStyle: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold)),
+                      )),
+                ),
+                SizedBox(
+                  width: 3.h,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    onTap: (){
+                      Get.back();
+                    },
+                    child: Text(
+                      "Go Back",
+                      style: TextStyle(
+                          color: const Color(0xFFEC4E52),
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ));
+              ],
+            ),
+          )),
+    );
   }
 
   _body() {

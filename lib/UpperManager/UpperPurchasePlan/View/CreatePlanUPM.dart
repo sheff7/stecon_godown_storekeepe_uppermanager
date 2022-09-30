@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/BoldText.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/View/PendingOrderUPM.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/ViewStockUPM.dart';
 import '../../../AppConstants/ApiConstants.dart';
@@ -26,20 +27,7 @@ class CreatePlanUPM extends StatelessWidget {
   late final _controller =
       Get.put(CreatePlanUPMController(upmId: upmId, companyId: companyId));
 
-  final colorController = TextEditingController();
-  final size1controller = TextEditingController();
-  final size2controller = TextEditingController();
-  final size3controller = TextEditingController();
-  final size4controller = TextEditingController();
-  final size5controller = TextEditingController();
-  final size6controller = TextEditingController();
-  final size7controller = TextEditingController();
-  final size8controller = TextEditingController();
-  final size9controller = TextEditingController();
-  final size10controller = TextEditingController();
-  final size11controller = TextEditingController();
-  final size12controller = TextEditingController();
-  final size13controller = TextEditingController();
+
 
 //   @override
 //   _CreatePlanUPMState createState() => _CreatePlanUPMState();
@@ -67,477 +55,585 @@ class CreatePlanUPM extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF7FBFC),
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Header(
-          text: 'Create Plan',
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 17,
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.back();
+        return true;
+      },
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF7FBFC),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Header(
+            text: 'Create Plan',
           ),
-          onPressed: () {
-            Get.back();
-          },
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              size: 17,
+            ),
+            onPressed: () {
+              Get.back();
+            },
+          ),
         ),
-      ),
-      body: Obx(() => ListView(
-            children: [
-              SizedBox(
-                height: 2.h,
-              ),
-              Container(
-                color: Colors.white,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 3.h),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.to(ViewStockUPM());
-                        },
-                        child: Container(
+        body: Obx(() => ListView(
+              children: [
+                SizedBox(
+                  height: 2.h,
+                ),
+                Container(
+                  color: Colors.white,
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 3.h),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Get.to(ViewStockUPM());
+                          },
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SubHeadingText(text: 'View Stock'),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 15,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 2.h,
+                        ),
+                        Divider(
+                          thickness: 1,
+                          color: Colors.grey[300],
+                        ),
+                        SizedBox(
+                          height: 2.h,
+                        ),
+                        Row(
+                          children: [
+                            NormalText(
+                                text: 'Plan no : ' +
+                                    _controller.upperPlanNo.value.toString()),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3.h,
+                        ),
+                        _image(),
+                        SizedBox(
+                          height: 2.h,
+                        ),
+                        Container(
+                          // margin: EdgeInsets.fromLTRB(3.h, 2.h, 3.h, 3.h),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(
+                                color: Colors.black, // Set border color
+                                width: 1.0),
+                          ),
+                          width: double.infinity,
+                          child: DropdownButton(
+                            borderRadius: BorderRadius.circular(10),
+                            icon: Icon(Icons.arrow_drop_down),
+                            iconSize: 29,
+                            underline: SizedBox(),
+                            isExpanded: true,
+                            hint: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text('Art Number'),
+                            ),
+                            value: _controller!.artNoisSelected.value == ''
+                                ? null
+                                : _controller!.artNoisSelected.value,
+                            onChanged: (value) async {
+                              _controller.getArtnoType(value.toString());
+
+                              // });
+                            },
+                            items: _controller!.productList!.map((e) {
+                              return DropdownMenuItem(
+                                  value: e,
+                                  child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Text(e.toString(),
+                                          style:
+                                              TextStyle(color: Colors.black))));
+                            }).toList(),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4.h,
+                        ),
+                        // Container(
+                        //   width: double.infinity,
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(
+                        //       color: Colors.grey[400]!,
+                        //       width: 1,
+                        //     ),
+                        //     borderRadius: BorderRadius.circular(5),
+                        //   ),
+                        //   child: DropdownButton(
+                        //     value: ChooseCategory,
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     icon: Icon(Icons.arrow_drop_down),
+                        //     iconSize: 29,
+                        //     underline: SizedBox(),
+                        //     isExpanded: true,
+                        //     hint: Padding(
+                        //       padding: const EdgeInsets.only(left: 10),
+                        //       child: Text('Category'),
+                        //     ),
+                        //     onChanged: (value) {},
+                        //     items: CategoryrList.map((valueItem) {
+                        //       return DropdownMenuItem(
+                        //           value: valueItem,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.only(left: 10),
+                        //             child: Text(valueItem),
+                        //           ));
+                        //     }).toList(),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 4.h,
+                        // ),
+                        // Container(
+                        //   width: double.infinity,
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(
+                        //       color: Colors.grey[400]!,
+                        //       width: 1,
+                        //     ),
+                        //     borderRadius: BorderRadius.circular(5),
+                        //   ),
+                        //   child: DropdownButton(
+                        //     value: ChooseColor,
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     icon: Icon(Icons.arrow_drop_down),
+                        //     iconSize: 29,
+                        //     underline: SizedBox(),
+                        //     isExpanded: true,
+                        //     hint: Padding(
+                        //       padding: const EdgeInsets.only(left: 10),
+                        //       child: Text('Color'),
+                        //     ),
+                        //     onChanged: (value) {},
+                        //     items: ColorList.map((valueItem) {
+                        //       return DropdownMenuItem(
+                        //           value: valueItem,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.only(left: 10),
+                        //             child: Text(valueItem),
+                        //           ));
+                        //     }).toList(),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 4.h,
+                        // ),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: NormalText(text: 'Cutoff Date ')),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 2.h, vertical: 0.5.h),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey[400]!)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SubHeadingText(text: 'View Stock'),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                size: 15,
+                              Text(_controller.cutOffDate.value.toString()),
+                              IconButton(
+                                icon: Icon(Icons.calendar_month),
+                                onPressed: () async {
+                                  DateTime selectedDate = (await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(2021),
+                                    lastDate: DateTime(2025),
+                                  ))!;
+
+                                  String? date = selectedDate.toString();
+                                  print(date.toString());
+
+                                  final DateFormat formatter =
+                                      DateFormat('dd-MM-yyyy');
+                                  final DateFormat formatter1 =
+                                      DateFormat('yyyy-MM-dd');
+                                  // String  date1=formatter.format(date);
+
+                                  String formatted =
+                                      formatter.format(selectedDate);
+                                  _controller.cutOffDate.value =
+                                      formatted.toString();
+                                },
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 2.h,
+                        ),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: NormalText(text: 'Size ')),
+                        // Container(
+                        //   width: double.infinity,
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(
+                        //       color: Colors.grey[400]!,
+                        //       width: 1,
+                        //     ),
+                        //     borderRadius: BorderRadius.circular(5),
+                        //   ),
+                        //   child: DropdownButton(
+                        //     value: ChooseSize,
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     icon: Icon(Icons.arrow_drop_down),
+                        //     iconSize: 29,
+                        //     underline: SizedBox(),
+                        //     isExpanded: true,
+                        //     hint: Padding(
+                        //       padding: const EdgeInsets.only(left: 10),
+                        //       child: Text('Size'),
+                        //     ),
+                        //     onChanged: (value) {},
+                        //     items: SizeList?.map((valueItem) {
+                        //       return DropdownMenuItem(
+                        //           value: valueItem,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.only(left: 10),
+                        //             child: Text(valueItem),
+                        //           ));
+                        //     }).toList(),
+                        //   ),
+                        // ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0.h, 0.h, 2.h, 2.h),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  CustomBoxEditable(
+                                      controller: _controller.size1controller,
+                                      label: "Size-1",
+                                    onValueChange: (String value) {
+                                        if(value.isNotEmpty ||value.toString().length!=0){
+                                          int t=int.parse(value.toString());
+                                          _controller.s1.value=t;
+                                          _controller.getTotal();
+
+                                        }
+                                        else if(value.isEmpty ||value.toString().length!=0){
+                                          _controller.s1.value=0;
+                                          _controller.size1controller.text=_controller.s1.value.toString();
+                                          _controller.getTotal();
+                                        }
+                                  },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size2controller,
+                                      label: "Size-2",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s2.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s2.value=0;
+                                        _controller.size2controller.text=_controller.s2.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size3controller,
+                                      label: "Size-3",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s3.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s3.value=0;
+                                        _controller.size3controller.text=_controller.s3.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },)
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  CustomBoxEditable(
+                                      controller: _controller.size4controller,
+                                      label: "Size-4",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s4.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s4.value=0;
+                                        _controller.size4controller.text=_controller.s4.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size5controller,
+                                      label: "Size-5",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s5.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s5.value=0;
+                                        _controller.size5controller.text=_controller.s5.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size6controller,
+                                      label: "Size-6",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s6.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s6.value=0;
+                                        _controller.size6controller.text=_controller.s6.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },)
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  CustomBoxEditable(
+                                      controller: _controller.size7controller,
+                                      label: "Size-7",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s7.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s7.value=0;
+                                        _controller.size7controller.text=_controller.s7.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size8controller,
+                                      label: "Size-8",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s8.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s8.value=0;
+                                        _controller.size8controller.text=_controller.s8.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size9controller,
+                                      label: "Size-9",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s9.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s9.value=0;
+                                        _controller.size9controller.text=_controller.s9.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },)
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  CustomBoxEditable(
+                                      controller: _controller.size10controller,
+                                      label: "Size-10",
+                                    onValueChange: (String value) {
+                                      if(value.isNotEmpty ||value.toString().length!=0){
+                                        int t=int.parse(value.toString());
+                                        _controller.s10.value=t;
+                                        _controller.getTotal();
+
+                                      }
+                                      else if(value.isEmpty ||value.toString().length!=0){
+                                        _controller.s10.value=0;
+                                        _controller.size10controller.text=_controller.s10.value.toString();
+                                        _controller.getTotal();
+                                      }
+                                    },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size11controller,
+                                      label: "Size-11",onValueChange: (String value) {
+                                    if(value.isNotEmpty ||value.toString().length!=0){
+                                      int t=int.parse(value.toString());
+                                      _controller.s11.value=t;
+                                      _controller.getTotal();
+
+                                    }
+                                    else if(value.isEmpty ||value.toString().length!=0){
+                                      _controller.s11.value=0;
+                                      _controller.size11controller.text=_controller.s11.value.toString();
+                                      _controller.getTotal();
+                                    }
+                                  },),
+                                  CustomBoxEditable(
+                                      controller: _controller.size12controller,
+                                      label: "Size-12",onValueChange: (String value) {
+                                    if(value.isNotEmpty ||value.toString().length!=0){
+                                      int t=int.parse(value.toString());
+                                      _controller.s12.value=t;
+                                      _controller.getTotal();
+
+                                    }
+                                    else if(value.isEmpty ||value.toString().length!=0){
+                                      _controller.s12.value=0;
+                                      _controller.size12controller.text=_controller.s12.value.toString();
+                                      _controller.getTotal();
+                                    }
+                                  },)
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  CustomBoxEditable(
+                                      controller: _controller.size13controller,
+                                      label: "Size-13", onValueChange: (String value) {
+                                    if(value.isNotEmpty ||value.toString().length!=0){
+                                      int t=int.parse(value.toString());
+                                      _controller.s13.value=t;
+                                      _controller.getTotal();
+
+                                    }
+                                    else if(value.isEmpty ||value.toString().length!=0){
+                                      _controller.s13.value=0;
+                                      _controller.size13controller.text=_controller.s13.value.toString();
+                                      _controller.getTotal();
+                                    }
+                                  },),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Container(),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Container(),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 3.h,
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Divider(
-                        thickness: 1,
-                        color: Colors.grey[300],
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Row(
-                        children: [
-                          NormalText(
-                              text: 'Plan no : ' +
-                                  _controller.upperPlanNo.value.toString()),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      _image(),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Container(
-                        // margin: EdgeInsets.fromLTRB(3.h, 2.h, 3.h, 3.h),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(
-                              color: Colors.black, // Set border color
-                              width: 1.0),
+                        SizedBox(
+                          height: 2.h,
                         ),
-                        width: double.infinity,
-                        child: DropdownButton(
-                          borderRadius: BorderRadius.circular(10),
-                          icon: Icon(Icons.arrow_drop_down),
-                          iconSize: 29,
-                          underline: SizedBox(),
-                          isExpanded: true,
-                          hint: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text('Art Number'),
-                          ),
-                          value: _controller!.artNoisSelected.value == ''
-                              ? null
-                              : _controller!.artNoisSelected.value,
-                          onChanged: (value) async {
-                            _controller.getArtnoType(value.toString());
-
-                            // });
-                          },
-                          items: _controller!.productList!.map((e) {
-                            return DropdownMenuItem(
-                                value: e,
-                                child: Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Text(e.toString(),
-                                        style:
-                                            TextStyle(color: Colors.black))));
-                          }).toList(),
+                        CustomField(controller: NoteController, label: 'Note'),
+                        SizedBox(
+                          height: 4.h,
                         ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      // Container(
-                      //   width: double.infinity,
-                      //   decoration: BoxDecoration(
-                      //     border: Border.all(
-                      //       color: Colors.grey[400]!,
-                      //       width: 1,
-                      //     ),
-                      //     borderRadius: BorderRadius.circular(5),
-                      //   ),
-                      //   child: DropdownButton(
-                      //     value: ChooseCategory,
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     icon: Icon(Icons.arrow_drop_down),
-                      //     iconSize: 29,
-                      //     underline: SizedBox(),
-                      //     isExpanded: true,
-                      //     hint: Padding(
-                      //       padding: const EdgeInsets.only(left: 10),
-                      //       child: Text('Category'),
-                      //     ),
-                      //     onChanged: (value) {},
-                      //     items: CategoryrList.map((valueItem) {
-                      //       return DropdownMenuItem(
-                      //           value: valueItem,
-                      //           child: Padding(
-                      //             padding: const EdgeInsets.only(left: 10),
-                      //             child: Text(valueItem),
-                      //           ));
-                      //     }).toList(),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: 4.h,
-                      // ),
-                      // Container(
-                      //   width: double.infinity,
-                      //   decoration: BoxDecoration(
-                      //     border: Border.all(
-                      //       color: Colors.grey[400]!,
-                      //       width: 1,
-                      //     ),
-                      //     borderRadius: BorderRadius.circular(5),
-                      //   ),
-                      //   child: DropdownButton(
-                      //     value: ChooseColor,
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     icon: Icon(Icons.arrow_drop_down),
-                      //     iconSize: 29,
-                      //     underline: SizedBox(),
-                      //     isExpanded: true,
-                      //     hint: Padding(
-                      //       padding: const EdgeInsets.only(left: 10),
-                      //       child: Text('Color'),
-                      //     ),
-                      //     onChanged: (value) {},
-                      //     items: ColorList.map((valueItem) {
-                      //       return DropdownMenuItem(
-                      //           value: valueItem,
-                      //           child: Padding(
-                      //             padding: const EdgeInsets.only(left: 10),
-                      //             child: Text(valueItem),
-                      //           ));
-                      //     }).toList(),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: 4.h,
-                      // ),
-                      Align(
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: NormalText(text: 'Cutoff Date ')),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 2.h, vertical: 0.5.h),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey[400]!)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(_controller.cutOffDate.value.toString()),
-                            IconButton(
-                              icon: Icon(Icons.calendar_month),
-                              onPressed: () async {
-                                DateTime selectedDate = (await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2021),
-                                  lastDate: DateTime(2025),
-                                ))!;
-
-                                String? date = selectedDate.toString();
-                                print(date.toString());
-
-                                final DateFormat formatter =
-                                    DateFormat('dd-MM-yyyy');
-                                final DateFormat formatter1 =
-                                    DateFormat('yyyy-MM-dd');
-                                // String  date1=formatter.format(date);
-
-                                String formatted =
-                                    formatter.format(selectedDate);
-                                _controller.cutOffDate.value =
-                                    formatted.toString();
-                              },
-                            )
-                          ],
+                            child: BoldText(text: 'Total : '+_controller.total.value.toString())),
+                        // Container(
+                        //   margin: EdgeInsets.fromLTRB(0.h, 0.h, 0.h, 0.h),
+                        //   child: TextFormField(
+                        //     // readOnly: true,
+                        //     keyboardType: TextInputType.number,
+                        //     controller: _controller.TotalController,
+                        //     style: GoogleFonts.roboto(),
+                        //     decoration: InputDecoration(
+                        //         hintText: 'Enter here..!',
+                        //         hintStyle: GoogleFonts.roboto(),
+                        //         labelText: 'Total',
+                        //         contentPadding: EdgeInsets.symmetric(
+                        //             vertical: 2.4.h, horizontal: 1.8.h),
+                        //         border: OutlineInputBorder(
+                        //             borderRadius: BorderRadius.circular(5),
+                        //             borderSide: const BorderSide(
+                        //                 width: 1,
+                        //                 style: BorderStyle.none,
+                        //                 color: Colors.red)),
+                        //         filled: true,
+                        //         fillColor: Colors.white,
+                        //         enabledBorder: OutlineInputBorder(
+                        //             borderSide:
+                        //                 BorderSide(color: Colors.grey[400]!))),
+                        //   ),
+                        // ),
+                        SizedBox(
+                          height: 4.h,
                         ),
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: NormalText(text: 'Size ')),
-                      // Container(
-                      //   width: double.infinity,
-                      //   decoration: BoxDecoration(
-                      //     border: Border.all(
-                      //       color: Colors.grey[400]!,
-                      //       width: 1,
-                      //     ),
-                      //     borderRadius: BorderRadius.circular(5),
-                      //   ),
-                      //   child: DropdownButton(
-                      //     value: ChooseSize,
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     icon: Icon(Icons.arrow_drop_down),
-                      //     iconSize: 29,
-                      //     underline: SizedBox(),
-                      //     isExpanded: true,
-                      //     hint: Padding(
-                      //       padding: const EdgeInsets.only(left: 10),
-                      //       child: Text('Size'),
-                      //     ),
-                      //     onChanged: (value) {},
-                      //     items: SizeList?.map((valueItem) {
-                      //       return DropdownMenuItem(
-                      //           value: valueItem,
-                      //           child: Padding(
-                      //             padding: const EdgeInsets.only(left: 10),
-                      //             child: Text(valueItem),
-                      //           ));
-                      //     }).toList(),
-                      //   ),
-                      // ),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0.h, 0.h, 2.h, 2.h),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                CustomBoxEditable(
-                                    controller: size1controller,
-                                    label: "Size-1", onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.total.value=_controller.total.value+t;
-                                        _controller.total.refresh();
-                                        print(_controller.total.value.toString());
-                                      }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size2controller,
-                                    label: "Size-2", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size3controller,
-                                    label: "Size-3", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },)
-                              ],
+                        SizedBox(
+                          width: double.infinity,
+                          height: 7.h,
+                          child: ElevatedButton(
+                            onPressed: () async{
+                            // addToList();
+                            String res=await _controller.checkPendingOrder();
+                            if(res=='Pending order found on this ARTNO'){
+                              openDialog(context);
+                            }
+                            else if(res=='No pending orders found'){
+                              addToList();
+                            }
+                              // openDialog();
+                            },
+                            child: Text(
+                              "Continue with Order",
+                              style: TextStyle(color: Colors.white, fontSize: 14),
                             ),
-                            Row(
-                              children: [
-                                CustomBoxEditable(
-                                    controller: size4controller,
-                                    label: "Size-4", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size5controller,
-                                    label: "Size-5", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size6controller,
-                                    label: "Size-6", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },)
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                CustomBoxEditable(
-                                    controller: size7controller,
-                                    label: "Size-7", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size8controller,
-                                    label: "Size-8", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size9controller,
-                                    label: "Size-9", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },)
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                CustomBoxEditable(
-                                    controller: size10controller,
-                                    label: "Size-10", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size11controller,
-                                    label: "Size-11", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                CustomBoxEditable(
-                                    controller: size12controller,
-                                    label: "Size-12", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },)
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                CustomBoxEditable(
-                                    controller: size13controller,
-                                    label: "Size-13", onValueChange: (String value) {
-                                  if(value.isNotEmpty ||value.toString().length!=0){
-                                    int t=int.parse(value.toString());
-                                    _controller.total.value=_controller.total.value+t;
-                                  }
-                                },),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 3.h,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      CustomField(controller: NoteController, label: 'Note'),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0.h, 0.h, 0.h, 0.h),
-                        child: TextFormField(
-                          // readOnly: true,
-                          keyboardType: TextInputType.number,
-                          controller: _controller.TotalController,
-                          style: GoogleFonts.roboto(),
-                          decoration: InputDecoration(
-                              hintText: 'Enter here..!',
-                              hintStyle: GoogleFonts.roboto(),
-                              labelText: 'Total',
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 2.4.h, horizontal: 1.8.h),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                      width: 1,
-                                      style: BorderStyle.none,
-                                      color: Colors.red)),
-                              filled: true,
-                              fillColor: Colors.white,
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.grey[400]!))),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 7.h,
-                        child: ElevatedButton(
-                          onPressed: () async{
-                          // addToList();
-                          String res=await _controller.checkPendingOrder();
-                          if(res=='Pending order found on this ARTNO'){
-                            openDialog(context);
-                          }
-                          else if(res=='No pending orders found'){
-                            addToList();
-                          }
-                            // openDialog();
-                          },
-                          child: Text(
-                            "Continue with Order",
-                            style: TextStyle(color: Colors.white, fontSize: 14),
+                            style: ElevatedButton.styleFrom(
+                                primary: const Color(0xFFEC4E52),
+                                textStyle: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold)),
                           ),
-                          style: ElevatedButton.styleFrom(
-                              primary: const Color(0xFFEC4E52),
-                              textStyle: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold)),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
-          )),
+                )
+              ],
+            )),
+      ),
     );
   }
 
@@ -600,8 +696,7 @@ class CreatePlanUPM extends StatelessWidget {
       ));
 
    addToList() {
-     print("kooi"+_controller.TotalController.text.toString());
-    if (_controller.artNoIdeSelected.value == '') {
+    if (_controller.artNoIdeSelected.value.toString() == '') {
       CustomSnackbar().InfoSnackBar(
           'Add Order', "Select Art Number");
     } else if (_controller.cutOffDate == '') {
@@ -622,19 +717,19 @@ class CreatePlanUPM extends StatelessWidget {
         _controller.cutOffDate.value.toString(),
         "artno":
         _controller.artNoIdeSelected.value.toString(),
-        "s1": size1controller.text.toString(),
-        "s2": size2controller.text.toString(),
-        "s3": size3controller.text.toString(),
-        "s4": size4controller.text.toString(),
-        "s5": size5controller.text.toString(),
-        "s6": size6controller.text.toString(),
-        "s7": size7controller.text.toString(),
-        "s8": size8controller.text.toString(),
-        "s9": size9controller.text.toString(),
-        "s10": size10controller.text.toString(),
-        "s11": size11controller.text.toString(),
-        "s12": size12controller.text.toString(),
-        "s13": size13controller.text.toString(),
+        "s1": _controller.size1controller.text.toString(),
+        "s2": _controller.size2controller.text.toString(),
+        "s3": _controller.size3controller.text.toString(),
+        "s4": _controller.size4controller.text.toString(),
+        "s5": _controller.size5controller.text.toString(),
+        "s6": _controller.size6controller.text.toString(),
+        "s7": _controller.size7controller.text.toString(),
+        "s8": _controller.size8controller.text.toString(),
+        "s9": _controller.size9controller.text.toString(),
+        "s10":_controller. size10controller.text.toString(),
+        "s11": _controller.size11controller.text.toString(),
+        "s12": _controller.size12controller.text.toString(),
+        "s13": _controller.size13controller.text.toString(),
         "totalpairs": _controller.TotalController.text.toString(),
         "status": "Pending",
         "note": NoteController.text.toString()
@@ -652,19 +747,19 @@ class CreatePlanUPM extends StatelessWidget {
         _controller.categoryName.value.toString(),
         "colorname":
         _controller.colorName.value.toString(),
-        "s1": size1controller.text.toString(),
-        "s2": size2controller.text.toString(),
-        "s3": size3controller.text.toString(),
-        "s4": size4controller.text.toString(),
-        "s5": size5controller.text.toString(),
-        "s6": size6controller.text.toString(),
-        "s7": size7controller.text.toString(),
-        "s8": size8controller.text.toString(),
-        "s9": size9controller.text.toString(),
-        "s10": size10controller.text.toString(),
-        "s11": size11controller.text.toString(),
-        "s12": size12controller.text.toString(),
-        "s13": size13controller.text.toString(),
+        "s1": _controller.size1controller.text.toString(),
+        "s2": _controller.size2controller.text.toString(),
+        "s3": _controller.size3controller.text.toString(),
+        "s4": _controller.size4controller.text.toString(),
+        "s5": _controller.size5controller.text.toString(),
+        "s6": _controller.size6controller.text.toString(),
+        "s7": _controller.size7controller.text.toString(),
+        "s8": _controller.size8controller.text.toString(),
+        "s9": _controller.size9controller.text.toString(),
+        "s10": _controller.size10controller.text.toString(),
+        "s11": _controller.size11controller.text.toString(),
+        "s12": _controller.size12controller.text.toString(),
+        "s13": _controller.size13controller.text.toString(),
         "totalpairs": _controller.TotalController.text.toString(),
         "status": "Pending",
         "note": NoteController.text.toString()

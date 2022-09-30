@@ -20,16 +20,27 @@ class ProfileUm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back_ios,
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.back();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: InkWell(
+            onTap: (){
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+            ),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.red,
         ),
-        elevation: 0,
         backgroundColor: Colors.red,
+        body:Obx(()=> _body()),
       ),
-      backgroundColor: Colors.red,
-      body:Obx(()=> _body()),
     );
   }
   _body(){

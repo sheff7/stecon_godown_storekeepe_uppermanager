@@ -7,6 +7,7 @@ import '../../../Utils/InternetConnectivity.dart';
 import '../Model/get_staff_entity.dart';
 import '../Model/get_upper_plan_count_entity.dart';
 import '../Repository/UpperCountStatus0UPMService.dart';
+import 'UpperCountStatus1UPMController.dart';
 
 class AddUpperCountStatus2UPMController  extends GetxController{
   final String id;
@@ -195,7 +196,10 @@ class AddUpperCountStatus2UPMController  extends GetxController{
      if(responseEntity.value.response=='Added successfully')
        {
          Get.back();
+
          CustomSnackbar().InfoSnackBar('Add Upper Count', responseEntity.value.response.toString());
+         final controller=Get.find<UpperCountStatus1UPMController>();
+         controller.getUpperOrder();
        }
      else{
        CustomSnackbar().InfoSnackBar('Add Upper Count', responseEntity.value.response.toString());
@@ -223,6 +227,8 @@ class AddUpperCountStatus2UPMController  extends GetxController{
       if(responseEntity.value.response=='Updated successfully')
       {
         Get.back();
+        final controller=Get.find<UpperCountStatus1UPMController>();
+        controller.getUpperOrder();
         CustomSnackbar().InfoSnackBar('Add Upper Count', responseEntity.value.response.toString());
       }
       else{

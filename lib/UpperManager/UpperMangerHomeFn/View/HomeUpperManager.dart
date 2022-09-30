@@ -180,7 +180,7 @@ class HomeUpperManager extends StatelessWidget {
                                             padding: EdgeInsets.fromLTRB(
                                                 2.5.h, 0.7.h, 0.h, 0.h),
                                             child: Text(
-                                              "Upper\nPurchase Order",
+                                              "Add Upper\nPurchase Order",
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w500),
@@ -237,7 +237,7 @@ class HomeUpperManager extends StatelessWidget {
                                             padding: EdgeInsets.fromLTRB(
                                                 2.5.h, 0.7.h, 0.h, 0.h),
                                             child: Text(
-                                              "Upper\nReturn Products",
+                                              "View Upper\nPurchase Order",
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w500),

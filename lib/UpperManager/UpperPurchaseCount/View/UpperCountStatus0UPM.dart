@@ -18,38 +18,45 @@ class UpperCountStatus0UPM extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF7FBFC),
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Header(
-          text: 'Upper Count Status',
-        ),
-        // Text(
-        //   'Add Orders',
-        //   style: TextStyle(fontSize: 18, color: Colors.black87),
-        // ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 17,
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.back();
+        return true;
+      },
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF7FBFC),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Header(
+            text: 'Upper Count Status',
           ),
-          onPressed: () {
-            // Navigator.of(context).pop();
-          },
+          // Text(
+          //   'Add Orders',
+          //   style: TextStyle(fontSize: 18, color: Colors.black87),
+          // ),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              size: 17,
+            ),
+            onPressed: () {
+              Get.back();
+              // Navigator.of(context).pop();
+            },
+          ),
+          actions: [
+            // IconButton(onPressed: (){
+            //   Get.to(AddUpperCountStatus0UPM());
+            // }, icon: Icon(Icons.add))
+          ],
         ),
-        actions: [
-          // IconButton(onPressed: (){
-          //   Get.to(AddUpperCountStatus0UPM());
-          // }, icon: Icon(Icons.add))
-        ],
+        body:Obx(()=>
+            _body()
+        )
       ),
-      body:Obx(()=>
-          _body()
-      )
     );
   }
   _body(){

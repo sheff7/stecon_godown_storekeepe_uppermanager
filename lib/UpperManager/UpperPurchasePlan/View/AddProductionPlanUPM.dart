@@ -26,221 +26,227 @@ class AddProductionPlanUPM extends StatelessWidget {
     String? ChooseCompanyName;
     List CompanyList = ['Codsair', 'infosys', 'Wipro'];
 
-    return Scaffold(
-      backgroundColor: const Color(0xFFF7FBFC),
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Header(
-          text: 'Upper Purchase Order',
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 17,
+    return WillPopScope(
+      onWillPop: ()async{
+        Get.back();
+        return true;
+      },
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF7FBFC),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Header(
+            text: 'Upper Purchase Order',
           ),
-          onPressed: () {
-            Get.back();
-          },
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              size: 17,
+            ),
+            onPressed: () {
+              Get.back();
+            },
+          ),
         ),
-      ),
-      body:Obx(()=>
-          ListView(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 2.h,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: Container(
-                      margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 3.h),
+        body:Obx(()=>
+            ListView(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Container(
                       color: Colors.white,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children:  [
-                              NormalText(text: "Order no :  "+_controller.orderNo.value.toString()),
-                            ],
-                          ),
-                          SizedBox(height: 1.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              NormalText(text: "Plan no :  " + _controller.upperPlanNo.value.toString()),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 3.h,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  width: 20.h,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.grey[200]!,
-                                      width: 1,
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 3.h),
+                        color: Colors.white,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Row(
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children:  [
+                                NormalText(text: "Order no :  "+_controller.orderNo.value.toString()),
+                              ],
+                            ),
+                            SizedBox(height: 1.h),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                NormalText(text: "Plan no :  " + _controller.upperPlanNo.value.toString()),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 3.h,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    width: 20.h,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.grey[200]!,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5),
                                     ),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: DropdownButton(
-                                    value: _controller!
-                                        .comapanySelected.value ==
-                                        ''
-                                        ? null
-                                        : _controller!
-                                        .comapanySelected.value,
-                                    borderRadius: BorderRadius.circular(10),
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 29,
-                                    underline: SizedBox(),
-                                    isExpanded: true,
-                                    hint: Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Text('Company name'),
+                                    child: DropdownButton(
+                                      value: _controller!
+                                          .comapanySelected.value ==
+                                          ''
+                                          ? null
+                                          : _controller!
+                                          .comapanySelected.value,
+                                      borderRadius: BorderRadius.circular(10),
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 29,
+                                      underline: SizedBox(),
+                                      isExpanded: true,
+                                      hint: Padding(
+                                        padding: const EdgeInsets.only(left: 10),
+                                        child: Text('Upper Production Manager'),
+                                      ),
+                                      onChanged: (value) {
+                                        _controller.compnayType(value.toString());
+                                      },
+                                      items: _controller.companyList.map((valueItem) {
+                                        return DropdownMenuItem(
+                                            value: valueItem,
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsets.only(left: 10),
+                                              child: Text(valueItem),
+                                            ));
+                                      }).toList(),
                                     ),
-                                    onChanged: (value) {
-                                      _controller.compnayType(value.toString());
-                                    },
-                                    items: _controller.companyList.map((valueItem) {
-                                      return DropdownMenuItem(
-                                          value: valueItem,
-                                          child: Padding(
-                                            padding:
-                                            const EdgeInsets.only(left: 10),
-                                            child: Text(valueItem),
-                                          ));
-                                    }).toList(),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 2.h,
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  // margin: EdgeInsets.fromLTRB(5.h, 3.h, 5.h, 1.h),
-                                    height: 6.h,
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      onPressed: ()  {
-                                        Get.to(CreatePlanUPM(upmId: upmId,companyId: _controller.companyIdSelected.value.toString(),));
-                                      },
-                                      child: Text(
-                                        "Create Plan",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 14),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: const Color(0xFFEC4E52),
-                                          textStyle: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold)),
-                                    )),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0.3.h, 3.h, 0.3.h, 0.h),
-                            child: TextFormField(
-                              // readOnly: true,
-                              controller: NoteEditingController,
-                              style: GoogleFonts.roboto(),
-                              decoration: InputDecoration(
-                                  labelText: 'Add Note',
-                                  contentPadding: EdgeInsets.symmetric(
-                                      vertical: 2.h, horizontal: 1.8.h),
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      borderSide: BorderSide(
-                                          width: 1,
-                                          style: BorderStyle.none,
-                                          color: Color(0xFFEEEEEE))),
-                                  filled: true,
-                                  fillColor: Colors.white),
+                                SizedBox(
+                                  width: 2.h,
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    // margin: EdgeInsets.fromLTRB(5.h, 3.h, 5.h, 1.h),
+                                      height: 6.h,
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        onPressed: ()  {
+                                          Get.to(CreatePlanUPM(upmId: upmId,companyId: _controller.companyIdSelected.value.toString(),));
+                                        },
+                                        child: Text(
+                                          "Create Plan",
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 14),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                            primary: const Color(0xFFEC4E52),
+                                            textStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold)),
+                                      )),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(height: 1.h),
-                        ],
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0.3.h, 3.h, 0.3.h, 0.h),
+                              child: TextFormField(
+                                // readOnly: true,
+                                controller: NoteEditingController,
+                                style: GoogleFonts.roboto(),
+                                decoration: InputDecoration(
+                                    labelText: 'Add Note',
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 2.h, horizontal: 1.8.h),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                        borderSide: BorderSide(
+                                            width: 1,
+                                            style: BorderStyle.none,
+                                            color: Color(0xFFEEEEEE))),
+                                    filled: true,
+                                    fillColor: Colors.white),
+                              ),
+                            ),
+                            SizedBox(height: 1.h),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 1.h,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _productList()
-                      // SizedBox(height:2.h ,),
-                    ],
-                  )
-                ],
-              ),
-            ],
-          )
-      ),
-      bottomNavigationBar: Container(
-        height: 6.h,
-        child: ElevatedButton(
-          onPressed: () {
-            if(_controller.companyIdSelected==''){
-              CustomSnackbar().InfoSnackBar('AddOrder', 'Select Company');
-            }
-            else if(_controller.producctListShow!.length==0){
-              CustomSnackbar().InfoSnackBar('AddOrder', 'No Prducts Foubd , Add products');
-
-            }
-            else{
-              List<Map<String,dynamic>>? producctList=[];
-              for(int i=0;i<_controller.producctList!.length;i++){
-                int p=_controller.count.value;
-                p=p+i;
-                Map<String, dynamic> json={
-                  "planno":"Plan-"+p.toString(),
-                  "cutofdate":_controller.producctList!.value[i]['cutofdate'].toString(),
-                  "artno":_controller.producctList!.value[i]['artno'].toString(),
-                  "s1":_controller.producctList!.value[i]['s1'].toString(),
-                  "s2":_controller.producctList!.value[i]['s2'].toString(),
-                  "s3":_controller.producctList!.value[i]['s3'].toString(),
-                  "s4":_controller.producctList!.value[i]['s4'].toString(),
-                  "s5":_controller.producctList!.value[i]['s5'].toString(),
-                  "s6":_controller.producctList!.value[i]['s6'].toString(),
-                  "s7":_controller.producctList!.value[i]['s7'].toString(),
-                  "s8":_controller.producctList!.value[i]['s8'].toString(),
-                  "s9":_controller.producctList!.value[i]['s9'].toString(),
-                  "s10":_controller.producctList!.value[i]['s10'].toString(),
-                  "s11":_controller.producctList!.value[i]['s11'].toString(),
-                  "s12":_controller.producctList!.value[i]['s12'].toString(),
-                  "s13":_controller.producctList!.value[i]['s13'].toString(),
-                  "totalpairs":_controller.producctList!.value[i]['totalpairs'].toString(),
-                  "status":_controller.producctList!.value[i]['status'].toString(),
-                  "note":_controller.producctList!.value[i]['note'].toString(),
-                };
-                producctList.add(json);
+                    SizedBox(
+                      height: 1.h,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _productList()
+                        // SizedBox(height:2.h ,),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            )
+        ),
+        bottomNavigationBar: Container(
+          height: 6.h,
+          child: ElevatedButton(
+            onPressed: () {
+              if(_controller.companyIdSelected==''){
+                CustomSnackbar().InfoSnackBar('AddOrder', 'Select Company');
               }
-              _controller.addPurchsePlan(producctList);
-            }
-            // openDialog();
-          },
-          child: Text(
-            "Place Order",
-            style: TextStyle(color: Colors.white, fontSize: 14),
+              else if(_controller.producctListShow!.length==0){
+                CustomSnackbar().InfoSnackBar('AddOrder', 'No Prducts Foubd , Add products');
+
+              }
+              else{
+                List<Map<String,dynamic>>? producctList=[];
+                for(int i=0;i<_controller.producctList!.length;i++){
+                  int p=_controller.count.value;
+                  p=p+i;
+                  Map<String, dynamic> json={
+                    "planno":"Plan-"+p.toString(),
+                    "cutofdate":_controller.producctList!.value[i]['cutofdate'].toString(),
+                    "artno":_controller.producctList!.value[i]['artno'].toString(),
+                    "s1":_controller.producctList!.value[i]['s1'].toString(),
+                    "s2":_controller.producctList!.value[i]['s2'].toString(),
+                    "s3":_controller.producctList!.value[i]['s3'].toString(),
+                    "s4":_controller.producctList!.value[i]['s4'].toString(),
+                    "s5":_controller.producctList!.value[i]['s5'].toString(),
+                    "s6":_controller.producctList!.value[i]['s6'].toString(),
+                    "s7":_controller.producctList!.value[i]['s7'].toString(),
+                    "s8":_controller.producctList!.value[i]['s8'].toString(),
+                    "s9":_controller.producctList!.value[i]['s9'].toString(),
+                    "s10":_controller.producctList!.value[i]['s10'].toString(),
+                    "s11":_controller.producctList!.value[i]['s11'].toString(),
+                    "s12":_controller.producctList!.value[i]['s12'].toString(),
+                    "s13":_controller.producctList!.value[i]['s13'].toString(),
+                    "totalpairs":_controller.producctList!.value[i]['totalpairs'].toString(),
+                    "status":_controller.producctList!.value[i]['status'].toString(),
+                    "note":_controller.producctList!.value[i]['note'].toString(),
+                  };
+                  producctList.add(json);
+                }
+                _controller.addPurchsePlan(producctList);
+              }
+              // openDialog();
+            },
+            child: Text(
+              "Place Order",
+              style: TextStyle(color: Colors.white, fontSize: 14),
+            ),
+            style: ElevatedButton.styleFrom(
+                primary: const Color(0xFFEC4E52),
+                textStyle: TextStyle(
+                    fontSize: 14, fontWeight: FontWeight.bold)),
           ),
-          style: ElevatedButton.styleFrom(
-              primary: const Color(0xFFEC4E52),
-              textStyle: TextStyle(
-                  fontSize: 14, fontWeight: FontWeight.bold)),
         ),
       ),
     );

@@ -93,11 +93,22 @@ class UmHomeController extends GetxController {
   //     loadingBool.value= false;
   //   }
   // }
+  void ABC(int x){
+    print('jjj');
+    if(x<=0){
+      return;
+    }
+    ABC(x-1);
+    print("output"+x.toString());
+    ABC(x-1);
+
+  }
 
   @override
   void onInit() {
     // TODO: implement onInit
     print("jdkjdf".toString());
+    ABC(3);
 
     checkNetworkStatus();
     getLoginByStatus();

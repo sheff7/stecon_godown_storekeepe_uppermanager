@@ -23,9 +23,14 @@ class CustomBoxEditable extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(2.h, 3.h, 0.h, 0.h),
         child: TextFormField(
           controller: controller,
-          onFieldSubmitted: onValueChange,
-          // onChanged: onValueChange,
+          // onFieldSubmitted: onValueChange,
+          onChanged: onValueChange,
           keyboardType: TextInputType.number,
+          onTap: (){
+            if(controller.text.isNotEmpty) {
+              controller.selection = TextSelection(baseOffset: 0, extentOffset:controller.text.length);
+            }
+          },
           validator: (value) {
             if (value!.isEmpty) {
               // return "size";
