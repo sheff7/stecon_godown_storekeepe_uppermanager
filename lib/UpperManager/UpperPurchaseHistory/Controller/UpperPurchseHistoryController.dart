@@ -9,6 +9,8 @@ class UpperPurchseHistoryController extends GetxController {
   final String upmId;
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxString startDate=''.obs;
+  RxString endDate = ''.obs;
   Rx<GetUpperPurchsePlanEntity> orderNoEntity=GetUpperPurchsePlanEntity().obs;
 
   UpperPurchseHistoryController({required this.upmId});
@@ -31,9 +33,19 @@ class UpperPurchseHistoryController extends GetxController {
 
     }
   }
+  getUpperOrderFilter()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      loadingBool.value=true;
+      orderNoEntity.value=(await UpperPurchseHistoryService().getUpperPurchseOrderFilter(upmId,startDate.value.toString(),endDate.value.toString()))!;
+      loadingBool.value=false;
+
+    }
+  }
   @override
   void onInit() {
     // TODO: implement onInit
+    print(upmId);
     getUpperOrder();
     super.onInit();
   }

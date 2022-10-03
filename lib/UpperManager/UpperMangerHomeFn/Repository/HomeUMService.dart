@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../Utils/DioConfig.dart';
 import '../../../generated/json/base/json_convert_content.dart';
+import '../../UpperPurchaseOrder/Model/get_upper_purchse_plan_entity.dart';
 import '../Model/get_login_by_statusa_entity.dart';
 
 
@@ -18,6 +19,21 @@ class LoginByStatusService{
         var data=response.data;
         print(response.data.toString());
         return JsonConvert.fromJsonAsT<GetLoginByStatusaEntity>(data);
+
+      }
+    }
+    catch(e){
+      CustomSnackbar().InfoSnackBar('Error', e.toString());
+    }
+  }
+
+  Future<GetUpperPurchsePlanEntity?>getUpperPurchseOrder(String upmId)async{
+    try{
+      final response=await _dio.post('apigetlatestupperpurchaseplan',data: {"id":upmId});
+      if(response.statusCode==200){
+        var data=response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<GetUpperPurchsePlanEntity>(data);
 
       }
     }

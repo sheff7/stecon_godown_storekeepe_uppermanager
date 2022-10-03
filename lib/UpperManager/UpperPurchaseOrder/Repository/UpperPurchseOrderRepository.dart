@@ -22,6 +22,21 @@ class UpperPurchseOrderService{
       CustomSnackbar().InfoSnackBar('Error', e.toString());
     }
   }
+
+  Future<GetUpperPurchsePlanEntity?>getUpperPurchseOrderFilter(String upmId,String status)async{
+    try{
+      final response=await _dio.post('apigetfilterinupperpurchaseplan',data: {"id":upmId,"status":status});
+      if(response.statusCode==200){
+        var data=response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<GetUpperPurchsePlanEntity>(data);
+
+      }
+    }
+    catch(e){
+      CustomSnackbar().InfoSnackBar('Error', e.toString());
+    }
+  }
   Future<GetUpperPurchsePlanSingleEntity?>getUpperPurchseOrderSingle(String id,String orderno)async{
     try{
       final response=await _dio.post('apigetbyidinpurchaseplan',data: {"id":id,"orderno":orderno});

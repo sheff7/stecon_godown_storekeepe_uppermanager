@@ -7,6 +7,7 @@ import '../../../CustomWidget/CustomSnackBar.dart';
 
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../../Utils/InternetConnectivity.dart';
+import '../../UpperPurchaseOrder/Model/get_upper_purchse_plan_entity.dart';
 import '../Model/get_login_by_statusa_entity.dart';
 import '../Repository/HomeUMService.dart';
 
@@ -20,11 +21,14 @@ class UmHomeController extends GetxController {
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   Rx<GetLoginByStatusaEntity> loginByStatusEntity = GetLoginByStatusaEntity().obs;
+  Rx<GetUpperPurchsePlanEntity> orderNoEntity=GetUpperPurchsePlanEntity().obs;
+
   // Rx<LatestOrderDisEntity> latestOrderDisEntity = LatestOrderDisEntity().obs;
 
   RxString uppermanagerid=''.obs;
   RxString uppermanagername=''.obs;
   RxString txt='..'.obs;
+  RxString upmId=''.obs;
 
   UmHomeController({ required this.uid});
 
@@ -41,10 +45,10 @@ class UmHomeController extends GetxController {
   getLoginByStatus() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
-      loadingBool.value = true;
+      CustomSnackbar().LoadingBottomSheet();
       loginByStatusEntity.value =
       (await LoginByStatusService().getLoginByStatus(uid))!;
-      loadingBool.value = false;
+      Get.back();
       print(loginByStatusEntity.value);
       print('gdhsdhgd' + loadingBool.value.toString());
       if (loginByStatusEntity.value.response == 'Success') {
@@ -66,6 +70,7 @@ class UmHomeController extends GetxController {
             uppermanagername.value =
                 loginByStatusEntity.value.loginlist![0].uppermanagername
                     .toString();
+            getUpperOrder();
             // getLatestOrder();
           }
         }
@@ -102,6 +107,16 @@ class UmHomeController extends GetxController {
     print("output"+x.toString());
     ABC(x-1);
 
+  }
+
+  getUpperOrder()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      loadingBool.value=true;
+      orderNoEntity.value=(await LoginByStatusService().getUpperPurchseOrder(uppermanagerid.value.toString()))!;
+      loadingBool.value=false;
+
+    }
   }
 
   @override

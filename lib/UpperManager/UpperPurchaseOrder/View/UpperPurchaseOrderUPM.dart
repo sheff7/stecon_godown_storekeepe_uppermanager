@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder/Controller/UpperPurchseOrderController.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseOrder/View/UpperPurchaseOrder1UPM.dart';
 
+import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
@@ -34,6 +36,106 @@ class UpperPurchaseOrderUPM extends StatelessWidget {
           //   style: TextStyle(fontSize: 18, color: Colors.black87),
           // ),
           centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.filter_list_rounded,
+                size: 17,
+              ),
+              onPressed: () {
+                Get.bottomSheet(
+                    Container(
+                      height: 30.h,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 1.h,
+                          ),
+                          HeadingText(text: 'Filter By Status'),
+                          Obx(() => Container(
+                            margin:
+                            EdgeInsets.fromLTRB(2.h, 3.h, 2.h, 0.h),
+                            child: Material(
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: ColorConstants
+                                      .textformfieldBackColor,
+                                  //background color of dropdown button
+                                  //border of dropdown button
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: DropdownButtonHideUnderline(
+                                  child: ButtonTheme(
+                                    alignedDropdown: true,
+                                    child: DropdownButton(
+                                      isExpanded: true,
+                                      value: _controller
+                                          .choosestatus
+                                          .value ==
+                                          ''
+                                          ? null
+                                          : _controller
+                                          .choosestatus.value,
+                                      hint: NormalText(
+                                        text: 'Select Status',
+                                      ),
+                                      borderRadius:
+                                      BorderRadius.circular(10),
+                                      style: GoogleFonts.roboto(),
+                                      onChanged: (value) {
+                                        _controller
+                                            .getStatustype(value.toString());
+                                      },
+                                      items: _controller
+                                          .statusList!
+                                          .map((e) {
+                                        return DropdownMenuItem(
+                                            value: e,
+                                            child: Text(e.toString(),
+                                                style: TextStyle(
+                                                    color:
+                                                    Colors.black)));
+                                      }).toList(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )),
+                          Container(
+                              margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 0.h),
+                              height: 6.h,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                 _controller.getUpperOrderFilter();
+
+                                  Get.back();
+                                },
+                                child: Text(
+                                  "Apply",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 15, color: Colors.white),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    primary: const Color(0xFFEC4E52),
+                                    textStyle: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold)),
+                              ))
+                        ],
+                      ),
+                    ),
+                    persistent: false,
+                    isDismissible: false,
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ));
+
+              },
+            )
+          ],
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,

@@ -9,6 +9,8 @@ class UpperPurchseOrderController extends GetxController{
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   Rx<GetUpperPurchsePlanEntity> orderNoEntity=GetUpperPurchsePlanEntity().obs;
+  RxString choosestatus="".obs;
+  RxList statusList = ["Confirmed","Pending","Cancelled"].obs;
 
   UpperPurchseOrderController({required this.upmId});
   checkNetworkStatus() async {
@@ -28,6 +30,19 @@ class UpperPurchseOrderController extends GetxController{
       loadingBool.value=false;
 
     }
+  }
+  getUpperOrderFilter()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      loadingBool.value=true;
+      orderNoEntity.value=(await UpperPurchseOrderService().getUpperPurchseOrderFilter(upmId,choosestatus.value.toString()))!;
+      loadingBool.value=false;
+
+    }
+  }
+
+  getStatustype(String value){
+    choosestatus.value= value.toString();
   }
   @override
   void onInit() {

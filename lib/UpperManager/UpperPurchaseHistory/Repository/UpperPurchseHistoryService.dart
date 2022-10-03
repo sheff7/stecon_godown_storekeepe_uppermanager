@@ -22,6 +22,22 @@ class UpperPurchseHistoryService {
       CustomSnackbar().InfoSnackBar('Error', e.toString());
     }
   }
+
+  Future<GetUpperPurchsePlanEntity?>getUpperPurchseOrderFilter(String upmId,String startDate,String endDate)async{
+    try{
+      print(upmId.toString());
+      final response=await _dio.post('apidatedfilteronhistoryofupperpurchaseplan',data: {"id":upmId,"fromdate":startDate,"todate":endDate});
+      if(response.statusCode==200){
+        var data=response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<GetUpperPurchsePlanEntity>(data);
+
+      }
+    }
+    catch(e){
+      CustomSnackbar().InfoSnackBar('Error', e.toString());
+    }
+  }
   Future<GetUpperPurchsePlanSingleEntity?>getUpperPurchseOrderSingle(String id,String orderno)async{
     try{
       final response=await _dio.post('apigetbyidinpurchaseplan',data: {"id":id,"orderno":orderno});

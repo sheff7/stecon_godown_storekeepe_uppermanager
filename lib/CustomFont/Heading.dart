@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/AppConstants/ClourConstants.dart';
 
 class HeadingText extends StatelessWidget {
   final String text;
@@ -13,7 +14,7 @@ class HeadingText extends StatelessWidget {
       text,
       style: GoogleFonts.radioCanada(
           fontSize:17,
-          color:const Color(0xFF088EDA) ),
+          color:ColorConstants.appThemeColorRed ),
     );
   }
 }
