@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
-import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/Stock/StockSk.dart';
-
-import '../CustomFont/BoldText.dart';
-import 'DamagedMaterialDetailsList.dart';
-import 'IssuedMaterialDetailsList.dart';
-import 'MaterialReplaceddetailsList.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/controller/homeControllerSK.dart';
+import '../../../CustomFont/SubHeading.dart';
+import '../../../LoginPage/View/LoginPage.dart';
+import '../../DamagedMaterialDetailsList.dart';
+import '../../IssuedMaterialDetailsList.dart';
+import '../../MaterialReplaceddetailsList.dart';
+import '../../profileSK/view/ProfileSkView.dart';
 
 class HomePageSk extends StatelessWidget {
-  const HomePageSk({Key? key}) : super(key: key);
+  final String uidSK;
+
+  HomePageSk({Key? key, required this.uidSK}) : super(key: key);
+  late final homecontroller = Get.put(HomeControllerSk(uidSK: uidSK));
 
   @override
   Widget build(BuildContext context) {
@@ -44,66 +50,31 @@ class HomePageSk extends StatelessWidget {
                     ),
                     Image(
                         image: AssetImage(
-                          "Assets/HomePageIcons/Group 51.png",
-                        )),
+                      "Assets/HomePageIcons/Group 51.png",
+                    )),
                     SizedBox(
                       height: 2.h,
                     ),
-                    Text(
-                      "Yadu Krishnan",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    Obx(
+                      () => Text(
+                        homecontroller.loginByStatusEntity.value.loginlist![0]
+                            .storekeepername
+                            .toString(),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
                     ),
                     SizedBox(
                       height: .5.h,
                     ),
-                    Text(
-                      "yadukrishnan@gmail.com",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    )
+                    Obx(() => Text(
+                          homecontroller.userEmail.value.toString(),
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w400),
+                        ))
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 4.h, vertical: 2.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 3.h,
-                    ),
-                    BoldText(text: 'Profile'),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    BoldText(text: 'View issued material'),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    BoldText(text: 'View Replaced material'),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    BoldText(text: 'View damaged material'),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    InkWell(
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const StockSk()),
-                        );
-                      },
-
-                        child: BoldText(text: 'View stock')),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    BoldText(text: 'View purchase request'),
-                  ],
-                ),
-              )
+              _drawerList()
             ],
           ),
         ),
@@ -113,16 +84,24 @@ class HomePageSk extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 5.h, 0.h),
               child: Row(
-                children: const [
+                children: [
                   Text(
                     "Hello There..!",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Spacer(),
-                  Image(
-                      image: AssetImage(
-                        "Assets/HomePageIcons/Group 51.png",
-                      )),
+                  InkWell(
+                    onTap: () {
+                      Get.to(ProfileSK(
+                          idSK: homecontroller.loginByStatusEntity.value
+                              .loginlist![0].storekeeperid
+                              .toString()));
+                    },
+                    child: Image(
+                        image: AssetImage(
+                      "Assets/HomePageIcons/Group 51.png",
+                    )),
+                  ),
                 ],
               ),
             ),
@@ -158,10 +137,12 @@ class HomePageSk extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: InkWell(
-                                onTap: (){
+                                onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const IssuedMaterialDetailsList()),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const IssuedMaterialDetailsList()),
                                   );
                                 },
                                 child: Container(
@@ -176,7 +157,7 @@ class HomePageSk extends StatelessWidget {
                                       ),
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             margin: EdgeInsets.fromLTRB(
@@ -207,7 +188,7 @@ class HomePageSk extends StatelessWidget {
                                     clipper: ShapeBorderClipper(
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(20))),
+                                                BorderRadius.circular(20))),
                                   ),
                                 ),
                               ),
@@ -219,12 +200,13 @@ class HomePageSk extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: InkWell(
-                                onTap: (){
+                                onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const MaterialReplaceddetailsList()),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MaterialReplaceddetailsList()),
                                   );
-
                                 },
                                 child: Container(
                                   height: 16.5.h,
@@ -238,7 +220,7 @@ class HomePageSk extends StatelessWidget {
                                       ),
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             margin: EdgeInsets.fromLTRB(
@@ -269,7 +251,7 @@ class HomePageSk extends StatelessWidget {
                                     clipper: ShapeBorderClipper(
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(20))),
+                                                BorderRadius.circular(20))),
                                   ),
                                 ),
                               ),
@@ -285,10 +267,12 @@ class HomePageSk extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: InkWell(
-                                onTap: (){
+                                onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const DamageMaterialList()),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const DamageMaterialList()),
                                   );
                                 },
                                 child: Container(
@@ -303,7 +287,7 @@ class HomePageSk extends StatelessWidget {
                                       ),
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             margin: EdgeInsets.fromLTRB(
@@ -327,7 +311,8 @@ class HomePageSk extends StatelessWidget {
                                                 "damaged\nmaterial",
                                                 style: TextStyle(
                                                     fontSize: 16,
-                                                    fontWeight: FontWeight.w500),
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                               ),
                                             ),
                                           )
@@ -337,7 +322,7 @@ class HomePageSk extends StatelessWidget {
                                     clipper: ShapeBorderClipper(
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(20))),
+                                                BorderRadius.circular(20))),
                                   ),
                                 ),
                               ),
@@ -360,7 +345,7 @@ class HomePageSk extends StatelessWidget {
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
                                           margin: EdgeInsets.fromLTRB(
@@ -395,7 +380,7 @@ class HomePageSk extends StatelessWidget {
                                   clipper: ShapeBorderClipper(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20))),
+                                              BorderRadius.circular(20))),
                                 ),
                               ),
                             )
@@ -443,7 +428,7 @@ class HomePageSk extends StatelessWidget {
                                             ),
                                             child: Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Text("59684584"),
                                                 SizedBox(
@@ -476,6 +461,78 @@ class HomePageSk extends StatelessWidget {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _drawerList() {
+    return Container(
+      padding: EdgeInsets.only(top: 15),
+      child: Column(
+        children: [
+          // menuItem(),
+          menuItem(1, 'Profile', Icons.person),
+          menuItem(2, 'View issued Material', Icons.info),
+          menuItem(3, 'View Replaced Material', Icons.logout),
+          menuItem(4, 'View Replaced Material', Icons.logout),
+          menuItem(5, 'View Replaced Material', Icons.logout),
+          menuItem(6, 'View Replaced Material', Icons.logout),
+          menuItem(7, 'Log Out', Icons.logout),
+        ],
+      ),
+    );
+  }
+
+  _logout() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    _prefs.remove('usernameSK');
+    _prefs.remove('passwordSK');
+    _prefs.remove('user_idSK');
+    _prefs.remove('user_typeSK');
+    _prefs.remove('user_statusSK');
+    _prefs.remove('user_nameSK');
+    _prefs.remove('user_emailSK');
+    Get.offAll(LoginScreen());
+  }
+
+  Widget menuItem(int id, String title, IconData icon) {
+    return Material(
+      child: InkWell(
+        onTap: () {
+          if (id == 1) {
+            Get.to(ProfileSK(
+              idSK: homecontroller
+                  .loginByStatusEntity.value.loginlist![0].storekeeperid
+                  .toString(),
+            ));
+          } else if (id == 2) {
+          } else if (id == 3) {
+          } else if (id == 4) {
+          } else if (id == 5) {
+          } else if (id == 6) {
+          } else if (id == 7) {
+            _logout();
+          }
+        },
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Row(
+            children: [
+              // Expanded(
+              //     child: Icon(
+              //       icon,
+              //       size: 20,
+              //       color: ColorConstants.,
+              //     )),
+              Expanded(
+                flex: 3,
+                child: SubHeadingText(
+                  text: title,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

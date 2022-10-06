@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/view/HomePageSk.dart';
 
 import 'CustomWidget/CustomSnackBar.dart';
 import 'Godown/HomeGoDown.dart';
@@ -61,6 +62,16 @@ class _SplashScreenState extends State<SplashScreen> {
       var idUM = _prefs.getString('idUM');
 
 
+
+      var usernameSK = _prefs.getString('usernameSK');
+      var passwordSK = _prefs.getString('passwordSK');
+      var typeSK = _prefs.getString('user_typeSK');
+      var statusSK = _prefs.getString('user_statusSK');
+      var uidSK = _prefs.getString('user_idSK');
+      var idSK = _prefs.getString('idSK');
+      var emailSK = _prefs.getString('user_emailSK');
+
+
       print(status);
       if (username != null && password != null) {
         if (type == 'Godown') {
@@ -84,6 +95,19 @@ class _SplashScreenState extends State<SplashScreen> {
           }
           else
           if (typeUM == 'Upper Manger') {} else if (statusUM == 'Inactive') {
+            return CustomSnackbar()
+                .InfoSnackBar('Warning', 'Please Contact Office');
+          }
+        }
+      }
+      else if (usernameSK != null && passwordSK != null) {
+        if (typeSK == 'Store Keeper') {
+          if (statusSK == 'Active') {
+            Get.to(HomePageSk(uidSK: uidSK.toString(),
+            )
+            );
+          }
+          else if (typeSK == 'Store Keeper') {} else if (statusSK == 'Inactive') {
             return CustomSnackbar()
                 .InfoSnackBar('Warning', 'Please Contact Office');
           }

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/view/HomePageSk.dart';
 
 import '../../CustomWidget/CustomSnackBar.dart';
 
@@ -73,6 +74,28 @@ class LoginController extends GetxController {
 
             ));
 
+          }
+          else if(loginEntity.value.userStatus=='Inactive'){
+            return CustomSnackbar().InfoSnackBar('Inactive', ' Please Contact to Office');
+
+          }
+
+        }
+        else if(loginEntity.value.userType=='Store Keeper'){
+          if(loginEntity.value.userStatus=='Active'){
+            SharedPreferences _prefs = await SharedPreferences.getInstance();
+            _prefs.setString('usernameSK', username);
+            _prefs.setString('passwordSK', password);
+
+            _prefs.setString('user_typeSK', loginEntity.value.userType.toString());
+            _prefs.setString('user_idSK', loginEntity.value.userId.toString());
+            _prefs.setString('idSK', loginEntity.value.id.toString());
+            _prefs.setString('user_statusSK', loginEntity.value.userStatus.toString());
+            _prefs.setString(
+                'user_emailSK', loginEntity.value.userEmail.toString());
+            print("show"+loginEntity.value.userId.toString(),);
+            Get.to(HomePageSk(uidSK: loginEntity.value.userId.toString(),
+            ));
           }
           else if(loginEntity.value.userStatus=='Inactive'){
             return CustomSnackbar().InfoSnackBar('Inactive', ' Please Contact to Office');
