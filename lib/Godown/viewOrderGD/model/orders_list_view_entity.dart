@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:stecon_godown_storekeepe_uppermanager/generated/json/base/json_field.dart';
-import 'package:stecon_godown_storekeepe_uppermanager/generated/json/view_orders_list_view_entity.g.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/generated/json/orders_list_view_entity.g.dart';
 
 @JsonSerializable()
 class ViewOrdersListViewEntity {

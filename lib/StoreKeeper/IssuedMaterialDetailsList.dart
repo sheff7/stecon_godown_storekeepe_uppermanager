@@ -6,7 +6,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/NormalTextGreen
 import '../CustomFont/BoldText.dart';
 import '../CustomFont/Header.dart';
 import '../CustomFont/NormalText.dart';
-import 'AddIssuedMaterialDeatils.dart';
+import 'IssuedMaterialSkFn/View/AddIssuedMaterialDeatils.dart';
 
 class IssuedMaterialDetailsList extends StatelessWidget {
   const IssuedMaterialDetailsList({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class IssuedMaterialDetailsList extends StatelessWidget {
             IconButton(onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AddIssuedMaterialDeatils()),
+                MaterialPageRoute(builder: (context) =>  AddIssuedMaterialDeatils()),
               );
             }, icon: Icon(Icons.add))
           ],
