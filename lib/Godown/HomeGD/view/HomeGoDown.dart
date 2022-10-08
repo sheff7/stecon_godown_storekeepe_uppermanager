@@ -1,14 +1,21 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/controller/HomeControllerGD.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/view/ProfileGDView.dart';
 
-import '../CustomFont/SubHeading.dart';
-import '../LoginPage/View/LoginPage.dart';
-import 'DeliverySchedulefn/View/DeliveryScheduleListGd.dart';
+import '../../../CustomFont/SubHeading.dart';
+import '../../../LoginPage/View/LoginPage.dart';
+import '../../DeliverySchedulefn/View/DeliveryScheduleListGd.dart';
+import '../../viewOrderGD/view/ViewOrdersGD.dart';
 
 class HomeGodown extends StatelessWidget {
-  const HomeGodown({Key? key}) : super(key: key);
+  final String Gid;
+
+  HomeGodown({Key? key, required this.Gid}) : super(key: key);
+
+  late final gdHomeController = Get.put(GDHomeController(Gid: Gid));
 
   @override
   Widget build(BuildContext context) {
@@ -48,22 +55,26 @@ class HomeGodown extends StatelessWidget {
                     ),
                     Image(
                         image: AssetImage(
-                          "Assets/HomePageIcons/Group 51.png",
-                        )),
+                      "Assets/HomePageIcons/Group 51.png",
+                    )),
                     SizedBox(
                       height: 2.h,
                     ),
-                    Text(
-                      "Yadu Krishnan",
-                      style: TextStyle(color: Colors.white),
+                    Obx(
+                      () => Text(
+                        gdHomeController.loginByStatusEntity.value.loginlist![0]
+                            .godownmanagername
+                            .toString(),
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                     SizedBox(
                       height: .5.h,
                     ),
-                    Text(
-                      "yadukrishnan@gmail.com",
-                      style: TextStyle(color: Colors.white),
-                    )
+                    Obx(() => Text(
+                          gdHomeController.userEmail.value.toString(),
+                          style: TextStyle(color: Colors.white),
+                        ))
                   ],
                 ),
               ),
@@ -71,22 +82,30 @@ class HomeGodown extends StatelessWidget {
             ],
           ),
         ),
-        body: Column(
+        body: Obx(()=>Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 5.h, 0.h),
               child: Row(
-                children: const [
+                children: [
                   Text(
                     "Hello There..!",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Spacer(),
-                  Image(
-                      image: AssetImage(
-                        "Assets/HomePageIcons/Group 51.png",
-                      )),
+                  InkWell(
+                    onTap: () {
+                      Get.to(ProfileGD(
+                          godownid: gdHomeController.loginByStatusEntity.value
+                              .loginlist![0].godownmanagerid
+                              .toString()));
+                    },
+                    child: Image(
+                        image: AssetImage(
+                      "Assets/HomePageIcons/Group 51.png",
+                    )),
+                  ),
                 ],
               ),
             ),
@@ -121,49 +140,55 @@ class HomeGodown extends StatelessWidget {
                             SizedBox(height: 1.h),
                             Expanded(
                               flex: 1,
-                              child: Container(
-                                height: 16.5.h,
-                                child: ClipPath(
-                                  child: Card(
-                                    elevation: 2,
-                                    shape: Border(
-                                      left: BorderSide(
-                                          color: Color(0xFFFA6367), width: 1.7.w),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              2.h, 1.h, 0.h, 0.h),
-                                          alignment: Alignment.topLeft,
-                                          height: 8.h,
-                                          width: 8.h,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "Assets/HomePageIcons/Group 33.png"),
+                              child: InkWell(
+                                onTap: (){
+                                  Get.to(ViewOrdersGD());
+                                },
+                                child: Container(
+                                  height: 16.5.h,
+                                  child: ClipPath(
+                                    child: Card(
+                                      elevation: 2,
+                                      shape: Border(
+                                        left: BorderSide(
+                                            color: Color(0xFFFA6367),
+                                            width: 1.7.w),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                2.h, 1.h, 0.h, 0.h),
+                                            alignment: Alignment.topLeft,
+                                            height: 8.h,
+                                            width: 8.h,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "Assets/HomePageIcons/Group 33.png"),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.fromLTRB(
-                                              2.5.h, 0.7.h, 0.h, 0.h),
-                                          child: Text(
-                                            "View\nOrder",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        )
-                                      ],
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                2.5.h, 0.7.h, 0.h, 0.h),
+                                            child: Text(
+                                              "View\nOrder",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
+                                    clipper: ShapeBorderClipper(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20))),
                                   ),
-                                  clipper: ShapeBorderClipper(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(20))),
                                 ),
                               ),
                             ),
@@ -180,11 +205,12 @@ class HomeGodown extends StatelessWidget {
                                     elevation: 2,
                                     shape: Border(
                                       left: BorderSide(
-                                          color: Color(0xFF7A70E9), width: 1.7.w),
+                                          color: Color(0xFF7A70E9),
+                                          width: 1.7.w),
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
                                           margin: EdgeInsets.fromLTRB(
@@ -215,13 +241,15 @@ class HomeGodown extends StatelessWidget {
                                   clipper: ShapeBorderClipper(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20))),
+                                              BorderRadius.circular(20))),
                                 ),
                               ),
                             )
                           ],
                         ),
-                        SizedBox(height: 2.h,),
+                        SizedBox(
+                          height: 2.h,
+                        ),
                         Row(
                           children: [
                             SizedBox(height: 1.h),
@@ -234,11 +262,12 @@ class HomeGodown extends StatelessWidget {
                                     elevation: 2,
                                     shape: Border(
                                       left: BorderSide(
-                                          color: Color(0xFF60E96E), width: 1.7.w),
+                                          color: Color(0xFF60E96E),
+                                          width: 1.7.w),
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
                                           margin: EdgeInsets.fromLTRB(
@@ -272,7 +301,7 @@ class HomeGodown extends StatelessWidget {
                                   clipper: ShapeBorderClipper(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20))),
+                                              BorderRadius.circular(20))),
                                 ),
                               ),
                             ),
@@ -283,8 +312,8 @@ class HomeGodown extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: InkWell(
-                                onTap: (){
-                                    Get.to(DeliveryScheduleGD());
+                                onTap: () {
+                                  Get.to(DeliveryScheduleGD());
                                 },
                                 child: Container(
                                   height: 16.5.h,
@@ -293,11 +322,12 @@ class HomeGodown extends StatelessWidget {
                                       elevation: 2,
                                       shape: Border(
                                         left: BorderSide(
-                                            color: Color(0xFFF3A84F), width: 1.7.w),
+                                            color: Color(0xFFF3A84F),
+                                            width: 1.7.w),
                                       ),
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             margin: EdgeInsets.fromLTRB(
@@ -321,7 +351,8 @@ class HomeGodown extends StatelessWidget {
                                                 "View Delivery\nSchedule",
                                                 style: TextStyle(
                                                   fontSize: 16,
-                                                  fontWeight: FontWeight.w500,),
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
                                             ),
                                           )
@@ -331,7 +362,7 @@ class HomeGodown extends StatelessWidget {
                                     clipper: ShapeBorderClipper(
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(20))),
+                                                BorderRadius.circular(20))),
                                   ),
                                 ),
                               ),
@@ -380,7 +411,7 @@ class HomeGodown extends StatelessWidget {
                                             ),
                                             child: Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Text("59684586"),
                                                 SizedBox(
@@ -403,6 +434,7 @@ class HomeGodown extends StatelessWidget {
                                     ],
                                   );
                                 }),
+                            Text(gdHomeController.txt.value.toString()),
                             // SizedBox(height:2.h ,),
                           ],
                         )
@@ -413,11 +445,12 @@ class HomeGodown extends StatelessWidget {
               ),
             )
           ],
-        ),
+        ),),
       ),
     );
   }
-  Widget _drawerList(){
+
+  Widget _drawerList() {
     return Container(
       padding: EdgeInsets.only(top: 15),
       child: Column(
@@ -430,6 +463,7 @@ class HomeGodown extends StatelessWidget {
       ),
     );
   }
+
   _logout() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     _prefs.remove('username');
@@ -441,14 +475,17 @@ class HomeGodown extends StatelessWidget {
     _prefs.remove('user_email');
     Get.offAll(LoginScreen());
   }
+
   Widget menuItem(int id, String title, IconData icon) {
     return Material(
       child: InkWell(
         onTap: () {
           if (id == 1) {
-
+            Get.to(ProfileGD(
+                godownid: gdHomeController
+                    .loginByStatusEntity.value.loginlist![0].godownmanagerid
+                    .toString()));
           } else if (id == 2) {
-
           } else if (id == 3) {
             _logout();
           }
@@ -475,5 +512,4 @@ class HomeGodown extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -18,6 +18,7 @@ class LoginPageService{
           });
       if(response.statusCode == 200){
         var data = response.data;
+        print(response.data.toString());
         return JsonConvert.fromJsonAsT<LoginPageEntity>(data);
       }
 

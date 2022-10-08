@@ -6,7 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/view/HomePageSk.dart';
 
 import 'CustomWidget/CustomSnackBar.dart';
-import 'Godown/HomeGoDown.dart';
+import 'Godown/HomeGD/view/HomeGoDown.dart';
 import 'LoginPage/View/LoginPage.dart';
 import 'UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
 
@@ -48,8 +48,9 @@ class _SplashScreenState extends State<SplashScreen> {
       var password = _prefs.getString('password');
       var type = _prefs.getString('user_type');
       var status = _prefs.getString('user_status');
-      var uid = _prefs.getString('user_id');
+      var Gid = _prefs.getString('user_id');
       var id = _prefs.getString('id');
+      var email = _prefs.getString('user_email');
       // var distributeid = _prefs.getString('distributorid');
       // var distrubutename = _prefs.getString('distributorname');
 
@@ -74,12 +75,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
       print(status);
       if (username != null && password != null) {
-        if (type == 'Godown') {
+        if (type == 'Godown Manager') {
           if (status == 'Active') {
-            Get.to(HomeGodown(
+            Get.to(HomeGodown(Gid: Gid.toString(),
             ));
           }
-          else if (type == 'Godown') {} else if (status == 'Inactive') {
+          else if (type == 'Godown Manager') {} else if (status == 'Inactive') {
             return CustomSnackbar()
                 .InfoSnackBar('Warning', 'Please Contact Office');
           }
@@ -88,7 +89,6 @@ class _SplashScreenState extends State<SplashScreen> {
       else if (usernameUM != null && passwordUM != null) {
         if (typeUM == 'Upper Manager') {
           if (statusUM == 'Active') {
-            print(uid);
             Get.to(HomeUpperManager(
               uid: uidUM.toString(),
             ));

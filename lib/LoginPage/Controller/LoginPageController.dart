@@ -2,21 +2,15 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/view/HomePageSk.dart';
 import '../../CustomWidget/CustomSnackBar.dart';
-import '../../Godown/HomeGoDown.dart';
+import '../../Godown/HomeGD/view/HomeGoDown.dart';
 import '../../UpperManager/UpperMangerHomeFn/View/HomeUpperManager.dart';
 import '../../Utils/InternetConnectivity.dart';
 import '../Model/login_page_entity.dart';
 import '../Repository/LoginPageServices.dart';
 
-
 class LoginController extends GetxController {
-
-
   RxBool networkStatus = true.obs;
   Rx<LoginPageEntity> loginEntity = LoginPageEntity().obs;
-
-
-
   checkNetworkStatus() async {
     try {
       networkStatus.value =
@@ -26,7 +20,6 @@ class LoginController extends GetxController {
       print(e);
     }
   }
-
   login(String username, String password) async {
     print(username + password);
     bool nBool = false; //(await NetworkConnectivity().checkConnectivityState())!;
@@ -36,7 +29,7 @@ class LoginController extends GetxController {
       Get.back();
       print(loginEntity.value.status);
       if (loginEntity.value.status == 'SUCCESS') {
-        if (loginEntity.value.userType == 'Godown') {
+        if (loginEntity.value.userType == 'Godown Manager') {
           if (loginEntity.value.userStatus == 'Active') {
             print("inside status");
             SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -48,7 +41,7 @@ class LoginController extends GetxController {
             _prefs.setString('user_status', loginEntity.value.userStatus.toString());
             _prefs.setString(
                 'user_email', loginEntity.value.userEmail.toString());
-            Get.to(HomeGodown());
+            Get.to(HomeGodown(Gid: loginEntity.value.userId.toString(),));
           }
           else if(loginEntity.value.userStatus=='Inactive'){
             return CustomSnackbar().InfoSnackBar('Inactive', ' Please Contact to Office');

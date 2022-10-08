@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_single_view_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginby_status_g_d_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/profile_g_d_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_list_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/model/login_by_status_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/profileSK/model/profile_sk_entity.dart';
@@ -40,6 +43,12 @@ class JsonConvert {
 		(DeliveryScheduleSingleViewGdDeliveryschedule).toString(): DeliveryScheduleSingleViewGdDeliveryschedule.fromJson,
 		(UpdateOrderEntity).toString(): UpdateOrderEntity.fromJson,
 		(UpdateOrderList).toString(): UpdateOrderList.fromJson,
+		(LoginbyStatusGDEntity).toString(): LoginbyStatusGDEntity.fromJson,
+		(LoginbyStatusGDLoginlist).toString(): LoginbyStatusGDLoginlist.fromJson,
+		(ProfileGDEntity).toString(): ProfileGDEntity.fromJson,
+		(ProfileGDStorekeeperlist).toString(): ProfileGDStorekeeperlist.fromJson,
+		(ViewOrdersListViewEntity).toString(): ViewOrdersListViewEntity.fromJson,
+		(ViewOrdersListViewOrderlist).toString(): ViewOrdersListViewOrderlist.fromJson,
 		(LoginPageEntity).toString(): LoginPageEntity.fromJson,
 		(LoginByStatusEntity).toString(): LoginByStatusEntity.fromJson,
 		(LoginByStatusLoginlist).toString(): LoginByStatusLoginlist.fromJson,
@@ -178,6 +187,24 @@ class JsonConvert {
 		}
 		if(<UpdateOrderList>[] is M){
 			return data.map<UpdateOrderList>((Map<String, dynamic> e) => UpdateOrderList.fromJson(e)).toList() as M;
+		}
+		if(<LoginbyStatusGDEntity>[] is M){
+			return data.map<LoginbyStatusGDEntity>((Map<String, dynamic> e) => LoginbyStatusGDEntity.fromJson(e)).toList() as M;
+		}
+		if(<LoginbyStatusGDLoginlist>[] is M){
+			return data.map<LoginbyStatusGDLoginlist>((Map<String, dynamic> e) => LoginbyStatusGDLoginlist.fromJson(e)).toList() as M;
+		}
+		if(<ProfileGDEntity>[] is M){
+			return data.map<ProfileGDEntity>((Map<String, dynamic> e) => ProfileGDEntity.fromJson(e)).toList() as M;
+		}
+		if(<ProfileGDStorekeeperlist>[] is M){
+			return data.map<ProfileGDStorekeeperlist>((Map<String, dynamic> e) => ProfileGDStorekeeperlist.fromJson(e)).toList() as M;
+		}
+		if(<ViewOrdersListViewEntity>[] is M){
+			return data.map<ViewOrdersListViewEntity>((Map<String, dynamic> e) => ViewOrdersListViewEntity.fromJson(e)).toList() as M;
+		}
+		if(<ViewOrdersListViewOrderlist>[] is M){
+			return data.map<ViewOrdersListViewOrderlist>((Map<String, dynamic> e) => ViewOrdersListViewOrderlist.fromJson(e)).toList() as M;
 		}
 		if(<LoginPageEntity>[] is M){
 			return data.map<LoginPageEntity>((Map<String, dynamic> e) => LoginPageEntity.fromJson(e)).toList() as M;
