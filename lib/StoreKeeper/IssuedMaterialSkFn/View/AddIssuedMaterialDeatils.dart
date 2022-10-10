@@ -56,11 +56,6 @@ class AddIssuedMaterialDeatils extends StatelessWidget {
                   // SizedBox(
                   //   height: 2.h,
                   // ),
-                  Row(
-                    children: [
-                      NormalText(text: 'Issue no : 57685 85996'),
-                    ],
-                  ),
                   SizedBox(
                     height: 3.h,
                   ),Obx(()=>

@@ -6,7 +6,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/control
 import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../DamagedMaterialDetailsList.dart';
-import '../../IssuedMaterialDetailsList.dart';
+import '../../IssuedMaterialSkFn/View/AddIssuedMaterialDeatils.dart';
+import '../../IssuedMaterialSkFn/View/IssuedMaterialDetailsList.dart';
 import '../../MaterialReplaceddetailsList.dart';
 import '../../profileSK/view/ProfileSkView.dart';
 
@@ -138,12 +139,13 @@ class HomePageSk extends StatelessWidget {
                               flex: 1,
                               child: InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const IssuedMaterialDetailsList()),
-                                  );
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //       builder: (context) =>
+                                  //            IssuedMaterialDetailsList()),
+                                  // );
+                                  Get.to(IssuedMaterialDetailsList());
                                 },
                                 child: Container(
                                   height: 16.5.h,
@@ -451,6 +453,7 @@ class HomePageSk extends StatelessWidget {
                                     ],
                                   );
                                 }),
+                            Text(homecontroller.txt.toString()),
                             // SizedBox(height:2.h ,),
                           ],
                         )

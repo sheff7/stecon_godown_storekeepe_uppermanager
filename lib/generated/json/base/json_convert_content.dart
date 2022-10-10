@@ -14,6 +14,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/model/login_by_status_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_company_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_department_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_issued_material_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_material_item_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/profileSK/model/profile_sk_entity.dart';
@@ -60,6 +61,8 @@ class JsonConvert {
 		(GetCompanyCompanylist).toString(): GetCompanyCompanylist.fromJson,
 		(GetDepartmentEntity).toString(): GetDepartmentEntity.fromJson,
 		(GetDepartmentDepartmentlist).toString(): GetDepartmentDepartmentlist.fromJson,
+		(GetIssuedMaterialListEntity).toString(): GetIssuedMaterialListEntity.fromJson,
+		(GetIssuedMaterialListMaterialitemslist).toString(): GetIssuedMaterialListMaterialitemslist.fromJson,
 		(GetMaterialItemEntity).toString(): GetMaterialItemEntity.fromJson,
 		(GetMaterialItemMaterialitemslist).toString(): GetMaterialItemMaterialitemslist.fromJson,
 		(ResponseEntity).toString(): ResponseEntity.fromJson,
@@ -237,6 +240,12 @@ class JsonConvert {
 		}
 		if(<GetDepartmentDepartmentlist>[] is M){
 			return data.map<GetDepartmentDepartmentlist>((Map<String, dynamic> e) => GetDepartmentDepartmentlist.fromJson(e)).toList() as M;
+		}
+		if(<GetIssuedMaterialListEntity>[] is M){
+			return data.map<GetIssuedMaterialListEntity>((Map<String, dynamic> e) => GetIssuedMaterialListEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetIssuedMaterialListMaterialitemslist>[] is M){
+			return data.map<GetIssuedMaterialListMaterialitemslist>((Map<String, dynamic> e) => GetIssuedMaterialListMaterialitemslist.fromJson(e)).toList() as M;
 		}
 		if(<GetMaterialItemEntity>[] is M){
 			return data.map<GetMaterialItemEntity>((Map<String, dynamic> e) => GetMaterialItemEntity.fromJson(e)).toList() as M;

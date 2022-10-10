@@ -18,6 +18,7 @@ import '../Model/get_department_entity.dart';
 import '../Model/get_material_item_entity.dart';
 import '../Model/response_entity.dart';
 import '../Repository/AddIssuedMaterialOrderServices.dart';
+import 'ViewIssuedMaterialDetailsView.dart';
 
 
 
@@ -229,8 +230,8 @@ class AddMaterialOrderPurController extends GetxController {
                             onPressed: () {
                               // Get.delete<AddMaterialOrderPurController>();
                               Get.back();
-                              // ViewMaterialOrderPurController _viewMaterialOrderPurController=Get.find<ViewMaterialOrderPurController>();
-                              // _viewMaterialOrderPurController.ViewMaterialOrder();
+                              IssuedMaterialSdkListController viewissuedMaterialSdkListController=Get.find<IssuedMaterialSdkListController>();
+                              viewissuedMaterialSdkListController.getMaterialList();
 
                               Get.back();
 

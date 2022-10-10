@@ -21,7 +21,7 @@ class AddIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<GetDepartmentEntity>(data);
       }
     } catch (e) {
-      print(CustomSnackbar().InfoSnackBar('error', e.toString()));
+      (CustomSnackbar().InfoSnackBar('error', e.toString()));
     }
   }
   Future<GetMaterialItemEntity?> GetCatgryItem() async {
@@ -32,7 +32,7 @@ class AddIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<GetMaterialItemEntity>(data);
       }
     } catch (e) {
-      print(CustomSnackbar().InfoSnackBar('error', e.toString()));
+     (CustomSnackbar().InfoSnackBar('error', e.toString()));
     }
   }
 
@@ -45,7 +45,7 @@ class AddIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<GetCompanyEntity>(data);
       }
     } catch (e) {
-      print(CustomSnackbar().InfoSnackBar('error', e.toString()));
+      (CustomSnackbar().InfoSnackBar('error', e.toString()));
     }
   }
   Future<ResponseEntity?> AddButton(String departmntId, String itemId, String companyId,String qty,String type,String commnents) async {
@@ -65,7 +65,7 @@ class AddIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<ResponseEntity>(data);
       }
     } catch (e) {
-      print(CustomSnackbar().InfoSnackBar('error', e.toString()));
+      (CustomSnackbar().InfoSnackBar('error', e.toString()));
     }
   }
 
