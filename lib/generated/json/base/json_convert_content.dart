@@ -10,6 +10,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginby_status_g_d_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/profile_g_d_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_list_view_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_single_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/model/login_by_status_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_company_entity.dart';
@@ -54,6 +55,8 @@ class JsonConvert {
 		(ProfileGDStorekeeperlist).toString(): ProfileGDStorekeeperlist.fromJson,
 		(ViewOrdersListViewEntity).toString(): ViewOrdersListViewEntity.fromJson,
 		(ViewOrdersListViewOrderlist).toString(): ViewOrdersListViewOrderlist.fromJson,
+		(OrdersSingleViewEntity).toString(): OrdersSingleViewEntity.fromJson,
+		(OrdersSingleViewOrderlist).toString(): OrdersSingleViewOrderlist.fromJson,
 		(LoginPageEntity).toString(): LoginPageEntity.fromJson,
 		(LoginByStatusEntity).toString(): LoginByStatusEntity.fromJson,
 		(LoginByStatusLoginlist).toString(): LoginByStatusLoginlist.fromJson,
@@ -219,6 +222,12 @@ class JsonConvert {
 		}
 		if(<ViewOrdersListViewOrderlist>[] is M){
 			return data.map<ViewOrdersListViewOrderlist>((Map<String, dynamic> e) => ViewOrdersListViewOrderlist.fromJson(e)).toList() as M;
+		}
+		if(<OrdersSingleViewEntity>[] is M){
+			return data.map<OrdersSingleViewEntity>((Map<String, dynamic> e) => OrdersSingleViewEntity.fromJson(e)).toList() as M;
+		}
+		if(<OrdersSingleViewOrderlist>[] is M){
+			return data.map<OrdersSingleViewOrderlist>((Map<String, dynamic> e) => OrdersSingleViewOrderlist.fromJson(e)).toList() as M;
 		}
 		if(<LoginPageEntity>[] is M){
 			return data.map<LoginPageEntity>((Map<String, dynamic> e) => LoginPageEntity.fromJson(e)).toList() as M;
