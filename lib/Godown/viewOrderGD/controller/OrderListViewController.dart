@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../../Utils/InternetConnectivity.dart';
 import '../model/orders_list_view_entity.dart';
-import '../repository/orderListSingleViewServices.dart';
+import '../repository/ordersListViewServices.dart';
 
 class OrderListViewController extends GetxController{
 

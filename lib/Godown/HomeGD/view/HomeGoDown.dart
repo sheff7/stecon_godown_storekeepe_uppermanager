@@ -8,7 +8,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/view/Prof
 import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../DeliverySchedulefn/View/DeliveryScheduleListGd.dart';
-import '../../viewOrderGD/view/ViewOrdersGD.dart';
+import '../../viewOrderGD/view/orderListView.dart';
 
 class HomeGodown extends StatelessWidget {
   final String Gid;
@@ -142,7 +142,7 @@ class HomeGodown extends StatelessWidget {
                               flex: 1,
                               child: InkWell(
                                 onTap: (){
-                                  Get.to(ViewOrdersGD());
+                                  Get.to(OrderListViewGD());
                                 },
                                 child: Container(
                                   height: 16.5.h,

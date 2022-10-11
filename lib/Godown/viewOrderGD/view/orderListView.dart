@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
-import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Controller/OrderListController.dart';
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
 import '../../../CustomFont/Status.dart';
 import '../controller/OrderListViewController.dart';
+import 'orderSingleView.dart';
 
 
-class ViewOrdersGD extends StatelessWidget {
-   ViewOrdersGD({Key? key}) : super(key: key);
+class OrderListViewGD extends StatelessWidget {
+   OrderListViewGD({Key? key}) : super(key: key);
   late final orderListViewController = Get.put(OrderListViewController());
 
   @override
@@ -83,7 +83,7 @@ class ViewOrdersGD extends StatelessWidget {
                           child: ListView.separated(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
-                            itemCount: 10,
+                            itemCount: orderListViewController.orderListViewEntity.value.orderlist!.length,
                             itemBuilder: (BuildContext context, int index) {
                               return Column(
                                 children: [
@@ -94,45 +94,51 @@ class ViewOrdersGD extends StatelessWidget {
                                     child: Container(
                                       color: Colors.white,
                                       margin: EdgeInsets.fromLTRB(2.h, 0.h, 2.h, 2.h),
-                                      child: ListTile(
-                                        title: Padding(
-                                          padding: EdgeInsets.only(top: 2.h),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  NormalText(
-                                                      text: "Order No :"),
-                                                  Status(text: orderListViewController.orderListViewEntity.value.orderlist![0].status.toString())
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    0.h, 1.h, 0.h, 1.5.h),
-                                                child: Row(
+                                      child: InkWell(
+                                        onTap: (){
+                                          Get.to(ViewOrder1GD(orderno: orderListViewController.orderListViewEntity.value.orderlist![index].orderno.toString(),
+                                            orderid: orderListViewController.orderListViewEntity.value.orderlist![index].id.toString(),));
+                                        },
+                                        child: ListTile(
+                                          title: Padding(
+                                            padding: EdgeInsets.only(top: 2.h),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
                                                   mainAxisAlignment:
                                                   MainAxisAlignment.spaceBetween,
                                                   children: [
-                                                    Text(
-                                                     orderListViewController.orderListViewEntity.value.orderlist![0].orderno.toString(),
-                                                      style: GoogleFonts.radioCanada(
-                                                        fontSize: 17,
-                                                        color:
-                                                        const Color(0xFFEC4E52),
-                                                      ),
-                                                    ),
-                                                    NormalText(text: orderListViewController.orderListViewEntity.value.orderlist![0].deliverydate.toString())
+                                                    NormalText(
+                                                        text: "Order No :"),
+                                                    Status(text: orderListViewController.orderListViewEntity.value.orderlist![index].status.toString())
                                                   ],
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                height: 1.h,
-                                              ),
-                                            ],
+                                                Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      0.h, 1.h, 0.h, 1.5.h),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                    MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                       orderListViewController.orderListViewEntity.value.orderlist![index].orderno.toString(),
+                                                        style: GoogleFonts.radioCanada(
+                                                          fontSize: 17,
+                                                          color:
+                                                          const Color(0xFFEC4E52),
+                                                        ),
+                                                      ),
+                                                      NormalText(text: orderListViewController.orderListViewEntity.value.orderlist![index].deliverydate.toString())
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 1.h,
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),

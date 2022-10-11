@@ -13,13 +13,10 @@ class CustomBox1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // color: ColorConstants.loginBackColor,
-       margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-
-
-
+      margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
       child: TextFormField(
         enabled: Enabled,
-
+        textAlign: TextAlign.center,
         controller: controller,
         keyboardType: TextInputType.number,
         validator: (value) {
@@ -31,8 +28,8 @@ class CustomBox1 extends StatelessWidget {
             isDense: true,
             labelText: label,
             floatingLabelStyle: GoogleFonts.radioCanada(
-                fontSize:19,
-                color:const Color(0xFF787878)),
+              fontSize:19,
+              color: const Color(0xFFEC4E52),),
             hintStyle: GoogleFonts.radioCanada(
                 fontSize:14,
                 color:const Color(0xFF787878)),
