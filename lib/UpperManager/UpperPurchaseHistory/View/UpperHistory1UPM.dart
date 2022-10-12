@@ -476,23 +476,23 @@ class UpperHistory1UPM extends StatelessWidget {
                                                 ]),
                                               ),
                                             ),
-                                            Container(
-                                              margin:
-                                              EdgeInsets.symmetric(horizontal: 3.h),
-                                              child: SizedBox(
-                                                height: 5.h,
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                      primary: const Color(0xFFEC4E52),
-                                                      textStyle: TextStyle(
-                                                          fontSize: 15,
-                                                          fontWeight: FontWeight.bold)),
-                                                  onPressed: () {},
-                                                  child: Text('Cancel Plan'),
-                                                ),
-                                              ),
-                                            ),
+                                            // Container(
+                                            //   margin:
+                                            //   EdgeInsets.symmetric(horizontal: 3.h),
+                                            //   child: SizedBox(
+                                            //     height: 5.h,
+                                            //     width: double.infinity,
+                                            //     child: ElevatedButton(
+                                            //       style: ElevatedButton.styleFrom(
+                                            //           primary: const Color(0xFFEC4E52),
+                                            //           textStyle: TextStyle(
+                                            //               fontSize: 15,
+                                            //               fontWeight: FontWeight.bold)),
+                                            //       onPressed: () {},
+                                            //       child: Text('Cancel Plan'),
+                                            //     ),
+                                            //   ),
+                                            // ),
                                             SizedBox(
                                               height: 3.h,
                                             )

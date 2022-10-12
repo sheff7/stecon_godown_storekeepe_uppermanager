@@ -148,6 +148,7 @@ class CreatePlanUPMController extends GetxController{
     total.value=s1.value+s2.value+s3.value+s4.value+s5.value+s6.value+s7.value+s8.value+
         s9.value+s10.value+s11.value+s12.value+s13.value;
   }
+
   @override
   void onInit() {
     // TODO: implement onInit

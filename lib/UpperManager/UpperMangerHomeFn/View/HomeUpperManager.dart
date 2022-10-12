@@ -464,6 +464,15 @@ class HomeUpperManager extends StatelessWidget {
       child: InkWell(
         onTap: () {
           if (id == 1) {
+            Get.to(ProfileUm(
+              upperamanagerid: _umHomeController
+                  .loginByStatusEntity
+                  .value
+                  .loginlist![0]
+                  .uppermanagerid
+                  .toString(),
+              uid: uid.toString(),
+            ));
           } else if (id == 2) {
             Get.to(UpperHistoryUPM(
               upmId: _umHomeController
