@@ -26,7 +26,7 @@ class EditMaterialRepalcedDetails extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           title: Header(
-            text: ' Add material Replaced deatils',
+            text: 'Edit material Replaced deatils',
           ),
           centerTitle: true,
           leading: IconButton(
@@ -108,10 +108,7 @@ class EditMaterialRepalcedDetails extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
-              if (materialReplacedOrder.issuedid.value == '') {
-                CustomSnackbar()
-                    .InfoSnackBar("Add Material Order", "select Issue no.");
-              } else if (materialReplacedOrder.departmentid.value ==
+              if (materialReplacedOrder.departmentid.value ==
                   '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Department");

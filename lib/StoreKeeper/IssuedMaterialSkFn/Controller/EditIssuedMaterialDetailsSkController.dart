@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 
 
@@ -261,7 +262,10 @@ class EditMaterialOrderPurController extends GetxController {
                     SizedBox(
                       height: 15,
                     ),
-                    SubHeadingText(text: 'Issued Material Order Updated Successfully'),
+                    Center(child: Padding(
+                      padding:EdgeInsets.only(left: 3.h),
+                      child: SubHeadingText(text: 'Issued Material Order Updated Successfully'),
+                    )),
                     SizedBox(
                       height: 15,
                     ),

@@ -47,7 +47,11 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                 icon: Icon(Icons.add))
           ],
         ),
-        body: Obx(() => _body()));
+        body:Obx(() => RefreshIndicator(
+            onRefresh: () async {
+              issuedMaterialSdkListController.getMaterialList();
+            },
+            child:_body()),));
   }
 
   _body() {
@@ -265,16 +269,20 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                                         Row(
                                           children: [
                                             NormalText(text: "Comments :  "),
+                                            Expanded(
+                                              flex: 1,
+                                              child: BoldText(
+                                                  text:
+                                                  issuedMaterialSdkListController
+                                                      .IssuedMaterialListEntity
+                                                      .value
+                                                      .materialitemslist![index]
+                                                      .comments
+                                                      .toString()),
+                                            ),
                                           ],
                                         ),
-                                        BoldText(
-                                            text:
-                                                issuedMaterialSdkListController
-                                                    .IssuedMaterialListEntity
-                                                    .value
-                                                    .materialitemslist![index]
-                                                    .comments
-                                                    .toString()),
+
                                       ],
                                     ),
                                     SizedBox(

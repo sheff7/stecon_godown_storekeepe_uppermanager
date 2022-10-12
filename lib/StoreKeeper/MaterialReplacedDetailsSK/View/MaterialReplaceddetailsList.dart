@@ -49,7 +49,11 @@ class MaterialReplaceddetailsList extends StatelessWidget {
             }, icon: Icon(Icons.add))
           ],
         ),
-        body:Obx(()=> _body()),
+        body:Obx(() => RefreshIndicator(
+            onRefresh: () async {
+              materialReplacedListController.getMaterialList();
+            },
+            child:_body()),),
 
     );
   }
@@ -220,9 +224,13 @@ class MaterialReplaceddetailsList extends StatelessWidget {
                                            Row(
                                              children: [
                                                NormalText(text: "Comments :  "),
+                                               Expanded(
+                                                 flex: 1,
+
+                                                   child: BoldText(text: materialReplacedListController.MaterialReplacedListrEntity.value.materialreplacedlist![index].comments.toString(),)),
                                              ],
                                            ),
-                                           BoldText(text: materialReplacedListController.MaterialReplacedListrEntity.value.materialreplacedlist![index].comments.toString(),),
+
                                          ],
                                        ),
                                        SizedBox(height: 2.h,),

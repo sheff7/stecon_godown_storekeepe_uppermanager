@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
@@ -157,8 +158,8 @@ class AddDamagedMaterialControllerSk extends GetxController {
         }
       }
     }
-    else if (value == 'Select item') {
-      itemid.value = '';
+    else if (value == 'Select Issued no.') {
+      issuedisselected.value = '';
     }
 
   }
@@ -331,8 +332,10 @@ class AddDamagedMaterialControllerSk extends GetxController {
                     SizedBox(
                       height: 15,
                     ),
-                    SubHeadingText(
-                        text: 'Damaged Material Order Added Successfully'),
+                    Center(child: Padding(
+                      padding:EdgeInsets.only(left: 3.h),
+                      child: SubHeadingText(text: 'Damaged Material Order Added Successfully'),
+                    )),
                     SizedBox(
                       height: 15,
                     ),

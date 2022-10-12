@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
@@ -376,8 +377,10 @@ class EditDamagedMaterialControllerSk extends GetxController {
                     SizedBox(
                       height: 15,
                     ),
-                    SubHeadingText(
-                        text: 'Damaged Material Order Updated Successfully'),
+                    Center(child: Padding(
+                      padding:EdgeInsets.only(left: 3.h),
+                      child: SubHeadingText(text: 'Damaged Material Order Updated Successfully'),
+                    )),
                     SizedBox(
                       height: 15,
                     ),

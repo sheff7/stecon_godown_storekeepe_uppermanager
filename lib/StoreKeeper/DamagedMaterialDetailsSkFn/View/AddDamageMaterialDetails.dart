@@ -110,7 +110,7 @@ class AddDamagedMaterialDetails extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
-              if (materialReplacedOrder.issuedid.value == '') {
+              if (materialReplacedOrder.issuedisselected.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Issue No.");
               }

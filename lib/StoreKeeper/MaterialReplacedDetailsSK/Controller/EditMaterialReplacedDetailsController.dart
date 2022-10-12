@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
@@ -301,7 +302,7 @@ class EditMaterialReplacedDetailsControllerSk extends GetxController {
       CustomSnackbar().LoadingBottomSheet();
       responseEntity.value = (await  EditMaterialReplacedDetailsSkServices().EditButton(id,departmntId, itemId, companyId, qty, type, comments,))!;
       Get.back();
-      if(responseEntity.value.response.toString()=='Added successfully'){
+      if(responseEntity.value.response.toString()=='Updated successfully'){
         Get.dialog(
             Dialog(
               insetAnimationCurve: Curves.decelerate,
@@ -318,7 +319,10 @@ class EditMaterialReplacedDetailsControllerSk extends GetxController {
                     SizedBox(
                       height: 15,
                     ),
-                    SubHeadingText(text: 'Material Replace Order Added Successfully'),
+                    Center(child: Padding(
+                      padding:EdgeInsets.only(left: 3.h),
+                      child: SubHeadingText(text: 'Material Replace Order Updated Successfully'),
+                    )),
                     SizedBox(
                       height: 15,
                     ),

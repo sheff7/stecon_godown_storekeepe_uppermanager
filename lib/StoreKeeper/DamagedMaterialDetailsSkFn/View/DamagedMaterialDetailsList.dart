@@ -50,7 +50,11 @@ class DamageMaterialList extends StatelessWidget {
           }, icon: Icon(Icons.add))
         ],
       ),
-      body: Obx(()=>_body()),
+      body:Obx(() => RefreshIndicator(
+        onRefresh: () async {
+          damagedMaterialListSkController.getDamageList();
+        },
+          child:_body()),)
 
     );
   }
@@ -233,9 +237,12 @@ class DamageMaterialList extends StatelessWidget {
                                            Row(
                                              children: [
                                                NormalText(text: "Comments :  "),
+                                               Expanded(
+                                                 flex: 1,
+                                                   child: BoldText(text:  damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].comments.toString())),
                                              ],
                                            ),
-                                           BoldText(text:  damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].comments.toString()),
+
                                          ],
                                        ),
                                        SizedBox(height: 2.h,),
