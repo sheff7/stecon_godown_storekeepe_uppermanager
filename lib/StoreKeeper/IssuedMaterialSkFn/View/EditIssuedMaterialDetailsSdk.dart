@@ -102,13 +102,13 @@ class EditIssuedMaterialDetailsSdk extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
-              if(materialOrderPurController.departmentisselected.value==''){
+              if(materialOrderPurController.departmentid.value==''){
                 CustomSnackbar().InfoSnackBar("Add Material Order", "select Department");
               }
-              else if(materialOrderPurController.itemisselected.value==''){
+              else if(materialOrderPurController.itemid.value==''){
                 CustomSnackbar().InfoSnackBar("Add Material Order", "select Item");
               }
-              else if(materialOrderPurController.companyisselected.value==''){
+              else if(materialOrderPurController.cpmanyid.value==''){
                 CustomSnackbar().InfoSnackBar("Add Material Order", "select Company");
               }
               else if(materialOrderPurController.typeisSelected.value==''){

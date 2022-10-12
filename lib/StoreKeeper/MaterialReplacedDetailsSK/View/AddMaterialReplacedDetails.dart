@@ -104,17 +104,17 @@ class AddMaterialRepalcedDetails extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
-              if (materialReplacedOrder.issuedisselected.value == '') {
+              if (materialReplacedOrder.issuedid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Issue no.");
-              } else if (materialReplacedOrder.departmentisselected.value ==
+              } else if (materialReplacedOrder.departmentid.value ==
                   '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Department");
-              } else if (materialReplacedOrder.itemisselected.value == '') {
+              } else if (materialReplacedOrder.itemid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Item");
-              } else if (materialReplacedOrder.companyisselected.value == '') {
+              } else if (materialReplacedOrder.cpmanyid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Company");
               } else if (materialReplacedOrder.typeisSelected.value == '') {
@@ -125,10 +125,7 @@ class AddMaterialRepalcedDetails extends StatelessWidget {
                 CustomSnackbar()
                     .InfoSnackBar("Add material Order", "Enter Quantity");
               }
-              else if (materialReplacedOrder.commentController.value == '') {
-                CustomSnackbar()
-                    .InfoSnackBar("Add Material Order", "select Comment");
-              }else
+              else
                 materialReplacedOrder.addButton(
                     materialReplacedOrder.issuedisselected.toString(),
                     materialReplacedOrder.departmentid.toString(),

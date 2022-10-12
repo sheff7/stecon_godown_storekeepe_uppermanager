@@ -115,13 +115,13 @@ class EditDamagedMaterialDetails extends StatelessWidget {
               //   CustomSnackbar()
               //       .InfoSnackBar("Add Material Order", "select Issue No.");
               // }
-               if (materialReplacedOrder.departmentisselected.value == '') {
+               if (materialReplacedOrder.departmentid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Department");
-              } else if (materialReplacedOrder.itemisselected.value == '') {
+              } else if (materialReplacedOrder.itemid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Item");
-              } else if (materialReplacedOrder.companyisselected.value == '') {
+              } else if (materialReplacedOrder.cpmanyid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Company");
               } else if (materialReplacedOrder.typeisSelected.value == '') {
@@ -131,11 +131,6 @@ class EditDamagedMaterialDetails extends StatelessWidget {
                   .quantityController.text.isEmpty) {
                 CustomSnackbar()
                     .InfoSnackBar("Add material Order", "Enter Quantity");
-              }
-              else if (materialReplacedOrder
-                  .commentController.text.isEmpty) {
-                CustomSnackbar()
-                    .InfoSnackBar("Add material Order", "Enter Comment");
               }
               else
                 materialReplacedOrder.editButton(

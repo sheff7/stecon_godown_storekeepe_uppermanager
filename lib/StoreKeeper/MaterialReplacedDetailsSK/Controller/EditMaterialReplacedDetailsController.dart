@@ -147,6 +147,9 @@ class EditMaterialReplacedDetailsControllerSk extends GetxController {
         }
       }
     }
+    else if(value== 'Select Issued no.'){
+      issuedid.value= '';
+    }
 
 
   }
@@ -192,6 +195,9 @@ class EditMaterialReplacedDetailsControllerSk extends GetxController {
         }
       }
     }
+    else if(value=='Select Department'){
+      departmentid.value='';
+    }
   }
 
 
@@ -233,6 +239,10 @@ class EditMaterialReplacedDetailsControllerSk extends GetxController {
         }
       }
     }
+    else if (value == 'Select item') {
+      itemid.value = '';
+    }
+
   }
 
   getCompany() async {
@@ -273,6 +283,10 @@ class EditMaterialReplacedDetailsControllerSk extends GetxController {
         }
       }
     }
+    else if(value=='Select Company'){
+      cpmanyid.value ='';
+    }
+
   }
 
   void typeType(String value) {

@@ -101,6 +101,9 @@ class AddMaterialReplacedDetailsControllerSk extends GetxController {
         }
       }
     }
+    else if(value== 'Select Issued no.'){
+      issuedid.value= '';
+    }
   }
 
   getDep() async {
@@ -140,6 +143,9 @@ class AddMaterialReplacedDetailsControllerSk extends GetxController {
               GetDepartmententity.value.departmentlist![i].id.toString();
         }
       }
+    }
+    else if(value=='Select Department'){
+      departmentid.value='';
     }
   }
 
@@ -181,6 +187,9 @@ class AddMaterialReplacedDetailsControllerSk extends GetxController {
         }
       }
     }
+    else if (value == 'Select item') {
+      itemid.value = '';
+    }
   }
 
   getCompany() async {
@@ -218,6 +227,10 @@ class AddMaterialReplacedDetailsControllerSk extends GetxController {
               companyListEntity.value.companylist![i].id.toString();
         }
       }
+
+    }
+    else if(value=='Select Company'){
+      cpmanyid.value ='';
     }
   }
 

@@ -140,6 +140,9 @@ class EditMaterialOrderPurController extends GetxController {
         }
       }
     }
+    else if(value=='Select Department'){
+      departmentid.value='';
+    }
   }
 
 
@@ -181,6 +184,9 @@ class EditMaterialOrderPurController extends GetxController {
         }
       }
     }
+    else if (value == 'Select item') {
+      itemid.value = '';
+    }
   }
 
   getCompany() async {
@@ -220,6 +226,9 @@ class EditMaterialOrderPurController extends GetxController {
               companyListEntity.value.companylist![i].id.toString();
         }
       }
+    }
+    else if(value=='Select Company'){
+      cpmanyid.value ='';
     }
   }
 

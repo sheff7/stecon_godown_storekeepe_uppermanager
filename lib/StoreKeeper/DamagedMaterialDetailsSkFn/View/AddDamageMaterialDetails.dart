@@ -57,10 +57,10 @@ class AddDamagedMaterialDetails extends StatelessWidget {
                     SizedBox(
                       height: 4.h,
                     ),
-                    Obx(() => _replaceNoList()),
-                    SizedBox(
-                      height: 4.h,
-                    ),
+                    // Obx(() => _replaceNoList()),
+                    // SizedBox(
+                    //   height: 4.h,
+                    // ),
                     Obx(() => _departmentList()),
                     SizedBox(
                       height: 4.h,
@@ -110,17 +110,17 @@ class AddDamagedMaterialDetails extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
-              if (materialReplacedOrder.issuedisselected.value == '') {
+              if (materialReplacedOrder.issuedid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Issue No.");
               }
-              else if (materialReplacedOrder.departmentisselected.value == '') {
+              else if (materialReplacedOrder.departmentid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Department");
-              } else if (materialReplacedOrder.itemisselected.value == '') {
+              } else if (materialReplacedOrder.itemid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Item");
-              } else if (materialReplacedOrder.companyisselected.value == '') {
+              } else if (materialReplacedOrder.cpmanyid.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Company");
               } else if (materialReplacedOrder.typeisSelected.value == '') {
@@ -130,11 +130,6 @@ class AddDamagedMaterialDetails extends StatelessWidget {
                   .quantityController.text.isEmpty) {
                 CustomSnackbar()
                     .InfoSnackBar("Add material Order", "Enter Quantity");
-              }
-              else if (materialReplacedOrder
-                  .commentController.text.isEmpty) {
-                CustomSnackbar()
-                    .InfoSnackBar("Add material Order", "Enter Comment");
               }
               else
                 materialReplacedOrder.addButton(

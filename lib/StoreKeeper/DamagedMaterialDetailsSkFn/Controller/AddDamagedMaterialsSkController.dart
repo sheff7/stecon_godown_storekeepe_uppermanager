@@ -108,6 +108,10 @@ class AddDamagedMaterialControllerSk extends GetxController {
         }
       }
     }
+    else if(value=='Select Replace no.'){
+      replaceid.value ='';
+    }
+
   }
 
 
@@ -153,6 +157,10 @@ class AddDamagedMaterialControllerSk extends GetxController {
         }
       }
     }
+    else if (value == 'Select item') {
+      itemid.value = '';
+    }
+
   }
 
   getDep() async {
@@ -193,6 +201,10 @@ class AddDamagedMaterialControllerSk extends GetxController {
         }
       }
     }
+    else if(value=='Select Department'){
+      departmentid.value='';
+    }
+
   }
 
   getItem() async {
@@ -233,6 +245,10 @@ class AddDamagedMaterialControllerSk extends GetxController {
         }
       }
     }
+    else if (value == 'Select item') {
+      itemid.value = '';
+    }
+
   }
 
   getCompany() async {
@@ -271,6 +287,10 @@ class AddDamagedMaterialControllerSk extends GetxController {
         }
       }
     }
+    else if(value=='Select Company'){
+      cpmanyid.value ='';
+    }
+
   }
 
   void typeType(String value) {

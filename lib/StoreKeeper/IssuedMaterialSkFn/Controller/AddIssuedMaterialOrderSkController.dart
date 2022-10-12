@@ -106,7 +106,11 @@ class AddMaterialOrderPurController extends GetxController {
         }
       }
     }
-  }
+    else if(value=='Select Department'){
+      departmentid.value='';
+    }
+    }
+
 
 
   getItem() async {
@@ -146,6 +150,9 @@ class AddMaterialOrderPurController extends GetxController {
               getItemEntity.value.materialitemslist![i].id.toString();
         }
       }
+    }
+    else if (value == 'Select item') {
+      itemid.value = '';
     }
   }
 
@@ -187,12 +194,17 @@ class AddMaterialOrderPurController extends GetxController {
         }
       }
     }
+
+    else if(value=='Select Company'){
+      cpmanyid.value ='';
+    }
   }
 
   void typeType(String value) {
     typeisSelected.value = value;
 
   }
+
 
 
   addButton(String departmntId, String itemId, String companyId,String qty,String type,String comments
