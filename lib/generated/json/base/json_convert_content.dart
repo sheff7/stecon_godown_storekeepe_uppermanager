@@ -12,12 +12,16 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/pro
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_list_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_single_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/DamagedMaterialDetailsSkFn/Model/get_damaged_material_list_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/model/login_by_status_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_company_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_department_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_issued_material_by_id_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_issued_material_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_material_item_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_byid_sk_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/profileSK/model/profile_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UmProfileFn/Model/um_profile_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Model/get_order_single_view_entity.dart';
@@ -58,17 +62,25 @@ class JsonConvert {
 		(OrdersSingleViewEntity).toString(): OrdersSingleViewEntity.fromJson,
 		(OrdersSingleViewOrderlist).toString(): OrdersSingleViewOrderlist.fromJson,
 		(LoginPageEntity).toString(): LoginPageEntity.fromJson,
+		(GetDamagedMaterialListSkEntity).toString(): GetDamagedMaterialListSkEntity.fromJson,
+		(GetDamagedMaterialListSkMaterialdamagedlist).toString(): GetDamagedMaterialListSkMaterialdamagedlist.fromJson,
 		(LoginByStatusEntity).toString(): LoginByStatusEntity.fromJson,
 		(LoginByStatusLoginlist).toString(): LoginByStatusLoginlist.fromJson,
 		(GetCompanyEntity).toString(): GetCompanyEntity.fromJson,
 		(GetCompanyCompanylist).toString(): GetCompanyCompanylist.fromJson,
 		(GetDepartmentEntity).toString(): GetDepartmentEntity.fromJson,
 		(GetDepartmentDepartmentlist).toString(): GetDepartmentDepartmentlist.fromJson,
+		(GetIssuedMaterialByIdEntity).toString(): GetIssuedMaterialByIdEntity.fromJson,
+		(GetIssuedMaterialByIdMaterialitemslist).toString(): GetIssuedMaterialByIdMaterialitemslist.fromJson,
 		(GetIssuedMaterialListEntity).toString(): GetIssuedMaterialListEntity.fromJson,
 		(GetIssuedMaterialListMaterialitemslist).toString(): GetIssuedMaterialListMaterialitemslist.fromJson,
 		(GetMaterialItemEntity).toString(): GetMaterialItemEntity.fromJson,
 		(GetMaterialItemMaterialitemslist).toString(): GetMaterialItemMaterialitemslist.fromJson,
 		(ResponseEntity).toString(): ResponseEntity.fromJson,
+		(GetMaterialReplacedByidSkEntity).toString(): GetMaterialReplacedByidSkEntity.fromJson,
+		(GetMaterialReplacedByidSkMaterialreplacedlist).toString(): GetMaterialReplacedByidSkMaterialreplacedlist.fromJson,
+		(GetMaterialReplacedSkEntity).toString(): GetMaterialReplacedSkEntity.fromJson,
+		(GetMaterialReplacedSkMaterialreplacedlist).toString(): GetMaterialReplacedSkMaterialreplacedlist.fromJson,
 		(ProfileSkEntity).toString(): ProfileSkEntity.fromJson,
 		(ProfileSkStorekeeperlist).toString(): ProfileSkStorekeeperlist.fromJson,
 		(UmProfileEntity).toString(): UmProfileEntity.fromJson,
@@ -232,6 +244,12 @@ class JsonConvert {
 		if(<LoginPageEntity>[] is M){
 			return data.map<LoginPageEntity>((Map<String, dynamic> e) => LoginPageEntity.fromJson(e)).toList() as M;
 		}
+		if(<GetDamagedMaterialListSkEntity>[] is M){
+			return data.map<GetDamagedMaterialListSkEntity>((Map<String, dynamic> e) => GetDamagedMaterialListSkEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetDamagedMaterialListSkMaterialdamagedlist>[] is M){
+			return data.map<GetDamagedMaterialListSkMaterialdamagedlist>((Map<String, dynamic> e) => GetDamagedMaterialListSkMaterialdamagedlist.fromJson(e)).toList() as M;
+		}
 		if(<LoginByStatusEntity>[] is M){
 			return data.map<LoginByStatusEntity>((Map<String, dynamic> e) => LoginByStatusEntity.fromJson(e)).toList() as M;
 		}
@@ -250,6 +268,12 @@ class JsonConvert {
 		if(<GetDepartmentDepartmentlist>[] is M){
 			return data.map<GetDepartmentDepartmentlist>((Map<String, dynamic> e) => GetDepartmentDepartmentlist.fromJson(e)).toList() as M;
 		}
+		if(<GetIssuedMaterialByIdEntity>[] is M){
+			return data.map<GetIssuedMaterialByIdEntity>((Map<String, dynamic> e) => GetIssuedMaterialByIdEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetIssuedMaterialByIdMaterialitemslist>[] is M){
+			return data.map<GetIssuedMaterialByIdMaterialitemslist>((Map<String, dynamic> e) => GetIssuedMaterialByIdMaterialitemslist.fromJson(e)).toList() as M;
+		}
 		if(<GetIssuedMaterialListEntity>[] is M){
 			return data.map<GetIssuedMaterialListEntity>((Map<String, dynamic> e) => GetIssuedMaterialListEntity.fromJson(e)).toList() as M;
 		}
@@ -264,6 +288,18 @@ class JsonConvert {
 		}
 		if(<ResponseEntity>[] is M){
 			return data.map<ResponseEntity>((Map<String, dynamic> e) => ResponseEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialReplacedByidSkEntity>[] is M){
+			return data.map<GetMaterialReplacedByidSkEntity>((Map<String, dynamic> e) => GetMaterialReplacedByidSkEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialReplacedByidSkMaterialreplacedlist>[] is M){
+			return data.map<GetMaterialReplacedByidSkMaterialreplacedlist>((Map<String, dynamic> e) => GetMaterialReplacedByidSkMaterialreplacedlist.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialReplacedSkEntity>[] is M){
+			return data.map<GetMaterialReplacedSkEntity>((Map<String, dynamic> e) => GetMaterialReplacedSkEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialReplacedSkMaterialreplacedlist>[] is M){
+			return data.map<GetMaterialReplacedSkMaterialreplacedlist>((Map<String, dynamic> e) => GetMaterialReplacedSkMaterialreplacedlist.fromJson(e)).toList() as M;
 		}
 		if(<ProfileSkEntity>[] is M){
 			return data.map<ProfileSkEntity>((Map<String, dynamic> e) => ProfileSkEntity.fromJson(e)).toList() as M;

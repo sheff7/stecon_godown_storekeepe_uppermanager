@@ -11,6 +11,7 @@ import '../../../CustomFont/NormalText.dart';
 import '../../../CustomWidget/Nodata.dart';
 import '../Controller/ViewIssuedMaterialDetailsView.dart';
 import 'AddIssuedMaterialDeatils.dart';
+import 'EditIssuedMaterialDetailsSdk.dart';
 
 class IssuedMaterialDetailsList extends StatelessWidget {
   IssuedMaterialDetailsList({Key? key}) : super(key: key);
@@ -39,9 +40,11 @@ class IssuedMaterialDetailsList extends StatelessWidget {
             },
           ),
           actions: [
-            IconButton(onPressed: (){
-             Get.to(AddIssuedMaterialDeatils());
-            }, icon: Icon(Icons.add))
+            IconButton(
+                onPressed: () {
+                  Get.to(AddIssuedMaterialDeatils());
+                },
+                icon: Icon(Icons.add))
           ],
         ),
         body: Obx(() => _body()));
@@ -80,7 +83,7 @@ class IssuedMaterialDetailsList extends StatelessWidget {
             } else if (issuedMaterialSdkListController
                     .IssuedMaterialListEntity.value.materialitemslist!.length !=
                 0) {
-             return ListView(
+              return ListView(
                 children: [
                   SizedBox(
                     height: 2.h,
@@ -121,7 +124,14 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                               SizedBox(
                                 height: 1.h,
                               ),
-                              NormalText(text: 'Department :'+ issuedMaterialSdkListController.IssuedMaterialListEntity.value.materialitemslist![index].departmentname.toString()),
+                              NormalText(
+                                  text: 'Department :' +
+                                      issuedMaterialSdkListController
+                                          .IssuedMaterialListEntity
+                                          .value
+                                          .materialitemslist![index]
+                                          .departmentname
+                                          .toString()),
                             ],
                           ),
                           expandedAlignment: Alignment.centerLeft,
@@ -142,6 +152,16 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                                                     .materialitemslist![index]
                                                     .status
                                                     .toString())
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        IconButton(onPressed: (){
+                                          Get.to(EditIssuedMaterialDetailsSdk(orderId: issuedMaterialSdkListController.IssuedMaterialListEntity.value.materialitemslist![index].id.toString(),));
+
+                                        }, icon:Icon(
+                                            Icons.edit,),)
                                       ],
                                     ),
                                     Row(
@@ -279,7 +299,8 @@ class IssuedMaterialDetailsList extends StatelessWidget {
             return Column(
               children: [
                 Nodata(
-                  response: issuedMaterialSdkListController.IssuedMaterialListEntity.value.response
+                  response: issuedMaterialSdkListController
+                      .IssuedMaterialListEntity.value.response
                       .toString(),
                 ),
                 ElevatedButton(

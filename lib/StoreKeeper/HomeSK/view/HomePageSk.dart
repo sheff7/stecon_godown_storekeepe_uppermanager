@@ -5,10 +5,12 @@ import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/controller/homeControllerSK.dart';
 import '../../../CustomFont/SubHeading.dart';
 import '../../../LoginPage/View/LoginPage.dart';
-import '../../DamagedMaterialDetailsList.dart';
+import '../../DamagedMaterialDetailsSkFn/View/AddDamageMaterialDetails.dart';
+import '../../DamagedMaterialDetailsSkFn/View/DamagedMaterialDetailsList.dart';
 import '../../IssuedMaterialSkFn/View/AddIssuedMaterialDeatils.dart';
 import '../../IssuedMaterialSkFn/View/IssuedMaterialDetailsList.dart';
-import '../../MaterialReplaceddetailsList.dart';
+import '../../MaterialReplacedDetailsSK/View/AddMaterialReplacedDetails.dart';
+import '../../MaterialReplacedDetailsSK/View/MaterialReplaceddetailsList.dart';
 import '../../profileSK/view/ProfileSkView.dart';
 
 class HomePageSk extends StatelessWidget {
@@ -203,12 +205,7 @@ class HomePageSk extends StatelessWidget {
                               flex: 1,
                               child: InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const MaterialReplaceddetailsList()),
-                                  );
+                                  Get.to(MaterialReplaceddetailsList());
                                 },
                                 child: Container(
                                   height: 16.5.h,
@@ -274,7 +271,7 @@ class HomePageSk extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const DamageMaterialList()),
+                                            DamageMaterialList()),
                                   );
                                 },
                                 child: Container(
@@ -329,63 +326,63 @@ class HomePageSk extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              height: 1.h,
-                              width: 2.h,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                height: 16.5.h,
-                                child: ClipPath(
-                                  child: Card(
-                                    elevation: 2,
-                                    shape: Border(
-                                      left: BorderSide(
-                                          color: Color(0xFFF3A84F),
-                                          width: 1.7.w),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              2.h, 0.7.h, 0.h, 0.h),
-                                          alignment: Alignment.topLeft,
-                                          height: 8.h,
-                                          width: 8.h,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "Assets/HomePageIcons/Group 49.png"),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                2.5.h, 1.h, 0.h, 0.h),
-                                            child: Text(
-                                              "Add Purchase\nrequest",
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  clipper: ShapeBorderClipper(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20))),
-                                ),
-                              ),
-                            )
+                            // SizedBox(
+                            //   height: 1.h,
+                            //   width: 2.h,
+                            // ),
+                            // Expanded(
+                            //   flex: 1,
+                            //   child: Container(
+                            //     height: 16.5.h,
+                            //     child: ClipPath(
+                            //       child: Card(
+                            //         elevation: 2,
+                            //         shape: Border(
+                            //           left: BorderSide(
+                            //               color: Color(0xFFF3A84F),
+                            //               width: 1.7.w),
+                            //         ),
+                            //         child: Column(
+                            //           crossAxisAlignment:
+                            //               CrossAxisAlignment.start,
+                            //           children: [
+                            //             Container(
+                            //               margin: EdgeInsets.fromLTRB(
+                            //                   2.h, 0.7.h, 0.h, 0.h),
+                            //               alignment: Alignment.topLeft,
+                            //               height: 8.h,
+                            //               width: 8.h,
+                            //               decoration: BoxDecoration(
+                            //                 image: DecorationImage(
+                            //                   image: AssetImage(
+                            //                       "Assets/HomePageIcons/Group 49.png"),
+                            //                 ),
+                            //               ),
+                            //             ),
+                            //             Expanded(
+                            //               flex: 1,
+                            //               child: Padding(
+                            //                 padding: EdgeInsets.fromLTRB(
+                            //                     2.5.h, 1.h, 0.h, 0.h),
+                            //                 child: Text(
+                            //                   "Add Purchase\nrequest",
+                            //                   style: TextStyle(
+                            //                     fontSize: 16,
+                            //                     fontWeight: FontWeight.w500,
+                            //                   ),
+                            //                 ),
+                            //               ),
+                            //             )
+                            //           ],
+                            //         ),
+                            //       ),
+                            //       clipper: ShapeBorderClipper(
+                            //           shape: RoundedRectangleBorder(
+                            //               borderRadius:
+                            //                   BorderRadius.circular(20))),
+                            //     ),
+                            //   ),
+                            // )
                           ],
                         ),
                         SizedBox(
@@ -476,12 +473,7 @@ class HomePageSk extends StatelessWidget {
         children: [
           // menuItem(),
           menuItem(1, 'Profile', Icons.person),
-          menuItem(2, 'View issued Material', Icons.info),
-          menuItem(3, 'View Replaced Material', Icons.logout),
-          menuItem(4, 'View Replaced Material', Icons.logout),
-          menuItem(5, 'View Replaced Material', Icons.logout),
-          menuItem(6, 'View Replaced Material', Icons.logout),
-          menuItem(7, 'Log Out', Icons.logout),
+          menuItem(2, 'Log Out', Icons.logout),
         ],
       ),
     );
@@ -510,12 +502,13 @@ class HomePageSk extends StatelessWidget {
                   .toString(),
             ));
           } else if (id == 2) {
+            _logout();
           } else if (id == 3) {
           } else if (id == 4) {
           } else if (id == 5) {
           } else if (id == 6) {
           } else if (id == 7) {
-            _logout();
+
           }
         },
         child: Padding(

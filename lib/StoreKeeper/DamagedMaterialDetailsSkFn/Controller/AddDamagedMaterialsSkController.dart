@@ -1,44 +1,48 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
-
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 
-
 import '../../../Utils/InternetConnectivity.dart';
-import '../Model/get_company_entity.dart';
-import '../Model/get_department_entity.dart';
-import '../Model/get_material_item_entity.dart';
-import '../Model/response_entity.dart';
-import '../Repository/AddIssuedMaterialOrderServices.dart';
-import 'ViewIssuedMaterialDetailsView.dart';
+import '../../IssuedMaterialSkFn/Model/get_company_entity.dart';
+import '../../IssuedMaterialSkFn/Model/get_department_entity.dart';
+import '../../IssuedMaterialSkFn/Model/get_issued_material_list_entity.dart';
+import '../../IssuedMaterialSkFn/Model/get_material_item_entity.dart';
+import '../../IssuedMaterialSkFn/Model/response_entity.dart';
+import '../../MaterialReplacedDetailsSK/Controller/MaterilaRepacedListControllerSk.dart';
+import '../../MaterialReplacedDetailsSK/Model/get_material_replaced_sk_entity.dart';
+import '../Repository/AddDamagedMaterialSkServices.dart';
+import 'DamagedMaterialListSkController.dart';
 
 
-
-class AddMaterialOrderPurController extends GetxController {
-
-
+class AddDamagedMaterialControllerSk extends GetxController {
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   RxString orderno = ''.obs;
-  Rx<GetDepartmentEntity> GetDepartmententity =
-      GetDepartmentEntity().obs;
-  Rx<GetMaterialItemEntity> getItemEntity =
-      GetMaterialItemEntity().obs;
+  Rx<GetDepartmentEntity> GetDepartmententity = GetDepartmentEntity().obs;
+  Rx<GetMaterialItemEntity> getItemEntity = GetMaterialItemEntity().obs;
   final categoryController = TextEditingController();
   final quantityController = TextEditingController();
-  final commentController= TextEditingController();
+  final commentController = TextEditingController();
   final priceController = TextEditingController();
   Rx<GetCompanyEntity> companyListEntity = GetCompanyEntity().obs;
   Rx<ResponseEntity> responseEntity = ResponseEntity().obs;
+  Rx<GetIssuedMaterialListEntity> IssuedMaterialListEntity =
+      GetIssuedMaterialListEntity().obs;
+  Rx<GetMaterialReplacedSkEntity>MaterialReplacedSkEntity = GetMaterialReplacedSkEntity().obs;
 
+  RxList<String>? replaceidList= ["Select Replaced no."].obs;
+  RxString replaceIdIsselected =''.obs;
+  RxString replaceid =''.obs;
+
+
+  RxList<String>? issuedList = ['Select Issued no.'].obs;
+  RxString issuedisselected = ''.obs;
+  RxString issuedid = ''.obs;
 
   RxList<String>? departmentList = ['Select Department'].obs;
   RxString departmentisselected = ''.obs;
@@ -52,10 +56,9 @@ class AddMaterialOrderPurController extends GetxController {
   RxString companyisselected = ''.obs;
   RxString cpmanyid = ''.obs;
 
-  RxList<String>?typeList = ['Kg', 'G', 'L', 'Ml', 'Item', "No's"].obs;
+  RxList<String>? typeList = ['Kg', 'G', 'L', 'Ml', 'Item', "No's"].obs;
   RxString typeisSelected = ''.obs;
   RxString typeid = ''.obs;
-
 
   checkNetworkStatus() async {
     try {
@@ -66,14 +69,97 @@ class AddMaterialOrderPurController extends GetxController {
       print(e);
     }
   }
+  getReplaceList() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
+      MaterialReplacedSkEntity.value =
+      (await AddDamagedMaterialSkServices().getReplacedList())!;
+
+      if (MaterialReplacedSkEntity.value != null) {
+        if (MaterialReplacedSkEntity.value.response == 'Success') {
+          if (MaterialReplacedSkEntity.value.materialreplacedlist!.length != 0) {
+            for (int i = 0;
+            i < MaterialReplacedSkEntity.value.materialreplacedlist!.length;
+            i++) {
+              replaceidList!.add(MaterialReplacedSkEntity
+                  .value.materialreplacedlist![i].replacedno
+                  .toString());
+
+            }
+          }
+        } else {
+          CustomSnackbar().InfoSnackBar('Add Replace no.',
+              MaterialReplacedSkEntity.value.response.toString());
+        }
+      }
+    }
+  }
+  void replaceType(String value) {
+    replaceIdIsselected.value = value;
+    if (value != 'Select Replace no.') {
+      for (int i = 0;
+      i < MaterialReplacedSkEntity.value.materialreplacedlist!.length;
+      i++) {
+        if (MaterialReplacedSkEntity.value.materialreplacedlist![i].replacedno ==
+            value.toString()) {
+          replaceid.value = MaterialReplacedSkEntity
+              .value.materialreplacedlist![i].replacedno
+              .toString();
+        }
+      }
+    }
+  }
 
 
+
+
+  getMaterialList() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
+      IssuedMaterialListEntity.value =
+      (await AddDamagedMaterialSkServices().getIssuedNo())!;
+
+      if (IssuedMaterialListEntity.value != null) {
+        if (IssuedMaterialListEntity.value.response == 'Success') {
+          if (IssuedMaterialListEntity.value.materialitemslist!.length != 0) {
+            for (int i = 0;
+            i < IssuedMaterialListEntity.value.materialitemslist!.length;
+            i++) {
+              issuedList!.add(IssuedMaterialListEntity
+                  .value.materialitemslist![i].issuedno
+                  .toString());
+              print(issuedList.toString());
+            }
+          }
+        } else {
+          CustomSnackbar().InfoSnackBar('Add issued no.',
+              IssuedMaterialListEntity.value.response.toString());
+        }
+      }
+    }
+  }
+
+  void issueType(String value) {
+    issuedisselected.value = value;
+    if (value != 'Select Issued no.') {
+      for (int i = 0;
+      i < IssuedMaterialListEntity.value.materialitemslist!.length;
+      i++) {
+        if (IssuedMaterialListEntity.value.materialitemslist![i].issuedno ==
+            value.toString()) {
+          issuedid.value = IssuedMaterialListEntity
+              .value.materialitemslist![i].issuedno
+              .toString();
+        }
+      }
+    }
+  }
 
   getDep() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       GetDepartmententity.value =
-      (await AddIssuedMaterialOrderSkServices().GetDis())!;
+      (await AddDamagedMaterialSkServices().GetDis())!;
       // loadingBool.value= false;
       if (GetDepartmententity.value != null) {
         if (GetDepartmententity.value.response == 'Success') {
@@ -97,8 +183,9 @@ class AddMaterialOrderPurController extends GetxController {
   void departmentType(String value) {
     departmentisselected.value = value;
     if (value != 'Select Department') {
-      for (int i = 0; i <
-          GetDepartmententity.value.departmentlist!.length; i++) {
+      for (int i = 0;
+      i < GetDepartmententity.value.departmentlist!.length;
+      i++) {
         if (GetDepartmententity.value.departmentlist![i].departmentname ==
             value.toString()) {
           departmentid.value =
@@ -108,12 +195,11 @@ class AddMaterialOrderPurController extends GetxController {
     }
   }
 
-
   getItem() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       getItemEntity.value =
-      (await AddIssuedMaterialOrderSkServices().GetCatgryItem())!;
+      (await AddDamagedMaterialSkServices().GetCatgryItem())!;
       // loadingBool.value= false;
       if (getItemEntity.value != null) {
         if (getItemEntity.value.response == 'Success') {
@@ -153,7 +239,7 @@ class AddMaterialOrderPurController extends GetxController {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       companyListEntity.value =
-      (await AddIssuedMaterialOrderSkServices().GetCompany())!;
+      (await AddDamagedMaterialSkServices().GetCompany())!;
       // loadingBool.value= false;
       if (companyListEntity.value != null) {
         if (companyListEntity.value.response == 'Success') {
@@ -174,12 +260,10 @@ class AddMaterialOrderPurController extends GetxController {
     }
   }
 
-
   void companyType(String value) {
     companyisselected.value = value;
     if (value != 'Select Company') {
-      for (int i = 0; i <
-          companyListEntity.value.companylist!.length; i++) {
+      for (int i = 0; i < companyListEntity.value.companylist!.length; i++) {
         if (companyListEntity.value.companylist![i].companyname ==
             value.toString()) {
           cpmanyid.value =
@@ -191,17 +275,24 @@ class AddMaterialOrderPurController extends GetxController {
 
   void typeType(String value) {
     typeisSelected.value = value;
-
   }
 
-
-  addButton(String departmntId, String itemId, String companyId,String qty,String type,String comments
-      ) async {
+  addButton(String issueno, String departmntId, String itemId, String companyId,
+      String qty, String type, String comments) async {
     try {
       CustomSnackbar().LoadingBottomSheet();
-      responseEntity.value = (await  AddIssuedMaterialOrderSkServices().AddButton(departmntId, itemId, companyId, qty, type, comments,))!;
+      responseEntity.value =
+      (await AddDamagedMaterialSkServices().AddButton(
+        issueno,
+        departmntId,
+        itemId,
+        companyId,
+        qty,
+        type,
+        comments,
+      ))!;
       Get.back();
-      if(responseEntity.value.response.toString()=='Added successfully'){
+      if (responseEntity.value.response.toString() == 'Added successfully') {
         Get.dialog(
             Dialog(
               insetAnimationCurve: Curves.decelerate,
@@ -214,28 +305,29 @@ class AddMaterialOrderPurController extends GetxController {
                     ),
                     Text('Success',
                         style: GoogleFonts.radioCanada(
-                            fontSize: 20, color: Colors.black,fontWeight: FontWeight.bold)),
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
                     SizedBox(
                       height: 15,
                     ),
-                    SubHeadingText(text: 'Issued Material Order Added Successfully'),
+                    SubHeadingText(
+                        text: 'Damaged Material Order Added Successfully'),
                     SizedBox(
                       height: 15,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      padding: const EdgeInsets.only(left: 20, right: 20),
                       child: SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                             onPressed: () {
                               // Get.delete<AddMaterialOrderPurController>();
                               Get.back();
-                              IssuedMaterialSdkListController viewissuedMaterialSdkListController=Get.find<IssuedMaterialSdkListController>();
-                              viewissuedMaterialSdkListController.getMaterialList();
+                              GetDamagedMaterialListSkController DamagedMaterialListSkController=Get.find<GetDamagedMaterialListSkController>();
+                              DamagedMaterialListSkController.getDamageList();
 
                               Get.back();
-
-
                             },
                             style: ElevatedButton.styleFrom(
                                 primary: const Color(0xFFEC4E52),
@@ -252,14 +344,14 @@ class AddMaterialOrderPurController extends GetxController {
               ),
             ),
             barrierDismissible: false);
+      } else {
+        CustomSnackbar().InfoSnackBar(
+            'Add Damaged Material Order', responseEntity.value.response.toString());
       }
-      else{
-        CustomSnackbar().InfoSnackBar('Add Material Order', responseEntity.value.response.toString());
-      }
-    } catch (e) { CustomSnackbar().InfoSnackBar('Add Material Order', e.toString());}
+    } catch (e) {
+      CustomSnackbar().InfoSnackBar('Add Damaged Material Order', e.toString());
+    }
   }
-
-
 
   @override
   void onInit() {
@@ -268,6 +360,8 @@ class AddMaterialOrderPurController extends GetxController {
     getDep();
     getItem();
     getCompany();
+    getMaterialList();
+    getReplaceList();
 
     super.onInit();
   }

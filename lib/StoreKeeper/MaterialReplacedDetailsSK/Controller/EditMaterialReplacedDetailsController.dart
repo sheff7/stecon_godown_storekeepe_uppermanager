@@ -5,29 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
-
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 
 
 import '../../../Utils/InternetConnectivity.dart';
-import '../Model/get_company_entity.dart';
-import '../Model/get_department_entity.dart';
-import '../Model/get_material_item_entity.dart';
-import '../Model/response_entity.dart';
-import '../Repository/AddIssuedMaterialOrderServices.dart';
-import 'ViewIssuedMaterialDetailsView.dart';
+import '../../IssuedMaterialSkFn/Model/get_company_entity.dart';
+import '../../IssuedMaterialSkFn/Model/get_department_entity.dart';
+import '../../IssuedMaterialSkFn/Model/get_issued_material_list_entity.dart';
+import '../../IssuedMaterialSkFn/Model/get_material_item_entity.dart';
+import '../../IssuedMaterialSkFn/Model/response_entity.dart';
+import '../Model/get_material_replaced_byid_sk_entity.dart';
+import '../Repository/EditMaterialReplacedSkServices.dart';
+import 'MaterilaRepacedListControllerSk.dart';
 
 
 
-class AddMaterialOrderPurController extends GetxController {
+
+class EditMaterialReplacedDetailsControllerSk extends GetxController {
 
 
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   RxString orderno = ''.obs;
+  final String id;
   Rx<GetDepartmentEntity> GetDepartmententity =
       GetDepartmentEntity().obs;
   Rx<GetMaterialItemEntity> getItemEntity =
@@ -38,6 +39,13 @@ class AddMaterialOrderPurController extends GetxController {
   final priceController = TextEditingController();
   Rx<GetCompanyEntity> companyListEntity = GetCompanyEntity().obs;
   Rx<ResponseEntity> responseEntity = ResponseEntity().obs;
+  Rx<GetIssuedMaterialListEntity> IssuedMaterialListEntity = GetIssuedMaterialListEntity().obs;
+  Rx<GetMaterialReplacedByidSkEntity>MaterialReplacedByidSkEntity =GetMaterialReplacedByidSkEntity().obs;
+  RxString qty =''.obs;
+
+  RxList<String>? issuedList = ['Select Issued no.'].obs;
+  RxString issuedisselected = ''.obs;
+  RxString issuedid = ''.obs;
 
 
   RxList<String>? departmentList = ['Select Department'].obs;
@@ -56,6 +64,8 @@ class AddMaterialOrderPurController extends GetxController {
   RxString typeisSelected = ''.obs;
   RxString typeid = ''.obs;
 
+  EditMaterialReplacedDetailsControllerSk(this.id);
+
 
   checkNetworkStatus() async {
     try {
@@ -67,13 +77,89 @@ class AddMaterialOrderPurController extends GetxController {
     }
   }
 
+  getMaterialReplacedId() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
+      loadingBool.value = true;
+      MaterialReplacedByidSkEntity.value = (await EditMaterialReplacedDetailsSkServices().getMaterialListbyOrderid(id))!;
+      loadingBool.value= false;
+      await getMaterialList();
+      await getItem();
+      await getDep();
+      await getCompany();
+      if(MaterialReplacedByidSkEntity.value.response=='Success'){
+        if(MaterialReplacedByidSkEntity.value.materialreplacedlist!.length!=0){
+          departmentType(MaterialReplacedByidSkEntity.value.materialreplacedlist![0].departmentname.toString());
+          itemType(MaterialReplacedByidSkEntity.value.materialreplacedlist![0].itemnanme.toString());
+          companyType(MaterialReplacedByidSkEntity.value.materialreplacedlist![0].companyname.toString());
+          typeType(MaterialReplacedByidSkEntity.value.materialreplacedlist![0].type.toString());
+          issueType(MaterialReplacedByidSkEntity.value.materialreplacedlist![0].issueno.toString());
+          qty.value= MaterialReplacedByidSkEntity.value.materialreplacedlist![0].quantity.toString();
+          quantityController.text=qty.value.toString();
+          qty.refresh();
+
+          commentController.text=MaterialReplacedByidSkEntity.value.materialreplacedlist![0].comments.toString();
+
+
+
+
+        }
+
+      }
+      print("Heaven"+loadingBool.value.toString());
+    }
+  }
+
+
+  getMaterialList() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
+      IssuedMaterialListEntity.value = (await EditMaterialReplacedDetailsSkServices().getIssuedNo())!;
+
+      if (IssuedMaterialListEntity.value != null) {
+        if (IssuedMaterialListEntity.value.response == 'Success') {
+          if (IssuedMaterialListEntity.value.materialitemslist!.length != 0) {
+            for (int i = 0;
+            i < IssuedMaterialListEntity.value.materialitemslist!.length;
+            i++) {
+              issuedList!.add(IssuedMaterialListEntity
+                  .value.materialitemslist![i].issuedno
+                  .toString());
+            }
+          }
+        } else {
+          CustomSnackbar().InfoSnackBar(
+              'Add issued no.', IssuedMaterialListEntity.value.response.toString());
+        }
+      }
+
+    }
+  }
+  void issueType(String value) {
+    issuedisselected.value = value;
+    if (value != 'Select Issued no.') {
+      for (int i = 0; i < IssuedMaterialListEntity.value.materialitemslist!.length; i++) {
+        if (IssuedMaterialListEntity.value.materialitemslist![i].issuedno ==
+            value.toString()) {
+
+          issuedid.value =
+              IssuedMaterialListEntity.value.materialitemslist![i].issuedno.toString();
+        }
+      }
+    }
+
+
+  }
+
+
+
 
 
   getDep() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       GetDepartmententity.value =
-      (await AddIssuedMaterialOrderSkServices().GetDis())!;
+      (await EditMaterialReplacedDetailsSkServices().GetDis())!;
       // loadingBool.value= false;
       if (GetDepartmententity.value != null) {
         if (GetDepartmententity.value.response == 'Success') {
@@ -113,7 +199,7 @@ class AddMaterialOrderPurController extends GetxController {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       getItemEntity.value =
-      (await AddIssuedMaterialOrderSkServices().GetCatgryItem())!;
+      (await EditMaterialReplacedDetailsSkServices().GetCatgryItem())!;
       // loadingBool.value= false;
       if (getItemEntity.value != null) {
         if (getItemEntity.value.response == 'Success') {
@@ -153,7 +239,7 @@ class AddMaterialOrderPurController extends GetxController {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       companyListEntity.value =
-      (await AddIssuedMaterialOrderSkServices().GetCompany())!;
+      (await EditMaterialReplacedDetailsSkServices().GetCompany())!;
       // loadingBool.value= false;
       if (companyListEntity.value != null) {
         if (companyListEntity.value.response == 'Success') {
@@ -195,11 +281,11 @@ class AddMaterialOrderPurController extends GetxController {
   }
 
 
-  addButton(String departmntId, String itemId, String companyId,String qty,String type,String comments
+  addButton(String id,String departmntId, String itemId, String companyId,String qty,String type,String comments
       ) async {
     try {
       CustomSnackbar().LoadingBottomSheet();
-      responseEntity.value = (await  AddIssuedMaterialOrderSkServices().AddButton(departmntId, itemId, companyId, qty, type, comments,))!;
+      responseEntity.value = (await  EditMaterialReplacedDetailsSkServices().EditButton(id,departmntId, itemId, companyId, qty, type, comments,))!;
       Get.back();
       if(responseEntity.value.response.toString()=='Added successfully'){
         Get.dialog(
@@ -218,7 +304,7 @@ class AddMaterialOrderPurController extends GetxController {
                     SizedBox(
                       height: 15,
                     ),
-                    SubHeadingText(text: 'Issued Material Order Added Successfully'),
+                    SubHeadingText(text: 'Material Replace Order Added Successfully'),
                     SizedBox(
                       height: 15,
                     ),
@@ -230,7 +316,7 @@ class AddMaterialOrderPurController extends GetxController {
                             onPressed: () {
                               // Get.delete<AddMaterialOrderPurController>();
                               Get.back();
-                              IssuedMaterialSdkListController viewissuedMaterialSdkListController=Get.find<IssuedMaterialSdkListController>();
+                              MaterialReplacedSkListController viewissuedMaterialSdkListController=Get.find<MaterialReplacedSkListController>();
                               viewissuedMaterialSdkListController.getMaterialList();
 
                               Get.back();
@@ -254,9 +340,9 @@ class AddMaterialOrderPurController extends GetxController {
             barrierDismissible: false);
       }
       else{
-        CustomSnackbar().InfoSnackBar('Add Material Order', responseEntity.value.response.toString());
+        CustomSnackbar().InfoSnackBar('Add Material Replaced Order', responseEntity.value.response.toString());
       }
-    } catch (e) { CustomSnackbar().InfoSnackBar('Add Material Order', e.toString());}
+    } catch (e) { CustomSnackbar().InfoSnackBar('Add Material Replaced Order', e.toString());}
   }
 
 
@@ -265,9 +351,11 @@ class AddMaterialOrderPurController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     checkNetworkStatus();
-    getDep();
-    getItem();
-    getCompany();
+    // getDep();
+    // getItem();
+    // getCompany();
+    // getMaterialList();
+    getMaterialReplacedId();
 
     super.onInit();
   }
