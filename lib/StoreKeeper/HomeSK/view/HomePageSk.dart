@@ -111,7 +111,7 @@ class HomePageSk extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 0.h, 1.5.h),
               child: Text(
-                "Have a Productive Day",
+                "Store Keeper",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
