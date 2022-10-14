@@ -21,10 +21,10 @@ class HomeControllerSk extends GetxController {
   Rx<LoginByStatusEntity> loginByStatusEntity = LoginByStatusEntity().obs;
   // Rx<LatestOrderDisEntity> latestOrderDisEntity = LatestOrderDisEntity().obs;
 
-  RxString uppermanagerid=''.obs;
-  RxString uppermanagername=''.obs;
+  RxString storekeeperid=''.obs;
+  RxString storekeepername=''.obs;
   RxString txt='..'.obs;
-  RxString userEmail='..'.obs;
+  RxString userEmail=''.obs;
 
   HomeControllerSk({required this.uidSK});
 
@@ -49,21 +49,21 @@ class HomeControllerSk extends GetxController {
       print('gdhsdhgd' + loadingBool.value.toString());
       if (loginByStatusEntity.value.response == 'Success') {
         if (loginByStatusEntity.value.loginlist![0].status == 'Active') {
-          if (loginByStatusEntity.value.loginlist![0].type == 'Upper Manager') {
+          if (loginByStatusEntity.value.loginlist![0].type == 'Store Keeper') {
             print("inside status");
             SharedPreferences _prefs = await SharedPreferences.getInstance();
 
-            _prefs.setString('uppermanagername',
+            _prefs.setString('storekeepername',
                 loginByStatusEntity.value.loginlist![0].storekeepername
                     .toString());
-            _prefs.setString('uppermanagerid',
+            _prefs.setString('storekeeperid',
                 loginByStatusEntity.value.loginlist![0].storekeeperid
                     .toString());
 
-            uppermanagerid.value =
+            storekeeperid.value =
                 loginByStatusEntity.value.loginlist![0].storekeeperid
                     .toString();
-            uppermanagername.value =
+            storekeepername.value =
                 loginByStatusEntity.value.loginlist![0].storekeepername
                     .toString();
             // getLatestOrder();
@@ -82,11 +82,16 @@ class HomeControllerSk extends GetxController {
         CustomSnackbar().InfoSnackBar("HomePage", 'Something Went Wrong');
       }
     }
+    else if(nBool == false){
+      CustomSnackbar().NoInernetSnackBar();
+    }
   }
   getUserInfo() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     var emailSK=_prefs.get('user_emailSK');
-    userEmail.value=emailSK.toString();
+    if(emailSK!=null || emailSK.toString().length!=0) {
+      userEmail.value = emailSK.toString();
+    }
 
   }
 

@@ -25,23 +25,7 @@ class LoginByStatusService{
       CustomSnackbar().InfoSnackBar('Error', e.toString());
     }
   }
-//  Future<LatestOrderDisEntity?>latestOrder(String id)async{
-//    try{
-//      print("disddi"+id.toString());
-//      final response=await _dio.post('apialdistributororderbylimited',data:
-//      {"distributorid": id,
-//      });
-//      if(response.statusCode==200){
-//        var data=response.data;
-//        print(response.data.toString());
-//        return JsonConvert.fromJsonAsT<LatestOrderDisEntity>(data);
-//
-//      }
-//    }
-//    catch(e){
-//      CustomSnackbar().InfoSnackBar('Error', e.toString());
-//    }
-//  }
+
 
 
 

@@ -84,75 +84,80 @@ class AddProductionPlanUPM extends StatelessWidget {
                             SizedBox(
                               height: 3.h,
                             ),
-                            Row(
+                            Column(
                               children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    width: 20.h,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.grey[200]!,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(5),
+                                Container(
+                                  width:double.infinity,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.grey[200]!,
+                                      width: 1,
                                     ),
-                                    child: DropdownButton(
-                                      value: _controller!
-                                          .comapanySelected.value ==
-                                          ''
-                                          ? null
-                                          : _controller!
-                                          .comapanySelected.value,
-                                      borderRadius: BorderRadius.circular(10),
-                                      icon: Icon(Icons.arrow_drop_down),
-                                      iconSize: 29,
-                                      underline: SizedBox(),
-                                      isExpanded: true,
-                                      hint: Padding(
-                                        padding: const EdgeInsets.only(left: 10),
-                                        child: Text('Upper Production Manager'),
-                                      ),
-                                      onChanged: (value) {
-                                        _controller.compnayType(value.toString());
-                                      },
-                                      items: _controller.companyList.map((valueItem) {
-                                        return DropdownMenuItem(
-                                            value: valueItem,
-                                            child: Padding(
-                                              padding:
-                                              const EdgeInsets.only(left: 10),
-                                              child: Text(valueItem),
-                                            ));
-                                      }).toList(),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: DropdownButton(
+                                    value: _controller!
+                                        .comapanySelected.value ==
+                                        ''
+                                        ? null
+                                        : _controller!
+                                        .comapanySelected.value,
+                                    borderRadius: BorderRadius.circular(10),
+                                    icon: Icon(Icons.arrow_drop_down),
+                                    iconSize: 29,
+                                    underline: SizedBox(),
+                                    isExpanded: true,
+                                    hint: Padding(
+                                      padding: const EdgeInsets.all( 10),
+                                      child: Text('Upper Production Manager'),
                                     ),
+                                    onChanged: (value) {
+                                      _controller.compnayType(value.toString());
+                                    },
+                                    items: _controller.companyList.map((valueItem) {
+                                      return DropdownMenuItem(
+                                          value: valueItem,
+                                          child: Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 10),
+                                            child: Text(valueItem),
+                                          ));
+                                    }).toList(),
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 2.h,
+                                  height: 2.h,
                                 ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    // margin: EdgeInsets.fromLTRB(5.h, 3.h, 5.h, 1.h),
-                                      height: 6.h,
-                                      width: double.infinity,
-                                      child: ElevatedButton(
-                                        onPressed: ()  {
-                                          Get.to(CreatePlanUPM(upmId: upmId,companyId: _controller.companyIdSelected.value.toString(),));
-                                        },
-                                        child: Text(
-                                          "Create Plan",
-                                          style: TextStyle(
-                                              color: Colors.white, fontSize: 14),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                            primary: const Color(0xFFEC4E52),
-                                            textStyle: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold)),
-                                      )),
-                                ),
+                                Container(
+                                  // margin: EdgeInsets.fromLTRB(5.h, 3.h, 5.h, 1.h),
+                                    height: 6.h,
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        if (_controller.companyIdSelected
+                                            .value == '') {
+                                          CustomSnackbar().InfoSnackBar(
+                                              "Add Company",
+                                              "choose a company");
+                                        }
+                                        else {
+                                          Get.to(CreatePlanUPM(upmId: upmId,
+                                            companyId: _controller
+                                                .companyIdSelected.value
+                                                .toString(),));
+                                        }
+                                      },
+                                      child: Text(
+                                        "Create Plan",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 14),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                          primary: const Color(0xFFEC4E52),
+                                          textStyle: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold)),
+                                    )),
                               ],
                             ),
                             Container(

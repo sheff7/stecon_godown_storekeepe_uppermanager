@@ -5,21 +5,30 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Controller/OrderListController.dart';
 
+import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
+import '../../../CustomWidget/Nodata.dart';
+import '../../../CustomWidget/RetryButton.dart';
 import 'OrderListSingleView.dart';
 
 class OrderList extends StatelessWidget {
-   OrderList({Key? key}) : super(key: key);
-  late final _controller=Get.put(OrderListController());
+  OrderList({Key? key}) : super(key: key);
+  late final _controller = Get.put(OrderListController());
 
   @override
   Widget build(BuildContext context) {
-    return  WillPopScope(
-        onWillPop: ()async{
-          Get.back();
-          return true;
+    return WillPopScope(
+      onWillPop: () async {
+        Get.back();
+        return true;
+      },
+      child: RefreshIndicator(
+        color: ColorConstants.appThemeColorRed,
+        onRefresh: () async {
+          _controller.checkNetworkStatus();
+          _controller.getHistoryList();
         },
         child: Scaffold(
           backgroundColor: const Color(0xFFF7FBFC),
@@ -28,7 +37,7 @@ class OrderList extends StatelessWidget {
             backgroundColor: Colors.white,
             elevation: 0,
             title: Header(
-              text: 'History',
+              text: 'Orders',
             ),
             centerTitle: true,
             leading: IconButton(
@@ -40,49 +49,48 @@ class OrderList extends StatelessWidget {
                 Get.back();
               },
             ),
-            actions: [
-            ],
+            actions: [],
           ),
           body: Obx(() => _body()),
         ),
-      );
-
+      ),
+    );
   }
 
   _body() {
     if (_controller.networkStatus.value == true) {
       if (_controller.loadingBool.value == false) {
         if (_controller.orderEntity.value == null) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                child: Text("Null Value"),
-              ),
-            ],
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Nodata(response: 'No data found'),
+                RetryButton(onTap: () {
+                  _controller.checkNetworkStatus();
+                  _controller.getHistoryList();
+                })
+              ],
+            ),
           );
-        } else if (_controller.orderEntity.value !=
-            null) {
-          if (_controller.orderEntity.value.response ==
-              "Success") {
-            if (_controller.orderEntity.value.orderlist!.length ==
-                0) {
+        } else if (_controller.orderEntity.value != null) {
+          if (_controller.orderEntity.value.response == "Success") {
+            if (_controller.orderEntity.value.orderlist!.length == 0) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      child: HeadingText(
-                        text: 'No Data',
-                      ),
-                    ),
+                    Nodata(response: 'No data found'),
+                    RetryButton(onTap: () {
+                      _controller.checkNetworkStatus();
+                      _controller.getHistoryList();
+                    })
                   ],
                 ),
               );
-            } else if (_controller.orderEntity.value.orderlist!.length !=
-                0) {
+            } else if (_controller.orderEntity.value.orderlist!.length != 0) {
               return ListView(
                 children: [
                   SizedBox(
@@ -95,7 +103,8 @@ class OrderList extends StatelessWidget {
                         child: ListView.separated(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
-                          itemCount: _controller.orderEntity.value.orderlist!.length,
+                          itemCount:
+                              _controller.orderEntity.value.orderlist!.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Column(
                               children: [
@@ -106,31 +115,42 @@ class OrderList extends StatelessWidget {
                                   child: Container(
                                     color: Colors.white,
                                     margin:
-                                    EdgeInsets.fromLTRB(2.h, 0.h, 2.h, 2.h),
+                                        EdgeInsets.fromLTRB(2.h, 0.h, 2.h, 2.h),
                                     child: InkWell(
                                       onTap: () async {
                                         Get.to(OrderListSingleView(
-                                          orderno: _controller.orderEntity.value.orderlist![index].orderno.toString(),
-                                          distributorid: _controller.orderEntity.value.orderlist![index].distributorid.toString(),
-                                          orderid: _controller.orderEntity.value.orderlist![index].id.toString(),
+                                          orderno: _controller.orderEntity.value
+                                              .orderlist![index].orderno
+                                              .toString(),
+                                          distributorid: _controller
+                                              .orderEntity
+                                              .value
+                                              .orderlist![index]
+                                              .distributorid
+                                              .toString(),
+                                          orderid: _controller.orderEntity.value
+                                              .orderlist![index].id
+                                              .toString(),
                                         ));
-
                                       },
                                       child: ListTile(
                                         title: Padding(
                                           padding: EdgeInsets.only(top: 2.h),
                                           child: Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   NormalText(text: "Order no:"),
                                                   NormalText(
-                                                      text: _controller.orderEntity.value.orderlist![index]
+                                                      text: _controller
+                                                          .orderEntity
+                                                          .value
+                                                          .orderlist![index]
                                                           .deliverydate
                                                           .toString())
                                                 ],
@@ -139,14 +159,14 @@ class OrderList extends StatelessWidget {
                                                 padding: EdgeInsets.fromLTRB(
                                                     0.h, 1.h, 0.h, 1.5.h),
                                                 child: Text(
-                                                  _controller.orderEntity.value.orderlist![index]
-                                                      .orderno
+                                                  _controller.orderEntity.value
+                                                      .orderlist![index].orderno
                                                       .toString(),
                                                   style:
-                                                  GoogleFonts.radioCanada(
+                                                      GoogleFonts.radioCanada(
                                                     fontSize: 17,
                                                     color:
-                                                    const Color(0xFFEC4E52),
+                                                        const Color(0xFFEC4E52),
                                                   ),
                                                 ),
                                               ),
@@ -173,6 +193,14 @@ class OrderList extends StatelessWidget {
                   )
                 ],
               );
+            } else if (_controller.orderEntity.value.response == 'null') {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [HeadingText(text: 'Please Wait...')],
+                ),
+              );
             }
           } else {
             return Center(
@@ -182,13 +210,12 @@ class OrderList extends StatelessWidget {
                 children: [
                   Container(
                     child: HeadingText(
-                      text: _controller
-                          .orderEntity.value.response
-                          .toString(),
+                      text: _controller.orderEntity.value.response.toString(),
                     ),
                   ),
                   ElevatedButton(
                       onPressed: () async {
+                        _controller.networkStatus();
                         _controller.getHistoryList();
                       },
                       child: Text('Retry'))
@@ -200,7 +227,14 @@ class OrderList extends StatelessWidget {
       } else if (_controller.loadingBool.value == true) {
         return Center(
           child: Column(
-            children: [HeadingText(text: 'Loading..')],
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(
+                color: ColorConstants.appThemeColorRed,
+              ),
+              HeadingText(text: 'Loading..'),
+            ],
           ),
         );
       }
@@ -210,20 +244,14 @@ class OrderList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              child: HeadingText(
-                text: 'No Internet Connection',
-              ),
-            ),
-            ElevatedButton(
-                onPressed: () async {
-                  _controller.getHistoryList();
-                },
-                child: Text('Retry'))
+            Nodata(response: 'No Internet Connection'),
+            RetryButton(onTap: (){
+              print('ass');
+              _controller.checkNetworkStatus();
+              _controller.getHistoryList();            })
           ],
         ),
       );
     }
   }
-
 }

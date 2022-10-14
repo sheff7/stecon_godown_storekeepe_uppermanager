@@ -13,6 +13,20 @@ class UpperPurchseHistory1Controller extends GetxController{
   RxBool loadingBool = false.obs;
   Rx<GetUpperPurchsePlanSingleEntity> orderNoEntity=GetUpperPurchsePlanSingleEntity().obs;
 
+  RxBool enable1 = false.obs;
+  RxBool enable2 = false.obs;
+  RxBool enable3 = false.obs;
+  RxBool enable4 = false.obs;
+  RxBool enable5 = false.obs;
+  RxBool enable6 = false.obs;
+  RxBool enable7 = false.obs;
+  RxBool enable8 = false.obs;
+  RxBool enable9 = false.obs;
+  RxBool enable10 = false.obs;
+  RxBool enable11 = false.obs;
+  RxBool enable12 = false.obs;
+  RxBool enable13 = false.obs;
+
   UpperPurchseHistory1Controller({required this.upmId, required this.id, required this.orderno});
 
 

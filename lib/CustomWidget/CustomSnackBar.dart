@@ -15,6 +15,10 @@ class CustomSnackbar{
     Get.snackbar('Network', 'No Internet Connection',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.redAccent,
+        duration: Duration(days: 10),
+        mainButton: TextButton(onPressed: (){
+          Get.back();
+        }, child: Text("Okay",style: TextStyle(color: Colors.white),)),
         colorText: Colors.white);
   }
 

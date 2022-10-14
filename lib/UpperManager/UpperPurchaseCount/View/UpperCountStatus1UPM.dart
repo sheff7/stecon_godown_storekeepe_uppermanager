@@ -8,6 +8,7 @@ import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomBox.dart';
+import '../../../CustomWidget/CustomBox1.dart';
 import 'AddUpperCountStatus2UPM.dart';
 import '../../UpperCountStatus2UPM.dart';
 import '../Controller/UpperCountStatus1UPMController.dart';
@@ -219,81 +220,167 @@ class UpperCountStatus1UPM extends StatelessWidget {
                             children: [
                               Container(
                                 color: Colors.white,
-                                margin: EdgeInsets.fromLTRB(0.h, 0.h, 0.h, 0.h),
+                                margin: EdgeInsets.fromLTRB(
+                                    0.h, 1.h, 0.h, 0.h),
                                 child: Container(
                                   color: Colors.white,
-                                  margin:
-                                      EdgeInsets.fromLTRB(0.h, 0.h, 2.h, 0.h),
+                                  margin: EdgeInsets.fromLTRB(
+                                      2.h, 2.h, 2.h, 0.h),
                                   child: Column(children: [
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.fromLTRB(
-                                              2.h, 0.h, 0.h, 0.h),
+                                          padding:
+                                          EdgeInsets.fromLTRB(
+                                              0.h, 0.h, 0.h, 0.h),
                                           child: SubHeadingText(
                                               text: "Size Details"),
                                         ),
+                                        SizedBox(
+                                          height: 2.h,
+                                        ),
                                         Row(
                                           children: [
-                                            CustomBox(
-                                                controller: size1controller,
-                                                label: "Size-1"),
-                                            CustomBox(
-                                                controller: size2controller,
-                                                label: "Size-2"),
-                                            CustomBox(
-                                                controller: size3controller,
-                                                label: "Size-3")
+                                            Expanded(
+                                              child: CustomBox1(
+                                                controller:
+                                                size1controller,
+                                                label: "Size-1",
+                                                Enabled: _controller
+                                                    .enable1
+                                                    .value,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: CustomBox1(
+                                                controller:
+                                                size2controller,
+                                                label: "Size-2",
+                                                Enabled: _controller
+                                                    .enable2
+                                                    .value,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: CustomBox1(
+                                                controller:
+                                                size3controller,
+                                                label: "Size-3",
+                                                Enabled: _controller
+                                                    .enable3
+                                                    .value,
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ],
                                     ),
                                     Row(
                                       children: [
-                                        CustomBox(
-                                            controller: size4controller,
-                                            label: "Size-4"),
-                                        CustomBox(
-                                            controller: size5controller,
-                                            label: "Size-5"),
-                                        CustomBox(
-                                            controller: size6controller,
-                                            label: "Size-6")
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size4controller,
+                                            label: "Size-4",
+                                            Enabled: _controller
+                                                .enable4.value,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size5controller,
+                                            label: "Size-5",
+                                            Enabled: _controller
+                                                .enable5.value,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size6controller,
+                                            label: "Size-6",
+                                            Enabled: _controller
+                                                .enable6.value,
+                                          ),
+                                        )
                                       ],
                                     ),
                                     Row(
                                       children: [
-                                        CustomBox(
-                                            controller: size7controller,
-                                            label: "Size-7"),
-                                        CustomBox(
-                                            controller: size8controller,
-                                            label: "Size-8"),
-                                        CustomBox(
-                                            controller: size9controller,
-                                            label: "Size-9")
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size7controller,
+                                            label: "Size-7",
+                                            Enabled: _controller
+                                                .enable7.value,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size8controller,
+                                            label: "Size-8",
+                                            Enabled: _controller
+                                                .enable8.value,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size9controller,
+                                            label: "Size-9",
+                                            Enabled: _controller
+                                                .enable9.value,
+                                          ),
+                                        )
                                       ],
                                     ),
                                     Row(
                                       children: [
-                                        CustomBox(
-                                            controller: size10controller,
-                                            label: "Size-10"),
-                                        CustomBox(
-                                            controller: size11controller,
-                                            label: "Size-11"),
-                                        CustomBox(
-                                            controller: size12controller,
-                                            label: "Size-12")
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size10controller,
+                                            label: "Size-10",
+                                            Enabled: _controller
+                                                .enable10.value,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size11controller,
+                                            label: "Size-11",
+                                            Enabled: _controller
+                                                .enable11.value,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size12controller,
+                                            label: "Size-12",
+                                            Enabled: _controller
+                                                .enable12.value,
+                                          ),
+                                        )
                                       ],
                                     ),
                                     Row(
                                       children: [
-                                        CustomBox(
-                                            controller: size13controller,
-                                            label: "Size-13"),
+                                        Expanded(
+                                          child: CustomBox1(
+                                            controller:
+                                            size13controller,
+                                            label: "Size-13",
+                                            Enabled: _controller
+                                                .enable13.value,
+                                          ),
+                                        ),
                                         Expanded(
                                           flex: 1,
                                           child: Container(),

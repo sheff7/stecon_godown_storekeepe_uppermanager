@@ -29,6 +29,8 @@ class UmHomeController extends GetxController {
   RxString uppermanagername=''.obs;
   RxString txt='..'.obs;
   RxString upmId=''.obs;
+  RxString userEmail=''.obs;
+  RxString usename=''.obs;
 
   UmHomeController({ required this.uid});
 
@@ -55,6 +57,7 @@ class UmHomeController extends GetxController {
         if (loginByStatusEntity.value.loginlist![0].status == 'Active') {
           if (loginByStatusEntity.value.loginlist![0].type == 'Upper Manager') {
             print("inside status");
+            usename.value=loginByStatusEntity.value.loginlist![0].uppermanagername.toString();
             SharedPreferences _prefs = await SharedPreferences.getInstance();
 
             _prefs.setString('uppermanagername',
@@ -87,6 +90,9 @@ class UmHomeController extends GetxController {
         CustomSnackbar().InfoSnackBar("HomePage", 'Something Went Wrong');
       }
     }
+   else if (nBool == false) {
+     CustomSnackbar().NoInernetSnackBar();
+    }
   }
   // getLatestOrder() async {
   //   bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
@@ -98,16 +104,7 @@ class UmHomeController extends GetxController {
   //     loadingBool.value= false;
   //   }
   // }
-  void ABC(int x){
-    print('jjj');
-    if(x<=0){
-      return;
-    }
-    ABC(x-1);
-    print("output"+x.toString());
-    ABC(x-1);
 
-  }
 
   getUpperOrder()async{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
@@ -118,15 +115,26 @@ class UmHomeController extends GetxController {
 
     }
   }
+  getUserInfo() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    var emailUm=_prefs.get('user_emailUM');
+    if(emailUm!=null || emailUm.toString().length!=0) {
+      userEmail.value = emailUm.toString();
+    }
+
+  }
+
 
   @override
   void onInit() {
     // TODO: implement onInit
     print("jdkjdf".toString());
-    ABC(3);
+
 
     checkNetworkStatus();
+    getUserInfo();
     getLoginByStatus();
+
 
     super.onInit();
   }

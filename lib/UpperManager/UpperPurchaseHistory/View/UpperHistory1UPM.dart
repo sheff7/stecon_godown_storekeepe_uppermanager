@@ -9,6 +9,7 @@ import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomBox.dart';
+import '../../../CustomWidget/CustomBox1.dart';
 import '../Controller/UpperPurchseHistory1Controller.dart';
 
 class UpperHistory1UPM extends StatelessWidget {
@@ -17,20 +18,6 @@ class UpperHistory1UPM extends StatelessWidget {
   final String orderno;
   UpperHistory1UPM({Key? key, required this.upmId, required this.id, required this.orderno}) : super(key: key);
   late final _controller =Get.put(UpperPurchseHistory1Controller(upmId: upmId, id: id, orderno: orderno));
-
-  final size1controller = TextEditingController();
-  final size2controller = TextEditingController();
-  final size3controller = TextEditingController();
-  final size4controller = TextEditingController();
-  final size5controller = TextEditingController();
-  final size6controller = TextEditingController();
-  final size7controller = TextEditingController();
-  final size8controller = TextEditingController();
-  final size9controller = TextEditingController();
-  final size10controller = TextEditingController();
-  final size11controller = TextEditingController();
-  final size12controller = TextEditingController();
-  final size13controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -382,84 +369,166 @@ class UpperHistory1UPM extends StatelessWidget {
                                             Container(
                                               color: Colors.white,
                                               margin: EdgeInsets.fromLTRB(
-                                                  0.h, 0.h, 0.h, 0.h),
+                                                  0.h, 1.h, 0.h, 0.h),
                                               child: Container(
                                                 color: Colors.white,
                                                 margin: EdgeInsets.fromLTRB(
-                                                    0.h, 0.h, 2.h, 0.h),
+                                                    2.h, 2.h, 2.h, 0.h),
                                                 child: Column(children: [
                                                   Column(
                                                     crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                     children: [
                                                       Padding(
-                                                        padding: EdgeInsets.fromLTRB(
-                                                            2.h, 0.h, 0.h, 0.h),
+                                                        padding:
+                                                        EdgeInsets.fromLTRB(
+                                                            0.h, 0.h, 0.h, 0.h),
                                                         child: SubHeadingText(
                                                             text: "Size Details"),
                                                       ),
+                                                      SizedBox(
+                                                        height: 2.h,
+                                                      ),
                                                       Row(
                                                         children: [
-                                                          CustomBox(
+                                                          Expanded(
+                                                            child: CustomBox1(
                                                               controller:
                                                               size1controller,
-                                                              label: "Size-1"),
-                                                          CustomBox(
+                                                              label: "Size-1",
+                                                              Enabled: _controller
+                                                                  .enable1
+                                                                  .value,
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: CustomBox1(
                                                               controller:
                                                               size2controller,
-                                                              label: "Size-2"),
-                                                          CustomBox(
+                                                              label: "Size-2",
+                                                              Enabled: _controller
+                                                                  .enable2
+                                                                  .value,
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: CustomBox1(
                                                               controller:
                                                               size3controller,
-                                                              label: "Size-3")
+                                                              label: "Size-3",
+                                                              Enabled: _controller
+                                                                  .enable3
+                                                                  .value,
+                                                            ),
+                                                          )
                                                         ],
                                                       ),
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
-                                                          controller: size4controller,
-                                                          label: "Size-4"),
-                                                      CustomBox(
-                                                          controller: size5controller,
-                                                          label: "Size-5"),
-                                                      CustomBox(
-                                                          controller: size6controller,
-                                                          label: "Size-6")
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size4controller,
+                                                          label: "Size-4",
+                                                          Enabled: _controller
+                                                              .enable4.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size5controller,
+                                                          label: "Size-5",
+                                                          Enabled: _controller
+                                                              .enable5.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size6controller,
+                                                          label: "Size-6",
+                                                          Enabled: _controller
+                                                              .enable6.value,
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
-                                                          controller: size7controller,
-                                                          label: "Size-7"),
-                                                      CustomBox(
-                                                          controller: size8controller,
-                                                          label: "Size-8"),
-                                                      CustomBox(
-                                                          controller: size9controller,
-                                                          label: "Size-9")
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size7controller,
+                                                          label: "Size-7",
+                                                          Enabled: _controller
+                                                              .enable7.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size8controller,
+                                                          label: "Size-8",
+                                                          Enabled: _controller
+                                                              .enable8.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size9controller,
+                                                          label: "Size-9",
+                                                          Enabled: _controller
+                                                              .enable9.value,
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
-                                                          controller: size10controller,
-                                                          label: "Size-10"),
-                                                      CustomBox(
-                                                          controller: size11controller,
-                                                          label: "Size-11"),
-                                                      CustomBox(
-                                                          controller: size12controller,
-                                                          label: "Size-12")
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size10controller,
+                                                          label: "Size-10",
+                                                          Enabled: _controller
+                                                              .enable10.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size11controller,
+                                                          label: "Size-11",
+                                                          Enabled: _controller
+                                                              .enable11.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size12controller,
+                                                          label: "Size-12",
+                                                          Enabled: _controller
+                                                              .enable12.value,
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
-                                                          controller: size13controller,
-                                                          label: "Size-13"),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller:
+                                                          size13controller,
+                                                          label: "Size-13",
+                                                          Enabled: _controller
+                                                              .enable13.value,
+                                                        ),
+                                                      ),
                                                       Expanded(
                                                         flex: 1,
                                                         child: Container(),
@@ -518,198 +587,6 @@ class UpperHistory1UPM extends StatelessWidget {
                     ],
                   )),
 
-              // child: ExpansionTile(
-              //   title: Padding(
-              //     padding: EdgeInsets.fromLTRB(2.h, 2.h, 0.h, 2.h),
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         Text(
-              //           "2115-BROWN-GENTS",
-              //           style: GoogleFonts.radioCanada(
-              //               fontSize: 17,
-              //               fontWeight: FontWeight.bold,
-              //               color: Colors.blue[200]),
-              //         ),
-              //         NormalText(text: "Orderd no: 558755 8555 455"),
-              //         NormalText(text: "Date: 17-11-22"),
-              //       ],
-              //     ),
-              //   ),
-              //   children: [
-              //     Column(
-              //       children: [
-              //         Container(
-              //             margin: EdgeInsets.fromLTRB(0.h, 0.h, 0.h, 0.h),
-              //             color: Colors.white,
-              //             child: Padding(
-              //               padding: const EdgeInsets.all(20.0),
-              //               child: Column(
-              //                 crossAxisAlignment: CrossAxisAlignment.start,
-              //                 children: [
-              //                   // HeadingText(text: "2115-BROWN-GENTS"),
-              //                   Row(
-              //                     children: [
-              //                       Expanded(
-              //                         flex: 1,
-              //                         child: Container(
-              //                           child: Column(
-              //                             crossAxisAlignment:
-              //                                 CrossAxisAlignment.start,
-              //                             children: [
-              //                               NormalText(text: "Category: "),
-              //                               SizedBox(
-              //                                 height: 2.h,
-              //                               ),
-              //                               NormalText(text: "Color: "),
-              //                               SizedBox(
-              //                                 height: 2.h,
-              //                               ),
-              //                               NormalText(text: "Size: "),
-              //                               SizedBox(
-              //                                 height: 2.h,
-              //                               ),
-              //                               NormalText(text: "Pair: "),
-              //                               SizedBox(
-              //                                 height: 2.h,
-              //                               ),
-              //                               NormalText(text: "Box: "),
-              //                             ],
-              //                           ),
-              //                         ),
-              //                       ),
-              //                       Expanded(
-              //                         flex: 2,
-              //                         child: Container(
-              //                           child: Padding(
-              //                             padding: EdgeInsets.fromLTRB(
-              //                                 2.h, 3.h, 0.h, 0.h),
-              //                             child: Column(
-              //                               crossAxisAlignment:
-              //                                   CrossAxisAlignment.start,
-              //                               children: [
-              //                                 NormalText(text: "Gents"),
-              //                                 SizedBox(
-              //                                   height: 2.h,
-              //                                 ),
-              //                                 NormalText(text: "Black"),
-              //                                 SizedBox(
-              //                                   height: 2.h,
-              //                                 ),
-              //                                 NormalText(text: "1*5"),
-              //                                 SizedBox(
-              //                                   height: 2.h,
-              //                                 ),
-              //                                 NormalText(text: "50"),
-              //                                 SizedBox(
-              //                                   height: 2.h,
-              //                                 ),
-              //                                 NormalText(text: "2"),
-              //                               ],
-              //                             ),
-              //                           ),
-              //                         ),
-              //                       )
-              //                     ],
-              //                   ),
-              //                 ],
-              //               ),
-              //             )),
-              //         Container(
-              //           color: Colors.white,
-              //           margin: EdgeInsets.fromLTRB(0.h, 1.h, 0.h, 0.h),
-              //           child: Container(
-              //             color: Colors.white,
-              //             margin: EdgeInsets.fromLTRB(0.h, 2.h, 2.h, 0.h),
-              //             child: Column(children: [
-              //               Column(
-              //                 crossAxisAlignment: CrossAxisAlignment.start,
-              //                 children: [
-              //                   Padding(
-              //                     padding:
-              //                         EdgeInsets.fromLTRB(2.h, 0.h, 0.h, 0.h),
-              //                     child: SubHeadingText(text: "Size Details"),
-              //                   ),
-              //                   Row(
-              //                     children: [
-              //                       CustomBox(
-              //                           controller: size1controller,
-              //                           label: "Size-1"),
-              //                       CustomBox(
-              //                           controller: size2controller,
-              //                           label: "Size-2"),
-              //                       CustomBox(
-              //                           controller: size3controller,
-              //                           label: "Size-3")
-              //                     ],
-              //                   ),
-              //                 ],
-              //               ),
-              //               Row(
-              //                 children: [
-              //                   CustomBox(
-              //                       controller: size4controller,
-              //                       label: "Size-4"),
-              //                   CustomBox(
-              //                       controller: size5controller,
-              //                       label: "Size-5"),
-              //                   CustomBox(
-              //                       controller: size6controller,
-              //                       label: "Size-6")
-              //                 ],
-              //               ),
-              //               Row(
-              //                 children: [
-              //                   CustomBox(
-              //                       controller: size7controller,
-              //                       label: "Size-7"),
-              //                   CustomBox(
-              //                       controller: size8controller,
-              //                       label: "Size-8"),
-              //                   CustomBox(
-              //                       controller: size9controller,
-              //                       label: "Size-9")
-              //                 ],
-              //               ),
-              //               Row(
-              //                 children: [
-              //                   CustomBox(
-              //                       controller: size10controller,
-              //                       label: "Size-10"),
-              //                   CustomBox(
-              //                       controller: size11controller,
-              //                       label: "Size-11"),
-              //                   CustomBox(
-              //                       controller: size12controller,
-              //                       label: "Size-12")
-              //                 ],
-              //               ),
-              //               Row(
-              //                 children: [
-              //                   CustomBox(
-              //                       controller: size13controller,
-              //                       label: "Size-13"),
-              //                   Expanded(
-              //                     flex: 1,
-              //                     child: Container(),
-              //                   ),
-              //                   Expanded(
-              //                     flex: 1,
-              //                     child: Container(),
-              //                   ),
-              //                 ],
-              //               ),
-              //               SizedBox(
-              //                 height: 4.h,
-              //               ),
-              //             ]),
-              //           ),
-              //         )
-              //       ],
-              //     )
-              //   ],
-              // ),
             ],
           );
         }

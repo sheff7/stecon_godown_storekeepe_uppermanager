@@ -46,6 +46,7 @@ class UpperPurchseHistoryController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     print(upmId);
+    checkNetworkStatus();
     getUpperOrder();
     super.onInit();
   }

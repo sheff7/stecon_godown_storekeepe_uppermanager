@@ -32,7 +32,7 @@ class OrderListSingleView extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           title: Header(
-            text: 'History',
+            text: 'Orders',
           ),
           // Text(
           //   'Add Orders',

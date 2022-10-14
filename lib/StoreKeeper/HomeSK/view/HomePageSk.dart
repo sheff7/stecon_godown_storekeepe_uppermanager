@@ -81,7 +81,8 @@ class HomePageSk extends StatelessWidget {
             ],
           ),
         ),
-        body: Column(
+        body:
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
