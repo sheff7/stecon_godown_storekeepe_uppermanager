@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/BoldText.dart';
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
 import '../../../CustomFont/NormalTextGreen.dart';
 import '../../../CustomWidget/Nodata.dart';
+import '../../../CustomWidget/RetryButton.dart';
 import '../Controller/DamagedMaterialListSkController.dart';
 import 'AddDamageMaterialDetails.dart';
 import 'EditDamageMaterialDetails.dart';
@@ -264,27 +266,46 @@ class DamageMaterialList extends StatelessWidget {
                  ],
                );
              }
-           } else {
-             return Column(
-               children: [
-                 Nodata(
-                   response: damagedMaterialListSkController
-                       .DamagedMaterialListSkEntity.value.response
-                       .toString(),
+             else if( damagedMaterialListSkController.DamagedMaterialListSkEntity.value.response=='null'){
+               return Center(
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   crossAxisAlignment: CrossAxisAlignment.center,
+                   children: [
+                     HeadingText(
+                         text:'Please Wait...')                  ],
                  ),
-                 ElevatedButton(
-                     onPressed: () async {
-                       damagedMaterialListSkController.getDamageList();
-                     },
-                     child: Text('Retry'))
-               ],
+               );
+             }
+
+           } else {
+             return Center(
+               child: Column(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 crossAxisAlignment: CrossAxisAlignment.center,
+                 children: [
+                   Nodata(response: 'No Data'),
+                   RetryButton(onTap: () {
+                     print('ass');
+                     damagedMaterialListSkController.checkNetworkStatus();
+                     damagedMaterialListSkController.getDamageList();
+                   })
+                 ],
+               ),
              );
            }
          }
        } else if (damagedMaterialListSkController.loadingBool.value == true) {
          return Center(
            child: Column(
-             children: [HeadingText(text: 'Loading..')],
+             mainAxisAlignment: MainAxisAlignment.center,
+             crossAxisAlignment: CrossAxisAlignment.center,
+             children: [
+               CircularProgressIndicator(
+                 color: ColorConstants.appThemeColorRed,
+               ),
+               HeadingText(text: 'Loading..'),
+             ],
            ),
          );
        }
@@ -294,16 +315,12 @@ class DamageMaterialList extends StatelessWidget {
            mainAxisAlignment: MainAxisAlignment.center,
            crossAxisAlignment: CrossAxisAlignment.center,
            children: [
-             Container(
-               child: HeadingText(
-                 text: 'No Internet Connection',
-               ),
-             ),
-             ElevatedButton(
-                 onPressed: () async {
-                   damagedMaterialListSkController.getDamageList();
-                 },
-                 child: Text('Retry'))
+             Nodata(response: 'No Internet Connection'),
+             RetryButton(onTap: () {
+               print('ass');
+               damagedMaterialListSkController.checkNetworkStatus();
+               damagedMaterialListSkController.getDamageList();
+             })
            ],
          ),
        );

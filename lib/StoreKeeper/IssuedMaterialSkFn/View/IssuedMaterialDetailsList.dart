@@ -4,11 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/NormalTextGreen.dart';
 
+import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/BoldText.dart';
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
 import '../../../CustomWidget/Nodata.dart';
+import '../../../CustomWidget/RetryButton.dart';
 import '../Controller/ViewIssuedMaterialDetailsView.dart';
 import 'AddIssuedMaterialDeatils.dart';
 import 'EditIssuedMaterialDetailsSdk.dart';
@@ -303,27 +305,46 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                 ],
               );
             }
-          } else {
-            return Column(
-              children: [
-                Nodata(
-                  response: issuedMaterialSdkListController
-                      .IssuedMaterialListEntity.value.response
-                      .toString(),
+            else if( issuedMaterialSdkListController.IssuedMaterialListEntity.value.response=='null'){
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    HeadingText(
+                        text:'Please Wait...')                  ],
                 ),
-                ElevatedButton(
-                    onPressed: () async {
-                      issuedMaterialSdkListController.getMaterialList();
-                    },
-                    child: Text('Retry'))
-              ],
+              );
+            }
+
+          } else {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Nodata(response: 'No Data'),
+                  RetryButton(onTap: () {
+                    print('ass');
+                    issuedMaterialSdkListController.checkNetworkStatus();
+                    issuedMaterialSdkListController.getMaterialList();
+                  })
+                ],
+              ),
             );
           }
         }
       } else if (issuedMaterialSdkListController.loadingBool.value == true) {
         return Center(
           child: Column(
-            children: [HeadingText(text: 'Loading..')],
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(
+                color: ColorConstants.appThemeColorRed,
+              ),
+              HeadingText(text: 'Loading..'),
+            ],
           ),
         );
       }
@@ -333,16 +354,12 @@ class IssuedMaterialDetailsList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              child: HeadingText(
-                text: 'No Internet Connection',
-              ),
-            ),
-            ElevatedButton(
-                onPressed: () async {
-                  issuedMaterialSdkListController.getMaterialList();
-                },
-                child: Text('Retry'))
+            Nodata(response: 'No Internet Connection'),
+            RetryButton(onTap: () {
+              print('ass');
+              issuedMaterialSdkListController.checkNetworkStatus();
+              issuedMaterialSdkListController.getMaterialList();
+            })
           ],
         ),
       );

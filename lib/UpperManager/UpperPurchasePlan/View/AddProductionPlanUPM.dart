@@ -23,8 +23,7 @@ class AddProductionPlanUPM extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final NoteEditingController = TextEditingController();
-    String? ChooseCompanyName;
-    List CompanyList = ['Codsair', 'infosys', 'Wipro'];
+
 
     return WillPopScope(
       onWillPop: ()async{
@@ -204,6 +203,7 @@ class AddProductionPlanUPM extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
+              _controller.networkStatus();
               if(_controller.companyIdSelected==''){
                 CustomSnackbar().InfoSnackBar('AddOrder', 'Select Company');
               }
@@ -640,6 +640,7 @@ class AddProductionPlanUPM extends StatelessWidget {
                                         width: double.infinity,
                                         child: ElevatedButton(
                                           onPressed: () async {
+                                            _controller.networkStatus();
                                             _controller.producctList!.value.removeAt(index);
                                             _controller.producctListShow!.value.removeAt(index);
                                             _controller.producctList!.refresh();

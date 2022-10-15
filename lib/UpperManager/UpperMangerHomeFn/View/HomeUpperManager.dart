@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
@@ -9,6 +10,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Vie
 
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/SubHeading.dart';
+import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../UpperPurchaseCount/View/UpperCountStatus0UPM.dart';
 import '../../UpperPurchaseHistory/View/UpperHistoryUPM.dart';
@@ -24,301 +26,394 @@ class HomeUpperManager extends StatelessWidget {
   HomeUpperManager({Key? key, required this.uid}) : super(key: key);
 
   late final _umHomeController = Get.put(UmHomeController(uid: uid));
+  DateTime? currentBackPressTime;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Color(0xFFFA6367),
-                Color(0xFFC71317),
-              ]),
-        ),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            // title: Text(
-            //   "Select Date",
-            //   style: TextStyle(color: Colors.white),
-            // ),
-          ),
-          drawer: Drawer(
-            child: ListView(
-              children: [
-                DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Color(0xFFC71317),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Image(
-                          image: AssetImage(
-                        "Assets/HomePageIcons/Group 51.png",
-                      )),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Obx(()=>Text(
-                        _umHomeController.usename.toString(),
-                        style: TextStyle(color: Colors.white),
-                      ),),
-                      SizedBox(
-                        height: .5.h,
-                      ),
-                      Obx(()=>Text(
-                        _umHomeController.userEmail.toString(),
-                        style: TextStyle(color: Colors.white),
-                      )),
-                    ],
-                  ),
-                ),
-                _drawerList()
-              ],
+    return WillPopScope(
+      onWillPop: () {
+        DateTime now = DateTime.now();
+        if (currentBackPressTime == null ||
+            now.difference(currentBackPressTime!) > Duration(seconds: 2)) {
+          currentBackPressTime = now;
+          CustomSnackbar().InfoSnackBar('Exit', 'Press Back Again To Exit');
+          return Future.value(false);
+        }
+        SystemNavigator.pop();
+        return Future.value(true);
+      },
+      
+      child: RefreshIndicator(
+        color: ColorConstants.appThemeColorRed,
+        onRefresh: ()async{
+          _umHomeController.checkNetworkStatus();
+          _umHomeController.getUpperOrder();
+        },
+        child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color(0xFFFA6367),
+                    Color(0xFFC71317),
+                  ]),
             ),
-          ),
-          body: Obx(
-            () => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 5.h, 0.h),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Hello There..!",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                // title: Text(
+                //   "Select Date",
+                //   style: TextStyle(color: Colors.white),
+                // ),
+              ),
+              drawer: Drawer(
+                child: ListView(
+                  children: [
+                    DrawerHeader(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFC71317),
                       ),
-                      Spacer(),
-                      InkWell(
-                        onTap: () {
-                          // Get.to(DisProfileScreen(uid:_loginByStatusController
-                          //     .loginByStatusEntity.value
-                          //     .loginlist![0].distributorid
-                          //     .toString(), id: id.toString(), logid: uid.toString(),
-                          Get.to(ProfileUm(
-                            upperamanagerid: _umHomeController
-                                .loginByStatusEntity
-                                .value
-                                .loginlist![0]
-                                .uppermanagerid
-                                .toString(),
-                            uid: uid.toString(),
-                          ));
-                        },
-                        child: Image(
-                            image: AssetImage(
-                              "Assets/HomePageIcons/Group 51.png",
-                            )),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 3.h,
+                          ),
+                          Image(
+                              image: AssetImage(
+                            "Assets/HomePageIcons/Group 51.png",
+                          )),
+                          SizedBox(
+                            height: 2.h,
+                          ),
+                          Obx(()=>Text(
+                            _umHomeController.usename.toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),),
+                          SizedBox(
+                            height: .5.h,
+                          ),
+                          Obx(()=>Text(
+                            _umHomeController.userEmail.toString(),
+                            style: TextStyle(color: Colors.white),
+                          )),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 0.h, 1.5.h),
-                  child: Text(
-                    "Upper Manager",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40)),
-                      color: const Color(0xFFF7FBFC),
                     ),
-                    child: Container(
-                      child: RefreshIndicator(
-                        onRefresh: ()async{
-                          _umHomeController.getLoginByStatus();
-                        },
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              Row(
+                    _drawerList()
+                  ],
+                ),
+              ),
+              body: Obx(
+                () => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 5.h, 0.h),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Hello There..!",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          Spacer(),
+                          InkWell(
+                            onTap: () {
+                              // Get.to(DisProfileScreen(uid:_loginByStatusController
+                              //     .loginByStatusEntity.value
+                              //     .loginlist![0].distributorid
+                              //     .toString(), id: id.toString(), logid: uid.toString(),
+                              Get.to(ProfileUm(
+                                upperamanagerid: _umHomeController
+                                    .loginByStatusEntity
+                                    .value
+                                    .loginlist![0]
+                                    .uppermanagerid
+                                    .toString(),
+                                uid: uid.toString(),
+                              ));
+                            },
+                            child: Image(
+                                image: AssetImage(
+                                  "Assets/HomePageIcons/Group 51.png",
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 0.h, 1.5.h),
+                      child: Text(
+                        "Upper Manager",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40)),
+                          color: const Color(0xFFF7FBFC),
+                        ),
+                        child: Container(
+                          child: RefreshIndicator(
+                            onRefresh: ()async{
+                              _umHomeController.getLoginByStatus();
+                            },
+                            child: SingleChildScrollView(
+                              child: Column(
                                 children: [
-                                  SizedBox(height: 1.h),
-                                  Expanded(
-                                    flex: 1,
-                                    child: InkWell(
-                                      onTap: () async {
-                                        // Get.to(UpperPurchaseOrderUPM());
-                                        Get.to(AddProductionPlanUPM(
-                                          upmId: _umHomeController
-                                              .loginByStatusEntity
-                                              .value
-                                              .loginlist![0]
-                                              .uppermanagerid
-                                              .toString(),
-                                        ));
-                                      },
-                                      child: Container(
-                                        height: 16.5.h,
-                                        child: ClipPath(
-                                          child: Card(
-                                            elevation: 2,
-                                            shape: Border(
-                                              left: BorderSide(
-                                                  color: Color(0xFFFA6367),
-                                                  width: 1.7.w),
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      2.h, 1.h, 0.h, 0.h),
-                                                  alignment: Alignment.topLeft,
-                                                  height: 8.h,
-                                                  width: 8.h,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: AssetImage(
-                                                          "Assets/HomePageIcons/Group 33.png"),
-                                                    ),
-                                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(height: 1.h),
+                                      Expanded(
+                                        flex: 1,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            // Get.to(UpperPurchaseOrderUPM());
+                                            Get.to(AddProductionPlanUPM(
+                                              upmId: _umHomeController
+                                                  .loginByStatusEntity
+                                                  .value
+                                                  .loginlist![0]
+                                                  .uppermanagerid
+                                                  .toString(),
+                                            ));
+                                          },
+                                          child: Container(
+                                            height: 16.5.h,
+                                            child: ClipPath(
+                                              child: Card(
+                                                elevation: 2,
+                                                shape: Border(
+                                                  left: BorderSide(
+                                                      color: Color(0xFFFA6367),
+                                                      width: 1.7.w),
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      2.5.h, 0.7.h, 0.h, 0.h),
-                                                  child: Text(
-                                                    "Add Upper\nPurchase Order",
-                                                    style: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w500),
-                                                  ),
-                                                )
-                                              ],
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.fromLTRB(
+                                                          2.h, 1.h, 0.h, 0.h),
+                                                      alignment: Alignment.topLeft,
+                                                      height: 8.h,
+                                                      width: 8.h,
+                                                      decoration: BoxDecoration(
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "Assets/HomePageIcons/Group 33.png"),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.fromLTRB(
+                                                          2.5.h, 0.7.h, 0.h, 0.h),
+                                                      child: Text(
+                                                        "Add Upper\nPurchase Order",
+                                                        style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                            FontWeight.w500),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              clipper: ShapeBorderClipper(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(20))),
                                             ),
                                           ),
-                                          clipper: ShapeBorderClipper(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(20))),
                                         ),
                                       ),
-                                    ),
+                                      SizedBox(
+                                        height: 1.h,
+                                        width: 2.h,
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: InkWell(
+                                          onTap: () {
+                                            Get.to(UpperPurchaseOrderUPM(
+                                              upmId: _umHomeController
+                                                  .loginByStatusEntity
+                                                  .value
+                                                  .loginlist![0]
+                                                  .uppermanagerid
+                                                  .toString(),
+                                            ));
+                                          },
+                                          child: Container(
+                                            height: 16.5.h,
+                                            child: ClipPath(
+                                              child: Card(
+                                                elevation: 2,
+                                                shape: Border(
+                                                  left: BorderSide(
+                                                      color: Color(0xFF7A70E9),
+                                                      width: 1.7.w),
+                                                ),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.fromLTRB(
+                                                          2.h, 1.h, 0.h, 0.h),
+                                                      alignment: Alignment.topLeft,
+                                                      height: 8.h,
+                                                      width: 8.h,
+                                                      decoration: BoxDecoration(
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "Assets/HomePageIcons/Group 50.png"),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.fromLTRB(
+                                                          2.5.h, 0.7.h, 0.h, 0.h),
+                                                      child: Text(
+                                                        "View Upper\nPurchase Order",
+                                                        style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                            FontWeight.w500),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              clipper: ShapeBorderClipper(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(20))),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
                                   ),
                                   SizedBox(
-                                    height: 1.h,
-                                    width: 2.h,
+                                    height: 3.h,
                                   ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Get.to(UpperPurchaseOrderUPM(
-                                          upmId: _umHomeController
-                                              .loginByStatusEntity
-                                              .value
-                                              .loginlist![0]
-                                              .uppermanagerid
-                                              .toString(),
-                                        ));
-                                      },
-                                      child: Container(
-                                        height: 16.5.h,
-                                        child: ClipPath(
-                                          child: Card(
-                                            elevation: 2,
-                                            shape: Border(
-                                              left: BorderSide(
-                                                  color: Color(0xFF7A70E9),
-                                                  width: 1.7.w),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                        EdgeInsets.fromLTRB(0.h, 1.h, 2.h, 2.h),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Latest Upper Purchase Order",
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.w500),
                                             ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      2.h, 1.h, 0.h, 0.h),
-                                                  alignment: Alignment.topLeft,
-                                                  height: 8.h,
-                                                  width: 8.h,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: AssetImage(
-                                                          "Assets/HomePageIcons/Group 50.png"),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      2.5.h, 0.7.h, 0.h, 0.h),
-                                                  child: Text(
-                                                    "View Upper\nPurchase Order",
+                                            InkWell(
+                                              onTap: () {
+                                                Get.to(UpperPurchaseOrderUPM(
+                                                  upmId: _umHomeController
+                                                      .loginByStatusEntity
+                                                      .value
+                                                      .loginlist![0]
+                                                      .uppermanagerid
+                                                      .toString(),
+                                                ));
+                                              },
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "View all",
                                                     style: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w500),
+                                                        fontSize: 15,
+                                                        fontWeight: FontWeight.w500),
                                                   ),
-                                                )
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          clipper: ShapeBorderClipper(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(20))),
+                                          ],
                                         ),
                                       ),
-                                    ),
+                                      // Padding(
+                                      //   padding:
+                                      //   EdgeInsets.fromLTRB(0.h, 1.h, 0.h, 2.h),
+                                      //   child: Text(
+                                      //     "Latest Upper Purchase Order",
+                                      //     style: TextStyle(
+                                      //         fontSize: 14.sp,
+                                      //         fontWeight: FontWeight.w500),
+                                      //   ),
+                                      // ),
+                                      _orderList(),
+                                      Text(_umHomeController.txt.value.toString()),
+                                      // SizedBox(height:2.h ,),
+                                    ],
                                   )
                                 ],
                               ),
-                              SizedBox(
-                                height: 3.h,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding:
-                                    EdgeInsets.fromLTRB(0.h, 1.h, 0.h, 2.h),
-                                    child: Text(
-                                      "Latest Upper Purchase Order",
-                                      style: TextStyle(
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                  _orderList(),
-                                  Text(_umHomeController.txt.value.toString()),
-                                  // SizedBox(height:2.h ,),
-                                ],
-                              )
-                            ],
+                            ),
                           ),
                         ),
                       ),
+                    )
+                  ],
+                ),
+              ),
+                floatingActionButton: Padding(
+                  padding:EdgeInsets.only(bottom: 1.h,right: 3.h),
+                  child: Wrap(direction: Axis.vertical, children: [
+                    FloatingActionButton(
+                      backgroundColor: ColorConstants.appThemeColorRed,
+                      heroTag: 'btn1',
+                      child: Icon(
+                        Icons.refresh,
+                        color: Colors.white,
+                      ),
+                      onPressed: () async {
+                        _umHomeController.checkNetworkStatus();
+                        _umHomeController.getLoginByStatus();
+                      },
                     ),
-                  ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    // FloatingActionButton(
+                    //   backgroundColor: ColorConstants.appThemeColorBlue,
+                    //   heroTag: 'bt2',
+                    //   child: Icon(
+                    //     Icons.my_location,
+                    //     color: Colors.white,
+                    //   ),
+                    //   onPressed: () async {
+                    //     // moveToCurrentLocation();
+                    //   },
+                    // ),
+                  ]),
                 )
-              ],
-            ),
-          ),
-        ));
+
+            )),
+      ),
+    );
+
   }
 
   _orderList() {
@@ -377,7 +472,7 @@ class HomeUpperManager extends StatelessWidget {
                              crossAxisAlignment: CrossAxisAlignment.start,
                              children: [
                                Text(_umHomeController.orderNoEntity.value
-                                   .purchaseplanlist![index].orderno
+                                   .purchaseplanlist![index].companyname
                                    .toString()),
                                SizedBox(
                                  height: 1.h,

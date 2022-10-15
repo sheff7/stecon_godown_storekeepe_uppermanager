@@ -29,26 +29,7 @@ class CreatePlanUPM extends StatelessWidget {
 
 
 
-//   @override
-//   _CreatePlanUPMState createState() => _CreatePlanUPMState();
-// }
-//
-// class _CreatePlanUPMState extends State<CreatePlanUPM> {
-  String? ChooseArtNumber;
-  List ArtBumberList = [
-    '2115-BROWN-GENTS',
-    '3115-BROWN-GENTS',
-    '4115-BROWN-GENTS'
-  ];
 
-  String? ChooseCategory;
-  List CategoryrList = ['GENTS', 'LADIES', 'KIDS'];
-
-  String? ChooseColor;
-  List ColorList = ['Brown', 'Grey', 'Black'];
-
-  String? ChooseSize;
-  List SizeList = ['1', '2', '3'];
   DateTime date = DateTime(2022, 12, 24);
   final NoteController = TextEditingController();
 

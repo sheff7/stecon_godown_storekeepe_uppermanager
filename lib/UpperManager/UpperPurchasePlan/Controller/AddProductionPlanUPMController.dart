@@ -48,6 +48,9 @@ class AddProductionPlanUPMController extends GetxController{
         orderNo.value=orderNoEntity.value.upperorderno.toString();
       }
     }
+    else if(nBool== false){
+      CustomSnackbar().NoInernetSnackBar();
+    }
   }
   addPurchsePlan(List<Map<String, dynamic>> pList)async{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;

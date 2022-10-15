@@ -385,6 +385,7 @@ class MaterialReplaceddetailsList extends StatelessWidget {
             );
           }
         }
+
       } else if (materialReplacedListController.loadingBool.value == true) {
         return Center(
           child: Column(

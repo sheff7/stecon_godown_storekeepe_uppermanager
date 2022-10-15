@@ -77,6 +77,8 @@ class CreatePlanUPMController extends GetxController{
       if(upperPlanEntity.value.response=='Success'){
         upperPlanNo.value=upperPlanEntity.value.upperplanno.toString();
       }
+    }else if(nBool==false){
+      CustomSnackbar().NoInernetSnackBar();
     }
   }
 
