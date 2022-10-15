@@ -102,6 +102,7 @@ class EditIssuedMaterialDetailsSdk extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
+              materialOrderPurController.networkStatus();
               if(materialOrderPurController.departmentid.value==''){
                 CustomSnackbar().InfoSnackBar("Add Material Order", "select Department");
               }

@@ -108,6 +108,7 @@ class EditMaterialRepalcedDetails extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
+              materialReplacedOrder.networkStatus();
               if (materialReplacedOrder.departmentid.value ==
                   '') {
                 CustomSnackbar()

@@ -99,6 +99,9 @@ class EditMaterialOrderPurController extends GetxController {
       }
       print("Heaven"+loadingBool.value.toString());
     }
+    else if(nBool==false){
+      CustomSnackbar().NoInernetSnackBar();
+    }
   }
 
 

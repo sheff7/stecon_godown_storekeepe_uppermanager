@@ -93,6 +93,9 @@ class AddMaterialOrderPurController extends GetxController {
         }
       }
     }
+    else if(nBool==false){
+      CustomSnackbar().NoInernetSnackBar();
+    }
   }
 
   void departmentType(String value) {

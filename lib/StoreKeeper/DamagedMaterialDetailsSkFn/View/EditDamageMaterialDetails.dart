@@ -111,6 +111,7 @@ class EditDamagedMaterialDetails extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
+              materialReplacedOrder.networkStatus();
               // if (materialReplacedOrder.issuedisselected.value == '') {
               //   CustomSnackbar()
               //       .InfoSnackBar("Add Material Order", "select Issue No.");
@@ -143,7 +144,7 @@ class EditDamagedMaterialDetails extends StatelessWidget {
                     materialReplacedOrder.commentController.text);
             },
             child: Text(
-              "Submit",
+              "Update",
               style: TextStyle(color: Colors.white, fontSize: 14),
             ),
             style: ElevatedButton.styleFrom(

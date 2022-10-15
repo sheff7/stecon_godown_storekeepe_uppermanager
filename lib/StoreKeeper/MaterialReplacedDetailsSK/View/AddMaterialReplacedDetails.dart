@@ -104,6 +104,7 @@ class AddMaterialRepalcedDetails extends StatelessWidget {
           height: 6.h,
           child: ElevatedButton(
             onPressed: () {
+              materialReplacedOrder.networkStatus();
               if (materialReplacedOrder.issuedisselected.value == '') {
                 CustomSnackbar()
                     .InfoSnackBar("Add Material Order", "select Issue no.");

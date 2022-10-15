@@ -94,6 +94,9 @@ class AddDamagedMaterialControllerSk extends GetxController {
         }
       }
     }
+    else if(nBool==false){
+      CustomSnackbar().NoInernetSnackBar();
+    }
   }
   void replaceType(String value) {
     replaceIdIsselected.value = value;
@@ -141,6 +144,9 @@ class AddDamagedMaterialControllerSk extends GetxController {
               IssuedMaterialListEntity.value.response.toString());
         }
       }
+    }
+    else if(nBool==false){
+      CustomSnackbar().NoInernetSnackBar();
     }
   }
 

@@ -86,6 +86,9 @@ class AddMaterialReplacedDetailsControllerSk extends GetxController {
         }
       }
     }
+    else if(nBool==false){
+      CustomSnackbar().NoInernetSnackBar();
+    }
   }
 
   void issueType(String value) {
