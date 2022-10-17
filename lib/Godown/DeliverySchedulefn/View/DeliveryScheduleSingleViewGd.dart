@@ -771,11 +771,16 @@ class DeliverySchedule1GD extends StatelessWidget {
                                 .deliveryScheduleSingleViewGdEntity
                                 .value
                                 .deliveryschedule![index]
-                                .box = boxController.text.toString();
+                                .deliverybox = boxController.text.toString();
                             _controller
                                 .deliveryScheduleSingleViewGdEntity
                                 .refresh();
                             Get.back();
+                            print(_controller
+                                .deliveryScheduleSingleViewGdEntity
+                                .value
+                                .deliveryschedule![index]
+                                .deliverybox.toString() );
                           }
                           else {
                             CustomSnackbar().InfoSnackBar("Wrong..!", "Entered Value must be equal to or less than Box no.");
