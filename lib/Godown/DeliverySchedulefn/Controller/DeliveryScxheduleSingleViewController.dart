@@ -82,6 +82,7 @@ class DeliveryScheduleSingleViewController extends GetxController{
               "distributorid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].distributorid.toString(),
               "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid.toString(),
               "deliveredboxcount":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox.toString(),
+              "deliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].box.toString(),
             };
             producctList!.add(json);
           }
