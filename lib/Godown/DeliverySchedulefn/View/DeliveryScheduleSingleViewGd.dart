@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/BoldText.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomBox1.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Controller/DeliveryScxheduleSingleViewController.dart';
 
 import '../../../CustomFont/Header.dart';
@@ -18,8 +19,9 @@ class DeliverySchedule1GD extends StatelessWidget {
 
   DeliverySchedule1GD({Key? key, required this.id}) : super(key: key);
 
-  late final _deliveryScheduleSingleViewController =
+  late final _controller =
       Get.put(DeliveryScheduleSingleViewController(id: id));
+
   // final size1controller = TextEditingController();
   // final size2controller = TextEditingController();
   // final size3controller = TextEditingController();
@@ -62,7 +64,7 @@ class DeliverySchedule1GD extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           onPressed: () {
-            _deliveryScheduleSingleViewController.updateOrder();
+            _controller.updateOrder();
           },
           child: Text('Update'),
           style: ElevatedButton.styleFrom(
@@ -74,9 +76,9 @@ class DeliverySchedule1GD extends StatelessWidget {
   }
 
   _body() {
-    if (_deliveryScheduleSingleViewController.networkStatus.value == true) {
-      if (_deliveryScheduleSingleViewController.loadingBool.value == false) {
-        if (_deliveryScheduleSingleViewController
+    if (_controller.networkStatus.value == true) {
+      if (_controller.loadingBool.value == false) {
+        if (_controller
                 .deliveryScheduleSingleViewGdEntity.value ==
             null) {
           return Center(
@@ -91,20 +93,20 @@ class DeliverySchedule1GD extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () async {
-                      _deliveryScheduleSingleViewController
+                      _controller
                           .getDeliverySchedule();
                     },
                     child: Text('Retry'))
               ],
             ),
           );
-        } else if (_deliveryScheduleSingleViewController
+        } else if (_controller
                 .deliveryScheduleSingleViewGdEntity.value !=
             null) {
-          if (_deliveryScheduleSingleViewController
+          if (_controller
                   .deliveryScheduleSingleViewGdEntity.value.response ==
               "success") {
-            if (_deliveryScheduleSingleViewController
+            if (_controller
                     .deliveryScheduleSingleViewGdEntity
                     .value
                     .deliveryschedule!
@@ -123,7 +125,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                   ],
                 ),
               );
-            } else if (_deliveryScheduleSingleViewController
+            } else if (_controller
                     .deliveryScheduleSingleViewGdEntity
                     .value
                     .deliveryschedule!
@@ -155,7 +157,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                     children: [
                                       NormalText(text: "Distributor :"),
                                       BoldText(
-                                          text: _deliveryScheduleSingleViewController
+                                          text: _controller
                                               .deliveryScheduleSingleViewGdEntity
                                               .value
                                               .deliveryschedule![0]
@@ -171,7 +173,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          _deliveryScheduleSingleViewController
+                                          _controller
                                               .deliveryScheduleSingleViewGdEntity
                                               .value
                                               .deliveryschedule![0]
@@ -210,7 +212,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                         child: ListView.separated(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
-                          itemCount: _deliveryScheduleSingleViewController
+                          itemCount: _controller
                               .deliveryScheduleSingleViewGdEntity
                               .value
                               .deliveryschedule!
@@ -232,7 +234,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                             final size12controller = TextEditingController();
                             final size13controller = TextEditingController();
                             size7controller.text =
-                                _deliveryScheduleSingleViewController
+                                _controller
                                     .deliveryScheduleSingleViewGdEntity
                                     .value
                                     .deliveryschedule![index]
@@ -264,7 +266,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                               padding:
                                                   EdgeInsets.only(top: 1.5.h),
                                               child: Text(
-                                                _deliveryScheduleSingleViewController
+                                                _controller
                                                     .deliveryScheduleSingleViewGdEntity
                                                     .value
                                                     .deliveryschedule![index]
@@ -280,7 +282,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                               height: 1.h,
                                             ),
                                             NormalText(
-                                                text: _deliveryScheduleSingleViewController
+                                                text: _controller
                                                         .deliveryScheduleSingleViewGdEntity
                                                         .value
                                                         .deliveryschedule![
@@ -288,7 +290,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                         .colorname
                                                         .toString() +
                                                     ", " +
-                                                    _deliveryScheduleSingleViewController
+                                                    _controller
                                                         .deliveryScheduleSingleViewGdEntity
                                                         .value
                                                         .deliveryschedule![
@@ -310,110 +312,171 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                   0.h, 0.h, 0.h, 0.h),
                                               child: Container(
                                                 color: Colors.white,
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0.h, 0.h, 2.h, 0.h),
+                                                margin: EdgeInsets.fromLTRB(2.h, 2.h, 2.h, 0.h),
                                                 child: Column(children: [
                                                   Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsets.fromLTRB(
-                                                                2.h,
-                                                                0.h,
-                                                                0.h,
-                                                                0.h),
-                                                        child: SubHeadingText(
-                                                            text:
-                                                                "Size Details"),
+                                                        EdgeInsets.fromLTRB(0.h, 0.h, 0.h, 0.h),
+                                                        child: SubHeadingText(text: "Size Details"),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 2.h,
                                                       ),
                                                       Row(
                                                         children: [
-                                                          CustomBox(
+                                                          Expanded(
+                                                            child: CustomBox1(
                                                               controller:
-                                                                  _deliveryScheduleSingleViewController
-                                                                      .size1controller,
-                                                              label: "Size-1"),
-                                                          CustomBox(
+                                                              _controller
+                                                                  .size1controller,
+                                                              label: "Size-1",
+                                                              Enabled:
+                                                              _controller
+                                                                  .enable1.value,
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: CustomBox1(
                                                               controller:
-                                                                  _deliveryScheduleSingleViewController
-                                                                      .size2controller,
-                                                              label: "Size-2"),
-                                                          CustomBox(
+                                                              _controller
+                                                                  .size2controller,
+                                                              label: "Size-2",
+                                                              Enabled:
+                                                              _controller
+                                                                  .enable2.value,
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: CustomBox1(
                                                               controller:
-                                                                  _deliveryScheduleSingleViewController
-                                                                      .size3controller,
-                                                              label: "Size-3")
+                                                              _controller
+                                                                  .size3controller,
+                                                              label: "Size-3",
+                                                              Enabled:
+                                                              _controller
+                                                                  .enable3.value,
+                                                            ),
+                                                          )
                                                         ],
                                                       ),
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                              _deliveryScheduleSingleViewController
-                                                                  .size4controller,
-                                                          label: "Size-4"),
-                                                      CustomBox(
+                                                          _controller
+                                                              .size4controller,
+                                                          label: "Size-4",
+                                                          Enabled: _controller
+                                                              .enable4.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                              _deliveryScheduleSingleViewController
-                                                                  .size5controller,
-                                                          label: "Size-5"),
-                                                      CustomBox(
+                                                          _controller
+                                                              .size5controller,
+                                                          label: "Size-5",
+                                                          Enabled: _controller
+                                                              .enable5.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                              _deliveryScheduleSingleViewController
-                                                                  .size6controller,
-                                                          label: "Size-6")
+                                                          _controller
+                                                              .size6controller,
+                                                          label: "Size-6",
+                                                          Enabled: _controller
+                                                              .enable6.value,
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                          _deliveryScheduleSingleViewController
+                                                          _controller
                                                               .size7controller,
-                                                          label: "Size-7"),
-                                                      CustomBox(
+                                                          label: "Size-7",
+                                                          Enabled: _controller
+                                                              .enable7.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                          _deliveryScheduleSingleViewController
+                                                          _controller
                                                               .size8controller,
-                                                          label: "Size-8"),
-                                                      CustomBox(
+                                                          label: "Size-8",
+                                                          Enabled: _controller
+                                                              .enable8.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                          _deliveryScheduleSingleViewController
+                                                          _controller
                                                               .size9controller,
-                                                          label: "Size-9")
+                                                          label: "Size-9",
+                                                          Enabled: _controller
+                                                              .enable9.value,
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                              _deliveryScheduleSingleViewController
-                                                                  .size10controller,
-                                                          label: "Size-10"),
-                                                      CustomBox(
+                                                          _controller
+                                                              .size10controller,
+                                                          label: "Size-10",
+                                                          Enabled: _controller
+                                                              .enable10.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                              _deliveryScheduleSingleViewController
-                                                                  .size11controller,
-                                                          label: "Size-11"),
-                                                      CustomBox(
+                                                          _controller
+                                                              .size11controller,
+                                                          label: "Size-11",
+                                                          Enabled: _controller
+                                                              .enable11.value,
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: CustomBox1(
                                                           controller:
-                                                              _deliveryScheduleSingleViewController
-                                                                  .size12controller,
-                                                          label: "Size-12")
+                                                          _controller
+                                                              .size12controller,
+                                                          label: "Size-12",
+                                                          Enabled: _controller
+                                                              .enable12.value,
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      CustomBox(
-                                                          controller:
-                                                              _deliveryScheduleSingleViewController
-                                                                  .size13controller,
-                                                          label: "Size-13"),
+                                                      Expanded(
+                                                        child: CustomBox1(
+                                                          controller: _controller
+                                                              .size13controller,
+                                                          label: "Size-13",
+                                                          Enabled: _controller
+                                                              .enable13.value,
+                                                        ),
+                                                      ),
                                                       Expanded(
                                                         flex: 1,
                                                         child: Container(),
@@ -431,25 +494,31 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                         child: Container(
                                                           padding: EdgeInsets
                                                               .symmetric(
-                                                                  horizontal:
-                                                                      3.h,
-                                                                  vertical:
-                                                                      3.h),
+                                                              horizontal:
+                                                              3.h,
+                                                              vertical:
+                                                              3.h),
                                                           color: Colors.white,
                                                           child: Column(
                                                             crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                             children: [
                                                               NormalText(
                                                                   text:
-                                                                      'Box : '),
+                                                                  'Box : '),
                                                               SizedBox(
                                                                 height: 2.h,
                                                               ),
                                                               NormalText(
                                                                   text:
-                                                                      'Box Count : '),
+                                                                  'Total Pair : '),
+                                                              SizedBox(
+                                                                height: 2.h,
+                                                              ),
+                                                              NormalText(
+                                                                  text:
+                                                                  'Delivery box : '),
                                                               SizedBox(
                                                                 height: 2.h,
                                                               ),
@@ -462,35 +531,47 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                         child: Container(
                                                           padding: EdgeInsets
                                                               .symmetric(
-                                                                  horizontal:
-                                                                      0.h,
-                                                                  vertical:
-                                                                      3.h),
+                                                              horizontal:
+                                                              0.h,
+                                                              vertical:
+                                                              3.h),
                                                           color: Colors.white,
                                                           child: Column(
                                                             crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                             children: [
                                                               BoldText(
-                                                                  text: _deliveryScheduleSingleViewController
+                                                                  text: _controller
                                                                       .deliveryScheduleSingleViewGdEntity
                                                                       .value
                                                                       .deliveryschedule![
-                                                                          index]
+                                                                  index]
                                                                       .box
                                                                       .toString()),
                                                               SizedBox(
                                                                 height: 2.h,
                                                               ),
                                                               BoldText(
-                                                                  text: _deliveryScheduleSingleViewController
+                                                                  text: _controller
                                                                       .deliveryScheduleSingleViewGdEntity
                                                                       .value
                                                                       .deliveryschedule![
-                                                                          index]
+                                                                  index]
                                                                       .pair
                                                                       .toString()),
+                                                              SizedBox(
+                                                                height: 2.h,
+                                                              ),
+
+// BoldText(
+//     text: _deliveryScheduleSingleViewController
+//         .deliveryScheduleSingleViewGdEntity
+//         .value
+//         .deliveryschedule![
+//     index]
+//         .
+//         .toString()),
                                                               SizedBox(
                                                                 height: 2.h,
                                                               ),
@@ -500,25 +581,37 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                       )
                                                     ],
                                                   ),
-                                                  Padding(padding: EdgeInsets.only(left: 2.8.h),child:
-                                                  Align(
-                                                    alignment: Alignment.centerLeft,
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        editDialog(context,index,_deliveryScheduleSingleViewController
-                                                            .deliveryScheduleSingleViewGdEntity
-                                                            .value
-                                                            .deliveryschedule![
-                                                        index]
-                                                            .box
-                                                            .toString());
-                                                      },
-                                                      child: BoldText(text: 'Edit',),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 2.8.h),
+                                                    child: Align(
+                                                      alignment:
+                                                      Alignment.centerLeft,
+                                                      child: InkWell(
+                                                        onTap: () {
+                                                          editDialog(
+                                                              context,
+                                                              index,
+                                                              _controller
+                                                                  .deliveryScheduleSingleViewGdEntity
+                                                                  .value
+                                                                  .deliveryschedule![
+                                                              index]
+                                                                  .box
+                                                                  .toString());
+                                                        },
+                                                        child: BoldText(
+                                                          text: 'Edit',
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),),
+                                                  ),
                                                   SizedBox(
                                                     height: 1.h,
                                                   ),
+                                                  // SizedBox(
+                                                  //   height: 4.h,
+                                                  // ),
                                                 ]),
                                               ),
                                             ),
@@ -546,6 +639,17 @@ class DeliverySchedule1GD extends StatelessWidget {
                 ],
               );
             }
+
+            else if (_controller
+                .deliveryScheduleSingleViewGdEntity.value.response == 'null') {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [HeadingText(text: 'Please Wait...')],
+                ),
+              );
+            }
           } else {
             return Center(
               child: Column(
@@ -554,14 +658,14 @@ class DeliverySchedule1GD extends StatelessWidget {
                 children: [
                   Container(
                     child: HeadingText(
-                      text: _deliveryScheduleSingleViewController
+                      text: _controller
                           .deliveryScheduleSingleViewGdEntity.value.response
                           .toString(),
                     ),
                   ),
                   ElevatedButton(
                       onPressed: () async {
-                        _deliveryScheduleSingleViewController
+                        _controller
                             .getDeliverySchedule();
                       },
                       child: Text('Retry'))
@@ -569,30 +673,31 @@ class DeliverySchedule1GD extends StatelessWidget {
               ),
             );
           }
-        } else {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  child: HeadingText(
-                    text: _deliveryScheduleSingleViewController
-                        .deliveryScheduleSingleViewGdEntity.value.response
-                        .toString(),
-                  ),
-                ),
-                ElevatedButton(
-                    onPressed: () async {
-                      _deliveryScheduleSingleViewController
-                          .getDeliverySchedule();
-                    },
-                    child: Text('Retry'))
-              ],
-            ),
-          );
         }
-      } else if (_deliveryScheduleSingleViewController.loadingBool.value ==
+          // else {
+        //   return Center(
+        //     child: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       crossAxisAlignment: CrossAxisAlignment.center,
+        //       children: [
+        //         Container(
+        //           child: HeadingText(
+        //             text: _deliveryScheduleSingleViewController
+        //                 .deliveryScheduleSingleViewGdEntity.value.response
+        //                 .toString(),
+        //           ),
+        //         ),
+        //         ElevatedButton(
+        //             onPressed: () async {
+        //               _deliveryScheduleSingleViewController
+        //                   .getDeliverySchedule();
+        //             },
+        //             child: Text('Retry'))
+        //       ],
+        //     ),
+        //   );
+        // }
+      } else if (_controller.loadingBool.value ==
           true) {
         return Center(
           child: Column(
@@ -600,7 +705,7 @@ class DeliverySchedule1GD extends StatelessWidget {
           ),
         );
       }
-    } else if (_deliveryScheduleSingleViewController!.networkStatus.value ==
+    } else if (_controller!.networkStatus.value ==
         false) {
       return Center(
         child: Column(
@@ -614,7 +719,7 @@ class DeliverySchedule1GD extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  _deliveryScheduleSingleViewController!.getDeliverySchedule();
+                  _controller!.getDeliverySchedule();
                 },
                 child: Text('Retry'))
           ],
@@ -622,84 +727,107 @@ class DeliverySchedule1GD extends StatelessWidget {
       );
     }
   }
-  Future<void>editDialog(BuildContext context,int index,String no)async{
-    final boxController=TextEditingController();
-    boxController.text=no;
+
+  Future<void> editDialog(BuildContext context, int index, String no) async {
+    final boxController = TextEditingController();
+    boxController.text = no;
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text(
-            'Update No Of Boxes',
-            style: TextStyle(fontSize: 15),
-            textAlign: TextAlign.center,
-          ),
-          content:CustomBox1(controller: boxController, Enabled: true, label: 'No Of Boxes',) ,
-          contentPadding: EdgeInsets.only(top: 2.h, left: 3.h, right: 3.h),
-          actionsAlignment: MainAxisAlignment.center,
-          // actionsPadding: EdgeInsets.only(bottom: 1.h),
-          actions: [
-           Padding(padding: EdgeInsets.only(left: 3.h,right: 3.h,bottom: 2.h),
-             child:  SizedBox(
-               width: double.infinity,
-               height: 5.h,
-               child: ElevatedButton(
-                 onPressed: () {
-                   if(boxController.text.isNotEmpty && boxController.text.toString()!='0'){
-                     _deliveryScheduleSingleViewController
-                         .deliveryScheduleSingleViewGdEntity
-                         .value
-                         .deliveryschedule![
-                     index]
-                         .box=boxController.text.toString();
-                     _deliveryScheduleSingleViewController.deliveryScheduleSingleViewGdEntity.refresh();
-                     Get.back();
-                   }
-
-                 },
-                 child: Text(
-                   "Okay",
-                   style: TextStyle(color: Colors.white, fontSize: 14),
-                 ),
-                 style: ElevatedButton.styleFrom(
-                     primary: const Color(0xFFEC4E52),
-                     textStyle:
-                     TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-               ),
-             ),),
-
-          ],
-        ));
+              title: Text(
+                'Update No Of Boxes',
+                style: TextStyle(fontSize: 15),
+                textAlign: TextAlign.center,
+              ),
+              content: CustomBox1(
+                controller: boxController,
+                Enabled: true,
+                label: 'No Of Boxes',
+              ),
+              contentPadding: EdgeInsets.only(top: 2.h, left: 3.h, right: 3.h),
+              actionsAlignment: MainAxisAlignment.center,
+              // actionsPadding: EdgeInsets.only(bottom: 1.h),
+              actions: [
+                Padding(
+                  padding: EdgeInsets.only(left: 3.h, right: 3.h, bottom: 2.h),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 5.h,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        var numberOne = int.parse(
+                            _controller
+                                .deliveryScheduleSingleViewGdEntity
+                                .value
+                                .deliveryschedule![index]
+                                .box
+                                .toString());
+                        var numberTwo =
+                            int.parse(boxController.text.toString());
+                        if (boxController.text.isNotEmpty &&
+                            boxController.text.toString() != '0') {
+                          if (numberTwo <= numberOne) {
+                            _controller
+                                .deliveryScheduleSingleViewGdEntity
+                                .value
+                                .deliveryschedule![index]
+                                .box = boxController.text.toString();
+                            _controller
+                                .deliveryScheduleSingleViewGdEntity
+                                .refresh();
+                            Get.back();
+                          }
+                          else {
+                            CustomSnackbar().InfoSnackBar("Wrong..!", "Entered Value must be equal to or less than Box no.");
+                          }
+                        } else {
+                          CustomSnackbar().InfoSnackBar("wrong...!", "Enter value>0");
+                        }
+                      },
+                      child: Text(
+                        "Okay",
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFFEC4E52),
+                          textStyle: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ),
+              ],
+            ));
   }
 
-  // Future openDialog(BuildContext context) =>
-  //     showDialog(
-  //     context: context,
-  //     builder: (context) => AlertDialog(
-  //           title: Text(
-  //             'Update No Of Boxes',
-  //             style: TextStyle(fontSize: 15),
-  //             textAlign: TextAlign.center,
-  //           ),
-  //           content:CustomBox1(controller: , Enabled: null, label: 'No Of Boxes',) ,
-  //           contentPadding: EdgeInsets.only(top: 4.h, left: 3.h, right: 3.h),
-  //           actionsAlignment: MainAxisAlignment.center,
-  //           // actionsPadding: EdgeInsets.only(bottom: 1.h),
-  //           actions: [
-  //             SizedBox(
-  //               width: double.infinity,
-  //               height: 5.h,
-  //               child: ElevatedButton(
-  //                 onPressed: () {},
-  //                 child: Text(
-  //                   "Continue with Order",
-  //                   style: TextStyle(color: Colors.white, fontSize: 14),
-  //                 ),
-  //                 style: ElevatedButton.styleFrom(
-  //                     primary: const Color(0xFFEC4E52),
-  //                     textStyle:
-  //                     TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-  //               ),
-  //             )
-  //           ],
-  //         ));
+// Future openDialog(BuildContext context) =>
+//     showDialog(
+//     context: context,
+//     builder: (context) => AlertDialog(
+//           title: Text(
+//             'Update No Of Boxes',
+//             style: TextStyle(fontSize: 15),
+//             textAlign: TextAlign.center,
+//           ),
+//           content:CustomBox1(controller: , Enabled: null, label: 'No Of Boxes',) ,
+//           contentPadding: EdgeInsets.only(top: 4.h, left: 3.h, right: 3.h),
+//           actionsAlignment: MainAxisAlignment.center,
+//           // actionsPadding: EdgeInsets.only(bottom: 1.h),
+//           actions: [
+//             SizedBox(
+//               width: double.infinity,
+//               height: 5.h,
+//               child: ElevatedButton(
+//                 onPressed: () {},
+//                 child: Text(
+//                   "Continue with Order",
+//                   style: TextStyle(color: Colors.white, fontSize: 14),
+//                 ),
+//                 style: ElevatedButton.styleFrom(
+//                     primary: const Color(0xFFEC4E52),
+//                     textStyle:
+//                     TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+//               ),
+//             )
+//           ],
+//         ));
 }

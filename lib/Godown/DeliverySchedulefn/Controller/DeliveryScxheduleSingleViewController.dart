@@ -31,6 +31,20 @@ class DeliveryScheduleSingleViewController extends GetxController{
   final size12controller = TextEditingController();
   final size13controller = TextEditingController();
   final BoxController = TextEditingController();
+  RxBool enable1 = false.obs;
+  RxBool enable2 = false.obs;
+  RxBool enable3 = false.obs;
+  RxBool enable4 = false.obs;
+  RxBool enable5 = false.obs;
+  RxBool enable6 = false.obs;
+  RxBool enable7 = false.obs;
+  RxBool enable8 = false.obs;
+  RxBool enable9 = false.obs;
+  RxBool enable10 = false.obs;
+  RxBool enable11 = false.obs;
+  RxBool enable12 = false.obs;
+  RxBool enable13 = false.obs;
+
 
   RxList<Map<String,dynamic>>? producctList=(List<Map<String,dynamic>>.of([])).obs;
   DeliveryScheduleSingleViewController({required this.id});
@@ -64,7 +78,7 @@ class DeliveryScheduleSingleViewController extends GetxController{
           for(int i=0;i<deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length;i++){
             Map<String, dynamic> json={
               "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].did.toString(),
-              "orderno":"",
+              "orderno":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderno.toString(),
               "distributorid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].distributorid.toString(),
               "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid.toString()
             };
