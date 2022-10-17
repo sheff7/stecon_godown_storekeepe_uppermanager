@@ -554,7 +554,7 @@ class HomeUpperManager extends StatelessWidget {
           menuItem(2, 'History', Icons.info),
           menuItem(3, 'Upper Purchase Count', Icons.info),
           menuItem(4, 'Orders', Icons.info),
-          menuItem(5, 'About us', Icons.info),
+          // menuItem(5, 'About us', Icons.info),
           menuItem(6, 'Logout', Icons.logout),
         ],
       ),

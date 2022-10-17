@@ -66,7 +66,7 @@ class EditMaterialRepalcedDetails extends StatelessWidget {
                     SizedBox(
                       height: 4.h,
                     ),
-                    CustomField(
+                    CustomFieldNonEditable(
                         controller: materialReplacedOrder.categoryController,
                         label: 'Category'),
                     SizedBox(
@@ -77,7 +77,7 @@ class EditMaterialRepalcedDetails extends StatelessWidget {
                     SizedBox(
                       height: 4.h,
                     ),
-                    CustomFieldNonEditable(
+                    CustomField(
                       controller: materialReplacedOrder.quantityController,
                       label: "Quantity",
                     ),

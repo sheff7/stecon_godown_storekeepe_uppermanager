@@ -367,6 +367,12 @@ class UpperPuchaseOrder1UPM extends StatelessWidget {
                                                                   SizedBox(
                                                                     height: 2.h,
                                                                   ),
+                                                                  NormalText(
+                                                                      text:
+                                                                      "Status From Office : "),
+                                                                  SizedBox(
+                                                                    height: 2.h,
+                                                                  ),
                                                                 ],
                                                               ),
                                                             ),
@@ -434,6 +440,18 @@ class UpperPuchaseOrder1UPM extends StatelessWidget {
                                                                             .purchaseproductlist![
                                                                         index]
                                                                             .totalpairs
+                                                                            .toString()),
+                                                                    SizedBox(
+                                                                      height: 2
+                                                                          .h,
+                                                                    ),
+                                                                    NormalText(
+                                                                        text: _controller
+                                                                            .orderNoEntity
+                                                                            .value
+                                                                            .purchaseproductlist![
+                                                                        index]
+                                                                            .status1
                                                                             .toString()),
                                                                     SizedBox(
                                                                       height: 2

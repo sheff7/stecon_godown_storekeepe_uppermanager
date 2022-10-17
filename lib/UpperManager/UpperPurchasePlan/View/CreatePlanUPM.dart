@@ -711,7 +711,7 @@ class CreatePlanUPM extends StatelessWidget {
         "s11": _controller.size11controller.text.toString(),
         "s12": _controller.size12controller.text.toString(),
         "s13": _controller.size13controller.text.toString(),
-        "totalpairs": _controller.TotalController.text.toString(),
+        "totalpairs": _controller.total.value.toString(),
         "status": "Pending",
         "note": NoteController.text.toString()
       };
@@ -741,7 +741,7 @@ class CreatePlanUPM extends StatelessWidget {
         "s11": _controller.size11controller.text.toString(),
         "s12": _controller.size12controller.text.toString(),
         "s13": _controller.size13controller.text.toString(),
-        "totalpairs": _controller.TotalController.text.toString(),
+        "totalpairs": _controller.total.value.toString(),
         "status": "Pending",
         "note": NoteController.text.toString()
       };

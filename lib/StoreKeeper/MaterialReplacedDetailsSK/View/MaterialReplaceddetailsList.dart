@@ -65,11 +65,7 @@ class MaterialReplaceddetailsList extends StatelessWidget {
             ],
           ),
           body: Obx(
-            () => RefreshIndicator(
-                onRefresh: () async {
-                  materialReplacedListController.getMaterialList();
-                },
-                child: _body()),
+            () => _body(),
           ),
         ),
       ),
