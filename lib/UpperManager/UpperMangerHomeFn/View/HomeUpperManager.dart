@@ -417,7 +417,8 @@ class HomeUpperManager extends StatelessWidget {
   }
 
   _orderList() {
-   if(_umHomeController.networkStatus.value==true){
+
+     if(_umHomeController.networkStatus.value==true){
      if (_umHomeController.loadingBool. value == true) {
        return Center(
          child: Column(

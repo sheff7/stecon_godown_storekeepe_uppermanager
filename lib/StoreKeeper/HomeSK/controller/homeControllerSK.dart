@@ -9,6 +9,8 @@ import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 
 import '../../../Utils/InternetConnectivity.dart';
+import '../../IssuedMaterialSkFn/Model/get_issued_material_list_entity.dart';
+import '../../IssuedMaterialSkFn/Repository/IssuedMaterialListServices.dart';
 import '../model/login_by_status_entity.dart';
 
 
@@ -25,6 +27,8 @@ class HomeControllerSk extends GetxController {
   RxString storekeepername=''.obs;
   RxString txt='..'.obs;
   RxString userEmail=''.obs;
+  Rx<GetIssuedMaterialListEntity> IssuedMaterialListEntity = GetIssuedMaterialListEntity().obs;
+
 
   HomeControllerSk({required this.uidSK});
 
@@ -41,10 +45,10 @@ class HomeControllerSk extends GetxController {
   getLoginByStatus() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
-      loadingBool.value = true;
+      CustomSnackbar().LoadingBottomSheet();
       loginByStatusEntity.value =
       (await LoginByStatusService().getLoginByStatus(uidSK))!;
-      loadingBool.value = false;
+      Get.back();
       print(loginByStatusEntity.value);
       print('gdhsdhgd' + loadingBool.value.toString());
       if (loginByStatusEntity.value.response == 'Success') {
@@ -94,6 +98,16 @@ class HomeControllerSk extends GetxController {
     }
 
   }
+  getMaterialList() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
+      loadingBool.value = true;
+      IssuedMaterialListEntity.value = (await IssuedMaterialListSdkServices().getMaterialList())!;
+
+      loadingBool.value= false;
+      print("shahhh"+loadingBool.value.toString());
+    }
+  }
 
   @override
   void onInit() {
@@ -102,6 +116,7 @@ class HomeControllerSk extends GetxController {
     getUserInfo();
     checkNetworkStatus();
     getLoginByStatus();
+    getMaterialList();
 
     super.onInit();
   }
