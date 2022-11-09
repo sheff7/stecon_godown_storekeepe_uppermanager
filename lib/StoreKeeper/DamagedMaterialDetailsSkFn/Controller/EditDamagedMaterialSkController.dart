@@ -48,6 +48,7 @@ class EditDamagedMaterialControllerSk extends GetxController {
   RxString issuedisselected = ''.obs;
   RxString issuedid = ''.obs;
 
+
   RxList<String>? departmentList = ['Select Department'].obs;
   RxString departmentisselected = ''.obs;
   RxString departmentid = ''.obs;
