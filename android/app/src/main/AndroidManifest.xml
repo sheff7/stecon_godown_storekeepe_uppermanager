@@ -2,7 +2,7 @@
     package="com.example.stecon_godown_storekeepe_uppermanager">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="stecon_godown_storekeepe_uppermanager"
+        android:label="Godown-Store-Upper Manger"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

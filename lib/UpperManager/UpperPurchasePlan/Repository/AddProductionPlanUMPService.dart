@@ -94,9 +94,9 @@ class AddProductionPlanUPMSevice{
       CustomSnackbar().InfoSnackBar('Error', e.toString());
     }
   }
-  Future<GetUppperPlanNoEntity?>getUpperPlan(String compnayId)async{
+  Future<GetUppperPlanNoEntity?>getUpperPlan(String compnayId,String artnoid)async{
     try{
-      final response=await _dio.post('getupperplanno',data: {"companyid":compnayId});
+      final response=await _dio.post('getupperplanno',data: {"companyid":compnayId,"artnoid":artnoid});
       if(response.statusCode==200){
         var data=response.data;
         print(response.data.toString());

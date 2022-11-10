@@ -72,7 +72,7 @@ class CreatePlanUPMController extends GetxController{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true){
       CustomSnackbar().LoadingBottomSheet();
-      upperPlanEntity.value=(await AddProductionPlanUPMSevice().getUpperPlan(comapnyId))!;
+      upperPlanEntity.value=(await AddProductionPlanUPMSevice().getUpperPlan(comapnyId,artNoIdeSelected.value.toString()))!;
       Get.back();
       if(upperPlanEntity.value.response=='Success'){
         upperPlanNo.value=upperPlanEntity.value.upperplanno.toString();
@@ -119,14 +119,15 @@ class CreatePlanUPMController extends GetxController{
 
   }
 
-  getArtnoType(String value){
+  getArtnoType(String value)async{
     if(value!='Select Art no.'){
       artNoisSelected.value=value.toString();
       for(int i=0;i<getOrderNoEntity.value.productlist!.length;i++){
         if(artNoisSelected.value==getOrderNoEntity.value.productlist![i].artno.toString()){
           artNoIdeSelected.value=getOrderNoEntity.value.productlist![i].id.toString();
           print('id'+getOrderNoEntity.value.productlist![i].id.toString());
-          getProductSingle(artNoIdeSelected.value.toString());
+          await getProductSingle(artNoIdeSelected.value.toString());
+          getUpperPlanNo(companyId);
         }
       }
     }
@@ -171,7 +172,7 @@ class CreatePlanUPMController extends GetxController{
     TotalController.text=total.value.toString();
 
 
-    getUpperPlanNo(companyId);
+
     getArtNo();
     super.onInit();
   }

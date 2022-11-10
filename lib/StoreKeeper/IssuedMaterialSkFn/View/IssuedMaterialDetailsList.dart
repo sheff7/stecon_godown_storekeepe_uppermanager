@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/NormalTextGreen.dart';
-
 import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/BoldText.dart';
 import '../../../CustomFont/Header.dart';
