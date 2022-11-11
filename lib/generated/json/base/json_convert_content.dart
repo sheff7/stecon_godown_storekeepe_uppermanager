@@ -9,6 +9,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginby_status_g_d_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/profile_g_d_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/get_distributors_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_list_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_single_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/LoginPage/Model/login_page_entity.dart';
@@ -58,6 +59,8 @@ class JsonConvert {
 		(LoginbyStatusGDLoginlist).toString(): LoginbyStatusGDLoginlist.fromJson,
 		(ProfileGDEntity).toString(): ProfileGDEntity.fromJson,
 		(ProfileGDStorekeeperlist).toString(): ProfileGDStorekeeperlist.fromJson,
+		(GetDistributorsEntity).toString(): GetDistributorsEntity.fromJson,
+		(GetDistributorsDistributorslist).toString(): GetDistributorsDistributorslist.fromJson,
 		(ViewOrdersListViewEntity).toString(): ViewOrdersListViewEntity.fromJson,
 		(ViewOrdersListViewOrderlist).toString(): ViewOrdersListViewOrderlist.fromJson,
 		(OrdersSingleViewEntity).toString(): OrdersSingleViewEntity.fromJson,
@@ -231,6 +234,12 @@ class JsonConvert {
 		}
 		if(<ProfileGDStorekeeperlist>[] is M){
 			return data.map<ProfileGDStorekeeperlist>((Map<String, dynamic> e) => ProfileGDStorekeeperlist.fromJson(e)).toList() as M;
+		}
+		if(<GetDistributorsEntity>[] is M){
+			return data.map<GetDistributorsEntity>((Map<String, dynamic> e) => GetDistributorsEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetDistributorsDistributorslist>[] is M){
+			return data.map<GetDistributorsDistributorslist>((Map<String, dynamic> e) => GetDistributorsDistributorslist.fromJson(e)).toList() as M;
 		}
 		if(<ViewOrdersListViewEntity>[] is M){
 			return data.map<ViewOrdersListViewEntity>((Map<String, dynamic> e) => ViewOrdersListViewEntity.fromJson(e)).toList() as M;
