@@ -12,6 +12,7 @@ import '../../../CustomFont/NormalText.dart';
 import '../../../CustomFont/Status.dart';
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomBox.dart';
+import '../../../CustomWidget/CustomBox1.dart';
 import '../Controller/AddProductionPlanUPMController.dart';
 
 class AddProductionPlanUPM extends StatelessWidget {
@@ -284,6 +285,19 @@ class AddProductionPlanUPM extends StatelessWidget {
             final size11controller = TextEditingController();
             final size12controller = TextEditingController();
             final size13controller = TextEditingController();
+            bool enable1 = false;
+            bool enable2 = false;
+            bool enable3 = false;
+            bool enable4 = false;
+            bool enable5 = false;
+            bool enable6 = false;
+            bool enable7 = false;
+            bool enable8 = false;
+            bool enable9 = false;
+            bool enable10 = false;
+            bool enable11 = false;
+            bool enable12 = false;
+            bool enable13 = false;
             size1controller.text=_controller.producctListShow!.value[index]['s1'].toString();
             size2controller.text=_controller.producctListShow!.value[index]['s2'].toString();
             size3controller.text=_controller.producctListShow!.value[index]['s3'].toString();
@@ -299,6 +313,141 @@ class AddProductionPlanUPM extends StatelessWidget {
             size13controller.text=_controller.producctListShow!.value[index]['s13'].toString();
             int ic=index+1;
             int planNo=_controller.count.value+index;
+            size1() {
+              return CustomBox1(
+                controller: size1controller,
+                label: "Size-1",
+                Enabled: enable1,
+              );
+            }
+            size2() {
+              return CustomBox1(
+                controller: size2controller,
+                label: "Size-2",
+                Enabled: enable2,
+              );
+            }
+            size3() {
+              return CustomBox1(
+                controller: size3controller,
+                label: "Size-3",
+                Enabled: enable3,
+              );
+            }
+            size4() {
+              return CustomBox1(
+                controller: size4controller,
+                label: "Size-4",
+                Enabled: enable4,
+              );
+            }
+            size5() {
+              return CustomBox1(
+                controller: size5controller,
+                label: "Size-5",
+                Enabled: enable5,
+              );
+            }
+            size6() {
+              return CustomBox1(
+                controller: size6controller,
+                label: "Size-6",
+                Enabled: enable6,
+              );
+            }
+            size7() {
+              return CustomBox1(
+                controller: size7controller,
+                label: "Size-7",
+                Enabled: enable7,
+              );
+            }
+            size8() {
+              return CustomBox1(
+                controller: size8controller,
+                label: "Size-8",
+                Enabled: enable8,
+              );
+            }
+            size9() {
+              return CustomBox1(
+                controller: size9controller,
+                label: "Size-9",
+                Enabled: enable9,
+              );
+            }
+            size10() {
+              return CustomBox1(
+                controller: size10controller,
+                label: "Size-10",
+                Enabled: enable10,
+              );
+            }
+            size11() {
+              return CustomBox1(
+                controller: size11controller,
+                label: "Size-11",
+                Enabled: enable11,
+              );
+            }
+            size12() {
+              return CustomBox1(
+                controller: size12controller,
+                label: "Size-12",
+                Enabled: enable12,
+              );
+            }
+            size13() {
+              return CustomBox1(
+                controller: size13controller,
+                label: "Size-13",
+                Enabled: enable13,
+              );
+            }
+            List<Widget> sizeListGrid = (List<Widget>.of([])).obs;
+            if (_controller.producctListShow!.value[index]['s1'].toString()!='0') {
+              sizeListGrid.add(size1());
+            }
+            if (_controller.producctListShow!.value[index]['s2'].toString()!='0') {
+              sizeListGrid.add(size2());
+            }
+            if (_controller.producctListShow!.value[index]['s3'].toString()!='0') {
+              sizeListGrid.add(size3());
+            }
+            if (_controller.producctListShow!.value[index]['s4'].toString()!='0') {
+              sizeListGrid.add(size4());
+            }
+            if (_controller.producctListShow!.value[index]['s5'].toString()!='0') {
+              sizeListGrid.add(size5());
+            }
+            if (_controller.producctListShow!.value[index]['s6'].toString()!='0') {
+              sizeListGrid.add(size6());
+            }
+            if (_controller.producctListShow!.value[index]['s7'].toString()!='0') {
+              sizeListGrid.add(size7());
+            }
+            if (_controller.producctListShow!.value[index]['s8'].toString()!='0') {
+              sizeListGrid.add(size8());
+            }
+            if (_controller.producctListShow!.value[index]['s9'].toString()!='0') {
+              sizeListGrid.add(size9());
+            }
+            if (_controller.producctListShow!.value[index]['s10'].toString()!='0') {
+              sizeListGrid.add(size10());
+            }
+            if (_controller.producctListShow!.value[index]['s11'].toString()!='0') {
+              sizeListGrid.add(size11());
+            }
+            if (_controller.producctListShow!.value[index]['s12'].toString()!='0') {
+              sizeListGrid.add(size12());
+            }
+            if (_controller.producctListShow!.value[index]['s13'].toString()!='0') {
+              sizeListGrid.add(size13());
+            }
+
+
+
+
             return Column(
               children: [
                 Material(
@@ -519,6 +668,16 @@ class AddProductionPlanUPM extends StatelessWidget {
                                     ],
                                   ),
                                 )),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding:
+                                EdgeInsets.fromLTRB(
+                                    2.h, 0.h, 0.h, 0.h),
+                                child: SubHeadingText(
+                                    text: "Size Details"),
+                              ),
+                            ),
                             Container(
                               color: Colors.white,
                               margin: EdgeInsets.fromLTRB(
@@ -528,98 +687,79 @@ class AddProductionPlanUPM extends StatelessWidget {
                                 margin: EdgeInsets.fromLTRB(
                                     0.h, 2.h, 2.h, 0.h),
                                 child: Column(children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                        EdgeInsets.fromLTRB(
-                                            2.h, 0.h, 0.h, 0.h),
-                                        child: SubHeadingText(
-                                            text: "Size Details"),
-                                      ),
-                                      Row(
-                                        children: [
-                                          CustomBox(
-                                              controller:
-                                              size1controller,
-                                              label: "Size-1"),
-                                          CustomBox(
-                                              controller:
-                                              size2controller,
-                                              label: "Size-2"),
-                                          CustomBox(
-                                              controller:
-                                              size3controller,
-                                              label: "Size-3")
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      CustomBox(
-                                          controller:
-                                          size4controller,
-                                          label: "Size-4"),
-                                      CustomBox(
-                                          controller:
-                                          size5controller,
-                                          label: "Size-5"),
-                                      CustomBox(
-                                          controller:
-                                          size6controller,
-                                          label: "Size-6")
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      CustomBox(
-                                          controller:
-                                          size7controller,
-                                          label: "Size-7"),
-                                      CustomBox(
-                                          controller:
-                                          size8controller,
-                                          label: "Size-8"),
-                                      CustomBox(
-                                          controller:
-                                          size9controller,
-                                          label: "Size-9")
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      CustomBox(
-                                          controller:
-                                          size10controller,
-                                          label: "Size-10"),
-                                      CustomBox(
-                                          controller:
-                                          size11controller,
-                                          label: "Size-11"),
-                                      CustomBox(
-                                          controller:
-                                          size12controller,
-                                          label: "Size-12")
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      CustomBox(
-                                          controller:
-                                          size13controller,
-                                          label: "Size-13"),
-                                      Expanded(
-                                        flex: 1,
-                                        child: Container(),
-                                      ),
-                                      Expanded(
-                                        flex: 1,
-                                        child: Container(),
-                                      ),
-                                    ],
+                                  // Row(
+                                  //   children: [
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size4controller,
+                                  //         label: "Size-4"),
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size5controller,
+                                  //         label: "Size-5"),
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size6controller,
+                                  //         label: "Size-6")
+                                  //   ],
+                                  // ),
+                                  // Row(
+                                  //   children: [
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size7controller,
+                                  //         label: "Size-7"),
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size8controller,
+                                  //         label: "Size-8"),
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size9controller,
+                                  //         label: "Size-9")
+                                  //   ],
+                                  // ),
+                                  // Row(
+                                  //   children: [
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size10controller,
+                                  //         label: "Size-10"),
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size11controller,
+                                  //         label: "Size-11"),
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size12controller,
+                                  //         label: "Size-12")
+                                  //   ],
+                                  // ),
+                                  // Row(
+                                  //   children: [
+                                  //     CustomBox(
+                                  //         controller:
+                                  //         size13controller,
+                                  //         label: "Size-13"),
+                                  //     Expanded(
+                                  //       flex: 1,
+                                  //       child: Container(),
+                                  //     ),
+                                  //     Expanded(
+                                  //       flex: 1,
+                                  //       child: Container(),
+                                  //     ),
+                                  //   ],
+                                  // ),
+                                  GridView.count(
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    crossAxisCount: 3,
+                                    mainAxisSpacing: 1,
+                                    crossAxisSpacing: 1,
+                                    childAspectRatio: 2,
+                                    children: sizeListGrid,
+
                                   ),
                                   SizedBox(
                                     height: 1.h,

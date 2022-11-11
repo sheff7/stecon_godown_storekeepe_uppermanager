@@ -305,239 +305,249 @@ class CreatePlanUPM extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(0.h, 0.h, 2.h, 2.h),
                           child: Column(
                             children: [
-                              Row(
-                                children: [
-                                  CustomBoxEditable(
-                                      controller: _controller.size1controller,
-                                      label: "Size-1",
-                                    onValueChange: (String value) {
-                                        if(value.isNotEmpty ||value.toString().length!=0){
-                                          int t=int.parse(value.toString());
-                                          _controller.s1.value=t;
-                                          _controller.getTotal();
+                              GridView.count(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                crossAxisCount: 3,
+                                mainAxisSpacing: 1,
+                                crossAxisSpacing: 1,
+                                childAspectRatio: 2,
+                                children: _controller.sizeListGrid,
 
-                                        }
-                                        else if(value.isEmpty ||value.toString().length!=0){
-                                          _controller.s1.value=0;
-                                          _controller.size1controller.text=_controller.s1.value.toString();
-                                          _controller.getTotal();
-                                        }
-                                  },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size2controller,
-                                      label: "Size-2",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s2.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s2.value=0;
-                                        _controller.size2controller.text=_controller.s2.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size3controller,
-                                      label: "Size-3",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s3.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s3.value=0;
-                                        _controller.size3controller.text=_controller.s3.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },)
-                                ],
                               ),
-                              Row(
-                                children: [
-                                  CustomBoxEditable(
-                                      controller: _controller.size4controller,
-                                      label: "Size-4",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s4.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s4.value=0;
-                                        _controller.size4controller.text=_controller.s4.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size5controller,
-                                      label: "Size-5",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s5.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s5.value=0;
-                                        _controller.size5controller.text=_controller.s5.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size6controller,
-                                      label: "Size-6",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s6.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s6.value=0;
-                                        _controller.size6controller.text=_controller.s6.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },)
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  CustomBoxEditable(
-                                      controller: _controller.size7controller,
-                                      label: "Size-7",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s7.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s7.value=0;
-                                        _controller.size7controller.text=_controller.s7.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size8controller,
-                                      label: "Size-8",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s8.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s8.value=0;
-                                        _controller.size8controller.text=_controller.s8.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size9controller,
-                                      label: "Size-9",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s9.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s9.value=0;
-                                        _controller.size9controller.text=_controller.s9.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },)
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  CustomBoxEditable(
-                                      controller: _controller.size10controller,
-                                      label: "Size-10",
-                                    onValueChange: (String value) {
-                                      if(value.isNotEmpty ||value.toString().length!=0){
-                                        int t=int.parse(value.toString());
-                                        _controller.s10.value=t;
-                                        _controller.getTotal();
-
-                                      }
-                                      else if(value.isEmpty ||value.toString().length!=0){
-                                        _controller.s10.value=0;
-                                        _controller.size10controller.text=_controller.s10.value.toString();
-                                        _controller.getTotal();
-                                      }
-                                    },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size11controller,
-                                      label: "Size-11",onValueChange: (String value) {
-                                    if(value.isNotEmpty ||value.toString().length!=0){
-                                      int t=int.parse(value.toString());
-                                      _controller.s11.value=t;
-                                      _controller.getTotal();
-
-                                    }
-                                    else if(value.isEmpty ||value.toString().length!=0){
-                                      _controller.s11.value=0;
-                                      _controller.size11controller.text=_controller.s11.value.toString();
-                                      _controller.getTotal();
-                                    }
-                                  },),
-                                  CustomBoxEditable(
-                                      controller: _controller.size12controller,
-                                      label: "Size-12",onValueChange: (String value) {
-                                    if(value.isNotEmpty ||value.toString().length!=0){
-                                      int t=int.parse(value.toString());
-                                      _controller.s12.value=t;
-                                      _controller.getTotal();
-
-                                    }
-                                    else if(value.isEmpty ||value.toString().length!=0){
-                                      _controller.s12.value=0;
-                                      _controller.size12controller.text=_controller.s12.value.toString();
-                                      _controller.getTotal();
-                                    }
-                                  },)
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  CustomBoxEditable(
-                                      controller: _controller.size13controller,
-                                      label: "Size-13", onValueChange: (String value) {
-                                    if(value.isNotEmpty ||value.toString().length!=0){
-                                      int t=int.parse(value.toString());
-                                      _controller.s13.value=t;
-                                      _controller.getTotal();
-
-                                    }
-                                    else if(value.isEmpty ||value.toString().length!=0){
-                                      _controller.s13.value=0;
-                                      _controller.size13controller.text=_controller.s13.value.toString();
-                                      _controller.getTotal();
-                                    }
-                                  },),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(),
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size1controller,
+                              //         label: "Size-1",
+                              //       onValueChange: (String value) {
+                              //           if(value.isNotEmpty ||value.toString().length!=0){
+                              //             int t=int.parse(value.toString());
+                              //             _controller.s1.value=t;
+                              //             _controller.getTotal();
+                              //
+                              //           }
+                              //           else if(value.isEmpty ||value.toString().length!=0){
+                              //             _controller.s1.value=0;
+                              //             _controller.size1controller.text=_controller.s1.value.toString();
+                              //             _controller.getTotal();
+                              //           }
+                              //     },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size2controller,
+                              //         label: "Size-2",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s2.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s2.value=0;
+                              //           _controller.size2controller.text=_controller.s2.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size3controller,
+                              //         label: "Size-3",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s3.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s3.value=0;
+                              //           _controller.size3controller.text=_controller.s3.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },)
+                              //   ],
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size4controller,
+                              //         label: "Size-4",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s4.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s4.value=0;
+                              //           _controller.size4controller.text=_controller.s4.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size5controller,
+                              //         label: "Size-5",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s5.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s5.value=0;
+                              //           _controller.size5controller.text=_controller.s5.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size6controller,
+                              //         label: "Size-6",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s6.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s6.value=0;
+                              //           _controller.size6controller.text=_controller.s6.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },)
+                              //   ],
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size7controller,
+                              //         label: "Size-7",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s7.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s7.value=0;
+                              //           _controller.size7controller.text=_controller.s7.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size8controller,
+                              //         label: "Size-8",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s8.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s8.value=0;
+                              //           _controller.size8controller.text=_controller.s8.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size9controller,
+                              //         label: "Size-9",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s9.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s9.value=0;
+                              //           _controller.size9controller.text=_controller.s9.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },)
+                              //   ],
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size10controller,
+                              //         label: "Size-10",
+                              //       onValueChange: (String value) {
+                              //         if(value.isNotEmpty ||value.toString().length!=0){
+                              //           int t=int.parse(value.toString());
+                              //           _controller.s10.value=t;
+                              //           _controller.getTotal();
+                              //
+                              //         }
+                              //         else if(value.isEmpty ||value.toString().length!=0){
+                              //           _controller.s10.value=0;
+                              //           _controller.size10controller.text=_controller.s10.value.toString();
+                              //           _controller.getTotal();
+                              //         }
+                              //       },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size11controller,
+                              //         label: "Size-11",onValueChange: (String value) {
+                              //       if(value.isNotEmpty ||value.toString().length!=0){
+                              //         int t=int.parse(value.toString());
+                              //         _controller.s11.value=t;
+                              //         _controller.getTotal();
+                              //
+                              //       }
+                              //       else if(value.isEmpty ||value.toString().length!=0){
+                              //         _controller.s11.value=0;
+                              //         _controller.size11controller.text=_controller.s11.value.toString();
+                              //         _controller.getTotal();
+                              //       }
+                              //     },),
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size12controller,
+                              //         label: "Size-12",onValueChange: (String value) {
+                              //       if(value.isNotEmpty ||value.toString().length!=0){
+                              //         int t=int.parse(value.toString());
+                              //         _controller.s12.value=t;
+                              //         _controller.getTotal();
+                              //
+                              //       }
+                              //       else if(value.isEmpty ||value.toString().length!=0){
+                              //         _controller.s12.value=0;
+                              //         _controller.size12controller.text=_controller.s12.value.toString();
+                              //         _controller.getTotal();
+                              //       }
+                              //     },)
+                              //   ],
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     CustomBoxEditable(
+                              //         controller: _controller.size13controller,
+                              //         label: "Size-13", onValueChange: (String value) {
+                              //       if(value.isNotEmpty ||value.toString().length!=0){
+                              //         int t=int.parse(value.toString());
+                              //         _controller.s13.value=t;
+                              //         _controller.getTotal();
+                              //
+                              //       }
+                              //       else if(value.isEmpty ||value.toString().length!=0){
+                              //         _controller.s13.value=0;
+                              //         _controller.size13controller.text=_controller.s13.value.toString();
+                              //         _controller.getTotal();
+                              //       }
+                              //     },),
+                              //     Expanded(
+                              //       flex: 1,
+                              //       child: Container(),
+                              //     ),
+                              //     Expanded(
+                              //       flex: 1,
+                              //       child: Container(),
+                              //     ),
+                              //   ],
+                              // ),
                               SizedBox(
                                 height: 3.h,
                               ),

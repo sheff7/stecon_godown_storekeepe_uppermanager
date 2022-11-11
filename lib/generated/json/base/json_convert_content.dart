@@ -37,6 +37,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchase
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_art_no_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_comapany_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_product_by_artno_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_size_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_upper_order_no_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_uppper_plan_no_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/pending_order_u_p_m_entity.dart';
@@ -119,6 +120,8 @@ class JsonConvert {
 		(GetProductByArtnoEntity).toString(): GetProductByArtnoEntity.fromJson,
 		(GetProductByArtnoProductlist).toString(): GetProductByArtnoProductlist.fromJson,
 		(GetProductByArtnoSizelist).toString(): GetProductByArtnoSizelist.fromJson,
+		(GetSizeListEntity).toString(): GetSizeListEntity.fromJson,
+		(GetSizeListSizelist).toString(): GetSizeListSizelist.fromJson,
 		(GetUpperOrderNoEntity).toString(): GetUpperOrderNoEntity.fromJson,
 		(GetUppperPlanNoEntity).toString(): GetUppperPlanNoEntity.fromJson,
 		(PendingOrderUPMEntity).toString(): PendingOrderUPMEntity.fromJson,
@@ -414,6 +417,12 @@ class JsonConvert {
 		}
 		if(<GetProductByArtnoSizelist>[] is M){
 			return data.map<GetProductByArtnoSizelist>((Map<String, dynamic> e) => GetProductByArtnoSizelist.fromJson(e)).toList() as M;
+		}
+		if(<GetSizeListEntity>[] is M){
+			return data.map<GetSizeListEntity>((Map<String, dynamic> e) => GetSizeListEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetSizeListSizelist>[] is M){
+			return data.map<GetSizeListSizelist>((Map<String, dynamic> e) => GetSizeListSizelist.fromJson(e)).toList() as M;
 		}
 		if(<GetUpperOrderNoEntity>[] is M){
 			return data.map<GetUpperOrderNoEntity>((Map<String, dynamic> e) => GetUpperOrderNoEntity.fromJson(e)).toList() as M;

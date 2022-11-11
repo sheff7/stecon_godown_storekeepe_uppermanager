@@ -9,6 +9,7 @@ import '../../../generated/json/base/json_convert_content.dart';
 import '../Model/get_art_no_entity.dart';
 import '../Model/get_comapany_entity.dart';
 import '../Model/get_product_by_artno_entity.dart';
+import '../Model/get_size_list_entity.dart';
 import '../Model/get_upper_order_no_entity.dart';
 import '../Model/get_uppper_plan_no_entity.dart';
 import '../Model/pending_order_u_p_m_entity.dart';
@@ -115,6 +116,22 @@ class AddProductionPlanUPMSevice{
       if (response.statusCode == 200) {
         var data = response.data;
         return JsonConvert.fromJsonAsT<GetArtNoEntity>(data);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<GetSizeListEntity?> getSizeList(String artnoId) async {
+    try {
+      final response = await _dio.post('apigetpsizelistofproducts',
+      data: {
+        "artnoid":artnoId
+      });
+      print(response.data);
+      if (response.statusCode == 200) {
+        var data = response.data;
+        return JsonConvert.fromJsonAsT<GetSizeListEntity>(data);
       }
     } catch (e) {
       print(e);
