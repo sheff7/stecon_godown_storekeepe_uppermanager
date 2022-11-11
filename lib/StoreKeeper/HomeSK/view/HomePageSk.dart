@@ -13,6 +13,7 @@ import '../../DamagedMaterialDetailsSkFn/View/AddDamageMaterialDetails.dart';
 import '../../DamagedMaterialDetailsSkFn/View/DamagedMaterialDetailsList.dart';
 import '../../IssuedMaterialSkFn/View/AddIssuedMaterialDeatils.dart';
 import '../../IssuedMaterialSkFn/View/IssuedMaterialDetailsList.dart';
+import '../../Material Received/view/ViewMaterialReceivedView.dart';
 import '../../MaterialReplacedDetailsSK/View/AddMaterialReplacedDetails.dart';
 import '../../MaterialReplacedDetailsSK/View/MaterialReplaceddetailsList.dart';
 import '../../profileSK/view/ProfileSkView.dart';
@@ -83,36 +84,38 @@ class HomePageSk extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Color(0xFFEC4E52),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 3.h,
-                    ),
-                    Image(
-                        image: AssetImage(
-                      "Assets/HomePageIcons/Group 51.png",
-                    )),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    Obx(
-                      () => Text(
-                        homecontroller.loginByStatusEntity.value.loginlist![0]
-                            .storekeepername
-                            .toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 3.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: .5.h,
-                    ),
-                    Obx(() => Text(
-                          homecontroller.userEmail.value.toString(),
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w400),
-                        ))
-                  ],
+                      Image(
+                          image: AssetImage(
+                        "Assets/HomePageIcons/Group 51.png",
+                      )),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      Obx(
+                        () => Text(
+                          homecontroller.loginByStatusEntity.value.loginlist![0]
+                              .storekeepername
+                              .toString(),
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                      SizedBox(
+                        height: .5.h,
+                      ),
+                      Obx(() => Text(
+                            homecontroller.userEmail.value.toString(),
+                            style: TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.w400),
+                          ))
+                    ],
+                  ),
                 ),
               ),
               _drawerList()
@@ -465,7 +468,8 @@ class HomePageSk extends StatelessWidget {
         children: [
           // menuItem(),
           menuItem(1, 'Profile', Icons.person),
-          menuItem(2, 'Log Out', Icons.logout),
+          menuItem(2, 'Material Received', Icons.logout),
+          menuItem(3, 'Log Out', Icons.logout),
         ],
       ),
     );
@@ -494,8 +498,9 @@ class HomePageSk extends StatelessWidget {
                   .toString(),
             ));
           } else if (id == 2) {
-            _logout();
+            Get.to(ViewMaterialReceived());
           } else if (id == 3) {
+            _logout();
           } else if (id == 4) {
           } else if (id == 5) {
           } else if (id == 6) {

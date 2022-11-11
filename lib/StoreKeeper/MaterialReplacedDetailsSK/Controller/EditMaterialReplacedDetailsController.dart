@@ -361,9 +361,9 @@ class EditMaterialReplacedDetailsControllerSk extends GetxController {
             barrierDismissible: false);
       }
       else{
-        CustomSnackbar().InfoSnackBar('Add Material Replaced Order', responseEntity.value.response.toString());
+        CustomSnackbar().InfoSnackBar('Add Material Received Order', responseEntity.value.response.toString());
       }
-    } catch (e) { CustomSnackbar().InfoSnackBar('Add Material Replaced Order', e.toString());}
+    } catch (e) { CustomSnackbar().InfoSnackBar('Add Material Received Order', e.toString());}
   }
 
 

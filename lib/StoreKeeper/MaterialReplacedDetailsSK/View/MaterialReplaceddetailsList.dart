@@ -40,7 +40,7 @@ class MaterialReplaceddetailsList extends StatelessWidget {
             backgroundColor: Colors.white,
             elevation: 0,
             title: Header(
-              text: 'Material Replaced details',
+              text: 'Material   Replaced details',
             ),
             centerTitle: true,
             leading: IconButton(
