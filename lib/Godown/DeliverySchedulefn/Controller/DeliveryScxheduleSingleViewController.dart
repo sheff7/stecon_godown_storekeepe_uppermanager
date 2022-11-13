@@ -111,19 +111,7 @@ class DeliveryScheduleSingleViewController extends GetxController{
     getDeliverySchedule();
 
 
-    size1controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s1.toString();
-    size2controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s2.toString();
-    size3controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s3.toString();
-    size4controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s4.toString();
-    size5controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s5.toString();
-    size6controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s6.toString();
-    size7controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s7.toString();
-    size8controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s8.toString();
-    size9controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s9.toString();
-    size10controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s10.toString();
-    size11controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s11.toString();
-    size12controller.text=deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s12.toString();
-    size13controller.text= deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].s13.toString();
+
     super.onInit();
   }
 

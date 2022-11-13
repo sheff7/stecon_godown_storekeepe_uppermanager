@@ -222,192 +222,202 @@ class ViewOrder1GD extends StatelessWidget {
                                                             text:
                                                                 "Size Details"),
                                                       ),
-                                                      Row(
-                                                        children: [
-                                                          Expanded(
-                                                            child: CustomBox1(
-                                                              controller:
-                                                                  ordersSingleViewGDController
-                                                                      .size1controller,
-                                                              label: "Size-1",
-                                                              Enabled:
-                                                                  ordersSingleViewGDController
-                                                                      .enable1
-                                                                      .value,
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: CustomBox1(
-                                                              controller:
-                                                                  ordersSingleViewGDController
-                                                                      .size2controller,
-                                                              label: "Size-2",
-                                                              Enabled:
-                                                                  ordersSingleViewGDController
-                                                                      .enable2
-                                                                      .value,
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: CustomBox1(
-                                                              controller:
-                                                                  ordersSingleViewGDController
-                                                                      .size3controller,
-                                                              label: "Size-3",
-                                                              Enabled:
-                                                                  ordersSingleViewGDController
-                                                                      .enable3
-                                                                      .value,
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
+                                                      // Row(
+                                                      //   children: [
+                                                      //     Expanded(
+                                                      //       child: CustomBox1(
+                                                      //         controller:
+                                                      //             ordersSingleViewGDController
+                                                      //                 .size1controller,
+                                                      //         label: "Size-1",
+                                                      //         Enabled:
+                                                      //             ordersSingleViewGDController
+                                                      //                 .enable1
+                                                      //                 .value,
+                                                      //       ),
+                                                      //     ),
+                                                      //     Expanded(
+                                                      //       child: CustomBox1(
+                                                      //         controller:
+                                                      //             ordersSingleViewGDController
+                                                      //                 .size2controller,
+                                                      //         label: "Size-2",
+                                                      //         Enabled:
+                                                      //             ordersSingleViewGDController
+                                                      //                 .enable2
+                                                      //                 .value,
+                                                      //       ),
+                                                      //     ),
+                                                      //     Expanded(
+                                                      //       child: CustomBox1(
+                                                      //         controller:
+                                                      //             ordersSingleViewGDController
+                                                      //                 .size3controller,
+                                                      //         label: "Size-3",
+                                                      //         Enabled:
+                                                      //             ordersSingleViewGDController
+                                                      //                 .enable3
+                                                      //                 .value,
+                                                      //       ),
+                                                      //     )
+                                                      //   ],
+                                                      // ),
                                                     ],
                                                   ),
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size4controller,
-                                                          label: "Size-4",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable4
-                                                                  .value,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size5controller,
-                                                          label: "Size-5",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable5
-                                                                  .value,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size6controller,
-                                                          label: "Size-6",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable6
-                                                                  .value,
-                                                        ),
-                                                      )
-                                                    ],
+                                                  GridView.count(
+                                                    shrinkWrap: true,
+                                                    physics: NeverScrollableScrollPhysics(),
+                                                    crossAxisCount: 3,
+                                                    mainAxisSpacing: 1,
+                                                    crossAxisSpacing: 1,
+                                                    childAspectRatio: 2,
+                                                    children: ordersSingleViewGDController.sizeListGrid,
+
                                                   ),
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size7controller,
-                                                          label: "Size-7",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable7
-                                                                  .value,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size8controller,
-                                                          label: "Size-8",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable8
-                                                                  .value,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size9controller,
-                                                          label: "Size-9",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable9
-                                                                  .value,
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size10controller,
-                                                          label: "Size-10",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable10
-                                                                  .value,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size11controller,
-                                                          label: "Size-11",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable11
-                                                                  .value,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size12controller,
-                                                          label: "Size-12",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable12
-                                                                  .value,
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: CustomBox1(
-                                                          controller:
-                                                              ordersSingleViewGDController
-                                                                  .size13controller,
-                                                          label: "Size-13",
-                                                          Enabled:
-                                                              ordersSingleViewGDController
-                                                                  .enable13
-                                                                  .value,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        flex: 1,
-                                                        child: Container(),
-                                                      ),
-                                                      Expanded(
-                                                        flex: 1,
-                                                        child: Container(),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                  // Row(
+                                                  //   children: [
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size4controller,
+                                                  //         label: "Size-4",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable4
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size5controller,
+                                                  //         label: "Size-5",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable5
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size6controller,
+                                                  //         label: "Size-6",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable6
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     )
+                                                  //   ],
+                                                  // ),
+                                                  // Row(
+                                                  //   children: [
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size7controller,
+                                                  //         label: "Size-7",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable7
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size8controller,
+                                                  //         label: "Size-8",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable8
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size9controller,
+                                                  //         label: "Size-9",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable9
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     )
+                                                  //   ],
+                                                  // ),
+                                                  // Row(
+                                                  //   children: [
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size10controller,
+                                                  //         label: "Size-10",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable10
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size11controller,
+                                                  //         label: "Size-11",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable11
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size12controller,
+                                                  //         label: "Size-12",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable12
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     )
+                                                  //   ],
+                                                  // ),
+                                                  // Row(
+                                                  //   children: [
+                                                  //     Expanded(
+                                                  //       child: CustomBox1(
+                                                  //         controller:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .size13controller,
+                                                  //         label: "Size-13",
+                                                  //         Enabled:
+                                                  //             ordersSingleViewGDController
+                                                  //                 .enable13
+                                                  //                 .value,
+                                                  //       ),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       flex: 1,
+                                                  //       child: Container(),
+                                                  //     ),
+                                                  //     Expanded(
+                                                  //       flex: 1,
+                                                  //       child: Container(),
+                                                  //     ),
+                                                  //   ],
+                                                  // ),
                                                   Row(
                                                     children: [
                                                       Expanded(

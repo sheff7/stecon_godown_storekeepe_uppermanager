@@ -313,168 +313,178 @@ class OrderListProductSingle extends StatelessWidget {
                                 SizedBox(
                                   height: 2.h,
                                 ),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: CustomBox1(
-                                        controller:
-                                        _controller
-                                            .size1controller,
-                                        label: "Size-1",
-                                        Enabled:
-                                        _controller
-                                            .enable1.value,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: CustomBox1(
-                                        controller:
-                                        _controller
-                                            .size2controller,
-                                        label: "Size-2",
-                                        Enabled:
-                                        _controller
-                                            .enable2.value,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: CustomBox1(
-                                        controller:
-                                        _controller
-                                            .size3controller,
-                                        label: "Size-3",
-                                        Enabled:
-                                        _controller
-                                            .enable3.value,
-                                      ),
-                                    )
-                                  ],
+                                GridView.count(
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  crossAxisCount: 3,
+                                  mainAxisSpacing: 1,
+                                  crossAxisSpacing: 1,
+                                  childAspectRatio: 2,
+                                  children: _controller.sizeListGrid,
+
                                 ),
+                                // Row(
+                                //   children: [
+                                //     Expanded(
+                                //       child: CustomBox1(
+                                //         controller:
+                                //         _controller
+                                //             .size1controller,
+                                //         label: "Size-1",
+                                //         Enabled:
+                                //         _controller
+                                //             .enable1.value,
+                                //       ),
+                                //     ),
+                                //     Expanded(
+                                //       child: CustomBox1(
+                                //         controller:
+                                //         _controller
+                                //             .size2controller,
+                                //         label: "Size-2",
+                                //         Enabled:
+                                //         _controller
+                                //             .enable2.value,
+                                //       ),
+                                //     ),
+                                //     Expanded(
+                                //       child: CustomBox1(
+                                //         controller:
+                                //         _controller
+                                //             .size3controller,
+                                //         label: "Size-3",
+                                //         Enabled:
+                                //         _controller
+                                //             .enable3.value,
+                                //       ),
+                                //     )
+                                //   ],
+                                // ),
                               ],
                             ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size4controller,
-                                    label: "Size-4",
-                                    Enabled: _controller
-                                        .enable4.value,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size5controller,
-                                    label: "Size-5",
-                                    Enabled: _controller
-                                        .enable5.value,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size6controller,
-                                    label: "Size-6",
-                                    Enabled: _controller
-                                        .enable6.value,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size7controller,
-                                    label: "Size-7",
-                                    Enabled: _controller
-                                        .enable7.value,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size8controller,
-                                    label: "Size-8",
-                                    Enabled: _controller
-                                        .enable8.value,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size9controller,
-                                    label: "Size-9",
-                                    Enabled: _controller
-                                        .enable9.value,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size10controller,
-                                    label: "Size-10",
-                                    Enabled: _controller
-                                        .enable10.value,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size11controller,
-                                    label: "Size-11",
-                                    Enabled: _controller
-                                        .enable11.value,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller:
-                                    _controller
-                                        .size12controller,
-                                    label: "Size-12",
-                                    Enabled: _controller
-                                        .enable12.value,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: CustomBox1(
-                                    controller: _controller
-                                        .size13controller,
-                                    label: "Size-13",
-                                    Enabled: _controller
-                                        .enable13.value,
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(),
-                                ),
-                              ],
-                            ),
+                            // Row(
+                            //   children: [
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size4controller,
+                            //         label: "Size-4",
+                            //         Enabled: _controller
+                            //             .enable4.value,
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size5controller,
+                            //         label: "Size-5",
+                            //         Enabled: _controller
+                            //             .enable5.value,
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size6controller,
+                            //         label: "Size-6",
+                            //         Enabled: _controller
+                            //             .enable6.value,
+                            //       ),
+                            //     )
+                            //   ],
+                            // ),
+                            // Row(
+                            //   children: [
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size7controller,
+                            //         label: "Size-7",
+                            //         Enabled: _controller
+                            //             .enable7.value,
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size8controller,
+                            //         label: "Size-8",
+                            //         Enabled: _controller
+                            //             .enable8.value,
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size9controller,
+                            //         label: "Size-9",
+                            //         Enabled: _controller
+                            //             .enable9.value,
+                            //       ),
+                            //     )
+                            //   ],
+                            // ),
+                            // Row(
+                            //   children: [
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size10controller,
+                            //         label: "Size-10",
+                            //         Enabled: _controller
+                            //             .enable10.value,
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size11controller,
+                            //         label: "Size-11",
+                            //         Enabled: _controller
+                            //             .enable11.value,
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller:
+                            //         _controller
+                            //             .size12controller,
+                            //         label: "Size-12",
+                            //         Enabled: _controller
+                            //             .enable12.value,
+                            //       ),
+                            //     )
+                            //   ],
+                            // ),
+                            // Row(
+                            //   children: [
+                            //     Expanded(
+                            //       child: CustomBox1(
+                            //         controller: _controller
+                            //             .size13controller,
+                            //         label: "Size-13",
+                            //         Enabled: _controller
+                            //             .enable13.value,
+                            //       ),
+                            //     ),
+                            //     Expanded(
+                            //       flex: 1,
+                            //       child: Container(),
+                            //     ),
+                            //     Expanded(
+                            //       flex: 1,
+                            //       child: Container(),
+                            //     ),
+                            //   ],
+                            // ),
                             SizedBox(
                               height: 4.h,
                             ),

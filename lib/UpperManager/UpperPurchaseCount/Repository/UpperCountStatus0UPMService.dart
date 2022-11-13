@@ -93,6 +93,7 @@ class UpperCountStatus0UPMServie{
       List<Map<String,dynamic>>rcList,
       List<Map<String,dynamic>>dcList,
       List<Map<String,dynamic>>staffList,
+      List<Map<String,dynamic>>rcCountList,
 
       )async{
     FormData formData=FormData.fromMap({
@@ -100,9 +101,11 @@ class UpperCountStatus0UPMServie{
       "companyplanno":comnpanyPlanNo,
       "upperorderid":upperorderid,
       "companyid":companyid,
+      "supplierid":companyid,
       "dateofcounting":dateofcounting,
       "comments":comments,
       "planno":planno,
+      "receivedlist":jsonEncode(rcCountList),
       "receivedcountlist":jsonEncode(rcList),
       "damagedcountlist":jsonEncode(dcList),
       "countstafflist":jsonEncode(staffList)
@@ -131,25 +134,31 @@ class UpperCountStatus0UPMServie{
       List<Map<String,dynamic>>rcList,
       List<Map<String,dynamic>>dcList,
       List<Map<String,dynamic>>staffList,
+      List<Map<String,dynamic>>rcCountList,
       String countid,
       String receivedid,
       String damagedid,
+      String receivedsupid
 
       )async{
     FormData formData=FormData.fromMap({
       "countid":countid,
       "receivedid":receivedid,
       "damagedid":damagedid,
+      "receivedsupid":receivedsupid,
       "orderno":orderno,
       "companyplanno":comnpanyPlanNo,
       "upperorderid":upperorderid,
       "companyid":companyid,
+      "supplierid":companyid,
       "dateofcounting":dateofcounting,
       "comments":comments,
       "planno":planno,
+      "receivedcount":"",
       "receivedcountlist":jsonEncode(rcList),
       "damagedcountlist":jsonEncode(dcList),
-      "countstafflist":jsonEncode(staffList)
+      "countstafflist":jsonEncode(staffList),
+      "receivedlist":jsonEncode(rcCountList)
     });
     try{
       final response=await _dio.post('apieditcuppercount',data: formData);

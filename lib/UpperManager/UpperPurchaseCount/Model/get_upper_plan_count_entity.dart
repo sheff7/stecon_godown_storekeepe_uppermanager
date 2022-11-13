@@ -10,6 +10,7 @@ class GetUpperPlanCountEntity {
 	List<GetUpperPlanCountUppercountlist>? uppercountlist;
 	List<GetUpperPlanCountDamagedcountlist>? damagedcountlist;
 	List<GetUpperPlanCountReceivedcountlist>? receivedcountlist;
+	List<GetUpperPlanCountRecivedsupliercount>? recivedsupliercount;
 	List<GetUpperPlanCountStaffcountlist>? staffcountlist;
   
   GetUpperPlanCountEntity();
@@ -82,6 +83,7 @@ class GetUpperPlanCountUppercountlist {
 	String? comments;
 	String? plannoid;
 	String? createddate;
+	dynamic receivedcount;
   
   GetUpperPlanCountUppercountlist();
 
@@ -160,6 +162,43 @@ class GetUpperPlanCountReceivedcountlist {
   factory GetUpperPlanCountReceivedcountlist.fromJson(Map<String, dynamic> json) => $GetUpperPlanCountReceivedcountlistFromJson(json);
 
   Map<String, dynamic> toJson() => $GetUpperPlanCountReceivedcountlistToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+}
+
+@JsonSerializable()
+class GetUpperPlanCountRecivedsupliercount {
+
+	int? id;
+	String? orderno;
+	String? companyplanno;
+	String? planno;
+	String? countid;
+	String? supplierid;
+	String? artnumber;
+	String? s1;
+	String? s2;
+	String? s3;
+	String? s4;
+	String? s5;
+	String? s6;
+	String? s7;
+	String? s8;
+	String? s9;
+	String? s10;
+	String? s11;
+	String? s12;
+	String? s13;
+	String? createddate;
+  
+  GetUpperPlanCountRecivedsupliercount();
+
+  factory GetUpperPlanCountRecivedsupliercount.fromJson(Map<String, dynamic> json) => $GetUpperPlanCountRecivedsupliercountFromJson(json);
+
+  Map<String, dynamic> toJson() => $GetUpperPlanCountRecivedsupliercountToJson(this);
 
   @override
   String toString() {
