@@ -314,613 +314,618 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  color: Colors.white,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 3.h),
-                    padding: EdgeInsets.symmetric(vertical: 2.h),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '1',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text:_controller.oc1.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC1Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable1.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC1Controller,
-                                  label: 'Enter ',
-                                  Enabled:  _controller.enable1.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '2',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc2.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC2Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable2.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC2Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable2.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '3',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc3.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC3Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable3.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC3Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable3.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '4',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text:_controller.oc4.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC4Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable4.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC4Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable4.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '5',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc5.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC5Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable5.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC5Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable5.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '6',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc6.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC6Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable6.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC6Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable6.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '7',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc7.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC7Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable7.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC7Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable7.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '8',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc8.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC8Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable8.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC8Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable8.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '9',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc9.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller:_controller. RC9Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable9.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC9Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable9.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '10',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc10.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller:_controller. RC10Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable10.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC10Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable10.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '11',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc11.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller:_controller. RC11Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable11.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller:_controller. DC11Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable11.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '12',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc12.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller:_controller. RC12Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable12.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC12Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable12.value,
-                                ))
-                          ],
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: '13',
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: BoldText(
-                                      text: _controller.oc13.value.toString(),
-                                    ),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.RC13Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable13.value,
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: CustomBox1(
-                                  controller: _controller.DC13Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable13.value,
-                                ))
-                          ],
-                        )
-
-                      ],
-                    ),
-                  ),
+                ListView(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: _controller.sizeListListView,
                 ),
+                // Container(
+                //   color: Colors.white,
+                //   child: Container(
+                //     margin: EdgeInsets.symmetric(horizontal: 3.h),
+                //     padding: EdgeInsets.symmetric(vertical: 2.h),
+                //     child: Column(
+                //       children: [
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '1',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text:_controller.oc1.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC1Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable1.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC1Controller,
+                //                   label: 'Enter ',
+                //                   Enabled:  _controller.enable1.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '2',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc2.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC2Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable2.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC2Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable2.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '3',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc3.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC3Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable3.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC3Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable3.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '4',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text:_controller.oc4.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC4Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable4.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC4Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable4.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '5',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc5.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC5Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable5.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC5Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable5.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '6',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc6.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC6Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable6.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC6Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable6.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '7',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc7.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC7Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable7.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC7Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable7.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '8',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc8.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC8Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable8.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC8Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable8.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '9',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc9.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller:_controller. RC9Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable9.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC9Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable9.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '10',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc10.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller:_controller. RC10Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable10.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC10Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable10.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '11',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc11.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller:_controller. RC11Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable11.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller:_controller. DC11Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable11.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '12',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc12.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller:_controller. RC12Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable12.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC12Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable12.value,
+                //                 ))
+                //           ],
+                //         ),
+                //         Divider(
+                //           height: 5,
+                //         ),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: '13',
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: Container(
+                //                   margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: Center(
+                //                     child: BoldText(
+                //                       text: _controller.oc13.value.toString(),
+                //                     ),
+                //                   ),
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.RC13Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable13.value,
+                //                 )),
+                //             Expanded(
+                //                 flex: 1,
+                //                 child: CustomBox1(
+                //                   controller: _controller.DC13Controller,
+                //                   label: 'Enter',
+                //                   Enabled: _controller.enable13.value,
+                //                 ))
+                //           ],
+                //         )
+                //
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: 2.h,
                 ),

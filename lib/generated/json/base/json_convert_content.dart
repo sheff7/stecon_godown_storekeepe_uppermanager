@@ -21,6 +21,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterial
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_issued_material_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/get_material_item_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/Material Received/Model/get_material_order_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/Material Received/Model/get_material_received_count_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_byid_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/profileSK/model/profile_sk_entity.dart';
@@ -81,6 +83,10 @@ class JsonConvert {
 		(GetMaterialItemEntity).toString(): GetMaterialItemEntity.fromJson,
 		(GetMaterialItemMaterialitemslist).toString(): GetMaterialItemMaterialitemslist.fromJson,
 		(ResponseEntity).toString(): ResponseEntity.fromJson,
+		(GetMaterialOrderEntity).toString(): GetMaterialOrderEntity.fromJson,
+		(GetMaterialOrderMaterialorderlist).toString(): GetMaterialOrderMaterialorderlist.fromJson,
+		(GetMaterialReceivedCountEntity).toString(): GetMaterialReceivedCountEntity.fromJson,
+		(GetMaterialReceivedCountMaterialrecievedlist).toString(): GetMaterialReceivedCountMaterialrecievedlist.fromJson,
 		(GetMaterialReplacedByidSkEntity).toString(): GetMaterialReplacedByidSkEntity.fromJson,
 		(GetMaterialReplacedByidSkMaterialreplacedlist).toString(): GetMaterialReplacedByidSkMaterialreplacedlist.fromJson,
 		(GetMaterialReplacedSkEntity).toString(): GetMaterialReplacedSkEntity.fromJson,
@@ -301,6 +307,18 @@ class JsonConvert {
 		}
 		if(<ResponseEntity>[] is M){
 			return data.map<ResponseEntity>((Map<String, dynamic> e) => ResponseEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialOrderEntity>[] is M){
+			return data.map<GetMaterialOrderEntity>((Map<String, dynamic> e) => GetMaterialOrderEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialOrderMaterialorderlist>[] is M){
+			return data.map<GetMaterialOrderMaterialorderlist>((Map<String, dynamic> e) => GetMaterialOrderMaterialorderlist.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialReceivedCountEntity>[] is M){
+			return data.map<GetMaterialReceivedCountEntity>((Map<String, dynamic> e) => GetMaterialReceivedCountEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMaterialReceivedCountMaterialrecievedlist>[] is M){
+			return data.map<GetMaterialReceivedCountMaterialrecievedlist>((Map<String, dynamic> e) => GetMaterialReceivedCountMaterialrecievedlist.fromJson(e)).toList() as M;
 		}
 		if(<GetMaterialReplacedByidSkEntity>[] is M){
 			return data.map<GetMaterialReplacedByidSkEntity>((Map<String, dynamic> e) => GetMaterialReplacedByidSkEntity.fromJson(e)).toList() as M;

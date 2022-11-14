@@ -6,20 +6,12 @@ import 'package:sizer/sizer.dart';
 import '../../../CustomFont/Header.dart';
 import '../../../CustomWidget/CustomField.dart';
 import '../../../CustomWidget/CustomFieldNonEditable.dart';
+import '../controller/AddMaterialReceivedController.dart';
 
-class AddMaterialRecevied extends StatelessWidget {
-   AddMaterialRecevied({Key? key}) : super(key: key);
-  final itemController = TextEditingController();
-   final categoryController = TextEditingController();
-   final companyController = TextEditingController();
-   final typeController = TextEditingController();
-   final ocController = TextEditingController();
-   final rcController = TextEditingController();
-   final dcController = TextEditingController();
-   final noteController = TextEditingController();
+class AddMaterialReceived extends StatelessWidget {
+   AddMaterialReceived({Key? key}) : super(key: key);
 
-
-
+   late final _controller=Get.put(AddMaterialReceivedController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +22,7 @@ class AddMaterialRecevied extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Header(
-          text: 'Add Material Received',
+          text: 'Material Received details',
         ),
         centerTitle: true,
         leading: IconButton(
@@ -42,17 +34,17 @@ class AddMaterialRecevied extends StatelessWidget {
             Get.back();
           },
         ),
-
       ),
-      body:  ListView(
+      body: Obx(()=>
+      ListView(
         children: [
           SizedBox(
             height: 2.h,
           ),
-
               Container(
                 color: Colors.white,
-                child: Container(
+                child:
+                Container(
                   margin: EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 3.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -66,65 +58,64 @@ class AddMaterialRecevied extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child:SizedBox()
-                        // DropdownButton(
-                        //   borderRadius: BorderRadius.circular(10),
-                        //   icon: Icon(Icons.arrow_drop_down),
-                        //   iconSize: 29,
-                        //   underline: SizedBox(),
-                        //   isExpanded: true,
-                        //   hint: Padding(
-                        //     padding: const EdgeInsets.only(left: 10),
-                        //     child: Text('Select Order'),
-                        //   ),
-                        //   value: _controller.orderisselected.value == ''
-                        //       ? null
-                        //       : _controller.orderisselected.value,
-                        //   onChanged: (value) {
-                        //     _controller.orderType(value.toString());
-                        //   },
-                        //   items: _controller.orderList!.map((e) {
-                        //     return DropdownMenuItem(
-                        //         value: e,
-                        //         child: Padding(
-                        //           padding: const EdgeInsets.only(left: 10),
-                        //           child: Text(e.toString()),
-                        //         ));
-                        //   }).toList(),
-                        // ),
+                        child: DropdownButton(
+                          borderRadius: BorderRadius.circular(10),
+                          icon: Icon(Icons.arrow_drop_down),
+                          iconSize: 29,
+                          underline: SizedBox(),
+                          isExpanded: true,
+                          hint: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Text('Select Order'),
+                          ),
+                          value: _controller.orderisselected.value == ''
+                              ? null
+                              : _controller.orderisselected.value,
+                          onChanged: (value) {
+                            _controller.orderType(value.toString());
+                          },
+                          items: _controller.orderList!.map((e) {
+                            return DropdownMenuItem(
+                                value: e,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(e.toString()),
+                                ));
+                          }).toList(),
+                        ),
                       ),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomFieldNonEditable(controller: itemController,label: "Item",),
+                      CustomFieldNonEditable(controller: _controller.itemController,label: "Item",),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomFieldNonEditable(controller: categoryController,label: "Category",),
+                      CustomFieldNonEditable(controller: _controller.categoryController,label: "Category",),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomFieldNonEditable(controller: companyController,label: "Company",),
+                      CustomFieldNonEditable(controller: _controller.companyController,label: "Company",),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomFieldNonEditable(controller: typeController,label: "Type",),
+                      CustomFieldNonEditable(controller: _controller.typeController,label: "Type",),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomFieldNonEditable(controller: ocController,label: "OC",),
+                      CustomFieldNonEditable(controller: _controller.ocController,label: "OC",),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomField(controller: rcController,label: "RC",),
+                      CustomField(controller: _controller.rcController,label: "RC",),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomField(controller: dcController,label: "DC",),
+                      CustomField(controller: _controller.dcController,label: "DC",),
                       SizedBox(
                         height: 4.h,
                       ),
-                      CustomField(controller: noteController,label: "Note",),
+                      CustomField(controller: _controller.noteController,label: "Note",),
                       SizedBox(
                         height: 4.h,
                       ),
@@ -133,7 +124,7 @@ class AddMaterialRecevied extends StatelessWidget {
                         height: 7.h,
                         child: ElevatedButton(
                           onPressed: () {
-                            // _controller.addCount();
+                            _controller.addCount();
 
                           },
                           child: Text(
@@ -152,6 +143,7 @@ class AddMaterialRecevied extends StatelessWidget {
               )
         ],
       ),
+      )
     );
   }
 }

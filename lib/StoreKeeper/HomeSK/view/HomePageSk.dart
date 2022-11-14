@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/HomeSK/controller/homeControllerSK.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/View/OrderList.dart';
 import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/SubHeading.dart';
@@ -14,6 +15,7 @@ import '../../DamagedMaterialDetailsSkFn/View/DamagedMaterialDetailsList.dart';
 import '../../IssuedMaterialSkFn/View/AddIssuedMaterialDeatils.dart';
 import '../../IssuedMaterialSkFn/View/IssuedMaterialDetailsList.dart';
 import '../../Material Received/view/ViewMaterialReceivedView.dart';
+import '../../Material Received/view/materialReceivedList.dart';
 import '../../MaterialReplacedDetailsSK/View/AddMaterialReplacedDetails.dart';
 import '../../MaterialReplacedDetailsSK/View/MaterialReplaceddetailsList.dart';
 import '../../profileSK/view/ProfileSkView.dart';
@@ -469,6 +471,7 @@ class HomePageSk extends StatelessWidget {
           // menuItem(),
           menuItem(1, 'Profile', Icons.person),
           menuItem(2, 'Material Received', Icons.logout),
+          menuItem(4, 'Orders', Icons.logout),
           menuItem(3, 'Log Out', Icons.logout),
         ],
       ),
@@ -498,10 +501,11 @@ class HomePageSk extends StatelessWidget {
                   .toString(),
             ));
           } else if (id == 2) {
-            Get.to(ViewMaterialReceived());
+            Get.to(MaterialReceivedList());
           } else if (id == 3) {
             _logout();
           } else if (id == 4) {
+            Get.to(OrderList());
           } else if (id == 5) {
           } else if (id == 6) {
           } else if (id == 7) {

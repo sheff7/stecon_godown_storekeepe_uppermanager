@@ -31,7 +31,7 @@ class ViewMaterialReceived extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                Get.to(AddMaterialRecevied());
+                // Get.to(AddMaterialRecevied());
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(builder: (context) =>  AddMaterialRepalcedDetails()),
