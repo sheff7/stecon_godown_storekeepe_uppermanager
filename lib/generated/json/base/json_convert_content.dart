@@ -47,6 +47,11 @@ import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchase
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/get_uppper_plan_no_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/pending_order_u_p_m_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/response_entity_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_mr_no_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_count_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_order_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_plan_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_return_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -145,6 +150,17 @@ class JsonConvert {
 		(PendingOrderUPMEntity).toString(): PendingOrderUPMEntity.fromJson,
 		(PendingOrderUPMPendingorderslist).toString(): PendingOrderUPMPendingorderslist.fromJson,
 		(ResponseEntityEntity).toString(): ResponseEntityEntity.fromJson,
+		(GetMrNoEntity).toString(): GetMrNoEntity.fromJson,
+		(GetMrNoMrnolist).toString(): GetMrNoMrnolist.fromJson,
+		(GetUpperCountEntity).toString(): GetUpperCountEntity.fromJson,
+		(GetUpperCountOrdercountlist).toString(): GetUpperCountOrdercountlist.fromJson,
+		(GetUpperCountReceivedcountlist).toString(): GetUpperCountReceivedcountlist.fromJson,
+		(GetUpperOrderEntity).toString(): GetUpperOrderEntity.fromJson,
+		(GetUpperOrderUpperordernolist).toString(): GetUpperOrderUpperordernolist.fromJson,
+		(GetUpperPlanEntity).toString(): GetUpperPlanEntity.fromJson,
+		(GetUpperPlanPlannolist).toString(): GetUpperPlanPlannolist.fromJson,
+		(GetUpperReturnEntity).toString(): GetUpperReturnEntity.fromJson,
+		(GetUpperReturnUpperreturnlist).toString(): GetUpperReturnUpperreturnlist.fromJson,
 	};
 
   T? convert<T>(dynamic value) {
@@ -495,6 +511,39 @@ class JsonConvert {
 		}
 		if(<ResponseEntityEntity>[] is M){
 			return data.map<ResponseEntityEntity>((Map<String, dynamic> e) => ResponseEntityEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMrNoEntity>[] is M){
+			return data.map<GetMrNoEntity>((Map<String, dynamic> e) => GetMrNoEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetMrNoMrnolist>[] is M){
+			return data.map<GetMrNoMrnolist>((Map<String, dynamic> e) => GetMrNoMrnolist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperCountEntity>[] is M){
+			return data.map<GetUpperCountEntity>((Map<String, dynamic> e) => GetUpperCountEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperCountOrdercountlist>[] is M){
+			return data.map<GetUpperCountOrdercountlist>((Map<String, dynamic> e) => GetUpperCountOrdercountlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperCountReceivedcountlist>[] is M){
+			return data.map<GetUpperCountReceivedcountlist>((Map<String, dynamic> e) => GetUpperCountReceivedcountlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperOrderEntity>[] is M){
+			return data.map<GetUpperOrderEntity>((Map<String, dynamic> e) => GetUpperOrderEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperOrderUpperordernolist>[] is M){
+			return data.map<GetUpperOrderUpperordernolist>((Map<String, dynamic> e) => GetUpperOrderUpperordernolist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPlanEntity>[] is M){
+			return data.map<GetUpperPlanEntity>((Map<String, dynamic> e) => GetUpperPlanEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPlanPlannolist>[] is M){
+			return data.map<GetUpperPlanPlannolist>((Map<String, dynamic> e) => GetUpperPlanPlannolist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperReturnEntity>[] is M){
+			return data.map<GetUpperReturnEntity>((Map<String, dynamic> e) => GetUpperReturnEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperReturnUpperreturnlist>[] is M){
+			return data.map<GetUpperReturnUpperreturnlist>((Map<String, dynamic> e) => GetUpperReturnUpperreturnlist.fromJson(e)).toList() as M;
 		}
 
 		debugPrint("${M.toString()} not found");

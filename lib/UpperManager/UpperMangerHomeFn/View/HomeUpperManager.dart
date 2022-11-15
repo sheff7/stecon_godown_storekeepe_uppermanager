@@ -18,6 +18,7 @@ import '../../UpperPurchasePlan/View/AddProductionPlanUPM.dart';
 import '../../UmProfileFn/View/ProfileUm.dart';
 import '../../UpperPurchaseOrder/View/UpperPurchaseOrder1UPM.dart';
 import '../../UpperPurchaseOrder/View/UpperPurchaseOrderUPM.dart';
+import '../../UpperReturnCount/View/AddUpperReturnCount.dart';
 import '../Controller/HomePageController.dart';
 
 class HomeUpperManager extends StatelessWidget {
@@ -555,7 +556,7 @@ class HomeUpperManager extends StatelessWidget {
           menuItem(2, 'History', Icons.info),
           menuItem(3, 'Upper Purchase Count', Icons.info),
           menuItem(4, 'Orders', Icons.info),
-          // menuItem(5, 'About us', Icons.info),
+          menuItem(5, 'Upper Return Count', Icons.info),
           menuItem(6, 'Logout', Icons.logout),
         ],
       ),
@@ -606,6 +607,9 @@ class HomeUpperManager extends StatelessWidget {
             Get.to(OrderList());
           } else if (id == 6) {
             _logout();
+          }
+          else if(id==5){
+            Get.to(AddUpperReturnCount());
           }
         },
         child: Padding(
