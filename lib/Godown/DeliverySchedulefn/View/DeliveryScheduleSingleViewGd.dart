@@ -495,7 +495,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                             crossAxisCount: 3,
                                                             mainAxisSpacing: 1,
                                                             crossAxisSpacing: 1,
-                                                            childAspectRatio: 2,
+                                                            // childAspectRatio: 2,
                                                             children: sizeListGrid,
 
                                                           )

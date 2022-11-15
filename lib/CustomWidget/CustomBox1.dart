@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
+import '../AppConstants/ClourConstants.dart';
+
 class CustomBox1 extends StatelessWidget {
   final TextEditingController controller;
   final String label;
@@ -13,7 +15,7 @@ class CustomBox1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // color: ColorConstants.loginBackColor,
-      margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+      margin: EdgeInsets.fromLTRB(2.h, 3.h, 0.h, 0.h),
       child: TextFormField(
         enabled: Enabled,
         textAlign: TextAlign.center,

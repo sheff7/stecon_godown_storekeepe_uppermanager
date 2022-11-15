@@ -663,8 +663,8 @@ class UpperPuchaseOrder1UPM extends StatelessWidget {
                                                 )),
                                             Container(
                                               color: Colors.white,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0.h, 1.h, 0.h, 0.h),
+                                              // margin: EdgeInsets.fromLTRB(
+                                              //     0.h, 1.h, 0.h, 0.h),
                                               child: Container(
                                                 color: Colors.white,
                                                 margin: EdgeInsets.fromLTRB(
@@ -690,7 +690,7 @@ class UpperPuchaseOrder1UPM extends StatelessWidget {
                                                         crossAxisCount: 3,
                                                         mainAxisSpacing: 1,
                                                         crossAxisSpacing: 1,
-                                                        childAspectRatio: 2,
+                                                        // childAspectRatio: 2:1,
                                                         children: sizeListGrid,
 
                                                       ),
