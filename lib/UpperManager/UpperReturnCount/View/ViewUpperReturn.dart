@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:sizer/sizer.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/Header.dart';
+
+import '../../../AppConstants/ClourConstants.dart';
+import '../../../CustomFont/Heading.dart';
+import '../../../CustomFont/NormalText.dart';
+import '../../../CustomWidget/Nodata.dart';
+import '../../../CustomWidget/RetryButton.dart';
+import '../Controller/ViewUpperReturnController.dart';
+import 'ViewUpperReturnSingle.dart';
 
 class ViewUpperReturn extends StatelessWidget {
-  const ViewUpperReturn({Key? key}) : super(key: key);
+  ViewUpperReturn({Key? key}) : super(key: key);
+  late final _controller=Get.put(ViewUpperReturnController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +36,7 @@ class ViewUpperReturn extends StatelessWidget {
               backgroundColor: Colors.white,
               elevation: 0,
               title: Header(
-                text: 'Upper Purchase Order',
+                text: 'Upper Return Count',
               ),
               // Text(
               //   'Add Orders',
@@ -31,103 +44,103 @@ class ViewUpperReturn extends StatelessWidget {
               // ),
               centerTitle: true,
               actions: [
-                IconButton(
-                  icon: Icon(
-                    Icons.filter_list_rounded,
-                    size: 17,
-                  ),
-                  onPressed: () {
-                    Get.bottomSheet(
-                        Container(
-                          height: 30.h,
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 1.h,
-                              ),
-                              HeadingText(text: 'Filter By Status'),
-                              Obx(() => Container(
-                                margin:
-                                EdgeInsets.fromLTRB(2.h, 3.h, 2.h, 0.h),
-                                child: Material(
-                                  child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      color: ColorConstants
-                                          .textformfieldBackColor,
-                                      //background color of dropdown button
-                                      //border of dropdown button
-                                      borderRadius:
-                                      BorderRadius.circular(10),
-                                    ),
-                                    child: DropdownButtonHideUnderline(
-                                      child: ButtonTheme(
-                                        alignedDropdown: true,
-                                        child: DropdownButton(
-                                          isExpanded: true,
-                                          value: _controller
-                                              .choosestatus.value ==
-                                              ''
-                                              ? null
-                                              : _controller
-                                              .choosestatus.value,
-                                          hint: NormalText(
-                                            text: 'Select Status',
-                                          ),
-                                          borderRadius:
-                                          BorderRadius.circular(10),
-                                          style: GoogleFonts.roboto(),
-                                          onChanged: (value) {
-                                            _controller.getStatustype(
-                                                value.toString());
-                                          },
-                                          items: _controller.statusList!
-                                              .map((e) {
-                                            return DropdownMenuItem(
-                                                value: e,
-                                                child: Text(e.toString(),
-                                                    style: TextStyle(
-                                                        color:
-                                                        Colors.black)));
-                                          }).toList(),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                              Container(
-                                  margin:
-                                  EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 0.h),
-                                  height: 6.h,
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () async {
-                                      _controller.getUpperOrderFilter();
-
-                                      Get.back();
-                                    },
-                                    child: Text(
-                                      "Apply",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 15, color: Colors.white),
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                        primary: const Color(0xFFEC4E52),
-                                        textStyle: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold)),
-                                  ))
-                            ],
-                          ),
-                        ),
-                        persistent: false,
-                        isDismissible: false,
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ));
-                  },
-                )
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.filter_list_rounded,
+                //     size: 17,
+                //   ),
+                //   onPressed: () {
+                //     Get.bottomSheet(
+                //         Container(
+                //           height: 30.h,
+                //           child: Column(
+                //             children: [
+                //               SizedBox(
+                //                 height: 1.h,
+                //               ),
+                //               HeadingText(text: 'Filter By Status'),
+                //               Obx(() => Container(
+                //                 margin:
+                //                 EdgeInsets.fromLTRB(2.h, 3.h, 2.h, 0.h),
+                //                 child: Material(
+                //                   child: DecoratedBox(
+                //                     decoration: BoxDecoration(
+                //                       color: ColorConstants
+                //                           .textformfieldBackColor,
+                //                       //background color of dropdown button
+                //                       //border of dropdown button
+                //                       borderRadius:
+                //                       BorderRadius.circular(10),
+                //                     ),
+                //                     child: DropdownButtonHideUnderline(
+                //                       child: ButtonTheme(
+                //                         alignedDropdown: true,
+                //                         child: DropdownButton(
+                //                           isExpanded: true,
+                //                           value: _controller
+                //                               .choosestatus.value ==
+                //                               ''
+                //                               ? null
+                //                               : _controller
+                //                               .choosestatus.value,
+                //                           hint: NormalText(
+                //                             text: 'Select Status',
+                //                           ),
+                //                           borderRadius:
+                //                           BorderRadius.circular(10),
+                //                           style: GoogleFonts.roboto(),
+                //                           onChanged: (value) {
+                //                             _controller.getStatustype(
+                //                                 value.toString());
+                //                           },
+                //                           items: _controller.statusList!
+                //                               .map((e) {
+                //                             return DropdownMenuItem(
+                //                                 value: e,
+                //                                 child: Text(e.toString(),
+                //                                     style: TextStyle(
+                //                                         color:
+                //                                         Colors.black)));
+                //                           }).toList(),
+                //                         ),
+                //                       ),
+                //                     ),
+                //                   ),
+                //                 ),
+                //               )),
+                //               Container(
+                //                   margin:
+                //                   EdgeInsets.fromLTRB(3.h, 3.h, 3.h, 0.h),
+                //                   height: 6.h,
+                //                   width: double.infinity,
+                //                   child: ElevatedButton(
+                //                     onPressed: () async {
+                //                       _controller.getUpperOrderFilter();
+                //
+                //                       Get.back();
+                //                     },
+                //                     child: Text(
+                //                       "Apply",
+                //                       style: GoogleFonts.poppins(
+                //                           fontSize: 15, color: Colors.white),
+                //                     ),
+                //                     style: ElevatedButton.styleFrom(
+                //                         primary: const Color(0xFFEC4E52),
+                //                         textStyle: const TextStyle(
+                //                             fontSize: 14,
+                //                             fontWeight: FontWeight.bold)),
+                //                   ))
+                //             ],
+                //           ),
+                //         ),
+                //         persistent: false,
+                //         isDismissible: false,
+                //         backgroundColor: Colors.white,
+                //         shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(10),
+                //         ));
+                //   },
+                // )
               ],
               leading: IconButton(
                 icon: Icon(
@@ -178,7 +191,7 @@ class ViewUpperReturn extends StatelessWidget {
           );
         } else if (_controller.orderNoEntity.value != null) {
           if (_controller.orderNoEntity.value.response == 'Success') {
-            if (_controller.orderNoEntity.value.purchaseplanlist == 0) {
+            if (_controller.orderNoEntity.value.upperreturnlist == 0) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -193,7 +206,7 @@ class ViewUpperReturn extends StatelessWidget {
                 ),
               );
             }
-            else if (_controller.orderNoEntity.value.purchaseplanlist != 0) {
+            else if (_controller.orderNoEntity.value.upperreturnlist != 0) {
               return ListView(
                 children: [
                   SizedBox(
@@ -208,7 +221,7 @@ class ViewUpperReturn extends StatelessWidget {
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: _controller
-                              .orderNoEntity.value.purchaseplanlist!.length,
+                              .orderNoEntity.value.upperreturnlist!.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Column(
                               children: [
@@ -220,17 +233,29 @@ class ViewUpperReturn extends StatelessWidget {
                                     child: ListTile(
                                       title: InkWell(
                                         onTap: () {
-                                          Get.to(UpperPuchaseOrder1UPM(
-                                            upmId: upmId,
+                                          Get.to(ViewUpperReturnSingle(
                                             id: _controller.orderNoEntity.value
-                                                .purchaseplanlist![index].id
+                                                .upperreturnlist![index].id
                                                 .toString(),
-                                            orderno: _controller
+                                            orderNo: _controller
                                                 .orderNoEntity
                                                 .value
-                                                .purchaseplanlist![index]
+                                                .upperreturnlist![index]
                                                 .orderno
                                                 .toString(),
+                                              orderId: _controller
+                                                  .orderNoEntity
+                                                  .value
+                                                  .upperreturnlist![index]
+                                              .orderid
+                                              .toString(),
+                                              supplierId: _controller
+                                              .orderNoEntity
+                                              .value
+                                              .upperreturnlist![index]
+                                              .supplierid
+                                              .toString(),
+
                                           ));
                                         },
                                         child: Container(
@@ -250,17 +275,17 @@ class ViewUpperReturn extends StatelessWidget {
                                                       text: _controller
                                                           .orderNoEntity
                                                           .value
-                                                          .purchaseplanlist![
+                                                          .upperreturnlist![
                                                       index]
-                                                          .companyname
+                                                          .name
                                                           .toString()),
                                                   NormalText(
                                                       text: _controller
                                                           .orderNoEntity
                                                           .value
-                                                          .purchaseplanlist![
+                                                          .upperreturnlist![
                                                       index]
-                                                          .orderdate
+                                                          .date
                                                           .toString())
                                                 ],
                                               ),
@@ -277,7 +302,7 @@ class ViewUpperReturn extends StatelessWidget {
                                                       text: _controller
                                                           .orderNoEntity
                                                           .value
-                                                          .purchaseplanlist![
+                                                          .upperreturnlist![
                                                       index]
                                                           .orderno
                                                           .toString())
@@ -304,7 +329,7 @@ class ViewUpperReturn extends StatelessWidget {
                                                       text: _controller
                                                           .orderNoEntity
                                                           .value
-                                                          .purchaseplanlist![
+                                                          .upperreturnlist![
                                                       index]
                                                           .companyplanno
                                                           .toString())

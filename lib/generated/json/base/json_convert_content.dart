@@ -52,6 +52,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCo
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_order_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_plan_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_return_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Model/get_upper_return_single_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -161,6 +162,10 @@ class JsonConvert {
 		(GetUpperPlanPlannolist).toString(): GetUpperPlanPlannolist.fromJson,
 		(GetUpperReturnEntity).toString(): GetUpperReturnEntity.fromJson,
 		(GetUpperReturnUpperreturnlist).toString(): GetUpperReturnUpperreturnlist.fromJson,
+		(GetUpperReturnSingleEntity).toString(): GetUpperReturnSingleEntity.fromJson,
+		(GetUpperReturnSingleUpperreturnlist).toString(): GetUpperReturnSingleUpperreturnlist.fromJson,
+		(GetUpperReturnSingleUpperreturncountlist).toString(): GetUpperReturnSingleUpperreturncountlist.fromJson,
+		(GetUpperReturnSingleUpperreturncountstafflist).toString(): GetUpperReturnSingleUpperreturncountstafflist.fromJson,
 	};
 
   T? convert<T>(dynamic value) {
@@ -544,6 +549,18 @@ class JsonConvert {
 		}
 		if(<GetUpperReturnUpperreturnlist>[] is M){
 			return data.map<GetUpperReturnUpperreturnlist>((Map<String, dynamic> e) => GetUpperReturnUpperreturnlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperReturnSingleEntity>[] is M){
+			return data.map<GetUpperReturnSingleEntity>((Map<String, dynamic> e) => GetUpperReturnSingleEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperReturnSingleUpperreturnlist>[] is M){
+			return data.map<GetUpperReturnSingleUpperreturnlist>((Map<String, dynamic> e) => GetUpperReturnSingleUpperreturnlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperReturnSingleUpperreturncountlist>[] is M){
+			return data.map<GetUpperReturnSingleUpperreturncountlist>((Map<String, dynamic> e) => GetUpperReturnSingleUpperreturncountlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperReturnSingleUpperreturncountstafflist>[] is M){
+			return data.map<GetUpperReturnSingleUpperreturncountstafflist>((Map<String, dynamic> e) => GetUpperReturnSingleUpperreturncountstafflist.fromJson(e)).toList() as M;
 		}
 
 		debugPrint("${M.toString()} not found");

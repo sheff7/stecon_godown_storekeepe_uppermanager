@@ -65,7 +65,7 @@ class UpperPuchaseOrder1UPM extends StatelessWidget {
   }
 
   _body() {
-  if(_controller.networkStatus.value==true){
+   if(_controller.networkStatus.value==true){
     if (_controller.loadingBool.value == true) {
       return Center(
         child: Column(

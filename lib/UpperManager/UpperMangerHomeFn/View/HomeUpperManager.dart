@@ -19,6 +19,7 @@ import '../../UmProfileFn/View/ProfileUm.dart';
 import '../../UpperPurchaseOrder/View/UpperPurchaseOrder1UPM.dart';
 import '../../UpperPurchaseOrder/View/UpperPurchaseOrderUPM.dart';
 import '../../UpperReturnCount/View/AddUpperReturnCount.dart';
+import '../../UpperReturnCount/View/ViewUpperReturn.dart';
 import '../Controller/HomePageController.dart';
 
 class HomeUpperManager extends StatelessWidget {
@@ -609,7 +610,7 @@ class HomeUpperManager extends StatelessWidget {
             _logout();
           }
           else if(id==5){
-            Get.to(AddUpperReturnCount());
+            Get.to(ViewUpperReturn());
           }
         },
         child: Padding(

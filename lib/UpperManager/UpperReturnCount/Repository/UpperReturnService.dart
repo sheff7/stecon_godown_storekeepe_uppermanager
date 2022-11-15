@@ -12,6 +12,7 @@ import '../Model/get_upper_count_entity.dart';
 import '../Model/get_upper_order_entity.dart';
 import '../Model/get_upper_plan_entity.dart';
 import '../Model/get_upper_return_entity.dart';
+import '../Model/get_upper_return_single_entity.dart';
 
 class UpperReturnService {
   Dio _dio = Dio(DioConfig.options);
@@ -141,6 +142,23 @@ class UpperReturnService {
         var data = response.data;
         print(response.data.toString());
         return JsonConvert.fromJsonAsT<GetUpperReturnEntity>(data);
+      }
+    }
+    catch (e) {}
+  }
+
+  Future<GetUpperReturnSingleEntity?> getUpperReturnSingle(String id,String supplierid,String orderno,String orderid) async {
+    try {
+      final response = await _dio.post('apigetbyidinreturnuppercount', data: {
+        "id":id,
+        "supplierid":supplierid,
+        "orderno":orderno,
+        "orderid":orderid
+      });
+      if (response.statusCode == 200) {
+        var data = response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<GetUpperReturnSingleEntity>(data);
       }
     }
     catch (e) {}
