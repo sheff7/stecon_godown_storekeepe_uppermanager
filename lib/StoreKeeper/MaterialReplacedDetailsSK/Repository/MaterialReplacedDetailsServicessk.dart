@@ -18,7 +18,7 @@ class MaterialReplacedListSdkServices {
         return JsonConvert.fromJsonAsT<GetMaterialReplacedSkEntity>(data);
       }
     } catch (e) {
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 }

@@ -23,7 +23,7 @@ class LoginByStatusGDService{
       }
     }
     catch(e){
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 }

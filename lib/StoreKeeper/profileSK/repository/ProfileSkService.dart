@@ -24,7 +24,7 @@ class ProfileSkService{
       }
     }
     catch(e){
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 

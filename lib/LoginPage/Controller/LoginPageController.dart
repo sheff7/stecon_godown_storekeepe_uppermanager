@@ -22,8 +22,8 @@ class LoginController extends GetxController {
   }
   login(String username, String password) async {
     print(username + password);
-    bool nBool = false; //(await NetworkConnectivity().checkConnectivityState())!;
-    if (nBool == false) {
+    bool nBool =  (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
       CustomSnackbar().LoadingBottomSheet();
       loginEntity.value = (await LoginPageService().Login(username, password))!;
       Get.back();

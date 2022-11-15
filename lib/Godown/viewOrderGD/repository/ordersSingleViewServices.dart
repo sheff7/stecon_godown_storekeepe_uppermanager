@@ -27,7 +27,7 @@ class OrderSingleViewGDServices {
         return JsonConvert.fromJsonAsT<OrdersSingleViewEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
 

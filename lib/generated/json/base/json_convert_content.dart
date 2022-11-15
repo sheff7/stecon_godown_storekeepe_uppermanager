@@ -9,6 +9,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginby_status_g_d_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/profile_g_d_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/product_single_view_rep_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/stock_list_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/get_distributors_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_list_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_single_view_entity.dart';
@@ -61,6 +63,12 @@ class JsonConvert {
 		(LoginbyStatusGDLoginlist).toString(): LoginbyStatusGDLoginlist.fromJson,
 		(ProfileGDEntity).toString(): ProfileGDEntity.fromJson,
 		(ProfileGDStorekeeperlist).toString(): ProfileGDStorekeeperlist.fromJson,
+		(ProductSingleViewRepEntity).toString(): ProductSingleViewRepEntity.fromJson,
+		(ProductSingleViewRepProductlist).toString(): ProductSingleViewRepProductlist.fromJson,
+		(ProductSingleViewRepProductsizelist).toString(): ProductSingleViewRepProductsizelist.fromJson,
+		(ProductSingleViewRepStock).toString(): ProductSingleViewRepStock.fromJson,
+		(StockListGdEntity).toString(): StockListGdEntity.fromJson,
+		(StockListGdStocklist).toString(): StockListGdStocklist.fromJson,
 		(GetDistributorsEntity).toString(): GetDistributorsEntity.fromJson,
 		(GetDistributorsDistributorslist).toString(): GetDistributorsDistributorslist.fromJson,
 		(ViewOrdersListViewEntity).toString(): ViewOrdersListViewEntity.fromJson,
@@ -241,6 +249,24 @@ class JsonConvert {
 		}
 		if(<ProfileGDStorekeeperlist>[] is M){
 			return data.map<ProfileGDStorekeeperlist>((Map<String, dynamic> e) => ProfileGDStorekeeperlist.fromJson(e)).toList() as M;
+		}
+		if(<ProductSingleViewRepEntity>[] is M){
+			return data.map<ProductSingleViewRepEntity>((Map<String, dynamic> e) => ProductSingleViewRepEntity.fromJson(e)).toList() as M;
+		}
+		if(<ProductSingleViewRepProductlist>[] is M){
+			return data.map<ProductSingleViewRepProductlist>((Map<String, dynamic> e) => ProductSingleViewRepProductlist.fromJson(e)).toList() as M;
+		}
+		if(<ProductSingleViewRepProductsizelist>[] is M){
+			return data.map<ProductSingleViewRepProductsizelist>((Map<String, dynamic> e) => ProductSingleViewRepProductsizelist.fromJson(e)).toList() as M;
+		}
+		if(<ProductSingleViewRepStock>[] is M){
+			return data.map<ProductSingleViewRepStock>((Map<String, dynamic> e) => ProductSingleViewRepStock.fromJson(e)).toList() as M;
+		}
+		if(<StockListGdEntity>[] is M){
+			return data.map<StockListGdEntity>((Map<String, dynamic> e) => StockListGdEntity.fromJson(e)).toList() as M;
+		}
+		if(<StockListGdStocklist>[] is M){
+			return data.map<StockListGdStocklist>((Map<String, dynamic> e) => StockListGdStocklist.fromJson(e)).toList() as M;
 		}
 		if(<GetDistributorsEntity>[] is M){
 			return data.map<GetDistributorsEntity>((Map<String, dynamic> e) => GetDistributorsEntity.fromJson(e)).toList() as M;

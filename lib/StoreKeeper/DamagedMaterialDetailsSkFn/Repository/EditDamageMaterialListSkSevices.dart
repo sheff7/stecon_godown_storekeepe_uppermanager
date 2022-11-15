@@ -30,7 +30,7 @@ class EditDamagedMaterialSkServices {
         return JsonConvert.fromJsonAsT<GetDamagedMaterialListSkEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
 
@@ -43,7 +43,7 @@ class EditDamagedMaterialSkServices {
         return JsonConvert.fromJsonAsT<GetDepartmentEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
   Future<GetMaterialItemEntity?> GetCatgryItem() async {
@@ -54,7 +54,7 @@ class EditDamagedMaterialSkServices {
         return JsonConvert.fromJsonAsT<GetMaterialItemEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
 
@@ -67,7 +67,7 @@ class EditDamagedMaterialSkServices {
         return JsonConvert.fromJsonAsT<GetCompanyEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
   Future<GetIssuedMaterialListEntity?> getIssuedNo() async {
@@ -79,7 +79,7 @@ class EditDamagedMaterialSkServices {
         return JsonConvert.fromJsonAsT<GetIssuedMaterialListEntity>(data);
       }
     } catch (e) {
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
   Future<GetMaterialReplacedSkEntity?> getReplacedList() async {
@@ -91,7 +91,7 @@ class EditDamagedMaterialSkServices {
         return JsonConvert.fromJsonAsT<GetMaterialReplacedSkEntity>(data);
       }
     } catch (e) {
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 
@@ -114,7 +114,7 @@ class EditDamagedMaterialSkServices {
         return JsonConvert.fromJsonAsT<ResponseEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
 

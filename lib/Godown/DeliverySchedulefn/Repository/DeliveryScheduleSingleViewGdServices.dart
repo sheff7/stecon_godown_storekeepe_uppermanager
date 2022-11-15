@@ -27,7 +27,7 @@ class DeliveryScheduleSingleViewtGd {
         return JsonConvert.fromJsonAsT<DeliveryScheduleSingleViewGdEntity>(data);
       }
     } catch (e) {
-      print(CustomSnackbar().InfoSnackBar('Error', e.toString()));
+      print(e);
     }
   }
 
@@ -56,7 +56,6 @@ class DeliveryScheduleSingleViewtGd {
       }
     } catch (e) {
       print(e);
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
     }
   }
 }

@@ -19,7 +19,7 @@ class DeliveryScheduleListGd {
         return JsonConvert.fromJsonAsT<DeliveryScheduleListEntity>(data);
       }
     } catch (e) {
-      print(CustomSnackbar().InfoSnackBar('Error', e.toString()));
+      print(e);
     }
   }
 }

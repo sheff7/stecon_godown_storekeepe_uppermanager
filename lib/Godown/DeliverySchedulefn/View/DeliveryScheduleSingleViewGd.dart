@@ -45,7 +45,7 @@ class DeliverySchedule1GD extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Header(
-          text: 'View Orders',
+          text: 'Delivery Schedule',
         ),
         centerTitle: true,
         leading: IconButton(
@@ -60,7 +60,8 @@ class DeliverySchedule1GD extends StatelessWidget {
       ),
       body: Obx(() => _body()),
       bottomNavigationBar: Container(
-        margin: EdgeInsets.fromLTRB(2.h, 0, 0, 2.h),
+        margin: EdgeInsets.fromLTRB(2.h, 0, 2.h, 2.h),
+        height: 5.h,
         width: double.infinity,
         child: ElevatedButton(
           onPressed: () {

@@ -17,7 +17,7 @@ class IssuedMaterialListSdkServices {
         return JsonConvert.fromJsonAsT<GetIssuedMaterialListEntity>(data);
       }
     } catch (e) {
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 }

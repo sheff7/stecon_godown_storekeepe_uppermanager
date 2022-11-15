@@ -22,7 +22,7 @@ class LoginByStatusService{
       }
     }
     catch(e){
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 

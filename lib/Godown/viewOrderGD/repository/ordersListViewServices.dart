@@ -18,7 +18,7 @@ class OrderListViewService {
         return JsonConvert.fromJsonAsT<ViewOrdersListViewEntity>(data);
       }
     } catch (e) {
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 
@@ -31,7 +31,7 @@ class OrderListViewService {
         return JsonConvert.fromJsonAsT<GetDistributorsEntity>(data);
       }
     } catch (e) {
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 
@@ -51,7 +51,7 @@ class OrderListViewService {
         return JsonConvert.fromJsonAsT<ViewOrdersListViewEntity>(data);
       }
     } catch (e) {
-      print(CustomSnackbar().InfoSnackBar('Error', e.toString()));
+      print(e);
     }
   }
 }

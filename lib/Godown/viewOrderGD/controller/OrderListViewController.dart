@@ -51,6 +51,8 @@ class OrderListViewController extends GetxController{
         if(getDistributorEnitityy.value.distributorslist!.length!=0){
           for(int i=0; i<getDistributorEnitityy.value.distributorslist!.length; i++){
             distributorList!.add(getDistributorEnitityy.value.distributorslist![i].name.toString());
+
+
           }
         }
       }
@@ -59,6 +61,12 @@ class OrderListViewController extends GetxController{
   DisTributorType(String value){
     if(value!='Select Distributor'){
       chooseDistributor.value = value;
+      for(int i=0; i< getDistributorEnitityy.value.distributorslist!.length;i++){
+        if(chooseDistributor.value.toString()==getDistributorEnitityy.value.distributorslist![i].name.toString()){
+          disid.value= getDistributorEnitityy.value.distributorslist![i].id.toString();
+        }
+      }
+
     }
   }
   StatusType(String value){

@@ -25,7 +25,7 @@ class EditIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<GetIssuedMaterialByIdEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
 
@@ -37,7 +37,7 @@ class EditIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<GetDepartmentEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
   Future<GetMaterialItemEntity?> GetCatgryItem() async {
@@ -48,7 +48,7 @@ class EditIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<GetMaterialItemEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
 
@@ -61,7 +61,7 @@ class EditIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<GetCompanyEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
   Future<ResponseEntity?> EditButton(String id,String departmntId, String itemId, String companyId,String qty,String type,String commnents) async {
@@ -82,7 +82,7 @@ class EditIssuedMaterialOrderSkServices {
         return JsonConvert.fromJsonAsT<ResponseEntity>(data);
       }
     } catch (e) {
-      (CustomSnackbar().InfoSnackBar('error', e.toString()));
+      print(e);
     }
   }
 

@@ -18,7 +18,7 @@ class DamagedMaterialListSdkServices {
         return JsonConvert.fromJsonAsT<GetDamagedMaterialListSkEntity>(data);
       }
     } catch (e) {
-      CustomSnackbar().InfoSnackBar('Error', e.toString());
+      print(e);
     }
   }
 }
