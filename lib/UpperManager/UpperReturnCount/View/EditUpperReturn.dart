@@ -422,7 +422,18 @@ class EditUpperReturn extends StatelessWidget {
                   ),
                   SizedBox(
                     height: 4.h,
-                  )
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 2.h, right: 2.h),
+                    child: ListView(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      children: _controller.sizeListListView,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
 
 
                   // Container(

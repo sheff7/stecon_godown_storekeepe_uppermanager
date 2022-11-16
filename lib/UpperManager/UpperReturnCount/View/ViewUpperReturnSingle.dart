@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Controller/ViewUpperReturnSingleController.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/View/EditUpperReturn.dart';
 
 import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/Header.dart';
@@ -407,11 +408,12 @@ class ViewUpperReturnSingle extends StatelessWidget {
                     height: 5.h,
                     child: ElevatedButton(
                       onPressed: () {
+                      Get.to(EditUpperReturn(id: id, orderId: orderId, orderNo: orderNo, supplierId: supplierId));
                         // _controller.addCount();
 
                       },
                       child: Text(
-                        "Submit",
+                        "Edit Count",
                         style: TextStyle(color: Colors.white, fontSize: 14),
                       ),
                       style: ElevatedButton.styleFrom(

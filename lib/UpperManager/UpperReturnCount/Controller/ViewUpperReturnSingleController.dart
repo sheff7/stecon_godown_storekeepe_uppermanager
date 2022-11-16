@@ -83,6 +83,22 @@ class ViewUpperReturnSingleController extends GetxController{
 
 
           }
+          if(orderNoEntity.value.upperreturncountlist!.length!=0){
+            DC1Controller.text=orderNoEntity.value.upperreturncountlist![0].s1.toString();
+            DC2Controller.text=orderNoEntity.value.upperreturncountlist![0].s2.toString();
+            DC3Controller.text=orderNoEntity.value.upperreturncountlist![0].s3.toString();
+            DC4Controller.text=orderNoEntity.value.upperreturncountlist![0].s4.toString();
+            DC5Controller.text=orderNoEntity.value.upperreturncountlist![0].s5.toString();
+            DC6Controller.text=orderNoEntity.value.upperreturncountlist![0].s6.toString();
+            DC7Controller.text=orderNoEntity.value.upperreturncountlist![0].s7.toString();
+            DC8Controller.text=orderNoEntity.value.upperreturncountlist![0].s8.toString();
+            DC9Controller.text=orderNoEntity.value.upperreturncountlist![0].s9.toString();
+            DC10Controller.text=orderNoEntity.value.upperreturncountlist![0].s10.toString();
+            DC11Controller.text=orderNoEntity.value.upperreturncountlist![0].s11.toString();
+            DC12Controller.text=orderNoEntity.value.upperreturncountlist![0].s12.toString();
+            DC13Controller.text=orderNoEntity.value.upperreturncountlist![0].s13.toString();
+
+          }
           getUpperCount(supplierId, orderNo, orderId, planNo.value, countId.value);
         }
       }
