@@ -181,7 +181,7 @@ class StockSingleViewUm extends StatelessWidget {
                                           SizedBox(
                                             height: 2.h,
                                           ),
-                                          NormalText(text:  productListController.productListEntity.value.stocklist![0].color.toString()),
+                                          NormalText(text:  productListController.productListEntity.value.stocklist![0].colorname.toString()),
                                           SizedBox(
                                             height: 2.h,
                                           ),

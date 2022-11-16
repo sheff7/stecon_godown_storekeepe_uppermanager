@@ -71,6 +71,8 @@ class ViewUpperReturnSingleController extends GetxController{
       loadingBool.value = false;
       if(orderNoEntity.value!=null){
         if(orderNoEntity.value.response=='Success'){
+          dynamicChips.clear();
+          sizeListListView.clear();
           if(orderNoEntity.value.upperreturncountstafflist!.length!=0){
             for(int i=0;i<orderNoEntity.value.upperreturncountstafflist!.length;i++){
               dynamicChips.add(orderNoEntity.value.upperreturncountstafflist![i].staffname.toString());
@@ -908,10 +910,10 @@ class ViewUpperReturnSingleController extends GetxController{
   getUpperCount(String supplierId,String orderno,String orderId,String planNo,String counId)async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
-      CustomSnackbar().LoadingBottomSheet();
+      // CustomSnackbar().LoadingBottomSheet();
       countEntity.value = (await UpperReturnService().getUpperCount(
           supplierId, orderno, orderId, planNo, counId))!;
-      Get.back();
+      // Get.back();
       if (countEntity.value != null) {
         if (countEntity.value.response == 'Success') {
           // DC1Controller.clear();

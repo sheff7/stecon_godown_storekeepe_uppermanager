@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Controller/ViewUpperReturnController.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Repository/UpperReturnService.dart';
 
 import '../../../CustomFont/BoldText.dart';
@@ -1228,6 +1229,8 @@ class AddUpperReturnCountController extends GetxController{
       if(responseEntity.value.response=='Added successfully'){
         Get.back();
         CustomSnackbar().InfoSnackBar('Upper Return Count', responseEntity.value.response.toString());
+        final controller=Get.find<ViewUpperReturnController>();
+        controller.getUpperOrder();
       }
       else {
         CustomSnackbar().InfoSnackBar('Upper Return Count', responseEntity.value.response.toString());

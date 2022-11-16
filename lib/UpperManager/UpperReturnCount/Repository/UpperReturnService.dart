@@ -163,4 +163,37 @@ class UpperReturnService {
     }
     catch (e) {}
   }
+
+  Future<ResponseEntity?> editCount(String supplieid, String orderno,
+      String orderId, String planno, String counttId,String productid,String date,
+      String companyplanno,String type, List<Map<String,dynamic>>staffList,
+      List<Map<String,dynamic>>rcCountList,String id) async {
+    try {
+      var now = DateTime.now();
+      final response = await _dio.post('apieditreturnuppercount', data: {
+        "id":id,
+        "supplierid": supplieid,
+        "orderid": orderId,
+        "orderno": orderno,
+        "planno": planno,
+        "countid": counttId,
+        "productid":productid,
+        // "mrno":date,
+        "companyplanno":companyplanno,
+        "date": date,
+        // "type":type,
+        "returncountlist":jsonEncode(rcCountList),
+        "countstafflist":jsonEncode(staffList),
+
+      });
+      if (response.statusCode == 200) {
+        var data = response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<ResponseEntity>(data);
+      }
+    }
+    catch (e) {
+      print(e);
+    }
+  }
 }

@@ -369,14 +369,14 @@ class EditUpperReturn extends StatelessWidget {
                             flex: 1,
                             child: Column(
                               children: [
-                                // Text(
-                                //   _controller.typeSelected.value,
-                                //   style: GoogleFonts.radioCanada(
-                                //     fontSize: 16,
-                                //     fontWeight: FontWeight.w500,
-                                //     color: Colors.black,
-                                //   ),
-                                // ),
+                                Text(
+                                  _controller.type.value,
+                                  style: GoogleFonts.radioCanada(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black,
+                                  ),
+                                ),
                               ],
                             ),
                           )
@@ -388,41 +388,17 @@ class EditUpperReturn extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 2.h, right: 2.h),
-                    child: ListView(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      // children: _controller.sizeListListView,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4.h,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 2.h, right: 2.h),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 5.h,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // _controller.addCount();
-
-                        },
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(color: Colors.white, fontSize: 14),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFFEC4E52),
-                            textStyle: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold)),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4.h,
-                  ),
+                  // Container(
+                  //   margin: EdgeInsets.only(left: 2.h, right: 2.h),
+                  //   child: ListView(
+                  //     shrinkWrap: true,
+                  //     physics: NeverScrollableScrollPhysics(),
+                  //     // children: _controller.sizeListListView,
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 4.h,
+                  // ),
                   Container(
                     margin: EdgeInsets.only(left: 2.h, right: 2.h),
                     child: ListView(
@@ -434,6 +410,27 @@ class EditUpperReturn extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
+            Container(
+              margin: EdgeInsets.only(left: 2.h, right: 2.h),
+              child: SizedBox(
+                width: double.infinity,
+                height: 5.h,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _controller.addCount();
+
+                  },
+                  child: Text(
+                    "Submit",
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color(0xFFEC4E52),
+                      textStyle: TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.bold)),
+                ),
+              ),
+            )
 
 
                   // Container(

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperReturnCount/Controller/ViewUpperReturnSingleController.dart';
 
 import '../../../CustomFont/BoldText.dart';
 import '../../../CustomWidget/CustomBox1.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
+import '../../../StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
 import '../../../Utils/InternetConnectivity.dart';
 import '../../UpperPurchaseCount/Model/get_staff_entity.dart';
 import '../Model/get_upper_count_entity.dart';
@@ -34,6 +36,10 @@ class EditUpperReturnController extends GetxController{
   RxString type=''.obs;
   RxString planNo=''.obs;
   RxString countId=''.obs;
+  RxString date=''.obs;
+
+  Rx<ResponseEntity>responseEntity=ResponseEntity().obs;
+
 
 
 
@@ -907,6 +913,17 @@ class EditUpperReturnController extends GetxController{
             DC13Controller.text=orderNoEntity.value.upperreturncountlist![0].s13.toString();
 
           }
+          if(orderNoEntity.value.upperreturnlist!.length!=0){
+            planNo.value=orderNoEntity.value.upperreturnlist![0].planno.toString();
+            countId.value=orderNoEntity.value.upperreturnlist![0].countid.toString();
+            type.value=orderNoEntity.value.upperreturnlist![0].type.toString();
+            artno.value=orderNoEntity.value.upperreturnlist![0].productid.toString();
+            date.value=orderNoEntity.value.upperreturnlist![0].date.toString();
+
+
+
+
+          }
           getUpperCount(supplierId, orderNo, orderId, planNo.value, countId.value);
         }
       }
@@ -974,7 +991,7 @@ class EditUpperReturnController extends GetxController{
             dc13.value = countEntity.value.ordercountlist![0].s13.toString();
             artnoController.text =
                 countEntity.value.ordercountlist![0].artnoname.toString();
-            artno.value = countEntity.value.ordercountlist![0].artno.toString();
+            // artno.value = countEntity.value.ordercountlist![0].artno.toString();
           }
 
           for (int i = 0; i < countEntity.value.sizelist!.length; i++) {
@@ -1019,6 +1036,55 @@ class EditUpperReturnController extends GetxController{
             }
           }
         }
+      }
+
+    }
+  }
+
+  addCount()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      List<Map<String,dynamic>>rcCountList=[];
+      Map<String,dynamic>rcCountJson={
+        "s1":DC1Controller.text.toString(),
+        "s2":DC2Controller.text.toString(),
+        "s3":DC3Controller.text.toString(),
+        "s4":DC4Controller.text.toString(),
+        "s5":DC5Controller.text.toString(),
+        "s6":DC6Controller.text.toString(),
+        "s7":DC7Controller.text.toString(),
+        "s8":DC8Controller.text.toString(),
+        "s9":DC9Controller.text.toString(),
+        "s10":DC10Controller.text.toString(),
+        "s11":DC11Controller.text.toString(),
+        "s12":DC12Controller.text.toString(),
+        "s13":DC13Controller.text.toString(),
+      };
+      rcCountList.add(rcCountJson);
+      List<Map<String, dynamic>> staffList = [];
+      for (int i = 0; i < staffEnebtity.value.stafflist!.length; i++) {
+        for (int j = 0; j < filters.length; j++) {
+          if (staffEnebtity.value.stafflist![i].name.toString() == filters[j]) {
+            Map<String, dynamic> json = {
+              "staffid": staffEnebtity.value.stafflist![i].id.toString()
+            };
+            staffList.add(json);
+          }
+        }
+      }
+      CustomSnackbar().LoadingBottomSheet();
+      responseEntity.value=(await UpperReturnService().editCount(
+          supplierId, orderNo, orderId, planNo.value, countId.value, artno.value, date.value, '', type.value, staffList, rcCountList,id))!;
+      Get.back();
+      if(responseEntity.value.response=='Updated successfully'){
+        Get.back();
+        CustomSnackbar().InfoSnackBar('Upper Return Count', responseEntity.value.response.toString());
+        final controller=Get.find<ViewUpperReturnSingleController>();
+        controller.getUpperOrder();
+      }
+      else {
+        CustomSnackbar().InfoSnackBar('Upper Return Count', responseEntity.value.response.toString());
+
       }
 
     }
