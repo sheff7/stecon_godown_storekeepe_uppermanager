@@ -5,20 +5,20 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 import '../../../Utils/InternetConnectivity.dart';
-import '../Model/stock_list_gd_entity.dart';
-import '../Repository/StockGdServices.dart';
+import '../Model/stock_list_um_entity.dart';
+import '../Repository/StockListUmServices.dart';
 
 
-class StockListGdController extends GetxController{
+class StockListUmController extends GetxController{
 
 
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
-  Rx<StockListGdEntity> productListEntity = StockListGdEntity().obs;
+  Rx<StockListUmEntity> productListEntity = StockListUmEntity().obs;
   RxString imgurl='null'.obs;
   RxBool searchBool = false.obs;
-  RxList<StockListGdStocklist> artList =
-      List<StockListGdStocklist>.of([]).obs;
+  RxList<StockListUmStocklist> artList =
+      List<StockListUmStocklist>.of([]).obs;
 
 
 
@@ -34,8 +34,8 @@ class StockListGdController extends GetxController{
     }
   }
   filterSearch(String value) {
-    RxList<StockListGdStocklist> reslutList =
-        List<StockListGdStocklist>.of([]).obs;
+    RxList<StockListUmStocklist> reslutList =
+        List<StockListUmStocklist>.of([]).obs;
     if (value.isEmpty) {
       searchBool.value=false;
       reslutList.value = productListEntity.value.stocklist!;
@@ -55,7 +55,7 @@ class StockListGdController extends GetxController{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       loadingBool.value = true;
-      productListEntity.value = (await StockGdServices().getPrdouctList())!;
+      productListEntity.value = (await StockListUmServices().getStockList())!;
 
 
       loadingBool.value= false;

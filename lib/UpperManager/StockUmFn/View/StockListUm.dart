@@ -5,22 +5,20 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
-
 import '../../../AppConstants/ApiConstants.dart';
 import '../../../AppConstants/ClourConstants.dart';
-
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
 import '../../../CustomWidget/Nodata.dart';
 import '../../../CustomWidget/RetryButton.dart';
-import '../Controller/StockGdController.dart';
-import 'StockSingleViewGd.dart';
+import '../Controller/StockListUmController.dart';
+import 'StockSingleViewUm.dart';
 
 
-class StockListGd extends StatelessWidget {
-  StockListGd({Key? key}) : super(key: key);
-  late final productListController = Get.put(StockListGdController());
+class StockListUm extends StatelessWidget {
+  StockListUm({Key? key}) : super(key: key);
+  late final productListController = Get.put(StockListUmController());
   final searchController = TextEditingController();
 
   @override
@@ -31,7 +29,7 @@ class StockListGd extends StatelessWidget {
         backgroundColor: Color(0xFFECECEC),
         elevation: 0,
         title: Header(
-          text: 'Stocks',
+          text: 'Products',
         ),
         centerTitle: true,
         leading: IconButton(
@@ -171,22 +169,13 @@ class StockListGd extends StatelessWidget {
                               margin: EdgeInsets.fromLTRB(2.h, 0.h, 2.h, 2.h),
                               child: InkWell(
                                 onTap: () {
-                                  Get.to(StockSingleView(
-                                    categoryid: productListController
-                                        .productListEntity
-                                        .value
-                                        .stocklist![index]
-                                        .category
-                                        .toString(),
+                                  Get.to(StockSingleViewUm(
                                     productid: productListController
                                         .productListEntity
                                         .value
                                         .stocklist![index]
-                                        .id
-                                        .toString(),
-                                    artno: productListController.productListEntity
-                                        .value.stocklist![index].artno
-                                        .toString(),
+                                        .id.toString()
+
                                   ));
                                 },
                                 child: Padding(
@@ -232,13 +221,12 @@ class StockListGd extends StatelessWidget {
                                         .stocklist![index]
                                         .coverimageurl
                                         .toString()),
-                                    trailing: NormalText(
-                                        text: productListController
-                                            .productListEntity
-                                            .value
-                                            .stocklist![index]
-                                            .stockstatus
-                                            .toString()),
+                                    trailing: NormalText(text:productListController
+                                        .productListEntity
+                                        .value
+                                        .stocklist![index]
+                                        .stockstatus
+                                        .toString() ,),
                                   ),
                                 ),
                               ),
@@ -303,15 +291,9 @@ class StockListGd extends StatelessWidget {
                                 margin: EdgeInsets.fromLTRB(2.h, 0.h, 2.h, 2.h),
                                 child: InkWell(
                                   onTap: () {
-                                    Get.to(StockSingleView(
-                                      categoryid: productListController
-                                          .artList.value[index].category
-                                          .toString(),
+                                    Get.to(StockSingleViewUm(
                                       productid: productListController
                                           .artList.value[index].id
-                                          .toString(),
-                                      artno: productListController
-                                          .artList.value[index].artno
                                           .toString(),
                                     ));
                                   },

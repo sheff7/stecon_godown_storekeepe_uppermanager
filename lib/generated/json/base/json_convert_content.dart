@@ -28,6 +28,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/Material Recei
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_byid_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/profileSK/model/profile_sk_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/StockUmFn/Model/stock_list_um_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/StockUmFn/Model/stock_single_view_um_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UmProfileFn/Model/um_profile_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Model/get_order_single_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Model/get_prodcut_single_entity.dart';
@@ -107,6 +109,10 @@ class JsonConvert {
 		(GetMaterialReplacedSkMaterialreplacedlist).toString(): GetMaterialReplacedSkMaterialreplacedlist.fromJson,
 		(ProfileSkEntity).toString(): ProfileSkEntity.fromJson,
 		(ProfileSkStorekeeperlist).toString(): ProfileSkStorekeeperlist.fromJson,
+		(StockListUmEntity).toString(): StockListUmEntity.fromJson,
+		(StockListUmStocklist).toString(): StockListUmStocklist.fromJson,
+		(StockSingleViewUmEntity).toString(): StockSingleViewUmEntity.fromJson,
+		(StockSingleViewUmStocklist).toString(): StockSingleViewUmStocklist.fromJson,
 		(UmProfileEntity).toString(): UmProfileEntity.fromJson,
 		(UmProfileRepresentativelist).toString(): UmProfileRepresentativelist.fromJson,
 		(GetOrderSingleViewEntity).toString(): GetOrderSingleViewEntity.fromJson,
@@ -384,6 +390,18 @@ class JsonConvert {
 		}
 		if(<ProfileSkStorekeeperlist>[] is M){
 			return data.map<ProfileSkStorekeeperlist>((Map<String, dynamic> e) => ProfileSkStorekeeperlist.fromJson(e)).toList() as M;
+		}
+		if(<StockListUmEntity>[] is M){
+			return data.map<StockListUmEntity>((Map<String, dynamic> e) => StockListUmEntity.fromJson(e)).toList() as M;
+		}
+		if(<StockListUmStocklist>[] is M){
+			return data.map<StockListUmStocklist>((Map<String, dynamic> e) => StockListUmStocklist.fromJson(e)).toList() as M;
+		}
+		if(<StockSingleViewUmEntity>[] is M){
+			return data.map<StockSingleViewUmEntity>((Map<String, dynamic> e) => StockSingleViewUmEntity.fromJson(e)).toList() as M;
+		}
+		if(<StockSingleViewUmStocklist>[] is M){
+			return data.map<StockSingleViewUmStocklist>((Map<String, dynamic> e) => StockSingleViewUmStocklist.fromJson(e)).toList() as M;
 		}
 		if(<UmProfileEntity>[] is M){
 			return data.map<UmProfileEntity>((Map<String, dynamic> e) => UmProfileEntity.fromJson(e)).toList() as M;

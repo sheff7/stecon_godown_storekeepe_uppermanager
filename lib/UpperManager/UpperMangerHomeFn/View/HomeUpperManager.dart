@@ -12,6 +12,7 @@ import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/SubHeading.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../LoginPage/View/LoginPage.dart';
+import '../../StockUmFn/View/StockListUm.dart';
 import '../../UpperPurchaseCount/View/UpperCountStatus0UPM.dart';
 import '../../UpperPurchaseHistory/View/UpperHistoryUPM.dart';
 import '../../UpperPurchasePlan/View/AddProductionPlanUPM.dart';
@@ -558,7 +559,8 @@ class HomeUpperManager extends StatelessWidget {
           menuItem(3, 'Upper Purchase Count', Icons.info),
           menuItem(4, 'Orders', Icons.info),
           menuItem(5, 'Upper Return Count', Icons.info),
-          menuItem(6, 'Logout', Icons.logout),
+          menuItem(6, 'Stock', Icons.info),
+          menuItem(7, 'Logout', Icons.logout),
         ],
       ),
     );
@@ -606,12 +608,17 @@ class HomeUpperManager extends StatelessWidget {
             ));
           } else if (id == 4) {
             Get.to(OrderList());
-          } else if (id == 6) {
-            _logout();
           }
           else if(id==5){
             Get.to(ViewUpperReturn());
           }
+          else if(id==6){
+            Get.to(StockListUm());
+          }
+          else if (id == 7) {
+            _logout();
+          }
+
         },
         child: Padding(
           padding: EdgeInsets.all(15),
