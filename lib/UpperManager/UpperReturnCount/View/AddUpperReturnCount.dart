@@ -336,7 +336,7 @@ class AddUpperReturnCount extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Text(
-                                      'DC',
+                                      'RC',
                                       style: GoogleFonts.radioCanada(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
@@ -351,7 +351,7 @@ class AddUpperReturnCount extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Text(
-                                      'RC',
+                                      'OC',
                                       style: GoogleFonts.radioCanada(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
