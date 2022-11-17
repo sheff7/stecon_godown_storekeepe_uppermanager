@@ -1239,6 +1239,7 @@ class AddUpperCountStatus2UPMController extends GetxController {
       List<Map<String, dynamic>> rcCountList,
       String comment) async {
     List<Map<String, dynamic>> staffList = [];
+
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       for (int i = 0; i < staffEnebtity.value.stafflist!.length; i++) {

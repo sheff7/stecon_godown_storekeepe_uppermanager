@@ -998,6 +998,7 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                             "s11":_controller.size11controller.text.toString(),
                             "s12":_controller.size12controller.text.toString(),
                             "s13":_controller.size13controller.text.toString(),
+
                           };
                           rcCountList.add(rcCountJson);
                           if(_controller.rcId.value=='' &&_controller.dcId.value==''){
