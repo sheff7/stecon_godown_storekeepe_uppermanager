@@ -110,6 +110,8 @@ class AddUpperReturnCountController extends GetxController{
 
   final artnoController = TextEditingController();
   final planNoController = TextEditingController();
+  final countIdController = TextEditingController();
+
 
   RxBool enable1 = true.obs;
   RxBool enable2 = true.obs;
@@ -1000,6 +1002,7 @@ class AddUpperReturnCountController extends GetxController{
     for(int i=0;i<mrEntity.value.mrnolist!.length;i++){
       if(mrSelected.value.toString()==mrEntity.value.mrnolist![i].mrno.toString()){
         mrIdSelected.value=mrEntity.value.mrnolist![i].countid.toString();
+        countIdController.text=mrEntity.value.mrnolist![i].countid.toString();
         // getUpperPlanNo(companyIdSelected.value.toString());
         getUpperCount(companyIdSelected.value, orderSelected.value, orderIdSelected.value, planSelected.value, mrIdSelected.value);
       }

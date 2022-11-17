@@ -256,6 +256,15 @@ class AddUpperReturnCount extends StatelessWidget {
                         label: "Art Number",
                       )),
                       SizedBox(
+                        height: 2.h,
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 2.h,right: 2.h),
+                          child: CustomFieldNonEditable(
+                            controller: _controller.countIdController,
+                            label: "Count Id",
+                          )),
+                      SizedBox(
                         height: 4.h,
                       ),
 
