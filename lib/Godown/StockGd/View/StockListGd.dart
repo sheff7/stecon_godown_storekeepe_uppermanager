@@ -31,7 +31,7 @@ class StockListGd extends StatelessWidget {
         backgroundColor: Color(0xFFECECEC),
         elevation: 0,
         title: Header(
-          text: 'Stocks',
+          text: 'Stock',
         ),
         centerTitle: true,
         leading: IconButton(

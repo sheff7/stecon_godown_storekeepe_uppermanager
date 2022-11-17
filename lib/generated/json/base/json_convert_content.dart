@@ -8,6 +8,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_single_view_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginby_status_g_d_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/productin_plan_single_view_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/production_plan_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/profile_g_d_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/product_single_view_rep_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/stock_list_gd_entity.dart';
@@ -71,6 +73,13 @@ class JsonConvert {
 		(UpdateOrderList).toString(): UpdateOrderList.fromJson,
 		(LoginbyStatusGDEntity).toString(): LoginbyStatusGDEntity.fromJson,
 		(LoginbyStatusGDLoginlist).toString(): LoginbyStatusGDLoginlist.fromJson,
+		(ProductinPlanSingleViewEntity).toString(): ProductinPlanSingleViewEntity.fromJson,
+		(ProductinPlanSingleViewProductionlist).toString(): ProductinPlanSingleViewProductionlist.fromJson,
+		(ProductinPlanSingleViewProductionplanlist).toString(): ProductinPlanSingleViewProductionplanlist.fromJson,
+		(ProductinPlanSingleViewTotalproductionlist).toString(): ProductinPlanSingleViewTotalproductionlist.fromJson,
+		(ProductinPlanSingleViewTotalupperlist).toString(): ProductinPlanSingleViewTotalupperlist.fromJson,
+		(ProductionPlanListEntity).toString(): ProductionPlanListEntity.fromJson,
+		(ProductionPlanListProductionlist).toString(): ProductionPlanListProductionlist.fromJson,
 		(ProfileGDEntity).toString(): ProfileGDEntity.fromJson,
 		(ProfileGDStorekeeperlist).toString(): ProfileGDStorekeeperlist.fromJson,
 		(ProductSingleViewRepEntity).toString(): ProductSingleViewRepEntity.fromJson,
@@ -276,6 +285,27 @@ class JsonConvert {
 		}
 		if(<LoginbyStatusGDLoginlist>[] is M){
 			return data.map<LoginbyStatusGDLoginlist>((Map<String, dynamic> e) => LoginbyStatusGDLoginlist.fromJson(e)).toList() as M;
+		}
+		if(<ProductinPlanSingleViewEntity>[] is M){
+			return data.map<ProductinPlanSingleViewEntity>((Map<String, dynamic> e) => ProductinPlanSingleViewEntity.fromJson(e)).toList() as M;
+		}
+		if(<ProductinPlanSingleViewProductionlist>[] is M){
+			return data.map<ProductinPlanSingleViewProductionlist>((Map<String, dynamic> e) => ProductinPlanSingleViewProductionlist.fromJson(e)).toList() as M;
+		}
+		if(<ProductinPlanSingleViewProductionplanlist>[] is M){
+			return data.map<ProductinPlanSingleViewProductionplanlist>((Map<String, dynamic> e) => ProductinPlanSingleViewProductionplanlist.fromJson(e)).toList() as M;
+		}
+		if(<ProductinPlanSingleViewTotalproductionlist>[] is M){
+			return data.map<ProductinPlanSingleViewTotalproductionlist>((Map<String, dynamic> e) => ProductinPlanSingleViewTotalproductionlist.fromJson(e)).toList() as M;
+		}
+		if(<ProductinPlanSingleViewTotalupperlist>[] is M){
+			return data.map<ProductinPlanSingleViewTotalupperlist>((Map<String, dynamic> e) => ProductinPlanSingleViewTotalupperlist.fromJson(e)).toList() as M;
+		}
+		if(<ProductionPlanListEntity>[] is M){
+			return data.map<ProductionPlanListEntity>((Map<String, dynamic> e) => ProductionPlanListEntity.fromJson(e)).toList() as M;
+		}
+		if(<ProductionPlanListProductionlist>[] is M){
+			return data.map<ProductionPlanListProductionlist>((Map<String, dynamic> e) => ProductionPlanListProductionlist.fromJson(e)).toList() as M;
 		}
 		if(<ProfileGDEntity>[] is M){
 			return data.map<ProfileGDEntity>((Map<String, dynamic> e) => ProfileGDEntity.fromJson(e)).toList() as M;

@@ -47,6 +47,12 @@ class StockListGdController extends GetxController{
           .toLowerCase()
           .contains(value.toLowerCase()))
           .toList();
+      reslutList.value = productListEntity.value.stocklist!
+          .where((element) => element.colorname
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase()))
+          .toList();
     }
     artList.value=reslutList.value;
   }
