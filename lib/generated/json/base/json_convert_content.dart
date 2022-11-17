@@ -27,6 +27,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/Material Recei
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/Material Received/Model/get_material_received_count_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_byid_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialReplacedDetailsSK/Model/get_material_replaced_sk_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialStockSkFn/Model/material_stock_list_sk_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/MaterialStockSkFn/Model/material_stock_single_view_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/StoreKeeper/profileSK/model/profile_sk_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/StockUmFn/Model/stock_list_um_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/StockUmFn/Model/stock_single_view_um_entity.dart';
@@ -107,6 +109,10 @@ class JsonConvert {
 		(GetMaterialReplacedByidSkMaterialreplacedlist).toString(): GetMaterialReplacedByidSkMaterialreplacedlist.fromJson,
 		(GetMaterialReplacedSkEntity).toString(): GetMaterialReplacedSkEntity.fromJson,
 		(GetMaterialReplacedSkMaterialreplacedlist).toString(): GetMaterialReplacedSkMaterialreplacedlist.fromJson,
+		(MaterialStockListSkEntity).toString(): MaterialStockListSkEntity.fromJson,
+		(MaterialStockListSkStocklist).toString(): MaterialStockListSkStocklist.fromJson,
+		(MaterialStockSingleViewSkEntity).toString(): MaterialStockSingleViewSkEntity.fromJson,
+		(MaterialStockSingleViewSkStocklist).toString(): MaterialStockSingleViewSkStocklist.fromJson,
 		(ProfileSkEntity).toString(): ProfileSkEntity.fromJson,
 		(ProfileSkStorekeeperlist).toString(): ProfileSkStorekeeperlist.fromJson,
 		(StockListUmEntity).toString(): StockListUmEntity.fromJson,
@@ -384,6 +390,18 @@ class JsonConvert {
 		}
 		if(<GetMaterialReplacedSkMaterialreplacedlist>[] is M){
 			return data.map<GetMaterialReplacedSkMaterialreplacedlist>((Map<String, dynamic> e) => GetMaterialReplacedSkMaterialreplacedlist.fromJson(e)).toList() as M;
+		}
+		if(<MaterialStockListSkEntity>[] is M){
+			return data.map<MaterialStockListSkEntity>((Map<String, dynamic> e) => MaterialStockListSkEntity.fromJson(e)).toList() as M;
+		}
+		if(<MaterialStockListSkStocklist>[] is M){
+			return data.map<MaterialStockListSkStocklist>((Map<String, dynamic> e) => MaterialStockListSkStocklist.fromJson(e)).toList() as M;
+		}
+		if(<MaterialStockSingleViewSkEntity>[] is M){
+			return data.map<MaterialStockSingleViewSkEntity>((Map<String, dynamic> e) => MaterialStockSingleViewSkEntity.fromJson(e)).toList() as M;
+		}
+		if(<MaterialStockSingleViewSkStocklist>[] is M){
+			return data.map<MaterialStockSingleViewSkStocklist>((Map<String, dynamic> e) => MaterialStockSingleViewSkStocklist.fromJson(e)).toList() as M;
 		}
 		if(<ProfileSkEntity>[] is M){
 			return data.map<ProfileSkEntity>((Map<String, dynamic> e) => ProfileSkEntity.fromJson(e)).toList() as M;

@@ -18,6 +18,7 @@ import '../../Material Received/view/ViewMaterialReceivedView.dart';
 import '../../Material Received/view/materialReceivedList.dart';
 import '../../MaterialReplacedDetailsSK/View/AddMaterialReplacedDetails.dart';
 import '../../MaterialReplacedDetailsSK/View/MaterialReplaceddetailsList.dart';
+import '../../MaterialStockSkFn/View/MaterialStockListProManager.dart';
 import '../../profileSK/view/ProfileSkView.dart';
 
 class HomePageSk extends StatelessWidget {
@@ -471,8 +472,10 @@ class HomePageSk extends StatelessWidget {
           // menuItem(),
           menuItem(1, 'Profile', Icons.person),
           menuItem(2, 'Material Received', Icons.logout),
-          menuItem(4, 'Orders', Icons.logout),
-          menuItem(3, 'Log Out', Icons.logout),
+          menuItem(3, 'Orders', Icons.logout),
+          menuItem(4, 'Material Stock', Icons.logout),
+
+          menuItem(5, 'Log Out', Icons.logout),
         ],
       ),
     );
@@ -503,10 +506,12 @@ class HomePageSk extends StatelessWidget {
           } else if (id == 2) {
             Get.to(MaterialReceivedList());
           } else if (id == 3) {
-            _logout();
-          } else if (id == 4) {
             Get.to(OrderList());
+
+          } else if (id == 4) {
+            Get.to(MaterialStockListProManager());
           } else if (id == 5) {
+            _logout();
           } else if (id == 6) {
           } else if (id == 7) {
 
