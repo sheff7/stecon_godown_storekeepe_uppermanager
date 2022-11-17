@@ -692,7 +692,6 @@ class UpperPuchaseOrder1UPM extends StatelessWidget {
                                                         crossAxisSpacing: 1,
                                                         // childAspectRatio: 2:1,
                                                         children: sizeListGrid,
-
                                                       ),
                                                       // Row(
                                                       //   children: [
