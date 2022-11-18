@@ -46,6 +46,8 @@ class DeliveryScheduleSingleViewController extends GetxController{
   RxBool enable13 = false.obs;
 
   RxList<String>drfaultList=(List<String>.of([])).obs;
+  RxList<String>drfaultIdList=(List<String>.of([])).obs;
+
 
 
   RxList<Map<String,dynamic>>? producctList=(List<Map<String,dynamic>>.of([])).obs;
@@ -73,6 +75,8 @@ class DeliveryScheduleSingleViewController extends GetxController{
       if(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length!=0){
         for(int i=0;i<deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length;i++){
           drfaultList.add(deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox.toString());
+          drfaultIdList.add(deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].id.toString());
+
         }
       }
     }
@@ -91,6 +95,8 @@ class DeliveryScheduleSingleViewController extends GetxController{
               "deliveredboxcount":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox.toString(),
               "deliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].box.toString(),
               "obox":drfaultList[i].toString(),
+              "did":drfaultIdList[i].toString(),
+
             };
             producctList!.add(json);
           }
