@@ -83,7 +83,7 @@ class OrderListViewGD extends StatelessWidget {
                                                   : orderListViewController
                                                       .chooseDistributor.value,
                                               hint: NormalText(
-                                                text: 'Select Status',
+                                                text: 'Select Distributor',
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(10),
