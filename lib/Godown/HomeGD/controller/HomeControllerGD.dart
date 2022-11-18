@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../../Utils/InternetConnectivity.dart';
+import '../model/latest_delivery_schedule_limit_list_gd_entity.dart';
 import '../model/loginby_status_g_d_entity.dart';
 import '../repository/HomeControllerGDServices.dart';
 
@@ -18,6 +19,7 @@ class GDHomeController extends GetxController {
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   Rx<LoginbyStatusGDEntity> loginByStatusEntity = LoginbyStatusGDEntity().obs;
+  Rx<LatestDeliveryScheduleLimitListGdEntity> latestDeliveryScheduleListGdEntity= LatestDeliveryScheduleLimitListGdEntity().obs;
   // Rx<LatestOrderDisEntity> latestOrderDisEntity = LatestOrderDisEntity().obs;
 
   RxString godownmanagerid=''.obs;
@@ -88,6 +90,17 @@ class GDHomeController extends GetxController {
     userEmail.value=email.toString();
     print(email);
   }
+  getDeliverySchedule() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
+      loadingBool.value = true;
+      latestDeliveryScheduleListGdEntity.value = (await LoginByStatusGDService().getdeliveryScheduleList())!;
+
+      loadingBool.value= false;
+      print("shahhh"+loadingBool.value.toString());
+    }
+  }
+
 
   @override
   void onInit() {
@@ -96,6 +109,7 @@ class GDHomeController extends GetxController {
     getUserInfo();
     checkNetworkStatus();
     getLoginByStatus();
+    getDeliverySchedule();
     super.onInit();
   }
 

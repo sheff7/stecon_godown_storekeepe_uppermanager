@@ -7,6 +7,7 @@ import 'package:flutter/material.dart' show debugPrint;
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/delivery_schedule_single_view_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/latest_delivery_schedule_limit_list_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginby_status_g_d_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/productin_plan_single_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/production_plan_list_entity.dart';
@@ -71,6 +72,8 @@ class JsonConvert {
 		(DeliveryScheduleSingleViewGdDeliveryschedule).toString(): DeliveryScheduleSingleViewGdDeliveryschedule.fromJson,
 		(UpdateOrderEntity).toString(): UpdateOrderEntity.fromJson,
 		(UpdateOrderList).toString(): UpdateOrderList.fromJson,
+		(LatestDeliveryScheduleLimitListGdEntity).toString(): LatestDeliveryScheduleLimitListGdEntity.fromJson,
+		(LatestDeliveryScheduleLimitListGdDeliveryschedulelist).toString(): LatestDeliveryScheduleLimitListGdDeliveryschedulelist.fromJson,
 		(LoginbyStatusGDEntity).toString(): LoginbyStatusGDEntity.fromJson,
 		(LoginbyStatusGDLoginlist).toString(): LoginbyStatusGDLoginlist.fromJson,
 		(ProductinPlanSingleViewEntity).toString(): ProductinPlanSingleViewEntity.fromJson,
@@ -279,6 +282,12 @@ class JsonConvert {
 		}
 		if(<UpdateOrderList>[] is M){
 			return data.map<UpdateOrderList>((Map<String, dynamic> e) => UpdateOrderList.fromJson(e)).toList() as M;
+		}
+		if(<LatestDeliveryScheduleLimitListGdEntity>[] is M){
+			return data.map<LatestDeliveryScheduleLimitListGdEntity>((Map<String, dynamic> e) => LatestDeliveryScheduleLimitListGdEntity.fromJson(e)).toList() as M;
+		}
+		if(<LatestDeliveryScheduleLimitListGdDeliveryschedulelist>[] is M){
+			return data.map<LatestDeliveryScheduleLimitListGdDeliveryschedulelist>((Map<String, dynamic> e) => LatestDeliveryScheduleLimitListGdDeliveryschedulelist.fromJson(e)).toList() as M;
 		}
 		if(<LoginbyStatusGDEntity>[] is M){
 			return data.map<LoginbyStatusGDEntity>((Map<String, dynamic> e) => LoginbyStatusGDEntity.fromJson(e)).toList() as M;

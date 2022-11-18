@@ -5,7 +5,11 @@ import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/controller/HomeControllerGD.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/view/ProfileGDView.dart';
 
+import '../../../AppConstants/ClourConstants.dart';
+import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/SubHeading.dart';
+import '../../../CustomWidget/Nodata.dart';
+import '../../../CustomWidget/RetryButton.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../DeliverySchedulefn/View/DeliveryScheduleListGd.dart';
 import '../../ProductionPlanFn/View/ProductionPlans0.dart';
@@ -17,7 +21,7 @@ class HomeGodown extends StatelessWidget {
 
   HomeGodown({Key? key, required this.Gid}) : super(key: key);
 
-  late final gdHomeController = Get.put(GDHomeController(Gid: Gid));
+  late final homecontroller = Get.put(GDHomeController(Gid: Gid));
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +46,39 @@ class HomeGodown extends StatelessWidget {
           //   style: TextStyle(color: Colors.white),
           // ),
         ),
+          floatingActionButton: Padding(
+            padding:EdgeInsets.only(bottom: 1.h,right: 3.h),
+            child: Wrap(direction: Axis.vertical, children: [
+              FloatingActionButton(
+                backgroundColor: ColorConstants.appThemeColorRed,
+                heroTag: 'btn1',
+                child: Icon(
+                  Icons.refresh,
+                  color: Colors.white,
+                ),
+                onPressed: () async {
+                  homecontroller.checkNetworkStatus();
+                  homecontroller.getLoginByStatus();
+                  homecontroller.getDeliverySchedule();
+
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              // FloatingActionButton(
+              //   backgroundColor: ColorConstants.appThemeColorBlue,
+              //   heroTag: 'bt2',
+              //   child: Icon(
+              //     Icons.my_location,
+              //     color: Colors.white,
+              //   ),
+              //   onPressed: () async {
+              //     // moveToCurrentLocation();
+              //   },
+              // ),
+            ]),
+          ),
         drawer: Drawer(
           child: ListView(
             children: [
@@ -64,7 +101,7 @@ class HomeGodown extends StatelessWidget {
                     ),
                     Obx(
                       () => Text(
-                        gdHomeController.loginByStatusEntity.value.loginlist![0]
+                        homecontroller.loginByStatusEntity.value.loginlist![0]
                             .godownmanagername
                             .toString(),
                         style: TextStyle(color: Colors.white),
@@ -74,7 +111,7 @@ class HomeGodown extends StatelessWidget {
                       height: .5.h,
                     ),
                     Obx(() => Text(
-                          gdHomeController.userEmail.value.toString(),
+                          homecontroller.userEmail.value.toString(),
                           style: TextStyle(color: Colors.white),
                         ))
                   ],
@@ -99,7 +136,7 @@ class HomeGodown extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Get.to(ProfileGD(
-                          godownid: gdHomeController.loginByStatusEntity.value
+                          godownid: homecontroller.loginByStatusEntity.value
                               .loginlist![0].godownmanagerid
                               .toString()));
                     },
@@ -397,57 +434,60 @@ class HomeGodown extends StatelessWidget {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                            ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: 8,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Column(
-                                    children: [
-                                      Material(
-                                        borderRadius: BorderRadius.circular(0),
-                                        elevation: 1,
-                                        shadowColor: Colors.grey,
-                                        child: ListTile(
-                                          leading: Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                0.h, 0.1, 1.h, 0.h),
-                                            child: Image.asset(
-                                                "Assets/HomePageIcons/Group 48.png"),
-                                          ),
-                                          title: Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                              2.h,
-                                              1.5.h,
-                                              1.h,
-                                              2.h,
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text("59684586"),
-                                                SizedBox(
-                                                  height: 1.h,
-                                                ),
-                                                Text(
-                                                  "17-11-22",
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                  ),
-                                                ),
-                                                // SizedBox(
-                                                //   height: 3.h,
-                                                // )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                }),
-                            Text(gdHomeController.txt.value.toString()),
+                            Obx(()=>
+                                _orderList()
+                            ),
+                            // ListView.builder(
+                            //     shrinkWrap: true,
+                            //     physics: NeverScrollableScrollPhysics(),
+                            //     itemCount: 8,
+                            //     itemBuilder: (BuildContext context, int index) {
+                            //       return Column(
+                            //         children: [
+                            //           Material(
+                            //             borderRadius: BorderRadius.circular(0),
+                            //             elevation: 1,
+                            //             shadowColor: Colors.grey,
+                            //             child: ListTile(
+                            //               leading: Padding(
+                            //                 padding: EdgeInsets.fromLTRB(
+                            //                     0.h, 0.1, 1.h, 0.h),
+                            //                 child: Image.asset(
+                            //                     "Assets/HomePageIcons/Group 48.png"),
+                            //               ),
+                            //               title: Padding(
+                            //                 padding: EdgeInsets.fromLTRB(
+                            //                   2.h,
+                            //                   1.5.h,
+                            //                   1.h,
+                            //                   2.h,
+                            //                 ),
+                            //                 child: Column(
+                            //                   crossAxisAlignment:
+                            //                       CrossAxisAlignment.start,
+                            //                   children: [
+                            //                     Text("59684586"),
+                            //                     SizedBox(
+                            //                       height: 1.h,
+                            //                     ),
+                            //                     Text(
+                            //                       "17-11-22",
+                            //                       style: TextStyle(
+                            //                         fontSize: 12,
+                            //                       ),
+                            //                     ),
+                            //                     // SizedBox(
+                            //                     //   height: 3.h,
+                            //                     // )
+                            //                   ],
+                            //                 ),
+                            //               ),
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       );
+                            //     }),
+                            Text(homecontroller.txt.value.toString()),
                             // SizedBox(height:2.h ,),
                           ],
                         )
@@ -496,7 +536,7 @@ class HomeGodown extends StatelessWidget {
         onTap: () {
           if (id == 1) {
             Get.to(ProfileGD(
-                godownid: gdHomeController
+                godownid: homecontroller
                     .loginByStatusEntity.value.loginlist![0].godownmanagerid
                     .toString()));
           } else if (id == 2) {
@@ -529,4 +569,138 @@ class HomeGodown extends StatelessWidget {
       ),
     );
   }
+  _orderList() {
+    if (homecontroller.networkStatus.value == true) {
+      if (homecontroller.loadingBool.value == true) {
+        return Center(
+          child: Column(
+            children: [
+              CircularProgressIndicator(
+                color: ColorConstants.appThemeColorRed,
+              ),
+              HeadingText(text: 'Loading...'),
+            ],
+          ),
+        );
+      } else if (homecontroller.loadingBool.value == false) {
+        if (homecontroller.latestDeliveryScheduleListGdEntity.value == null) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Nodata(response: 'No Data'),
+                RetryButton(onTap: () {
+                  homecontroller.checkNetworkStatus();
+                  homecontroller.getLoginByStatus();
+                  homecontroller.getDeliverySchedule();
+                })
+              ],
+            ),
+          );
+        } else if (homecontroller.latestDeliveryScheduleListGdEntity.value != null) {
+          if (homecontroller.latestDeliveryScheduleListGdEntity.value.response ==
+              'success') {
+            return ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: homecontroller
+                    .latestDeliveryScheduleListGdEntity.value.deliveryschedulelist!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    children: [
+                      Material(
+                        borderRadius: BorderRadius.circular(0),
+                        elevation: 1,
+                        shadowColor: Colors.grey,
+                        child: ListTile(
+                          leading: Padding(
+                            padding: EdgeInsets.fromLTRB(0.h, 0.1, 1.h, 0.h),
+                            child: Image.asset(
+                                "Assets/HomePageIcons/Group 48.png"),
+                          ),
+                          title: Padding(
+                            padding: EdgeInsets.fromLTRB(
+                              2.h,
+                              1.5.h,
+                              1.h,
+                              2.h,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(homecontroller.latestDeliveryScheduleListGdEntity
+                                    .value.deliveryschedulelist![index].distributorname
+                                    .toString()),
+                                SizedBox(
+                                  height: 1.h,
+                                ),
+                                Text(
+                                  homecontroller.latestDeliveryScheduleListGdEntity.value
+                                      .deliveryschedulelist![index].deliverydate
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                // SizedBox(
+                                //   height: 3.h,
+                                // )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                });
+          } else if (homecontroller.latestDeliveryScheduleListGdEntity.value.response
+              .toString() ==
+              'null') {
+            return Center(
+              child: Column(
+                children: [HeadingText(text: 'Please Wait...')],
+              ),
+            );
+          } else {
+            return Center(
+              child: Column(
+                children: [
+                  Nodata(
+                      response: homecontroller
+                          .latestDeliveryScheduleListGdEntity.value.response
+                          .toString()),
+                  RetryButton(
+                    onTap: () {
+                      homecontroller.checkNetworkStatus();
+                      homecontroller.getLoginByStatus();
+                      homecontroller.getDeliverySchedule();
+                    },
+                  )
+                ],
+              ),
+            );
+          }
+        }
+      }
+    } else if (homecontroller.networkStatus.value == false) {
+      print('kko');
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Nodata(response: 'No Internet Connection'),
+            RetryButton(onTap: () {
+              print('ass');
+              homecontroller.checkNetworkStatus();
+              homecontroller.getLoginByStatus();
+              homecontroller.getDeliverySchedule();
+            })
+          ],
+        ),
+      );
+    }
+  }
+
 }
