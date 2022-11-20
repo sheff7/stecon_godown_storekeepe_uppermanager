@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/BoldText.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/StockUmFn/View/StockListUm.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/View/PendingOrderUPM.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/ViewStockUPM.dart';
 import '../../../AppConstants/ApiConstants.dart';
@@ -75,7 +76,7 @@ class CreatePlanUPM extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Get.to(ViewStockUPM());
+                            Get.to(StockListUm());
                           },
                           child: Container(
                             child: Row(

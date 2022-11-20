@@ -350,6 +350,14 @@ class ProductionPlan1 extends StatelessWidget {
                                   sizeListGrid.add(size13());
                                 }
 
+                                String disNmae='';
+                                if(_controller.productionPlanEntity.value.productionlist![index].distributorname.toString()=='null'){
+                                  disNmae='Stock';
+                                }
+                                else if(_controller.productionPlanEntity.value.productionlist![index].distributorname.toString()!='null'){
+                                  disNmae=_controller.productionPlanEntity.value.productionlist![index].distributorname.toString();
+                                }
+
                                 return Column(
                                   children: [
                                     Material(
@@ -370,7 +378,7 @@ class ProductionPlan1 extends StatelessWidget {
                                                 Padding(
                                                   padding: EdgeInsets.only(top: 1.5.h),
                                                   child: Text("Distributor : "+
-                                                    _controller.productionPlanEntity.value.productionlist![index].distributorname.toString(),
+                                                    disNmae,
                                                     style: GoogleFonts.radioCanada(
                                                         fontSize: 17,
                                                         fontWeight: FontWeight.bold,
