@@ -7,6 +7,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/BoldText.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomBox1.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Controller/DeliveryScxheduleSingleViewController.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
@@ -192,6 +193,37 @@ class DeliverySchedule1GD extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     height: 1.h,
+                                  ),
+                                  InkWell(
+                                    onTap: ()async{
+                                      String deliveryId = _controller
+                                          .deliveryScheduleSingleViewGdEntity
+                                          .value
+                                          .deliveryschedule![0]
+                                          .id
+                                          .toString();
+                                      String distributorId = _controller
+                                          .deliveryScheduleSingleViewGdEntity
+                                          .value
+                                          .deliveryschedule![0]
+                                          .orderno
+                                          .toString();
+
+                                      if (await canLaunch(
+                                      'http://stecon.in/appinvoice?deliveryid=$deliveryId&distributorid=$distributorId')) {
+                                      await launch(
+                                      'http://stecon.in/appinvoice?deliveryid=$deliveryId&distributorid=$distributorId');
+                                      } else {
+                                      throw 'Could not launch ';
+                                      }
+                                    },
+                                    child: Row(
+                                      children: [
+                                        SubHeadingText(text: 'View Bill'),
+                                        SizedBox(width: 1.h,),
+                                        Icon(Icons.newspaper)
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

@@ -88,15 +88,16 @@ class DeliveryScheduleSingleViewController extends GetxController{
         if(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length!=0){
           for(int i=0;i<deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length;i++){
             Map<String, dynamic> json={
-              "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].did.toString(),
+              "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderid.toString(),
               "orderno":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderno.toString(),
               "distributorid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].distributorid.toString(),
-              "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid.toString(),
+              "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].productid.toString(),
               "deliveredboxcount":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox.toString(),
               "deliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].box.toString(),
+              "id":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid.toString(),
+              "did":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].did.toString(),
               "obox":drfaultList[i].toString(),
-              "did":drfaultIdList[i].toString(),
-
+              // "did":drfaultIdList[i].toString(),
             };
             producctList!.add(json);
           }
