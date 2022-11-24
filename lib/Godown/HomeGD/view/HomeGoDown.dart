@@ -142,7 +142,7 @@ class HomeGodown extends StatelessWidget {
                     },
                     child: Image(
                         image: AssetImage(
-                      "Assets/HomePageIcons/Group 51.png",
+                      "Assets/HomePageIcons/Group 51.png"
                     )),
                   ),
                 ],
@@ -151,7 +151,7 @@ class HomeGodown extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(6.6.h, 0.h, 0.h, 1.5.h),
               child: Text(
-                "Have a Productive Day",
+                "Go Down Manager",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
