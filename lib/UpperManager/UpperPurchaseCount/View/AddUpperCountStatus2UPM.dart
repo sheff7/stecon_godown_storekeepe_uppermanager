@@ -239,6 +239,191 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Column(
+                      children: [
+                        Container(
+                          color: Colors.grey[200],
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                Container(
+                                  width:12.h,
+                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Size',
+                                    style: GoogleFonts.radioCanada(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:12.h,
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
+                                  child: Text(
+                                    'OC',
+                                    style: GoogleFonts.radioCanada(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:12.h,
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
+                                  child: Text(
+                                    'Count',
+                                    style: GoogleFonts.radioCanada(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:12.h,
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
+                                  child: Text(
+                                    'Damaged',
+                                    style: GoogleFonts.radioCanada(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:12.h,
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
+                                  child: Text(
+                                    'Shortage',
+                                    style: GoogleFonts.radioCanada(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:12.h,
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,),
+                                  child: Text(
+                                    'Balance',
+                                    style: GoogleFonts.radioCanada(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            children: [
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width:12.h,
+                                      margin: EdgeInsets.only(top: 2.h,bottom: 2.h,),
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                                        height: 6.h,
+                                        width: double.infinity,
+                                        child: Center(
+                                          child: BoldText(
+                                            text: '3',
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width:12.h,
+                                      alignment: Alignment.center,
+                                      margin: EdgeInsets.only(top: 2.h,bottom: 2.h,),
+                                      child: Container(
+                                        // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                                        height: 6.h,
+                                        width: double.infinity,
+                                        child: Center(
+                                          child: BoldText(
+                                            text: _controller.oc3.value.toString(),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width:12.h,
+                                      alignment: Alignment.center,
+                                      margin: EdgeInsets.only(top: 1.h,bottom: 1.h,left: 1.h),
+                                      child: CustomBox1(
+                                        controller: _controller.RC3Controller,
+                                        label: 'Enter',
+                                        Enabled: _controller.enable3.value,
+                                      ),
+                                    ),
+                              Container(
+                                width:12.h,
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.only(top: 1.h,bottom: 1.h,left: 1.h),
+                                child: CustomBox1(
+                                  controller: _controller.RC3Controller,
+                                  label: 'Enter',
+                                  Enabled: _controller.enable3.value,
+                                ),
+                              ),
+                              Container(
+                                width:12.h,
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.only(top: 1.h,bottom: 1.h),
+                                child: CustomBox1(
+                                  controller: _controller.RC3Controller,
+                                  label: 'Enter',
+                                  Enabled: _controller.enable3.value,
+                                ),
+                              ),
+                                    Container(
+                                      width:12.h,
+                                      alignment: Alignment.center,
+                                      margin: EdgeInsets.only(top: 1.h,bottom: 1.h),
+                                      child: CustomBox1(
+                                        controller: _controller.RC3Controller,
+                                        label: 'Enter',
+                                        Enabled: _controller.enable3.value,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Divider(
+                                height: 5,
+                                color: Colors.black,
+                              ),
+                            ],
+                          ),
+                        )
+
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
                   color: Colors.grey[200],
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 3.h),
