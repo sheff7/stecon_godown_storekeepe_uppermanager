@@ -135,9 +135,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
-                      print('asss');
+                      if(_usernameController.text.isEmpty){
+                        CustomSnackbar().InfoSnackBar('Login', 'Enter Valid Username ');
 
-                      _loginController!.login(_usernameController.text,_passwordController.text);
+                      }
+                      else if(_passwordController.text.isEmpty){
+                        CustomSnackbar().InfoSnackBar('Login', 'Enter Valid Password ');
+                      }
+                      else{
+                        _loginController!.login(_usernameController.text,_passwordController.text);
+
+                      }
+
 
                     },
                     child: Text("Log In",style: TextStyle(color: Colors.white, fontSize: 14.sp),),
@@ -149,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 2.h,),
             Center(
-              child: Text('Forgot Password',style: TextStyle(color: Color(0xFFEC4E52), fontSize: 16.sp,fontWeight:FontWeight.bold,),),
+              // child: Text('Forgot Password',style: TextStyle(color: Color(0xFFEC4E52), fontSize: 16.sp,fontWeight:FontWeight.bold,),),
             )
           ]),
         ),

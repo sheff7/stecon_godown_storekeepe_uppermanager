@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/BoldText.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/NormalTextGreen.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/View/DeliveryScheduleSingleViewGd.dart';
 
 import '../../../AppConstants/ClourConstants.dart';
@@ -31,6 +32,42 @@ class DeliveryScheduleGD extends StatelessWidget {
           text: 'Delivery Schedule',
         ),
         centerTitle: true,
+        // actions: [
+        //   Container(
+        //     alignment: Alignment.center,
+        //       margin: EdgeInsets.only(left: 1.h),
+        //       child: NormalText(text: 'Select All')),
+        //   Obx(() => Checkbox(
+        //       value: _deliveryScheduleListGdController.allSelect.value,
+        //       activeColor: ColorConstants.appThemeColorRed,
+        //       onChanged: (value) {
+        //         _deliveryScheduleListGdController.allSelect.value = value!;
+        //         _deliveryScheduleListGdController.allSelect.refresh();
+        //         print(_deliveryScheduleListGdController.allSelect.value
+        //             .toString());
+        //         if (value == true) {
+        //           if (_deliveryScheduleListGdController.itemList!.length != 0) {
+        //             for (int i = 0;
+        //                 i < _deliveryScheduleListGdController.itemList.length;
+        //                 i++) {
+        //               _deliveryScheduleListGdController.itemList.value[i] =
+        //                   true;
+        //               _deliveryScheduleListGdController.itemList.refresh();
+        //             }
+        //           }
+        //         } else if (value == false) {
+        //           if (_deliveryScheduleListGdController.itemList!.length != 0) {
+        //             for (int i = 0;
+        //                 i < _deliveryScheduleListGdController.itemList.length;
+        //                 i++) {
+        //               _deliveryScheduleListGdController.itemList.value[i] =
+        //                   false;
+        //               _deliveryScheduleListGdController.itemList.refresh();
+        //             }
+        //           }
+        //         }
+        //       }))
+        // ],
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
@@ -41,32 +78,33 @@ class DeliveryScheduleGD extends StatelessWidget {
           },
         ),
       ),
-      body: Obx(() => RefreshIndicator(
-          onRefresh: () async {
-            _deliveryScheduleListGdController.getDeliverySchedule();
-          },
-          child:_body()),),
+      body: Obx(
+        () => RefreshIndicator(
+            onRefresh: () async {
+              _deliveryScheduleListGdController.getDeliverySchedule();
+            },
+            child: _body()),
+      ),
     );
   }
-
-
 
   _body() {
     if (_deliveryScheduleListGdController.networkStatus.value == true) {
       if (_deliveryScheduleListGdController.loadingBool.value == false) {
-        if (_deliveryScheduleListGdController.deliveryScheduleListEntity.value ==
+        if (_deliveryScheduleListGdController
+                .deliveryScheduleListEntity.value ==
             null) {
           return Container(
             child: Text('Null value'),
           );
         } else if (_deliveryScheduleListGdController
-            .deliveryScheduleListEntity.value !=
+                .deliveryScheduleListEntity.value !=
             null) {
           if (_deliveryScheduleListGdController
-              .deliveryScheduleListEntity.value.response ==
+                  .deliveryScheduleListEntity.value.response ==
               "success") {
-            if (_deliveryScheduleListGdController
-                .deliveryScheduleListEntity.value.deliveryschedulelist!.length ==
+            if (_deliveryScheduleListGdController.deliveryScheduleListEntity
+                    .value.deliveryschedulelist!.length ==
                 0) {
               return Center(
                 child: Column(
@@ -82,7 +120,10 @@ class DeliveryScheduleGD extends StatelessWidget {
                 ),
               );
             } else if (_deliveryScheduleListGdController
-                .deliveryScheduleListEntity.value.deliveryschedulelist!.length !=
+                    .deliveryScheduleListEntity
+                    .value
+                    .deliveryschedulelist!
+                    .length !=
                 0) {
               return ListView(
                 children: [
@@ -105,6 +146,17 @@ class DeliveryScheduleGD extends StatelessWidget {
                                 .deliveryschedulelist!
                                 .length,
                             itemBuilder: (BuildContext context, int index) {
+                              Color prioColor = Colors.yellow;
+                              String prioText = "Low";
+                              if (_deliveryScheduleListGdController
+                                      .deliveryScheduleListEntity
+                                      .value
+                                      .deliveryschedulelist![index]
+                                      .priority ==
+                                  "True") {
+                                prioColor = Colors.green;
+                                prioText = "High";
+                              }
                               return Column(
                                 children: [
                                   Material(
@@ -112,76 +164,161 @@ class DeliveryScheduleGD extends StatelessWidget {
                                     elevation: 1,
 
                                     // shadowColor: Colors.grey,
-                                    child: Container(
-                                      color: Colors.white,
-                                      margin: EdgeInsets.fromLTRB(
-                                          2.h, 0.h, 2.h, 2.h),
-                                      child: ListTile(
-                                        title: Padding(
-                                          padding: EdgeInsets.only(top: 2.h),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    _deliveryScheduleListGdController
-                                                        .deliveryScheduleListEntity
-                                                        .value
-                                                        .deliveryschedulelist![
-                                                    index]
-                                                        .distributorname
-                                                        .toString(),
-                                                    style:
-                                                    GoogleFonts.radioCanada(
-                                                      fontSize: 17,
-                                                      fontWeight:
-                                                      FontWeight.w500,
-                                                      color: const Color(
-                                                          0xFFEC4E52),
-                                                    ),
-                                                  ),
-                                                  BoldText(text: _deliveryScheduleListGdController.deliveryScheduleListEntity.value.deliveryschedulelist![index].areacode.toString())
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    0.h, 1.h, 0.h, 1.5.h),
-                                                child: Row(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.to(
+                                            DeliverySchedule1GD(
+                                              id: _deliveryScheduleListGdController
+                                                  .deliveryScheduleListEntity
+                                                  .value
+                                                  .deliveryschedulelist![
+                                              index]
+                                                  .id
+                                                  .toString(),
+                                            ));
+                                      },
+                                      child: Container(
+                                        color: Colors.white,
+                                        margin: EdgeInsets.fromLTRB(
+                                            2.h, 0.h, 2.h, 1.h),
+                                        child: ListTile(
+                                          title: Padding(
+                                            padding: EdgeInsets.only(top: 1.h),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
-                                                    NormalText(
-                                                        text: "Delivery No. :"+ _deliveryScheduleListGdController.deliveryScheduleListEntity.value.deliveryschedulelist![index].id.toString()),
-                                                    NormalText(
-                                                        text: 'Area Code')
+                                                    Text(
+                                                      _deliveryScheduleListGdController
+                                                          .deliveryScheduleListEntity
+                                                          .value
+                                                          .deliveryschedulelist![
+                                                              index]
+                                                          .distributorname
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .radioCanada(
+                                                        fontSize: 17,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: const Color(
+                                                            0xFFEC4E52),
+                                                      ),
+                                                    ),
+                                                    // Obx(() => Checkbox(
+                                                    //     activeColor:
+                                                    //         ColorConstants
+                                                    //             .appThemeColorRed,
+                                                    //     value:
+                                                    //         _deliveryScheduleListGdController
+                                                    //             .itemList
+                                                    //             .value[index],
+                                                    //     onChanged: (value) {
+                                                    //       _deliveryScheduleListGdController
+                                                    //               .itemList
+                                                    //               .value[index] =
+                                                    //           value!;
+                                                    //       _deliveryScheduleListGdController
+                                                    //           .itemList
+                                                    //           .refresh();
+                                                    //       if (_deliveryScheduleListGdController
+                                                    //           .itemList
+                                                    //           .contains(false)) {
+                                                    //         _deliveryScheduleListGdController
+                                                    //             .allSelect
+                                                    //             .value = false;
+                                                    //       }
+                                                    //     })),
                                                   ],
                                                 ),
-                                              ),
-                                              Container(
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    Get.to(DeliverySchedule1GD(id:_deliveryScheduleListGdController.deliveryScheduleListEntity.value.deliveryschedulelist![index].id
-                                                        .toString(),));
-                                                  },
-                                                  child: Text('Update Status'),
-                                                  style:
-                                                  ElevatedButton.styleFrom(
-                                                    primary:
-                                                    const Color(0xFFEC4E52),
+                                                Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      0.h, 1.h, 0.h, 1.5.h),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      NormalText(
+                                                          text: "Delivery No. :" +
+                                                              _deliveryScheduleListGdController
+                                                                  .deliveryScheduleListEntity
+                                                                  .value
+                                                                  .deliveryschedulelist![
+                                                                      index]
+                                                                  .id
+                                                                  .toString()),
+                                                      // NormalText(
+                                                      //     text: 'Area Code')
+                                                    ],
                                                   ),
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                height: 1.h,
-                                              ),
-                                            ],
+                                                Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      0.h, 0.h, 0.h, 1.5.h),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      NormalText(
+                                                          text: "Area Code :" +
+                                                              _deliveryScheduleListGdController
+                                                                  .deliveryScheduleListEntity
+                                                                  .value
+                                                                  .deliveryschedulelist![
+                                                                      index]
+                                                                  .areacode
+                                                                  .toString()),
+                                                      // NormalText(
+                                                      //     text: 'Area Code')
+                                                    ],
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    NormalText(
+                                                        text: 'Priority : '),
+                                                    NormalText(text: prioText),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          left: 1.h),
+                                                      width: 2.h,
+                                                      height: 2.h,
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: prioColor),
+                                                    )
+                                                  ],
+                                                ),
+                                                // Container(
+                                                //   width: double.infinity,
+                                                //   child: ElevatedButton(
+                                                //     onPressed: () {
+                                                //
+                                                //     },
+                                                //     child:
+                                                //         Text('Update Status'),
+                                                //     style: ElevatedButton
+                                                //         .styleFrom(
+                                                //       primary: const Color(
+                                                //           0xFFEC4E52),
+                                                //     ),
+                                                //   ),
+                                                // ),
+                                                SizedBox(
+                                                  height: 1.h,
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -204,21 +341,18 @@ class DeliveryScheduleGD extends StatelessWidget {
                   )
                 ],
               );
-            }
-            else if( _deliveryScheduleListGdController.deliveryScheduleListEntity.value.response=='null'){
+            } else if (_deliveryScheduleListGdController
+                    .deliveryScheduleListEntity.value.response ==
+                'null') {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    HeadingText(
-                        text:'Please Wait...')                  ],
+                  children: [HeadingText(text: 'Please Wait...')],
                 ),
               );
             }
-
-          }
-          else {
+          } else {
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -249,7 +383,7 @@ class DeliveryScheduleGD extends StatelessWidget {
           ),
         );
       }
-    } else if ( _deliveryScheduleListGdController.networkStatus.value == false) {
+    } else if (_deliveryScheduleListGdController.networkStatus.value == false) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -266,5 +400,4 @@ class DeliveryScheduleGD extends StatelessWidget {
       );
     }
   }
-
 }

@@ -55,6 +55,10 @@ DeliveryScheduleListDeliveryschedulelist $DeliveryScheduleListDeliveryscheduleli
 	if (areacode != null) {
 		deliveryScheduleListDeliveryschedulelist.areacode = areacode;
 	}
+	final String? priority = jsonConvert.convert<String>(json['priority']);
+	if (priority != null) {
+		deliveryScheduleListDeliveryschedulelist.priority = priority;
+	}
 	return deliveryScheduleListDeliveryschedulelist;
 }
 
@@ -68,5 +72,6 @@ Map<String, dynamic> $DeliveryScheduleListDeliveryschedulelistToJson(DeliverySch
 	data['createddate'] = entity.createddate;
 	data['distributorname'] = entity.distributorname;
 	data['areacode'] = entity.areacode;
+	data['priority'] = entity.priority;
 	return data;
 }

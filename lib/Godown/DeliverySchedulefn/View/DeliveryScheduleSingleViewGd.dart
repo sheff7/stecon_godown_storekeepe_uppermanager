@@ -9,6 +9,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBa
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Controller/DeliveryScxheduleSingleViewController.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/Header.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/NormalText.dart';
@@ -231,9 +232,48 @@ class DeliverySchedule1GD extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // SizedBox(
-                      //   height: 2.h,
-                      // )
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Obx(() => Checkbox(
+                              value: _controller.allSelect.value,
+                              activeColor: ColorConstants.appThemeColorRed,
+                              onChanged: (value) {
+                                _controller.allSelect.value = value!;
+                                _controller.allSelect.refresh();
+                                print(_controller.allSelect.value
+                                    .toString());
+                                if (value == true) {
+                                  if (_controller.itemList!.length != 0) {
+                                    for (int i = 0;
+                                    i < _controller.itemList.length;
+                                    i++) {
+                                      _controller.itemList.value[i] =
+                                      true;
+                                      _controller.itemList.refresh();
+                                    }
+                                  }
+                                } else if (value == false) {
+                                  if (_controller.itemList!.length != 0) {
+                                    for (int i = 0;
+                                    i < _controller.itemList.length;
+                                    i++) {
+                                      _controller.itemList.value[i] =
+                                      false;
+                                      _controller.itemList.refresh();
+                                    }
+                                  }
+                                }
+                              })),
+                          Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(left: 0.h,right: 2.h),
+                              child: NormalText(text: 'Select All')),
+                        ],
+                      )
                     ],
                   ),
                   Container(
@@ -442,13 +482,42 @@ class DeliverySchedule1GD extends StatelessWidget {
                                         child: ExpansionTile(
                                             title: Padding(
                                               padding: EdgeInsets.fromLTRB(
-                                                  0.h, 2.h, 0.h, 2.h),
+                                                  0.h, 0.h, 0.h, 0.h),
                                               child: Column(
                                                 mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                                 crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                                 children: [
+                                                  Row(
+                                                    children: [
+                                                      NormalText(text: 'Select'),
+                                                      Obx(() => Checkbox(
+                                                          activeColor:
+                                                          ColorConstants
+                                                              .appThemeColorRed,
+                                                          value:
+                                                          _controller
+                                                              .itemList
+                                                              .value[index],
+                                                          onChanged: (value) {
+                                                            _controller
+                                                                .itemList
+                                                                .value[index] =
+                                                            value!;
+                                                            _controller
+                                                                .itemList
+                                                                .refresh();
+                                                            if (_controller
+                                                                .itemList
+                                                                .contains(false)) {
+                                                              _controller
+                                                                  .allSelect
+                                                                  .value = false;
+                                                            }
+                                                          })),
+                                                    ],
+                                                  ),
                                                   Padding(
                                                     padding:
                                                     EdgeInsets.only(top: 1.5.h),
@@ -490,6 +559,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                   SizedBox(
                                                     height: 1.h,
                                                   ),
+
                                                 ],
                                               ),
                                             ),

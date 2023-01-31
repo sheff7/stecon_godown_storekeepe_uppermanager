@@ -31,6 +31,7 @@ class DeliveryScheduleListDeliveryschedulelist {
 	String? createddate;
 	String? distributorname;
   String? areacode;
+  String? priority;
   
   DeliveryScheduleListDeliveryschedulelist();
 

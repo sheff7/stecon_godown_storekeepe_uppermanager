@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
 
+import '../../../StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
 import '../../../Utils/DioConfig.dart';
 import 'package:intl/intl.dart';
 import '../../../generated/json/base/json_convert_content.dart';
@@ -55,6 +56,27 @@ class DeliveryScheduleSingleViewtGd {
             UpdateOrderEntity>(data);
       }
     } catch (e) {
+      print(e);
+    }
+  }
+  Future<ResponseEntity?>addBilling(String deliveryid,String disid,List<Map<String,dynamic>>billingproducts)async{
+    try{
+      var now = DateTime.now();
+      final response=await _dio.post('apiaddbilling',data: {
+        "moveddate": DateFormat('dd-MM-yyyy').format(now).toString(),
+        "deliveryid":deliveryid,
+        "billingdate":"",
+        "totalamount":"",
+        "disid":disid,
+        "status":"Pending",
+        "billingproducts":jsonEncode(billingproducts)
+      });
+      if(response.statusCode==200){
+        var data=response.data;
+        return JsonConvert.fromJsonAsT<ResponseEntity>(data);
+      }
+    }
+    catch(e){
       print(e);
     }
   }

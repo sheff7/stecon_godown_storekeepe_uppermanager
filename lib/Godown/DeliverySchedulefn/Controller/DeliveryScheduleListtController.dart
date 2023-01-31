@@ -12,6 +12,8 @@ class DeliveryScheduleListGdController extends GetxController {
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   Rx<DeliveryScheduleListEntity> deliveryScheduleListEntity = DeliveryScheduleListEntity().obs;
+  RxList <bool> itemList=<bool>[].obs;
+  RxBool allSelect=false.obs;
 
 
 
@@ -30,8 +32,14 @@ class DeliveryScheduleListGdController extends GetxController {
     if (nBool == true) {
       loadingBool.value = true;
       deliveryScheduleListEntity.value = (await DeliveryScheduleListGd().GetDeliverySchedule())!;
-      loadingBool.value= false;
       print('uhusdohds'+loadingBool.value.toString());
+      if(deliveryScheduleListEntity.value.response=="success"
+      && deliveryScheduleListEntity.value.deliveryschedulelist!.length!=0){
+        for(int i=0;i<deliveryScheduleListEntity.value.deliveryschedulelist!.length;i++){
+          itemList.add(false);
+        }
+      }
+      loadingBool.value= false;
     }
   }
   @override

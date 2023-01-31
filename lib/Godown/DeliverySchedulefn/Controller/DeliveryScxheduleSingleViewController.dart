@@ -6,14 +6,16 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Repository/DeliveryScheduleSingleViewGdServices.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Utils/InternetConnectivity.dart';
 
+import '../../../StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
 import '../Model/update_order_entity.dart';
 
-class DeliveryScheduleSingleViewController extends GetxController{
+class DeliveryScheduleSingleViewController extends GetxController {
   final String id;
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
-  Rx<DeliveryScheduleSingleViewGdEntity> deliveryScheduleSingleViewGdEntity = DeliveryScheduleSingleViewGdEntity().obs;
-
+  Rx<DeliveryScheduleSingleViewGdEntity> deliveryScheduleSingleViewGdEntity =
+      DeliveryScheduleSingleViewGdEntity().obs;
+  Rx<ResponseEntity>responseEntity=ResponseEntity().obs;
 
   final categoryController = TextEditingController();
   final colorController = TextEditingController();
@@ -31,6 +33,9 @@ class DeliveryScheduleSingleViewController extends GetxController{
   final size12controller = TextEditingController();
   final size13controller = TextEditingController();
   final BoxController = TextEditingController();
+
+  List<Map<String, dynamic>> billingproducts=[];
+
   RxBool enable1 = false.obs;
   RxBool enable2 = false.obs;
   RxBool enable3 = false.obs;
@@ -45,79 +50,155 @@ class DeliveryScheduleSingleViewController extends GetxController{
   RxBool enable12 = false.obs;
   RxBool enable13 = false.obs;
 
-  RxList<String>drfaultList=(List<String>.of([])).obs;
-  RxList<String>drfaultIdList=(List<String>.of([])).obs;
+  RxList<String> drfaultList = (List<String>.of([])).obs;
+  RxList<String> drfaultIdList = (List<String>.of([])).obs;
 
+  RxList<bool> itemList = <bool>[].obs;
+  RxBool allSelect = false.obs;
 
+  RxList<Map<String, dynamic>>? producctList =
+      (List<Map<String, dynamic>>.of([])).obs;
 
-  RxList<Map<String,dynamic>>? producctList=(List<Map<String,dynamic>>.of([])).obs;
   DeliveryScheduleSingleViewController({required this.id});
-  Rx<UpdateOrderEntity>updateOrderEntity=UpdateOrderEntity().obs;
 
-
+  Rx<UpdateOrderEntity> updateOrderEntity = UpdateOrderEntity().obs;
 
   checkNetworkStatus() async {
     try {
       networkStatus.value =
-      (await NetworkConnectivity().checkConnectivityState())!;
+          (await NetworkConnectivity().checkConnectivityState())!;
       print(networkStatus.value);
     } catch (e) {
       print(e);
     }
   }
+
   getDeliverySchedule() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       loadingBool.value = true;
-      deliveryScheduleSingleViewGdEntity.value = (await DeliveryScheduleSingleViewtGd().getbyiddeliveryschedule(id))!;
-      loadingBool.value= false;
+      deliveryScheduleSingleViewGdEntity.value =
+          (await DeliveryScheduleSingleViewtGd().getbyiddeliveryschedule(id))!;
+      loadingBool.value = false;
       print(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length);
-      if(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length!=0){
-        for(int i=0;i<deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length;i++){
-          drfaultList.add(deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox.toString());
-          drfaultIdList.add(deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].id.toString());
-
+      if (deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length !=
+          0) {
+        for (int i = 0;
+            i <
+                deliveryScheduleSingleViewGdEntity
+                    .value.deliveryschedule!.length;
+            i++) {
+          drfaultList.add(deliveryScheduleSingleViewGdEntity
+              .value.deliveryschedule![i].deliverybox
+              .toString());
+          drfaultIdList.add(deliveryScheduleSingleViewGdEntity
+              .value.deliveryschedule![i].id
+              .toString());
+          itemList.add(false);
         }
       }
     }
+  }
 
-    }
-    updateOrder()async{
-      bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
-      if (nBool == true){
-        if(deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length!=0){
-          for(int i=0;i<deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length;i++){
-            Map<String, dynamic> json={
-              "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderid.toString(),
-              "orderno":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderno.toString(),
-              "distributorid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].distributorid.toString(),
-              "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].productid.toString(),
-              "deliveredboxcount":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox.toString(),
-              "deliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].box.toString(),
-              "id":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid.toString(),
-              "did":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].did.toString(),
-              "obox":drfaultList[i].toString(),
+  updateOrder() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true) {
+      print(itemList.length.toString());
+      if(itemList.contains(true)){
+        if (deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length !=
+            0) {
+          for (int i = 0;
+          i <
+              deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule!.length;
+          i++) {
+            Map<String, dynamic> json = {
+              "orderid": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].orderid
+                  .toString(),
+              "orderno": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].orderno
+                  .toString(),
+              "distributorid": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].distributorid
+                  .toString(),
+              "productid": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].productid
+                  .toString(),
+              "deliveredboxcount": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].deliverybox
+                  .toString(),
+              "deliverybox": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].box
+                  .toString(),
+              "id": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].deliveryproductsid
+                  .toString(),
+              "did": deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![i].did
+                  .toString(),
+              "obox": drfaultList[i].toString(),
               // "did":drfaultIdList[i].toString(),
             };
             producctList!.add(json);
           }
           CustomSnackbar().LoadingBottomSheet();
-          updateOrderEntity.value=(await DeliveryScheduleSingleViewtGd().UpdateOrderGod(deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].did.toString()
-              , deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].distributorid.toString(), producctList!))!;
+          updateOrderEntity.value = (await DeliveryScheduleSingleViewtGd()
+              .UpdateOrderGod(
+              deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![0].did
+                  .toString(),
+              deliveryScheduleSingleViewGdEntity
+                  .value.deliveryschedule![0].distributorid
+                  .toString(),
+              producctList!))!;
           Get.back();
-          if(updateOrderEntity.value!=null){
-            if(updateOrderEntity.value.response.toString()=='Updated successfully'){
-              Get.back();
-            }
-            else{
-              CustomSnackbar().InfoSnackBar('Update Order', updateOrderEntity.value.response.toString());
+          if (updateOrderEntity.value != null) {
+            if (updateOrderEntity.value.response.toString() ==
+                'Updated successfully') {
+              addBilling();
+            } else {
+              CustomSnackbar().InfoSnackBar(
+                  'Update Order', updateOrderEntity.value.response.toString());
             }
           }
         }
+
       }
     }
+  }
 
-
+  addBilling() async {
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      if(itemList.length!=0){
+        for(int i=0;i<itemList.length;i++){
+          if(itemList[i]==true){
+            Map<String,dynamic> json={
+              "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].productid,
+              "deliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox,
+              "catid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].category,
+              "sizeid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].size,
+              "boxpair":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].pair,
+              "orderno":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderno,
+              "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderid
+            };
+            billingproducts?.add(json);
+          }
+        }
+      }
+      CustomSnackbar().LoadingBottomSheet();
+      responseEntity.value=(await DeliveryScheduleSingleViewtGd().addBilling(deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].did.toString(), deliveryScheduleSingleViewGdEntity.value.deliveryschedule![0].distributorid.toString(), billingproducts))!;
+      Get.back();
+      if(responseEntity.value.response=="Added successfully"){
+        Get.back();
+        CustomSnackbar().InfoSnackBar('Delivery Schedule', 'Moved to bill');
+      }
+      else {
+        CustomSnackbar().InfoSnackBar('Delivery Schedule', responseEntity.value.response.toString());
+      }
+    }
+  }
 
   @override
   void onInit() {
@@ -125,9 +206,6 @@ class DeliveryScheduleSingleViewController extends GetxController{
     checkNetworkStatus();
     getDeliverySchedule();
 
-
-
     super.onInit();
   }
-
 }
