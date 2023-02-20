@@ -153,6 +153,8 @@ class JsonConvert {
 		(GetUpperPlanCountReceivedcountlist).toString(): GetUpperPlanCountReceivedcountlist.fromJson,
 		(GetUpperPlanCountRecivedsupliercount).toString(): GetUpperPlanCountRecivedsupliercount.fromJson,
 		(GetUpperPlanCountStaffcountlist).toString(): GetUpperPlanCountStaffcountlist.fromJson,
+		(GetUpperPlanCountShortagelist).toString(): GetUpperPlanCountShortagelist.fromJson,
+		(GetUpperPlanCountBalancelist).toString(): GetUpperPlanCountBalancelist.fromJson,
 		(GetUpperPurchasePlanForCountSingleEntity).toString(): GetUpperPurchasePlanForCountSingleEntity.fromJson,
 		(GetUpperPurchasePlanForCountSinglePurchaseplanlist).toString(): GetUpperPurchasePlanForCountSinglePurchaseplanlist.fromJson,
 		(GetUpperPurchasePlanForCountSinglePurchaseproductlist).toString(): GetUpperPurchasePlanForCountSinglePurchaseproductlist.fromJson,
@@ -525,6 +527,12 @@ class JsonConvert {
 		}
 		if(<GetUpperPlanCountStaffcountlist>[] is M){
 			return data.map<GetUpperPlanCountStaffcountlist>((Map<String, dynamic> e) => GetUpperPlanCountStaffcountlist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPlanCountShortagelist>[] is M){
+			return data.map<GetUpperPlanCountShortagelist>((Map<String, dynamic> e) => GetUpperPlanCountShortagelist.fromJson(e)).toList() as M;
+		}
+		if(<GetUpperPlanCountBalancelist>[] is M){
+			return data.map<GetUpperPlanCountBalancelist>((Map<String, dynamic> e) => GetUpperPlanCountBalancelist.fromJson(e)).toList() as M;
 		}
 		if(<GetUpperPurchasePlanForCountSingleEntity>[] is M){
 			return data.map<GetUpperPurchasePlanForCountSingleEntity>((Map<String, dynamic> e) => GetUpperPurchasePlanForCountSingleEntity.fromJson(e)).toList() as M;

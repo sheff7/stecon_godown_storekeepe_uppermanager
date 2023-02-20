@@ -242,268 +242,91 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Column(
-                      children: [
-                        Container(
-                          color: Colors.grey[200],
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                Container(
-                                  width:12.h,
-                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'Size',
-                                    style: GoogleFonts.radioCanada(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width:12.h,
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
-                                  child: Text(
-                                    'OC',
-                                    style: GoogleFonts.radioCanada(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width:12.h,
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
-                                  child: Text(
-                                    'Count',
-                                    style: GoogleFonts.radioCanada(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width:12.h,
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
-                                  child: Text(
-                                    'Damaged',
-                                    style: GoogleFonts.radioCanada(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width:12.h,
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,left: 1.h),
-                                  child: Text(
-                                    'Shortage',
-                                    style: GoogleFonts.radioCanada(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width:12.h,
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.only(top: 2.h,bottom: 2.h,),
-                                  child: Text(
-                                    'Balance',
-                                    style: GoogleFonts.radioCanada(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Column(
-                            children: [
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width:12.h,
-                                      margin: EdgeInsets.only(top: 2.h,bottom: 2.h,),
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                        height: 6.h,
-                                        width: double.infinity,
-                                        child: Center(
-                                          child: BoldText(
-                                            text: '3',
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width:12.h,
-                                      alignment: Alignment.center,
-                                      margin: EdgeInsets.only(top: 2.h,bottom: 2.h,),
-                                      child: Container(
-                                        // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                                        height: 6.h,
-                                        width: double.infinity,
-                                        child: Center(
-                                          child: BoldText(
-                                            text: _controller.oc3.value.toString(),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width:12.h,
-                                      alignment: Alignment.center,
-                                      margin: EdgeInsets.only(top: 1.h,bottom: 1.h,left: 1.h),
-                                      child: CustomBox1(
-                                        controller: _controller.RC3Controller,
-                                        label: 'Enter',
-                                        Enabled: _controller.enable3.value,
-                                      ),
-                                    ),
-                              Container(
-                                width:12.h,
-                                alignment: Alignment.center,
-                                margin: EdgeInsets.only(top: 1.h,bottom: 1.h,left: 1.h),
-                                child: CustomBox1(
-                                  controller: _controller.RC3Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable3.value,
-                                ),
-                              ),
-                              Container(
-                                width:12.h,
-                                alignment: Alignment.center,
-                                margin: EdgeInsets.only(top: 1.h,bottom: 1.h),
-                                child: CustomBox1(
-                                  controller: _controller.RC3Controller,
-                                  label: 'Enter',
-                                  Enabled: _controller.enable3.value,
-                                ),
-                              ),
-                                    Container(
-                                      width:12.h,
-                                      alignment: Alignment.center,
-                                      margin: EdgeInsets.only(top: 1.h,bottom: 1.h),
-                                      child: CustomBox1(
-                                        controller: _controller.RC3Controller,
-                                        label: 'Enter',
-                                        Enabled: _controller.enable3.value,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Divider(
-                                height: 5,
-                                color: Colors.black,
-                              ),
-                            ],
-                          ),
-                        )
-
-                      ],
+                      children: _controller.sizeListListView,
                     ),
                   ),
                 ),
-                Container(
-                  color: Colors.grey[200],
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 3.h),
-                    padding: EdgeInsets.symmetric(vertical: 2.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            children: [
-                              Text(
-                                'Size',
-                                style: GoogleFonts.radioCanada(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            children: [
-                              Text(
-                                'OC',
-                                style: GoogleFonts.radioCanada(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            children: [
-                              Text(
-                                'RC',
-                                style: GoogleFonts.radioCanada(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            children: [
-                              Text(
-                                'DC',
-                                style: GoogleFonts.radioCanada(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                        // BoldText(text: 'Size'),
-                        // BoldText(text: 'OC'),
-                        // BoldText(text: 'RC'),
-                        // BoldText(text: 'DC'),
-                      ],
-                    ),
-                  ),
-                ),
-                ListView(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: _controller.sizeListListView,
-                ),
+                // Container(
+                //   color: Colors.grey[200],
+                //   child: Container(
+                //     margin: EdgeInsets.symmetric(horizontal: 3.h),
+                //     padding: EdgeInsets.symmetric(vertical: 2.h),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //       children: [
+                //         Expanded(
+                //           flex: 1,
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 'Size',
+                //                 style: GoogleFonts.radioCanada(
+                //                   fontSize: 16,
+                //                   fontWeight: FontWeight.w500,
+                //                   color: Colors.black,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //         Expanded(
+                //           flex: 1,
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 'OC',
+                //                 style: GoogleFonts.radioCanada(
+                //                   fontSize: 16,
+                //                   fontWeight: FontWeight.w500,
+                //                   color: Colors.black,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //         Expanded(
+                //           flex: 1,
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 'RC',
+                //                 style: GoogleFonts.radioCanada(
+                //                   fontSize: 16,
+                //                   fontWeight: FontWeight.w500,
+                //                   color: Colors.black,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //         Expanded(
+                //           flex: 1,
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 'DC',
+                //                 style: GoogleFonts.radioCanada(
+                //                   fontSize: 16,
+                //                   fontWeight: FontWeight.w500,
+                //                   color: Colors.black,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         )
+                //         // BoldText(text: 'Size'),
+                //         // BoldText(text: 'OC'),
+                //         // BoldText(text: 'RC'),
+                //         // BoldText(text: 'DC'),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                // ListView(
+                //   shrinkWrap: true,
+                //   physics: NeverScrollableScrollPhysics(),
+                //   children: _controller.sizeListListView,
+                // ),
                 // Container(
                 //   color: Colors.white,
                 //   child: Container(
@@ -1123,76 +946,132 @@ class AddUpperCountStatus2UPM extends StatelessWidget {
                     height: 6.h,
                     child: ElevatedButton(
                       onPressed: () {
-                        if(_controller.dateofcounting.value=='' || _controller.dateofcounting.value.length==0){
-                          CustomSnackbar().InfoSnackBar('Add Upper Count', 'Select Date of Counting');
-                        }
-                        else if(_controller.filters.value.length==0){
-                          CustomSnackbar().InfoSnackBar('Add Upper Count', 'Select Counting Staff');
+                        try{
+                          if(_controller.dateofcounting.value=='' || _controller.dateofcounting.value.length==0){
+                            CustomSnackbar().InfoSnackBar('Add Upper Count', 'Select Date of Counting');
 
-                        }
-                        else{
-                          List<Map<String,dynamic>>rcList=[];
-                          Map<String,dynamic>rcJson={
-                            "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
-                            "s1":_controller.RC1Controller.text.toString(),
-                            "s2":_controller.RC2Controller.text.toString(),
-                            "s3":_controller.RC3Controller.text.toString(),
-                            "s4":_controller.RC4Controller.text.toString(),
-                            "s5":_controller.RC5Controller.text.toString(),
-                            "s6":_controller.RC6Controller.text.toString(),
-                            "s7":_controller.RC7Controller.text.toString(),
-                            "s8":_controller.RC8Controller.text.toString(),
-                            "s9":_controller.RC9Controller.text.toString(),
-                            "s10":_controller.RC10Controller.text.toString(),
-                            "s11":_controller.RC11Controller.text.toString(),
-                            "s12":_controller.RC12Controller.text.toString(),
-                            "s13":_controller.RC13Controller.text.toString(),
-                          };
-                          rcList.add(rcJson);
-                          List<Map<String,dynamic>>dcList=[];
-                          Map<String,dynamic>dcJson={
-                            "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
-                            "s1":_controller.DC1Controller.text.toString(),
-                            "s2":_controller.DC2Controller.text.toString(),
-                            "s3":_controller.DC3Controller.text.toString(),
-                            "s4":_controller.DC4Controller.text.toString(),
-                            "s5":_controller.DC5Controller.text.toString(),
-                            "s6":_controller.DC6Controller.text.toString(),
-                            "s7":_controller.DC7Controller.text.toString(),
-                            "s8":_controller.DC8Controller.text.toString(),
-                            "s9":_controller.DC9Controller.text.toString(),
-                            "s10":_controller.DC10Controller.text.toString(),
-                            "s11":_controller.DC11Controller.text.toString(),
-                            "s12":_controller.DC12Controller.text.toString(),
-                            "s13":_controller.DC13Controller.text.toString(),
-                          };
-                          dcList.add(dcJson);
-                          List<Map<String,dynamic>>rcCountList=[];
-                          Map<String,dynamic>rcCountJson={
-                            "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
-                            "s1":_controller.size1controller.text.toString(),
-                            "s2":_controller.size2controller.text.toString(),
-                            "s3":_controller.size3controller.text.toString(),
-                            "s4":_controller.size4controller.text.toString(),
-                            "s5":_controller.size5controller.text.toString(),
-                            "s6":_controller.size6controller.text.toString(),
-                            "s7":_controller.size7controller.text.toString(),
-                            "s8":_controller.size8controller.text.toString(),
-                            "s9":_controller.size9controller.text.toString(),
-                            "s10":_controller.size10controller.text.toString(),
-                            "s11":_controller.size11controller.text.toString(),
-                            "s12":_controller.size12controller.text.toString(),
-                            "s13":_controller.size13controller.text.toString(),
 
-                          };
-                          rcCountList.add(rcCountJson);
-                          if(_controller.rcId.value=='' &&_controller.dcId.value==''){
-                            _controller.addUpperCount(rcList, dcList,rcCountList, _controller.CommentsController.text.toString());
                           }
-                          else if(_controller.rcId.value!='' && _controller.dcId.value!=''){
-                            _controller.editUpperCount(rcList, dcList,rcCountList, _controller.CommentsController.text.toString());
+                          else if(_controller.filters.value.length==0){
+                            CustomSnackbar().InfoSnackBar('Add Upper Count', 'Select Counting Staff');
+
+                          }
+                          else{
+
+                            List<Map<String,dynamic>>rcList=[];
+                            Map<String,dynamic>rcJson={
+                              "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
+                              "s1":_controller.RC1Controller.text.toString(),
+                              "s2":_controller.RC2Controller.text.toString(),
+                              "s3":_controller.RC3Controller.text.toString(),
+                              "s4":_controller.RC4Controller.text.toString(),
+                              "s5":_controller.RC5Controller.text.toString(),
+                              "s6":_controller.RC6Controller.text.toString(),
+                              "s7":_controller.RC7Controller.text.toString(),
+                              "s8":_controller.RC8Controller.text.toString(),
+                              "s9":_controller.RC9Controller.text.toString(),
+                              "s10":_controller.RC10Controller.text.toString(),
+                              "s11":_controller.RC11Controller.text.toString(),
+                              "s12":_controller.RC12Controller.text.toString(),
+                              "s13":_controller.RC13Controller.text.toString(),
+                            };
+                            rcList.add(rcJson);
+                            List<Map<String,dynamic>>dcList=[];
+                            Map<String,dynamic>dcJson={
+                              "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
+                              "s1":_controller.DC1Controller.text.toString(),
+                              "s2":_controller.DC2Controller.text.toString(),
+                              "s3":_controller.DC3Controller.text.toString(),
+                              "s4":_controller.DC4Controller.text.toString(),
+                              "s5":_controller.DC5Controller.text.toString(),
+                              "s6":_controller.DC6Controller.text.toString(),
+                              "s7":_controller.DC7Controller.text.toString(),
+                              "s8":_controller.DC8Controller.text.toString(),
+                              "s9":_controller.DC9Controller.text.toString(),
+                              "s10":_controller.DC10Controller.text.toString(),
+                              "s11":_controller.DC11Controller.text.toString(),
+                              "s12":_controller.DC12Controller.text.toString(),
+                              "s13":_controller.DC13Controller.text.toString(),
+                            };
+                            dcList.add(dcJson);
+                            List<Map<String,dynamic>>rcCountList=[];
+                            Map<String,dynamic>rcCountJson={
+                              "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
+                              "s1":_controller.size1controller.text.toString(),
+                              "s2":_controller.size2controller.text.toString(),
+                              "s3":_controller.size3controller.text.toString(),
+                              "s4":_controller.size4controller.text.toString(),
+                              "s5":_controller.size5controller.text.toString(),
+                              "s6":_controller.size6controller.text.toString(),
+                              "s7":_controller.size7controller.text.toString(),
+                              "s8":_controller.size8controller.text.toString(),
+                              "s9":_controller.size9controller.text.toString(),
+                              "s10":_controller.size10controller.text.toString(),
+                              "s11":_controller.size11controller.text.toString(),
+                              "s12":_controller.size12controller.text.toString(),
+                              "s13":_controller.size13controller.text.toString(),
+
+                            };
+                            rcCountList.add(rcCountJson);
+
+                            List<Map<String,dynamic>>shortageCountList=[];
+                            Map<String,dynamic>shortageCountJson={
+                              "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
+                              "s1":_controller.shortage1controller.text.toString(),
+                              "s2":_controller.shortage2controller.text.toString(),
+                              "s3":_controller.shortage3controller.text.toString(),
+                              "s4":_controller.shortage4controller.text.toString(),
+                              "s5":_controller.shortage5controller.text.toString(),
+                              "s6":_controller.shortage6controller.text.toString(),
+                              "s7":_controller.shortage7controller.text.toString(),
+                              "s8":_controller.shortage8controller.text.toString(),
+                              "s9":_controller.shortage9controller.text.toString(),
+                              "s10":_controller.shortage10controller.text.toString(),
+                              "s11":_controller.shortage11controller.text.toString(),
+                              "s12":_controller.shortage12controller.text.toString(),
+                              "s13":_controller.shortage13controller.text.toString(),
+
+                            };
+                            shortageCountList.add(shortageCountJson);
+
+                            List<Map<String,dynamic>>balanceCountList=[];
+                            Map<String,dynamic>balanceCountJson={
+                              "artnumber":_controller.orderNoEntity.value.purchaseproductlist![0].artno.toString(),
+                              "s1":_controller.balance1controller.text.toString(),
+                              "s2":_controller.balance2controller.text.toString(),
+                              "s3":_controller.balance3controller.text.toString(),
+                              "s4":_controller.balance4controller.text.toString(),
+                              "s5":_controller.balance5controller.text.toString(),
+                              "s6":_controller.balance6controller.text.toString(),
+                              "s7":_controller.balance7controller.text.toString(),
+                              "s8":_controller.balance8controller.text.toString(),
+                              "s9":_controller.balance9controller.text.toString(),
+                              "s10":_controller.balance10controller.text.toString(),
+                              "s11":_controller.balance11controller.text.toString(),
+                              "s12":_controller.balance12controller.text.toString(),
+                              "s13":_controller.balance13controller.text.toString(),
+                            };
+                            balanceCountList.add(balanceCountJson);
+
+
+                            if(_controller.rcId.value=='' &&_controller.dcId.value==''){
+                              print('0000');
+                              _controller.addUpperCount(rcList, dcList,rcCountList,shortageCountList,balanceCountList, _controller.CommentsController.text.toString());
+                            }
+                            else if(_controller.rcId.value!='' && _controller.dcId.value!=''){
+                              print('aa');
+                              _controller.editUpperCount(rcList, dcList,rcCountList,shortageCountList,balanceCountList, _controller.CommentsController.text.toString());
+                            }
+                            else{
+                              _controller.addUpperCount(rcList, dcList,rcCountList,shortageCountList,balanceCountList, _controller.CommentsController.text.toString());
+                              print("nooo");
+                            }
                           }
                         }
+                        catch(e){
+                          print(e);
+                        }
+
 
 
                       },

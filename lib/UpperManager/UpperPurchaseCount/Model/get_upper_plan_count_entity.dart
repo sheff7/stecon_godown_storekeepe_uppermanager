@@ -12,6 +12,8 @@ class GetUpperPlanCountEntity {
 	List<GetUpperPlanCountReceivedcountlist>? receivedcountlist;
 	List<GetUpperPlanCountRecivedsupliercount>? recivedsupliercount;
 	List<GetUpperPlanCountStaffcountlist>? staffcountlist;
+	List<GetUpperPlanCountShortagelist>? shortagelist;
+	List<GetUpperPlanCountBalancelist>? balancelist;
   
   GetUpperPlanCountEntity();
 
@@ -83,7 +85,7 @@ class GetUpperPlanCountUppercountlist {
 	String? comments;
 	String? plannoid;
 	String? createddate;
-	dynamic receivedcount;
+	String? receivedcount;
   
   GetUpperPlanCountUppercountlist();
 
@@ -223,6 +225,80 @@ class GetUpperPlanCountStaffcountlist {
   factory GetUpperPlanCountStaffcountlist.fromJson(Map<String, dynamic> json) => $GetUpperPlanCountStaffcountlistFromJson(json);
 
   Map<String, dynamic> toJson() => $GetUpperPlanCountStaffcountlistToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+}
+
+@JsonSerializable()
+class GetUpperPlanCountShortagelist {
+
+	int? id;
+	String? orderno;
+	String? companyplanno;
+	String? planno;
+	String? countid;
+	String? supplierid;
+	String? artnumber;
+	String? s1;
+	String? s2;
+	String? s3;
+	String? s4;
+	String? s5;
+	String? s6;
+	String? s7;
+	String? s8;
+	String? s9;
+	String? s10;
+	String? s11;
+	String? s12;
+	String? s13;
+	String? createddate;
+  
+  GetUpperPlanCountShortagelist();
+
+  factory GetUpperPlanCountShortagelist.fromJson(Map<String, dynamic> json) => $GetUpperPlanCountShortagelistFromJson(json);
+
+  Map<String, dynamic> toJson() => $GetUpperPlanCountShortagelistToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+}
+
+@JsonSerializable()
+class GetUpperPlanCountBalancelist {
+
+	int? id;
+	String? orderno;
+	String? companyplanno;
+	String? planno;
+	String? countid;
+	String? supplierid;
+	String? artnumber;
+	String? s1;
+	String? s2;
+	String? s3;
+	String? s4;
+	String? s5;
+	String? s6;
+	String? s7;
+	String? s8;
+	String? s9;
+	String? s10;
+	String? s11;
+	String? s12;
+	String? s13;
+	String? createddate;
+  
+  GetUpperPlanCountBalancelist();
+
+  factory GetUpperPlanCountBalancelist.fromJson(Map<String, dynamic> json) => $GetUpperPlanCountBalancelistFromJson(json);
+
+  Map<String, dynamic> toJson() => $GetUpperPlanCountBalancelistToJson(this);
 
   @override
   String toString() {

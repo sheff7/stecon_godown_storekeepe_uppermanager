@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -125,35 +126,71 @@ class CreatePlanUPM extends StatelessWidget {
                                 width: 1.0),
                           ),
                           width: double.infinity,
-                          child: DropdownButton(
-                            borderRadius: BorderRadius.circular(10),
-                            icon: Icon(Icons.arrow_drop_down),
-                            iconSize: 29,
-                            underline: SizedBox(),
-                            isExpanded: true,
-                            hint: Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text('Art Number'),
+                          child: DropdownSearch<String>(
+                            popupProps: PopupProps.menu(
+                                showSelectedItems: true,
+                                showSearchBox: true,
+                                searchFieldProps: TextFieldProps(
+                                    style: TextStyle(
+                                    )
+                                )
                             ),
-                            value: _controller!.artNoisSelected.value == ''
-                                ? null
-                                : _controller!.artNoisSelected.value,
-                            onChanged: (value) async {
-                              _controller.getArtnoType(value.toString());
+                            items: _controller.productList!.value,
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                // labelText: "Menu mode",
+                                // hintText: "country in menu mode",
+                              ),
+                            ),
+                            onChanged: (s)async{
+                              if(s!='Select Art no.'){
+                                _controller.getArtnoType(s.toString());
 
-                              // });
+                              }
+
                             },
-                            items: _controller!.productList!.map((e) {
-                              return DropdownMenuItem(
-                                  value: e,
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Text(e.toString(),
-                                          style:
-                                              TextStyle(color: Colors.black))));
-                            }).toList(),
+                            selectedItem: _controller.artNoisSelected.value,
                           ),
                         ),
+                        // Container(
+                        //   // margin: EdgeInsets.fromLTRB(3.h, 2.h, 3.h, 3.h),
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.white,
+                        //     borderRadius: BorderRadius.circular(5),
+                        //     border: Border.all(
+                        //         color: Colors.black, // Set border color
+                        //         width: 1.0),
+                        //   ),
+                        //   width: double.infinity,
+                        //   child: DropdownButton(
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     icon: Icon(Icons.arrow_drop_down),
+                        //     iconSize: 29,
+                        //     underline: SizedBox(),
+                        //     isExpanded: true,
+                        //     hint: Padding(
+                        //       padding: const EdgeInsets.only(left: 10),
+                        //       child: Text('Art Number'),
+                        //     ),
+                        //     value: _controller!.artNoisSelected.value == ''
+                        //         ? null
+                        //         : _controller!.artNoisSelected.value,
+                        //     onChanged: (value) async {
+                        //       _controller.getArtnoType(value.toString());
+                        //
+                        //       // });
+                        //     },
+                        //     items: _controller!.productList!.map((e) {
+                        //       return DropdownMenuItem(
+                        //           value: e,
+                        //           child: Padding(
+                        //               padding: const EdgeInsets.only(left: 10),
+                        //               child: Text(e.toString(),
+                        //                   style:
+                        //                       TextStyle(color: Colors.black))));
+                        //     }).toList(),
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 4.h,
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/response_entity_entity.dart';
@@ -35,6 +36,9 @@ class AddUpperCountStatus2UPMController extends GetxController {
   RxString countId = ''.obs;
   RxString rcId = ''.obs;
   RxString dcId = ''.obs;
+  RxString shortageId=''.obs;
+  RxString balanceId=''.obs;
+
   RxString rcCountId = ''.obs;
   RxString comment = ''.obs;
   Rx<GetStaffEntity> staffEnebtity = GetStaffEntity().obs;
@@ -100,6 +104,34 @@ class AddUpperCountStatus2UPMController extends GetxController {
   final size11controller = TextEditingController();
   final size12controller = TextEditingController();
   final size13controller = TextEditingController();
+
+  final shortage1controller = TextEditingController();
+  final shortage2controller = TextEditingController();
+  final shortage3controller = TextEditingController();
+  final shortage4controller = TextEditingController();
+  final shortage5controller = TextEditingController();
+  final shortage6controller = TextEditingController();
+  final shortage7controller = TextEditingController();
+  final shortage8controller = TextEditingController();
+  final shortage9controller = TextEditingController();
+  final shortage10controller = TextEditingController();
+  final shortage11controller = TextEditingController();
+  final shortage12controller = TextEditingController();
+  final shortage13controller = TextEditingController();
+
+  final balance1controller = TextEditingController();
+  final balance2controller = TextEditingController();
+  final balance3controller = TextEditingController();
+  final balance4controller = TextEditingController();
+  final balance5controller = TextEditingController();
+  final balance6controller = TextEditingController();
+  final balance7controller = TextEditingController();
+  final balance8controller = TextEditingController();
+  final balance9controller = TextEditingController();
+  final balance10controller = TextEditingController();
+  final balance11controller = TextEditingController();
+  final balance12controller = TextEditingController();
+  final balance13controller = TextEditingController();
 
   size1() {
     return CustomBox1(
@@ -205,688 +237,1588 @@ class AddUpperCountStatus2UPMController extends GetxController {
     );
   }
 
+  Heading() {
+    return Container(
+      color: Colors.grey[200],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Container(
+              width: 12.h,
+              margin: EdgeInsets.only(top: 2.h, bottom: 2.h, left: 1.h),
+              alignment: Alignment.center,
+              child: Text(
+                'Size',
+                style: GoogleFonts.radioCanada(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Container(
+              width: 12.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 2.h, bottom: 2.h, left: 1.h),
+              child: Text(
+                'OC',
+                style: GoogleFonts.radioCanada(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Container(
+              width: 12.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 2.h, bottom: 2.h, left: 1.h),
+              child: Text(
+                'Count',
+                style: GoogleFonts.radioCanada(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Container(
+              width: 12.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 2.h, bottom: 2.h, left: 1.h),
+              child: Text(
+                'Damaged',
+                style: GoogleFonts.radioCanada(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Container(
+              width: 12.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 2.h, bottom: 2.h, left: 1.h),
+              child: Text(
+                'Shortage',
+                style: GoogleFonts.radioCanada(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Container(
+              width: 12.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+              child: Text(
+                'Balance',
+                style: GoogleFonts.radioCanada(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   sizeRow1() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '1',
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '1',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc1.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc1.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC1Controller,
-                  label: 'Enter',
-                  Enabled: enable1.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC1Controller,
-                  label: 'Enter ',
-                  Enabled: enable1.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
-    );
-  }
-  sizeRow2(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '2',
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC1Controller,
+                    label: 'Enter',
+                    Enabled: enable1.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc2.value.toString(),
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC1Controller,
+                    label: 'Enter',
+                    Enabled: enable1.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC2Controller,
-                  label: 'Enter',
-                  Enabled: enable2.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC2Controller,
-                  label: 'Enter',
-                  Enabled: enable2.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage1controller,
+                    label: 'Enter',
+                    Enabled: enable1.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance1controller,
+                    label: 'Enter',
+                    Enabled: enable1.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow3(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '3',
+  sizeRow2() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '2',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc3.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc2.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC3Controller,
-                  label: 'Enter',
-                  Enabled: enable3.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC3Controller,
-                  label: 'Enter',
-                  Enabled: enable3.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC2Controller,
+                    label: 'Enter',
+                    Enabled: enable2.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC2Controller,
+                    label: 'Enter',
+                    Enabled: enable2.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage2controller,
+                    label: 'Enter',
+                    Enabled: enable2.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance2controller,
+                    label: 'Enter',
+                    Enabled: enable2.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow4(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '4',
+
+
+
+  sizeRow3() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '3',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text:oc4.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc3.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC4Controller,
-                  label: 'Enter',
-                  Enabled: enable4.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC4Controller,
-                  label: 'Enter',
-                  Enabled: enable4.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC3Controller,
+                    label: 'Enter',
+                    Enabled: enable3.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC3Controller,
+                    label: 'Enter',
+                    Enabled: enable3.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage3controller,
+                    label: 'Enter',
+                    Enabled: enable3.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance3controller,
+                    label: 'Enter',
+                    Enabled: enable3.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow5(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '5',
+
+
+  sizeRow4() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '4',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc5.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc4.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC5Controller,
-                  label: 'Enter',
-                  Enabled: enable5.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC5Controller,
-                  label: 'Enter',
-                  Enabled: enable5.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
-    );
-  }
-  sizeRow6(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '6',
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC4Controller,
+                    label: 'Enter',
+                    Enabled: enable4.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc6.value.toString(),
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC4Controller,
+                    label: 'Enter',
+                    Enabled: enable4.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC6Controller,
-                  label: 'Enter',
-                  Enabled: enable6.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC6Controller,
-                  label: 'Enter',
-                  Enabled: enable6.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage4controller,
+                    label: 'Enter',
+                    Enabled: enable4.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance4controller,
+                    label: 'Enter',
+                    Enabled: enable4.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow7(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '7',
+  sizeRow5() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '5',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text:oc7.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc5.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC7Controller,
-                  label: 'Enter',
-                  Enabled: enable7.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC7Controller,
-                  label: 'Enter',
-                  Enabled: enable7.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC5Controller,
+                    label: 'Enter',
+                    Enabled: enable5.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC5Controller,
+                    label: 'Enter',
+                    Enabled: enable5.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage5controller,
+                    label: 'Enter',
+                    Enabled: enable5.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance5controller,
+                    label: 'Enter',
+                    Enabled: enable5.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow8(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '8',
+
+  // sizeRow4(){
+  //   return Column(
+  //     children: [
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: '4',
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text:oc4.value.toString(),
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: RC4Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable4.value,
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: DC4Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable4.value,
+  //               ))
+  //         ],
+  //       ),
+  //       Divider(
+  //         height: 5,
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  // sizeRow5(){
+  //   return Column(
+  //     children: [
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: '5',
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: oc5.value.toString(),
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: RC5Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable5.value,
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: DC5Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable5.value,
+  //               ))
+  //         ],
+  //       ),
+  //       Divider(
+  //         height: 5,
+  //       ),
+  //     ],
+  //   );
+  // }
+  // sizeRow6(){
+  //   return Column(
+  //     children: [
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: '6',
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: oc6.value.toString(),
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: RC6Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable6.value,
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: DC6Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable6.value,
+  //               ))
+  //         ],
+  //       ),
+  //       Divider(
+  //         height: 5,
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  sizeRow6() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '6',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc8.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc6.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC8Controller,
-                  label: 'Enter',
-                  Enabled:enable8.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC8Controller,
-                  label: 'Enter',
-                  Enabled: enable8.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
-    );
-  }
-  sizeRow9(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '9',
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC6Controller,
+                    label: 'Enter',
+                    Enabled: enable6.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc9.value.toString(),
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC6Controller,
+                    label: 'Enter',
+                    Enabled: enable6.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC9Controller,
-                  label: 'Enter',
-                  Enabled: enable9.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC9Controller,
-                  label: 'Enter',
-                  Enabled: enable9.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage6controller,
+                    label: 'Enter',
+                    Enabled: enable6.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance6controller,
+                    label: 'Enter',
+                    Enabled: enable6.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow10(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '10',
+  sizeRow7() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '7',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc10.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc7.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC10Controller,
-                  label: 'Enter',
-                  Enabled: enable10.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC10Controller,
-                  label: 'Enter',
-                  Enabled: enable10.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
-    );
-  }
-  sizeRow11(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '11',
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC7Controller,
+                    label: 'Enter',
+                    Enabled: enable7.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc11.value.toString(),
-                    ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC7Controller,
+                    label: 'Enter',
+                    Enabled: enable7.value,
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC11Controller,
-                  label: 'Enter',
-                  Enabled: enable11.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC11Controller,
-                  label: 'Enter',
-                  Enabled: enable11.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage7controller,
+                    label: 'Enter',
+                    Enabled: enable7.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance7controller,
+                    label: 'Enter',
+                    Enabled: enable7.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow12(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '12',
+  // sizeRow7(){
+  //   return Column(
+  //     children: [
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: '7',
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text:oc7.value.toString(),
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: RC7Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable7.value,
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: DC7Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable7.value,
+  //               ))
+  //         ],
+  //       ),
+  //       Divider(
+  //         height: 5,
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  sizeRow8() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '8',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc12.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc8.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC12Controller,
-                  label: 'Enter',
-                  Enabled: enable12.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC12Controller,
-                  label: 'Enter',
-                  Enabled: enable12.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC8Controller,
+                    label: 'Enter',
+                    Enabled: enable8.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC8Controller,
+                    label: 'Enter',
+                    Enabled: enable8.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage8controller,
+                    label: 'Enter',
+                    Enabled: enable8.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance8controller,
+                    label: 'Enter',
+                    Enabled: enable8.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
-  sizeRow13(){
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: '13',
+  // sizeRow8(){
+  //   return Column(
+  //     children: [
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: '8',
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: oc8.value.toString(),
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: RC8Controller,
+  //                 label: 'Enter',
+  //                 Enabled:enable8.value,
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: DC8Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable8.value,
+  //               ))
+  //         ],
+  //       ),
+  //       Divider(
+  //         height: 5,
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  sizeRow9() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '9',
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
-                  height: 6.h,
-                  width: double.infinity,
-                  child: Center(
-                    child: BoldText(
-                      text: oc13.value.toString(),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc9.value.toString(),
+                      ),
                     ),
                   ),
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: RC13Controller,
-                  label: 'Enter',
-                  Enabled: enable13.value,
-                )),
-            Expanded(
-                flex: 1,
-                child: CustomBox1(
-                  controller: DC13Controller,
-                  label: 'Enter',
-                  Enabled: enable13.value,
-                ))
-          ],
-        ),
-        Divider(
-          height: 5,
-        ),
-      ],
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC9Controller,
+                    label: 'Enter',
+                    Enabled: enable9.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC9Controller,
+                    label: 'Enter',
+                    Enabled: enable9.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage9controller,
+                    label: 'Enter',
+                    Enabled: enable9.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance9controller,
+                    label: 'Enter',
+                    Enabled: enable9.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  // sizeRow9(){
+  //   return Column(
+  //     children: [
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: '9',
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: Container(
+  //                 margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+  //                 height: 6.h,
+  //                 width: double.infinity,
+  //                 child: Center(
+  //                   child: BoldText(
+  //                     text: oc9.value.toString(),
+  //                   ),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: RC9Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable9.value,
+  //               )),
+  //           Expanded(
+  //               flex: 1,
+  //               child: CustomBox1(
+  //                 controller: DC9Controller,
+  //                 label: 'Enter',
+  //                 Enabled: enable9.value,
+  //               ))
+  //         ],
+  //       ),
+  //       Divider(
+  //         height: 5,
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  sizeRow10() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '10',
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc10.value.toString(),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC10Controller,
+                    label: 'Enter',
+                    Enabled: enable10.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC10Controller,
+                    label: 'Enter',
+                    Enabled: enable10.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage10controller,
+                    label: 'Enter',
+                    Enabled: enable10.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance10controller,
+                    label: 'Enter',
+                    Enabled: enable10.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    );
+  }
+
+  sizeRow11() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '11',
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc11.value.toString(),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC11Controller,
+                    label: 'Enter',
+                    Enabled: enable11.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC11Controller,
+                    label: 'Enter',
+                    Enabled: enable11.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage11controller,
+                    label: 'Enter',
+                    Enabled: enable11.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance11controller,
+                    label: 'Enter',
+                    Enabled: enable11.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    );
+  }
+
+  sizeRow12() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '12',
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc12.value.toString(),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC12Controller,
+                    label: 'Enter',
+                    Enabled: enable12.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC12Controller,
+                    label: 'Enter',
+                    Enabled: enable12.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage12controller,
+                    label: 'Enter',
+                    Enabled: enable12.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance12controller,
+                    label: 'Enter',
+                    Enabled: enable12.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    );
+  }
+
+  sizeRow13() {
+    return Container(
+      child: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: 12.h,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  alignment: Alignment.center,
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: '13',
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 2.h, bottom: 2.h,),
+                  child: Container(
+                    // margin: EdgeInsets.fromLTRB(1.h, 2.h, 1.h, 2.h),
+                    height: 6.h,
+                    width: double.infinity,
+                    child: Center(
+                      child: BoldText(
+                        text: oc13.value.toString(),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: RC13Controller,
+                    label: 'Enter',
+                    Enabled: enable13.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h, left: 1.h),
+                  child: CustomBox1(
+                    controller: DC13Controller,
+                    label: 'Enter',
+                    Enabled: enable13.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: shortage13controller,
+                    label: 'Enter',
+                    Enabled: enable13.value,
+                  ),
+                ),
+                Container(
+                  width: 12.h,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 1.h, bottom: 1.h),
+                  child: CustomBox1(
+                    controller: balance13controller,
+                    label: 'Enter',
+                    Enabled: enable13.value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 5,
+            color: Colors.black,
+          ),
+        ],
+      ),
     );
   }
 
@@ -919,18 +1851,17 @@ class AddUpperCountStatus2UPMController extends GetxController {
   RxBool enableR12 = true.obs;
   RxBool enableR13 = true.obs;
 
-  AddUpperCountStatus2UPMController(
-      {required this.company,
-      required this.plan,
-      required this.upperOrder,
-      required this.id,
-      required this.orderno,
-      required this.umpId});
+  AddUpperCountStatus2UPMController({required this.company,
+    required this.plan,
+    required this.upperOrder,
+    required this.id,
+    required this.orderno,
+    required this.umpId});
 
   checkNetworkStatus() async {
     try {
       networkStatus.value =
-          (await NetworkConnectivity().checkConnectivityState())!;
+      (await NetworkConnectivity().checkConnectivityState())!;
       print(networkStatus.value);
     } catch (e) {
       print(e);
@@ -964,10 +1895,10 @@ class AddUpperCountStatus2UPMController extends GetxController {
               orderNoEntity.value.purchaseproductlist![0].porderid.toString();
           CommentsController.text =
               orderNoEntity.value.purchaseproductlist![0].note.toString();
-          print("oomb" +
-              orderNoEntity.value.purchaseproductlist![0].note.toString());
+
 
           // dateofcounting.value=orderNoEntity.value.purchaseproductlist![0].cutofdate.toString();
+          print("oc1"+orderNoEntity.value.purchaseproductlist![0].s1.toString());
           oc1.value = orderNoEntity.value.purchaseproductlist![0].s1.toString();
           oc2.value = orderNoEntity.value.purchaseproductlist![0].s2.toString();
           oc3.value = orderNoEntity.value.purchaseproductlist![0].s3.toString();
@@ -985,101 +1916,89 @@ class AddUpperCountStatus2UPMController extends GetxController {
               orderNoEntity.value.purchaseproductlist![0].s12.toString();
           oc13.value =
               orderNoEntity.value.purchaseproductlist![0].s13.toString();
-          if (orderNoEntity.value.purchaseproductlist![0].s1.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s1.toString().length !=
+              0) {
             enable1.value = true;
             sizeListGrid.add(size1());
             sizeListListView.add(sizeRow1());
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s2.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s2.toString().length !=
+              0) {
             enable2.value = true;
             sizeListGrid.add(size2());
             sizeListListView.add(sizeRow2());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s3.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s3.toString().length !=
+              0) {
             enable3.value = true;
             sizeListGrid.add(size3());
             sizeListListView.add(sizeRow3());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s4.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s4.toString().length !=
+              0) {
             enable4.value = true;
             sizeListGrid.add(size4());
             sizeListListView.add(sizeRow4());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s5.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s5.toString().length !=
+              0) {
             enable5.value = true;
             sizeListGrid.add(size5());
             sizeListListView.add(sizeRow5());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s6.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s6.toString() .length!=
+              0) {
             enable6.value = true;
             sizeListGrid.add(size6());
             sizeListListView.add(sizeRow6());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s7.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s7.toString() .length!=
+              0) {
             enable7.value = true;
             sizeListGrid.add(size7());
             sizeListListView.add(sizeRow7());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s8.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s8.toString().length !=
+              0) {
             enable8.value = true;
             sizeListGrid.add(size8());
             sizeListListView.add(sizeRow8());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s9.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s9.toString() .length!=
+              0) {
             enable9.value = true;
             sizeListGrid.add(size9());
             sizeListListView.add(sizeRow9());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s10.toString() !=
-              '0') {
-            enable1.value = true;
+          if (orderNoEntity.value.purchaseproductlist![0].s10.toString().length !=
+              0) {
+            enable10.value = true;
             sizeListGrid.add(size10());
             sizeListListView.add(sizeRow10());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s11.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s11.toString().length !=
+              0) {
             enable11.value = true;
             sizeListGrid.add(size11());
             sizeListListView.add(sizeRow11());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s12.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s12.toString().length !=
+              0) {
             enable12.value = true;
             sizeListGrid.add(size12());
             sizeListListView.add(sizeRow12());
-
           }
-          if (orderNoEntity.value.purchaseproductlist![0].s13.toString() !=
-              '0') {
+          if (orderNoEntity.value.purchaseproductlist![0].s13.toString() .length!=
+              0) {
             enable13.value = true;
             sizeListGrid.add(size13());
             sizeListListView.add(sizeRow13());
-
           }
 
           if (orderNoEntity.value.staffcountlist!.length != 0) {
             for (int i = 0;
-                i < orderNoEntity.value.staffcountlist!.length;
-                i++) {
+            i < orderNoEntity.value.staffcountlist!.length;
+            i++) {
               filters.add(
                   orderNoEntity.value.staffcountlist![i].staffname.toString());
             }
@@ -1182,16 +2101,76 @@ class AddUpperCountStatus2UPMController extends GetxController {
             size13controller.text =
                 orderNoEntity.value.recivedsupliercount![0].s13.toString();
           }
+          if (orderNoEntity.value.shortagelist!.length != 0) {
+            shortageId.value=orderNoEntity.value.shortagelist![0].id.toString();
+            shortage1controller.text =
+                orderNoEntity.value.shortagelist![0].s1.toString();
+            shortage2controller.text =
+                orderNoEntity.value.shortagelist![0].s2.toString();
+            shortage3controller.text =
+                orderNoEntity.value.shortagelist![0].s3.toString();
+            shortage4controller.text =
+                orderNoEntity.value.shortagelist![0].s4.toString();
+            shortage5controller.text =
+                orderNoEntity.value.shortagelist![0].s5.toString();
+            shortage6controller.text =
+                orderNoEntity.value.shortagelist![0].s6.toString();
+            shortage7controller.text =
+                orderNoEntity.value.shortagelist![0].s7.toString();
+            shortage8controller.text =
+                orderNoEntity.value.shortagelist![0].s8.toString();
+            shortage9controller.text =
+                orderNoEntity.value.shortagelist![0].s9.toString();
+            shortage10controller.text =
+                orderNoEntity.value.shortagelist![0].s10.toString();
+            shortage11controller.text =
+                orderNoEntity.value.shortagelist![0].s11.toString();
+            shortage12controller.text =
+                orderNoEntity.value.shortagelist![0].s12.toString();
+            shortage13controller.text =
+                orderNoEntity.value.shortagelist![0].s13.toString();
+          }
+          if (orderNoEntity.value.balancelist!.length != 0) {
+            balanceId.value=orderNoEntity.value.balancelist![0].id.toString();
+            balance1controller.text =
+                orderNoEntity.value.balancelist![0].s1.toString();
+            balance2controller.text =
+                orderNoEntity.value.balancelist![0].s2.toString();
+            balance3controller.text =
+                orderNoEntity.value.balancelist![0].s3.toString();
+            balance4controller.text =
+                orderNoEntity.value.balancelist![0].s4.toString();
+            balance5controller.text =
+                orderNoEntity.value.balancelist![0].s5.toString();
+            balance6controller.text =
+                orderNoEntity.value.balancelist![0].s6.toString();
+            balance7controller.text =
+                orderNoEntity.value.balancelist![0].s7.toString();
+            balance8controller.text =
+                orderNoEntity.value.balancelist![0].s8.toString();
+            balance9controller.text =
+                orderNoEntity.value.balancelist![0].s9.toString();
+            balance10controller.text =
+                orderNoEntity.value.balancelist![0].s10.toString();
+            balance11controller.text =
+                orderNoEntity.value.balancelist![0].s11.toString();
+            balance12controller.text =
+                orderNoEntity.value.balancelist![0].s12.toString();
+            balance13controller.text =
+                orderNoEntity.value.balancelist![0].s13.toString();
+          }
         }
       }
     }
   }
 
-  addUpperCount(
-      List<Map<String, dynamic>> rcList,
+  addUpperCount(List<Map<String, dynamic>> rcList,
       List<Map<String, dynamic>> dcList,
       List<Map<String, dynamic>> rcCountList,
+      List<Map<String, dynamic>> shortageCountList,
+      List<Map<String, dynamic>> balanceCountList,
       String comment) async {
+
     List<Map<String, dynamic>> staffList = [];
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
@@ -1217,7 +2196,7 @@ class AddUpperCountStatus2UPMController extends GetxController {
           rcList,
           dcList,
           staffList,
-          rcCountList))!;
+          rcCountList,shortageCountList,balanceCountList))!;
       Get.back();
       if (responseEntity.value.response == 'Added successfully') {
         Get.back();
@@ -1233,10 +2212,11 @@ class AddUpperCountStatus2UPMController extends GetxController {
     }
   }
 
-  editUpperCount(
-      List<Map<String, dynamic>> rcList,
+  editUpperCount(List<Map<String, dynamic>> rcList,
       List<Map<String, dynamic>> dcList,
       List<Map<String, dynamic>> rcCountList,
+      List<Map<String, dynamic>> shortageCountList,
+      List<Map<String, dynamic>> balanceCountList,
       String comment) async {
     List<Map<String, dynamic>> staffList = [];
 
@@ -1265,10 +2245,14 @@ class AddUpperCountStatus2UPMController extends GetxController {
           dcList,
           staffList,
           rcCountList,
+          shortageCountList,
+          balanceCountList,
           countId.value.toString(),
           rcId.value.toString(),
           dcId.value.toString(),
-          rcCountId.value.toString()))!;
+          rcCountId.value.toString(),
+      shortageId.value.toString(),
+      balanceId.value.toString()))!;
       Get.back();
       if (responseEntity.value.response == 'Updated successfully') {
         Get.back();
@@ -1300,6 +2284,7 @@ class AddUpperCountStatus2UPMController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
+    sizeListListView.add(Heading());
     getUpperOrder();
     print("id" + id);
     print("orderno" + orderno);

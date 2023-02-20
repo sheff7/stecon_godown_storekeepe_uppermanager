@@ -149,21 +149,25 @@ class UpperCountStatus0UPM extends StatelessWidget {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Text(
-                                                  'Compnay Name: ' +
-                                                      _controller
-                                                          .orderNoEntity
-                                                          .value
-                                                          .purchaseplanlist![
-                                                              index]
-                                                          .companyname
-                                                          .toString(),
-                                                  style:
-                                                      GoogleFonts.radioCanada(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                    color:
-                                                        const Color(0xFFEC4E52),
+                                                Flexible(
+                                                  child: Container(
+                                                    child: Text(
+                                                          _controller
+                                                              .orderNoEntity
+                                                              .value
+                                                              .purchaseplanlist![
+                                                                  index]
+                                                              .companyname
+                                                              .toString(),
+                                                      style:
+                                                          GoogleFonts.radioCanada(
+                                                        fontSize: 16,
+                                                        fontWeight: FontWeight.w500,
+                                                        color:
+                                                            const Color(0xFFEC4E52),
+                                                      ),
+                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
                                                   ),
                                                 ),
                                                 NormalText(

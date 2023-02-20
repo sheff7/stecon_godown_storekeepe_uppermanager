@@ -31,6 +31,14 @@ GetUpperPlanCountEntity $GetUpperPlanCountEntityFromJson(Map<String, dynamic> js
 	if (staffcountlist != null) {
 		getUpperPlanCountEntity.staffcountlist = staffcountlist;
 	}
+	final List<GetUpperPlanCountShortagelist>? shortagelist = jsonConvert.convertListNotNull<GetUpperPlanCountShortagelist>(json['shortagelist']);
+	if (shortagelist != null) {
+		getUpperPlanCountEntity.shortagelist = shortagelist;
+	}
+	final List<GetUpperPlanCountBalancelist>? balancelist = jsonConvert.convertListNotNull<GetUpperPlanCountBalancelist>(json['balancelist']);
+	if (balancelist != null) {
+		getUpperPlanCountEntity.balancelist = balancelist;
+	}
 	return getUpperPlanCountEntity;
 }
 
@@ -43,6 +51,8 @@ Map<String, dynamic> $GetUpperPlanCountEntityToJson(GetUpperPlanCountEntity enti
 	data['receivedcountlist'] =  entity.receivedcountlist?.map((v) => v.toJson()).toList();
 	data['recivedsupliercount'] =  entity.recivedsupliercount?.map((v) => v.toJson()).toList();
 	data['staffcountlist'] =  entity.staffcountlist?.map((v) => v.toJson()).toList();
+	data['shortagelist'] =  entity.shortagelist?.map((v) => v.toJson()).toList();
+	data['balancelist'] =  entity.balancelist?.map((v) => v.toJson()).toList();
 	return data;
 }
 
@@ -244,7 +254,7 @@ GetUpperPlanCountUppercountlist $GetUpperPlanCountUppercountlistFromJson(Map<Str
 	if (createddate != null) {
 		getUpperPlanCountUppercountlist.createddate = createddate;
 	}
-	final dynamic? receivedcount = jsonConvert.convert<dynamic>(json['receivedcount']);
+	final String? receivedcount = jsonConvert.convert<String>(json['receivedcount']);
 	if (receivedcount != null) {
 		getUpperPlanCountUppercountlist.receivedcount = receivedcount;
 	}
@@ -648,5 +658,235 @@ Map<String, dynamic> $GetUpperPlanCountStaffcountlistToJson(GetUpperPlanCountSta
 	data['planno'] = entity.planno;
 	data['staffname'] = entity.staffname;
 	data['idcardno'] = entity.idcardno;
+	return data;
+}
+
+GetUpperPlanCountShortagelist $GetUpperPlanCountShortagelistFromJson(Map<String, dynamic> json) {
+	final GetUpperPlanCountShortagelist getUpperPlanCountShortagelist = GetUpperPlanCountShortagelist();
+	final int? id = jsonConvert.convert<int>(json['id']);
+	if (id != null) {
+		getUpperPlanCountShortagelist.id = id;
+	}
+	final String? orderno = jsonConvert.convert<String>(json['orderno']);
+	if (orderno != null) {
+		getUpperPlanCountShortagelist.orderno = orderno;
+	}
+	final String? companyplanno = jsonConvert.convert<String>(json['companyplanno']);
+	if (companyplanno != null) {
+		getUpperPlanCountShortagelist.companyplanno = companyplanno;
+	}
+	final String? planno = jsonConvert.convert<String>(json['planno']);
+	if (planno != null) {
+		getUpperPlanCountShortagelist.planno = planno;
+	}
+	final String? countid = jsonConvert.convert<String>(json['countid']);
+	if (countid != null) {
+		getUpperPlanCountShortagelist.countid = countid;
+	}
+	final String? supplierid = jsonConvert.convert<String>(json['supplierid']);
+	if (supplierid != null) {
+		getUpperPlanCountShortagelist.supplierid = supplierid;
+	}
+	final String? artnumber = jsonConvert.convert<String>(json['artnumber']);
+	if (artnumber != null) {
+		getUpperPlanCountShortagelist.artnumber = artnumber;
+	}
+	final String? s1 = jsonConvert.convert<String>(json['s1']);
+	if (s1 != null) {
+		getUpperPlanCountShortagelist.s1 = s1;
+	}
+	final String? s2 = jsonConvert.convert<String>(json['s2']);
+	if (s2 != null) {
+		getUpperPlanCountShortagelist.s2 = s2;
+	}
+	final String? s3 = jsonConvert.convert<String>(json['s3']);
+	if (s3 != null) {
+		getUpperPlanCountShortagelist.s3 = s3;
+	}
+	final String? s4 = jsonConvert.convert<String>(json['s4']);
+	if (s4 != null) {
+		getUpperPlanCountShortagelist.s4 = s4;
+	}
+	final String? s5 = jsonConvert.convert<String>(json['s5']);
+	if (s5 != null) {
+		getUpperPlanCountShortagelist.s5 = s5;
+	}
+	final String? s6 = jsonConvert.convert<String>(json['s6']);
+	if (s6 != null) {
+		getUpperPlanCountShortagelist.s6 = s6;
+	}
+	final String? s7 = jsonConvert.convert<String>(json['s7']);
+	if (s7 != null) {
+		getUpperPlanCountShortagelist.s7 = s7;
+	}
+	final String? s8 = jsonConvert.convert<String>(json['s8']);
+	if (s8 != null) {
+		getUpperPlanCountShortagelist.s8 = s8;
+	}
+	final String? s9 = jsonConvert.convert<String>(json['s9']);
+	if (s9 != null) {
+		getUpperPlanCountShortagelist.s9 = s9;
+	}
+	final String? s10 = jsonConvert.convert<String>(json['s10']);
+	if (s10 != null) {
+		getUpperPlanCountShortagelist.s10 = s10;
+	}
+	final String? s11 = jsonConvert.convert<String>(json['s11']);
+	if (s11 != null) {
+		getUpperPlanCountShortagelist.s11 = s11;
+	}
+	final String? s12 = jsonConvert.convert<String>(json['s12']);
+	if (s12 != null) {
+		getUpperPlanCountShortagelist.s12 = s12;
+	}
+	final String? s13 = jsonConvert.convert<String>(json['s13']);
+	if (s13 != null) {
+		getUpperPlanCountShortagelist.s13 = s13;
+	}
+	final String? createddate = jsonConvert.convert<String>(json['createddate']);
+	if (createddate != null) {
+		getUpperPlanCountShortagelist.createddate = createddate;
+	}
+	return getUpperPlanCountShortagelist;
+}
+
+Map<String, dynamic> $GetUpperPlanCountShortagelistToJson(GetUpperPlanCountShortagelist entity) {
+	final Map<String, dynamic> data = <String, dynamic>{};
+	data['id'] = entity.id;
+	data['orderno'] = entity.orderno;
+	data['companyplanno'] = entity.companyplanno;
+	data['planno'] = entity.planno;
+	data['countid'] = entity.countid;
+	data['supplierid'] = entity.supplierid;
+	data['artnumber'] = entity.artnumber;
+	data['s1'] = entity.s1;
+	data['s2'] = entity.s2;
+	data['s3'] = entity.s3;
+	data['s4'] = entity.s4;
+	data['s5'] = entity.s5;
+	data['s6'] = entity.s6;
+	data['s7'] = entity.s7;
+	data['s8'] = entity.s8;
+	data['s9'] = entity.s9;
+	data['s10'] = entity.s10;
+	data['s11'] = entity.s11;
+	data['s12'] = entity.s12;
+	data['s13'] = entity.s13;
+	data['createddate'] = entity.createddate;
+	return data;
+}
+
+GetUpperPlanCountBalancelist $GetUpperPlanCountBalancelistFromJson(Map<String, dynamic> json) {
+	final GetUpperPlanCountBalancelist getUpperPlanCountBalancelist = GetUpperPlanCountBalancelist();
+	final int? id = jsonConvert.convert<int>(json['id']);
+	if (id != null) {
+		getUpperPlanCountBalancelist.id = id;
+	}
+	final String? orderno = jsonConvert.convert<String>(json['orderno']);
+	if (orderno != null) {
+		getUpperPlanCountBalancelist.orderno = orderno;
+	}
+	final String? companyplanno = jsonConvert.convert<String>(json['companyplanno']);
+	if (companyplanno != null) {
+		getUpperPlanCountBalancelist.companyplanno = companyplanno;
+	}
+	final String? planno = jsonConvert.convert<String>(json['planno']);
+	if (planno != null) {
+		getUpperPlanCountBalancelist.planno = planno;
+	}
+	final String? countid = jsonConvert.convert<String>(json['countid']);
+	if (countid != null) {
+		getUpperPlanCountBalancelist.countid = countid;
+	}
+	final String? supplierid = jsonConvert.convert<String>(json['supplierid']);
+	if (supplierid != null) {
+		getUpperPlanCountBalancelist.supplierid = supplierid;
+	}
+	final String? artnumber = jsonConvert.convert<String>(json['artnumber']);
+	if (artnumber != null) {
+		getUpperPlanCountBalancelist.artnumber = artnumber;
+	}
+	final String? s1 = jsonConvert.convert<String>(json['s1']);
+	if (s1 != null) {
+		getUpperPlanCountBalancelist.s1 = s1;
+	}
+	final String? s2 = jsonConvert.convert<String>(json['s2']);
+	if (s2 != null) {
+		getUpperPlanCountBalancelist.s2 = s2;
+	}
+	final String? s3 = jsonConvert.convert<String>(json['s3']);
+	if (s3 != null) {
+		getUpperPlanCountBalancelist.s3 = s3;
+	}
+	final String? s4 = jsonConvert.convert<String>(json['s4']);
+	if (s4 != null) {
+		getUpperPlanCountBalancelist.s4 = s4;
+	}
+	final String? s5 = jsonConvert.convert<String>(json['s5']);
+	if (s5 != null) {
+		getUpperPlanCountBalancelist.s5 = s5;
+	}
+	final String? s6 = jsonConvert.convert<String>(json['s6']);
+	if (s6 != null) {
+		getUpperPlanCountBalancelist.s6 = s6;
+	}
+	final String? s7 = jsonConvert.convert<String>(json['s7']);
+	if (s7 != null) {
+		getUpperPlanCountBalancelist.s7 = s7;
+	}
+	final String? s8 = jsonConvert.convert<String>(json['s8']);
+	if (s8 != null) {
+		getUpperPlanCountBalancelist.s8 = s8;
+	}
+	final String? s9 = jsonConvert.convert<String>(json['s9']);
+	if (s9 != null) {
+		getUpperPlanCountBalancelist.s9 = s9;
+	}
+	final String? s10 = jsonConvert.convert<String>(json['s10']);
+	if (s10 != null) {
+		getUpperPlanCountBalancelist.s10 = s10;
+	}
+	final String? s11 = jsonConvert.convert<String>(json['s11']);
+	if (s11 != null) {
+		getUpperPlanCountBalancelist.s11 = s11;
+	}
+	final String? s12 = jsonConvert.convert<String>(json['s12']);
+	if (s12 != null) {
+		getUpperPlanCountBalancelist.s12 = s12;
+	}
+	final String? s13 = jsonConvert.convert<String>(json['s13']);
+	if (s13 != null) {
+		getUpperPlanCountBalancelist.s13 = s13;
+	}
+	final String? createddate = jsonConvert.convert<String>(json['createddate']);
+	if (createddate != null) {
+		getUpperPlanCountBalancelist.createddate = createddate;
+	}
+	return getUpperPlanCountBalancelist;
+}
+
+Map<String, dynamic> $GetUpperPlanCountBalancelistToJson(GetUpperPlanCountBalancelist entity) {
+	final Map<String, dynamic> data = <String, dynamic>{};
+	data['id'] = entity.id;
+	data['orderno'] = entity.orderno;
+	data['companyplanno'] = entity.companyplanno;
+	data['planno'] = entity.planno;
+	data['countid'] = entity.countid;
+	data['supplierid'] = entity.supplierid;
+	data['artnumber'] = entity.artnumber;
+	data['s1'] = entity.s1;
+	data['s2'] = entity.s2;
+	data['s3'] = entity.s3;
+	data['s4'] = entity.s4;
+	data['s5'] = entity.s5;
+	data['s6'] = entity.s6;
+	data['s7'] = entity.s7;
+	data['s8'] = entity.s8;
+	data['s9'] = entity.s9;
+	data['s10'] = entity.s10;
+	data['s11'] = entity.s11;
+	data['s12'] = entity.s12;
+	data['s13'] = entity.s13;
+	data['createddate'] = entity.createddate;
 	return data;
 }
