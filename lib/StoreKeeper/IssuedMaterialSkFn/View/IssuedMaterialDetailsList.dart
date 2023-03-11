@@ -172,14 +172,16 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                                     Row(
                                       children: [
                                         NormalText(text: "Department :  "),
-                                        BoldText(
-                                            text:
-                                                issuedMaterialSdkListController
-                                                    .IssuedMaterialListEntity
-                                                    .value
-                                                    .materialitemslist![index]
-                                                    .departmentname
-                                                    .toString()),
+                                        Flexible(
+                                          child: BoldText(
+                                              text:
+                                                  issuedMaterialSdkListController
+                                                      .IssuedMaterialListEntity
+                                                      .value
+                                                      .materialitemslist![index]
+                                                      .departmentname
+                                                      .toString()),
+                                        ),
                                       ],
                                     ),
                                     SizedBox(
@@ -188,14 +190,16 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                                     Row(
                                       children: [
                                         NormalText(text: "Item name :  "),
-                                        BoldText(
-                                            text:
-                                                issuedMaterialSdkListController
-                                                    .IssuedMaterialListEntity
-                                                    .value
-                                                    .materialitemslist![index]
-                                                    .itemnanme
-                                                    .toString()),
+                                        Flexible(
+                                          child: BoldText(
+                                              text:
+                                                  issuedMaterialSdkListController
+                                                      .IssuedMaterialListEntity
+                                                      .value
+                                                      .materialitemslist![index]
+                                                      .itemnanme
+                                                      .toString()),
+                                        ),
                                       ],
                                     ),
                                     SizedBox(
@@ -204,14 +208,16 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                                     Row(
                                       children: [
                                         NormalText(text: "Brand name :  "),
-                                        BoldText(
-                                            text:
-                                                issuedMaterialSdkListController
-                                                    .IssuedMaterialListEntity
-                                                    .value
-                                                    .materialitemslist![index]
-                                                    .companyname
-                                                    .toString()),
+                                        Flexible(
+                                          child: BoldText(
+                                              text:
+                                                  issuedMaterialSdkListController
+                                                      .IssuedMaterialListEntity
+                                                      .value
+                                                      .materialitemslist![index]
+                                                      .companyname
+                                                      .toString()),
+                                        ),
                                       ],
                                     ),
                                     SizedBox(
@@ -270,8 +276,7 @@ class IssuedMaterialDetailsList extends StatelessWidget {
                                         Row(
                                           children: [
                                             NormalText(text: "Comments :  "),
-                                            Expanded(
-                                              flex: 1,
+                                            Flexible(
                                               child: BoldText(
                                                   text:
                                                   issuedMaterialSdkListController

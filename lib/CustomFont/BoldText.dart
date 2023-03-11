@@ -10,6 +10,7 @@ class BoldText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      overflow: TextOverflow.visible,
       style: GoogleFonts.radioCanada(
           fontSize:15,
           fontWeight: FontWeight.w500,

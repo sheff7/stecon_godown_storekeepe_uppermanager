@@ -180,7 +180,7 @@ class DamageMaterialList extends StatelessWidget {
                                          children: [
                                            NormalText(text: "Issue no.  :  "),
 
-                                           BoldText(text: damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].issueno.toString()),
+                                           Flexible(child: BoldText(text: damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].issueno.toString())),
 
                                          ],
                                        ),
@@ -189,7 +189,7 @@ class DamageMaterialList extends StatelessWidget {
                                        Row(
                                          children: [
                                            NormalText(text: "Department :  "),
-                                           BoldText(text: damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].departmentname.toString()),
+                                           Flexible(child: BoldText(text: damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].departmentname.toString())),
                                          ],
                                        ),
                                        SizedBox(
@@ -198,7 +198,9 @@ class DamageMaterialList extends StatelessWidget {
                                        Row(
                                          children: [
                                            NormalText(text: "Item name :  "),
-                                           BoldText(text:  damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].itemnanme.toString()
+                                           Flexible(
+                                             child: BoldText(text:  damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].itemnanme.toString()
+                                             ),
                                            ),],
                                        ),
                                        SizedBox(
@@ -207,7 +209,7 @@ class DamageMaterialList extends StatelessWidget {
                                        Row(
                                          children: [
                                            NormalText(text: "Brand name :  "),
-                                           BoldText(text:  damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].companyname.toString()),
+                                           Flexible(child: BoldText(text:  damagedMaterialListSkController.DamagedMaterialListSkEntity.value.materialdamagedlist![index].companyname.toString())),
                                          ],
                                        ),
                                        SizedBox(

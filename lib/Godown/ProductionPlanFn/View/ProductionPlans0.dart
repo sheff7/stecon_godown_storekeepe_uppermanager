@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/CustomFont/NormalTextGreen.dart';
 import '../../../AppConstants/ClourConstants.dart';
 
 import '../../../CustomFont/Header.dart';
@@ -142,8 +143,16 @@ class ProductionPlan0 extends StatelessWidget {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                                   children: [
-                                                    NormalText(
-                                                        text: "Prouction Plan :"),
+                                                    Flexible(
+                                                      child: NormalText(
+                                                          text: productionPlanListController
+                                                              .productionPlanEntity
+                                                              .value
+                                                              .productionlist![
+                                                          index]
+                                                              .artnoname
+                                                              .toString()),
+                                                    ),
                                                     Status(
                                                         text: productionPlanListController
                                                             .productionPlanEntity

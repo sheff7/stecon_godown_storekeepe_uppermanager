@@ -203,13 +203,15 @@ class MaterialReplaceddetailsList extends StatelessWidget {
                                     Row(
                                       children: [
                                         NormalText(text: "Issue no  :  "),
-                                        BoldText(
-                                          text: materialReplacedListController
-                                              .MaterialReplacedListrEntity
-                                              .value
-                                              .materialreplacedlist![index]
-                                              .issueno
-                                              .toString(),
+                                        Flexible(
+                                          child: BoldText(
+                                            text: materialReplacedListController
+                                                .MaterialReplacedListrEntity
+                                                .value
+                                                .materialreplacedlist![index]
+                                                .issueno
+                                                .toString(),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -238,13 +240,15 @@ class MaterialReplaceddetailsList extends StatelessWidget {
                                     Row(
                                       children: [
                                         NormalText(text: "Item name :  "),
-                                        BoldText(
-                                          text: materialReplacedListController
-                                              .MaterialReplacedListrEntity
-                                              .value
-                                              .materialreplacedlist![index]
-                                              .itemnanme
-                                              .toString(),
+                                        Flexible(
+                                          child: BoldText(
+                                            text: materialReplacedListController
+                                                .MaterialReplacedListrEntity
+                                                .value
+                                                .materialreplacedlist![index]
+                                                .itemnanme
+                                                .toString(),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -254,13 +258,15 @@ class MaterialReplaceddetailsList extends StatelessWidget {
                                     Row(
                                       children: [
                                         NormalText(text: "Brand name :  "),
-                                        BoldText(
-                                          text: materialReplacedListController
-                                              .MaterialReplacedListrEntity
-                                              .value
-                                              .materialreplacedlist![index]
-                                              .companyname
-                                              .toString(),
+                                        Flexible(
+                                          child: BoldText(
+                                            text: materialReplacedListController
+                                                .MaterialReplacedListrEntity
+                                                .value
+                                                .materialreplacedlist![index]
+                                                .companyname
+                                                .toString(),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -320,8 +326,7 @@ class MaterialReplaceddetailsList extends StatelessWidget {
                                         Row(
                                           children: [
                                             NormalText(text: "Comments :  "),
-                                            Expanded(
-                                                flex: 1,
+                                            Flexible(
                                                 child: BoldText(
                                                   text: materialReplacedListController
                                                       .MaterialReplacedListrEntity

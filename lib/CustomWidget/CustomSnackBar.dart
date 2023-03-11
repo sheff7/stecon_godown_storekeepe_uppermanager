@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
@@ -37,8 +38,13 @@ class CustomSnackbar{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SvgPicture.asset(
+                  'Assets/STECON LOGO SPLASH MOB1.svg',
+                  height: 4.h,
+                  width: 0,
+                ),
                 SizedBox(height: 10,),
-                HeadingText(text: 'Loading...')
+                HeadingText(text: 'Loading')
               ],
             ),
           ),
