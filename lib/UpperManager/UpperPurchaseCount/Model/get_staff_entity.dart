@@ -50,6 +50,7 @@ class GetStaffStafflist {
 	String? salary;
 	String? createddate;
 	String? status;
+	String? departmentname;
   
   GetStaffStafflist();
 

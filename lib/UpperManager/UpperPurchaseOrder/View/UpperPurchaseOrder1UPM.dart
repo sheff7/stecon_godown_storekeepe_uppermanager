@@ -365,43 +365,43 @@ class UpperPuchaseOrder1UPM extends StatelessWidget {
                               );
                             }
                             List<Widget> sizeListGrid = (List<Widget>.of([])).obs;
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s1.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s1.toString().length!=0) {
                               sizeListGrid.add(size1());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s2.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s2.toString().length!=0) {
                               sizeListGrid.add(size2());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s3.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s3.toString().length!=0) {
                               sizeListGrid.add(size3());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s4.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s4.toString().length!=0) {
                               sizeListGrid.add(size4());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s5.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s5.toString().length!=0) {
                               sizeListGrid.add(size5());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s6.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s6.toString().length!=0) {
                               sizeListGrid.add(size6());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s7.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s7.toString().length!=0) {
                               sizeListGrid.add(size7());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s8.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s8.toString().length!=0) {
                               sizeListGrid.add(size8());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s9.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s9.toString().length!=0) {
                               sizeListGrid.add(size9());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s10.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s10.toString().length!=0) {
                               sizeListGrid.add(size10());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s11.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s11.toString().length!=0) {
                               sizeListGrid.add(size11());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s12.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s12.toString().length!=0) {
                               sizeListGrid.add(size12());
                             }
-                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s13.toString()!='0') {
+                            if (_controller.orderNoEntity.value.purchaseproductlist![index].s13.toString().length!=0) {
                               sizeListGrid.add(size13());
                             }
 

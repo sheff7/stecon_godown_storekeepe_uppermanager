@@ -48,6 +48,17 @@ dependencies:
   pull_to_refresh: ^2.0.0
   url_launcher: ^6.1.5
   dropdown_search: ^5.0.5
+  flutter_launcher_icons: ^0.12.0
+
+
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "Assets/stecongreen.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#66fc03"
+  adaptive_icon_foreground: "Assets/stecongreen.png"
 
 
 dev_dependencies:

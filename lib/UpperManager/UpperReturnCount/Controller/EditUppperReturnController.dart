@@ -8,7 +8,9 @@ import '../../../CustomWidget/CustomBox1.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
 import '../../../Utils/InternetConnectivity.dart';
+import '../../UpperPurchaseCount/Model/get_department_list_entity.dart';
 import '../../UpperPurchaseCount/Model/get_staff_entity.dart';
+import '../../UpperPurchaseCount/Repository/UpperCountStatus0UPMService.dart';
 import '../Model/get_upper_count_entity.dart';
 import '../Model/get_upper_return_single_entity.dart';
 import '../Repository/UpperReturnService.dart';
@@ -39,6 +41,11 @@ class EditUpperReturnController extends GetxController{
   RxString date=''.obs;
 
   Rx<ResponseEntity>responseEntity=ResponseEntity().obs;
+
+  Rx<GetDepartmentListEntity>departmentEntity=GetDepartmentListEntity().obs;
+  RxList<String> departmentList = (List<String>.of([])).obs;
+  RxString departmentSeleted=''.obs;
+  RxString departmentId=''.obs;
 
 
 
@@ -893,8 +900,11 @@ class EditUpperReturnController extends GetxController{
       if(orderNoEntity.value!=null){
         if(orderNoEntity.value.response=='Success'){
           if(orderNoEntity.value.upperreturncountstafflist!.length!=0){
-            for(int i=0;i<orderNoEntity.value.upperreturncountstafflist!.length;i++){
-              filters.add(orderNoEntity.value.upperreturncountstafflist![i].staffname.toString());
+
+            if(orderNoEntity.value.upperreturncountstafflist!.length!=0){
+              departmentSeleted.value=orderNoEntity.value.upperreturncountstafflist![0].departmentname.toString();
+              departmentId.value=orderNoEntity.value.upperreturncountstafflist![0].deaprtment.toString();
+              getSatffByDep();
             }
           }
           if(orderNoEntity.value.upperreturncountlist!.length!=0){
@@ -1090,11 +1100,73 @@ class EditUpperReturnController extends GetxController{
     }
   }
 
+  getDepartment()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      CustomSnackbar().LoadingBottomSheet();
+      departmentEntity.value= (await UpperCountStatus0UPMServie().getDepartments())!;
+      Get.back();
+      if(departmentEntity.value!=null && departmentEntity.value.response=='Success'){
+        if(departmentEntity.value.departmentlist!.length!=0){
+          for (int i=0;i<departmentEntity.value.departmentlist!.length;i++){
+            departmentList.add(departmentEntity.value.departmentlist![i].departmentname.toString());
+          }
+        }
+      }
+      getUpperOrder();
+    }
+  }
+
+  departmentType(String value){
+    if(value.length!=0){
+      departmentSeleted.value=value;
+      for(int i=0;i<departmentEntity.value.departmentlist!.length;i++){
+        if(value==departmentEntity.value.departmentlist![i].departmentname){
+          departmentId.value=departmentEntity.value.departmentlist![i].id.toString();
+          getSatffByDep();
+        }
+      }
+    }
+  }
+
+  getSatffByDep()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      dynamicChips.clear();
+      filters.clear();
+      CustomSnackbar().LoadingBottomSheet();
+      staffEnebtity.value=(await UpperCountStatus0UPMServie().getStaffbyDepartment(departmentId.value.toString()))!;
+      Get.back();
+      if (staffEnebtity.value.response == 'Success') {
+        for (int i = 0; i < staffEnebtity.value.stafflist!.length; i++) {
+          dynamicChips.add(staffEnebtity.value.stafflist![i].name.toString());
+        }
+
+
+        if(orderNoEntity.value.upperreturncountstafflist!.length!=0){
+          for(int i=0;i<orderNoEntity.value.upperreturncountstafflist!.length;i++){
+            filters.add(orderNoEntity.value.upperreturncountstafflist![0].staffname.toString());
+
+
+          }
+        }
+
+
+
+      }
+      else if(staffEnebtity.value.response=='No data found'){
+        CustomSnackbar().InfoSnackBar('Satff', 'No Staff Found');
+      }
+    }
+
+  }
+
   @override
   void onInit() {
     // TODO: implement onInit
     checkNetworkStatus();
-    getUpperStaf();
+    // getUpperStaf();
+    getDepartment();
 
     super.onInit();
   }

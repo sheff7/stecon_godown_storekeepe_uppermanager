@@ -7,7 +7,9 @@ import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchase
 
 import '../../../CustomFont/BoldText.dart';
 import '../../../CustomWidget/CustomBox1.dart';
+import '../../../Godown/StockGd/Model/get_size_details_entity.dart';
 import '../../../Utils/InternetConnectivity.dart';
+import '../Model/get_department_list_entity.dart';
 import '../Model/get_staff_entity.dart';
 import '../Model/get_upper_plan_count_entity.dart';
 import '../Repository/UpperCountStatus0UPMService.dart';
@@ -43,9 +45,15 @@ class AddUpperCountStatus2UPMController extends GetxController {
   RxString comment = ''.obs;
   Rx<GetStaffEntity> staffEnebtity = GetStaffEntity().obs;
   Rx<ResponseEntityEntity> responseEntity = ResponseEntityEntity().obs;
+  Rx<GetSizeDetailsEntity> getSizeEntity=GetSizeDetailsEntity().obs;
 
   RxList<Widget> sizeListGrid = (List<Widget>.of([])).obs;
   RxList<Widget> sizeListListView = (List<Widget>.of([])).obs;
+
+  Rx<GetDepartmentListEntity>departmentEntity=GetDepartmentListEntity().obs;
+  RxList<String> departmentList = (List<String>.of([])).obs;
+  RxString departmentSeleted=''.obs;
+  RxString departmentId=''.obs;
 
   RxString oc1 = ''.obs;
   RxString oc2 = ''.obs;
@@ -1916,84 +1924,92 @@ class AddUpperCountStatus2UPMController extends GetxController {
               orderNoEntity.value.purchaseproductlist![0].s12.toString();
           oc13.value =
               orderNoEntity.value.purchaseproductlist![0].s13.toString();
-          if (orderNoEntity.value.purchaseproductlist![0].s1.toString().length !=
-              0) {
-            enable1.value = true;
-            sizeListGrid.add(size1());
-            sizeListListView.add(sizeRow1());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s2.toString().length !=
-              0) {
-            enable2.value = true;
-            sizeListGrid.add(size2());
-            sizeListListView.add(sizeRow2());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s3.toString().length !=
-              0) {
-            enable3.value = true;
-            sizeListGrid.add(size3());
-            sizeListListView.add(sizeRow3());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s4.toString().length !=
-              0) {
-            enable4.value = true;
-            sizeListGrid.add(size4());
-            sizeListListView.add(sizeRow4());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s5.toString().length !=
-              0) {
-            enable5.value = true;
-            sizeListGrid.add(size5());
-            sizeListListView.add(sizeRow5());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s6.toString() .length!=
-              0) {
-            enable6.value = true;
-            sizeListGrid.add(size6());
-            sizeListListView.add(sizeRow6());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s7.toString() .length!=
-              0) {
-            enable7.value = true;
-            sizeListGrid.add(size7());
-            sizeListListView.add(sizeRow7());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s8.toString().length !=
-              0) {
-            enable8.value = true;
-            sizeListGrid.add(size8());
-            sizeListListView.add(sizeRow8());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s9.toString() .length!=
-              0) {
-            enable9.value = true;
-            sizeListGrid.add(size9());
-            sizeListListView.add(sizeRow9());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s10.toString().length !=
-              0) {
-            enable10.value = true;
-            sizeListGrid.add(size10());
-            sizeListListView.add(sizeRow10());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s11.toString().length !=
-              0) {
-            enable11.value = true;
-            sizeListGrid.add(size11());
-            sizeListListView.add(sizeRow11());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s12.toString().length !=
-              0) {
-            enable12.value = true;
-            sizeListGrid.add(size12());
-            sizeListListView.add(sizeRow12());
-          }
-          if (orderNoEntity.value.purchaseproductlist![0].s13.toString() .length!=
-              0) {
-            enable13.value = true;
-            sizeListGrid.add(size13());
-            sizeListListView.add(sizeRow13());
-          }
+          getSizeByArtNo(orderNoEntity.value.purchaseproductlist![0].artno.toString());
+         if(orderNoEntity.value.staffcountlist!.length!=0){
+           departmentSeleted.value=orderNoEntity.value.staffcountlist![0].departmentname.toString();
+           departmentId.value=orderNoEntity.value.staffcountlist![0].deaprtment.toString();
+           getSatffByDep();
+         }
+
+          // departmentSeleted.value=orderNoEntity.value.staffcountlist[0].de
+          // if (orderNoEntity.value.purchaseproductlist![0].s1.toString().length !=
+          //     0) {
+          //   enable1.value = true;
+          //   sizeListGrid.add(size1());
+          //   sizeListListView.add(sizeRow1());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s2.toString().length !=
+          //     0) {
+          //   enable2.value = true;
+          //   sizeListGrid.add(size2());
+          //   sizeListListView.add(sizeRow2());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s3.toString().length !=
+          //     0) {
+          //   enable3.value = true;
+          //   sizeListGrid.add(size3());
+          //   sizeListListView.add(sizeRow3());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s4.toString().length !=
+          //     0) {
+          //   enable4.value = true;
+          //   sizeListGrid.add(size4());
+          //   sizeListListView.add(sizeRow4());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s5.toString().length !=
+          //     0) {
+          //   enable5.value = true;
+          //   sizeListGrid.add(size5());
+          //   sizeListListView.add(sizeRow5());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s6.toString() .length!=
+          //     0) {
+          //   enable6.value = true;
+          //   sizeListGrid.add(size6());
+          //   sizeListListView.add(sizeRow6());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s7.toString() .length!=
+          //     0) {
+          //   enable7.value = true;
+          //   sizeListGrid.add(size7());
+          //   sizeListListView.add(sizeRow7());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s8.toString().length !=
+          //     0) {
+          //   enable8.value = true;
+          //   sizeListGrid.add(size8());
+          //   sizeListListView.add(sizeRow8());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s9.toString() .length!=
+          //     0) {
+          //   enable9.value = true;
+          //   sizeListGrid.add(size9());
+          //   sizeListListView.add(sizeRow9());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s10.toString().length !=
+          //     0) {
+          //   enable10.value = true;
+          //   sizeListGrid.add(size10());
+          //   sizeListListView.add(sizeRow10());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s11.toString().length !=
+          //     0) {
+          //   enable11.value = true;
+          //   sizeListGrid.add(size11());
+          //   sizeListListView.add(sizeRow11());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s12.toString().length !=
+          //     0) {
+          //   enable12.value = true;
+          //   sizeListGrid.add(size12());
+          //   sizeListListView.add(sizeRow12());
+          // }
+          // if (orderNoEntity.value.purchaseproductlist![0].s13.toString() .length!=
+          //     0) {
+          //   enable13.value = true;
+          //   sizeListGrid.add(size13());
+          //   sizeListListView.add(sizeRow13());
+          // }
 
           if (orderNoEntity.value.staffcountlist!.length != 0) {
             for (int i = 0;
@@ -2164,6 +2180,62 @@ class AddUpperCountStatus2UPMController extends GetxController {
     }
   }
 
+
+  getDepartment()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      CustomSnackbar().LoadingBottomSheet();
+      departmentEntity.value= (await UpperCountStatus0UPMServie().getDepartments())!;
+      Get.back();
+      if(departmentEntity.value!=null && departmentEntity.value.response=='Success'){
+        if(departmentEntity.value.departmentlist!.length!=0){
+          for (int i=0;i<departmentEntity.value.departmentlist!.length;i++){
+            departmentList.add(departmentEntity.value.departmentlist![i].departmentname.toString());
+          }
+        }
+      }
+      // getUpperOrder();
+    }
+  }
+
+  departmentType(String value){
+    if(value.length!=0){
+      departmentSeleted.value=value;
+      for(int i=0;i<departmentEntity.value.departmentlist!.length;i++){
+        if(value==departmentEntity.value.departmentlist![i].departmentname){
+          departmentId.value=departmentEntity.value.departmentlist![i].id.toString();
+          getSatffByDep();
+        }
+      }
+    }
+  }
+
+  getSatffByDep()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      dynamicChips.clear();
+      filters.clear();
+      CustomSnackbar().LoadingBottomSheet();
+      staffEnebtity.value=(await UpperCountStatus0UPMServie().getStaffbyDepartment(departmentId.value.toString()))!;
+      Get.back();
+      if (staffEnebtity.value.response == 'Success') {
+        for (int i = 0; i < staffEnebtity.value.stafflist!.length; i++) {
+          dynamicChips.add(staffEnebtity.value.stafflist![i].name.toString());
+        }
+        if(orderNoEntity.value.staffcountlist!.length!=0){
+          for(int i=0;i<orderNoEntity.value.staffcountlist!.length;i++){
+            filters.add(orderNoEntity.value.staffcountlist![i].staffname.toString());
+          }
+        }
+
+      }
+      else if(staffEnebtity.value.response=='No data found'){
+        CustomSnackbar().InfoSnackBar('Satff', 'No Staff Found');
+      }
+    }
+
+  }
+
   addUpperCount(List<Map<String, dynamic>> rcList,
       List<Map<String, dynamic>> dcList,
       List<Map<String, dynamic>> rcCountList,
@@ -2281,6 +2353,88 @@ class AddUpperCountStatus2UPMController extends GetxController {
     }
   }
 
+  getSizeByArtNo(String artNo)async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      CustomSnackbar().LoadingBottomSheet();
+      getSizeEntity.value=  (await UpperCountStatus0UPMServie().getSizeByArtNo(artNo))!;
+      Get.back();
+      if(getSizeEntity.value!=null){
+        if(getSizeEntity.value.response=='Success'){
+          if(getSizeEntity.value.sizearray!.length!=0){
+            for(int i=0;i<getSizeEntity.value.sizearray!.length;i++){
+              if(getSizeEntity.value.sizearray![i].toString()=='1'){
+                enable1.value = true;
+                sizeListGrid.add(size1());
+                sizeListListView.add(sizeRow1());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='2'){
+                enable2.value = true;
+                sizeListGrid.add(size2());
+                sizeListListView.add(sizeRow2());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='3'){
+                enable3.value = true;
+                sizeListGrid.add(size3());
+                sizeListListView.add(sizeRow3());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='4'){
+                enable4.value = true;
+                sizeListGrid.add(size4());
+                sizeListListView.add(sizeRow4());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='5'){
+                enable5.value = true;
+                sizeListGrid.add(size5());
+                sizeListListView.add(sizeRow5());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='6'){
+                enable6.value = true;
+                sizeListGrid.add(size6());
+                sizeListListView.add(sizeRow6());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='7'){
+                enable7.value = true;
+                sizeListGrid.add(size7());
+                sizeListListView.add(sizeRow7());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='8'){
+                enable8.value = true;
+                sizeListGrid.add(size8());
+                sizeListListView.add(sizeRow8());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='9'){
+                enable9.value = true;
+                sizeListGrid.add(size9());
+                sizeListListView.add(sizeRow9());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='10'){
+                enable10.value = true;
+                sizeListGrid.add(size10());
+                sizeListListView.add(sizeRow10());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='11'){
+                enable11.value = true;
+                sizeListGrid.add(size11());
+                sizeListListView.add(sizeRow11());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='12'){
+                enable12.value = true;
+                sizeListGrid.add(size12());
+                sizeListListView.add(sizeRow12());
+              }
+              else if(getSizeEntity.value.sizearray![i].toString()=='13'){
+                enable13.value = true;
+                sizeListGrid.add(size13());
+                sizeListListView.add(sizeRow13());
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -2292,8 +2446,9 @@ class AddUpperCountStatus2UPMController extends GetxController {
     print("compnay" + company);
     print("paln" + plan);
     print("uppedorder" + upperOrder);
+    getDepartment();
 
-    getUpperStaf();
+    // getUpperStaf();
     super.onInit();
   }
 }

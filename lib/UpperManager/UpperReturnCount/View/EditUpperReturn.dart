@@ -49,6 +49,44 @@ class EditUpperReturn extends StatelessWidget {
                   SizedBox(
                     height: 2.h,
                   ),
+                  Container(
+                    margin: EdgeInsets.only(left: 2.h,right: 2.h),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey[400]!,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: DropdownButton(
+                      value: _controller!.departmentSeleted.value ==
+                          ''
+                          ? null
+                          : _controller!.departmentSeleted.value,
+                      borderRadius: BorderRadius.circular(10),
+                      icon: Icon(Icons.arrow_drop_down),
+                      iconSize: 29,
+                      underline: SizedBox(),
+                      isExpanded: true,
+                      hint: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text('Department'),
+                      ),
+                      onChanged: (value) {
+                        _controller.departmentType(value.toString());
+                      },
+                      items: _controller.departmentList.map((valueItem) {
+                        return DropdownMenuItem(
+                            value: valueItem,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(valueItem),
+                            ));
+                      }).toList(),
+                    ),
+                  ),
+                  SizedBox(height: 2.h),
                   // Container(
                   //   margin: EdgeInsets.only(left: 2.h, right: 2.h),
                   //   width: double.infinity,
@@ -262,7 +300,44 @@ class EditUpperReturn extends StatelessWidget {
                   // SizedBox(
                   //   height: 4.h,
                   // ),
-                  //
+                  // SizedBox(height: 2.h),
+                  //                       Container(
+                  //                         margin: EdgeInsets.only(left: 2.h,right: 2.h),
+                  //                         width: double.infinity,
+                  //                         decoration: BoxDecoration(
+                  //                           border: Border.all(
+                  //                             color: Colors.grey[400]!,
+                  //                             width: 1,
+                  //                           ),
+                  //                           borderRadius: BorderRadius.circular(5),
+                  //                         ),
+                  //                         child: DropdownButton(
+                  //                           value: _controller!.departmentSeleted.value ==
+                  //                               ''
+                  //                               ? null
+                  //                               : _controller!.departmentSeleted.value,
+                  //                           borderRadius: BorderRadius.circular(10),
+                  //                           icon: Icon(Icons.arrow_drop_down),
+                  //                           iconSize: 29,
+                  //                           underline: SizedBox(),
+                  //                           isExpanded: true,
+                  //                           hint: Padding(
+                  //                             padding: const EdgeInsets.only(left: 10),
+                  //                             child: Text('Department'),
+                  //                           ),
+                  //                           onChanged: (value) {
+                  //                             _controller.departmentType(value.toString());
+                  //                           },
+                  //                           items: _controller.departmentList.map((valueItem) {
+                  //                             return DropdownMenuItem(
+                  //                                 value: valueItem,
+                  //                                 child: Padding(
+                  //                                   padding: const EdgeInsets.only(left: 10),
+                  //                                   child: Text(valueItem),
+                  //                                 ));
+                  //                           }).toList(),
+                  //                         ),
+                  //                       ),
                   Container(
                     margin: EdgeInsets.only(left: 2.h, right: 2.h),
                     child: Align(
@@ -430,7 +505,10 @@ class EditUpperReturn extends StatelessWidget {
                           fontSize: 14, fontWeight: FontWeight.bold)),
                 ),
               ),
-            )
+            ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
 
 
                   // Container(

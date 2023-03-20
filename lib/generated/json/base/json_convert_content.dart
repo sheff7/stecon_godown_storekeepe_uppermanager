@@ -12,6 +12,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginb
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/productin_plan_single_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/production_plan_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/profile_g_d_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/get_size_details_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/product_single_view_rep_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/stock_list_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/get_distributors_entity.dart';
@@ -40,6 +41,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Mod
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Model/get_prodcut_single_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UppeOrder/Model/order_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperMangerHomeFn/Model/get_login_by_statusa_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseCount/Model/get_department_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseCount/Model/get_purchse_plan_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseCount/Model/get_staff_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchaseCount/Model/get_upper_plan_count_entity.dart';
@@ -85,6 +87,8 @@ class JsonConvert {
 		(ProductionPlanListProductionlist).toString(): ProductionPlanListProductionlist.fromJson,
 		(ProfileGDEntity).toString(): ProfileGDEntity.fromJson,
 		(ProfileGDStorekeeperlist).toString(): ProfileGDStorekeeperlist.fromJson,
+		(GetSizeDetailsEntity).toString(): GetSizeDetailsEntity.fromJson,
+		(GetSizeDetailsSizelist).toString(): GetSizeDetailsSizelist.fromJson,
 		(ProductSingleViewRepEntity).toString(): ProductSingleViewRepEntity.fromJson,
 		(ProductSingleViewRepProductlist).toString(): ProductSingleViewRepProductlist.fromJson,
 		(ProductSingleViewRepProductsizelist).toString(): ProductSingleViewRepProductsizelist.fromJson,
@@ -142,6 +146,8 @@ class JsonConvert {
 		(OrderListOrderlist).toString(): OrderListOrderlist.fromJson,
 		(GetLoginByStatusaEntity).toString(): GetLoginByStatusaEntity.fromJson,
 		(GetLoginByStatusaLoginlist).toString(): GetLoginByStatusaLoginlist.fromJson,
+		(GetDepartmentListEntity).toString(): GetDepartmentListEntity.fromJson,
+		(GetDepartmentListDepartmentlist).toString(): GetDepartmentListDepartmentlist.fromJson,
 		(GetPurchsePlanEntity).toString(): GetPurchsePlanEntity.fromJson,
 		(GetPurchsePlanPurchaseplanlist).toString(): GetPurchsePlanPurchaseplanlist.fromJson,
 		(GetStaffEntity).toString(): GetStaffEntity.fromJson,
@@ -324,6 +330,12 @@ class JsonConvert {
 		if(<ProfileGDStorekeeperlist>[] is M){
 			return data.map<ProfileGDStorekeeperlist>((Map<String, dynamic> e) => ProfileGDStorekeeperlist.fromJson(e)).toList() as M;
 		}
+		if(<GetSizeDetailsEntity>[] is M){
+			return data.map<GetSizeDetailsEntity>((Map<String, dynamic> e) => GetSizeDetailsEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetSizeDetailsSizelist>[] is M){
+			return data.map<GetSizeDetailsSizelist>((Map<String, dynamic> e) => GetSizeDetailsSizelist.fromJson(e)).toList() as M;
+		}
 		if(<ProductSingleViewRepEntity>[] is M){
 			return data.map<ProductSingleViewRepEntity>((Map<String, dynamic> e) => ProductSingleViewRepEntity.fromJson(e)).toList() as M;
 		}
@@ -494,6 +506,12 @@ class JsonConvert {
 		}
 		if(<GetLoginByStatusaLoginlist>[] is M){
 			return data.map<GetLoginByStatusaLoginlist>((Map<String, dynamic> e) => GetLoginByStatusaLoginlist.fromJson(e)).toList() as M;
+		}
+		if(<GetDepartmentListEntity>[] is M){
+			return data.map<GetDepartmentListEntity>((Map<String, dynamic> e) => GetDepartmentListEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetDepartmentListDepartmentlist>[] is M){
+			return data.map<GetDepartmentListDepartmentlist>((Map<String, dynamic> e) => GetDepartmentListDepartmentlist.fromJson(e)).toList() as M;
 		}
 		if(<GetPurchsePlanEntity>[] is M){
 			return data.map<GetPurchsePlanEntity>((Map<String, dynamic> e) => GetPurchsePlanEntity.fromJson(e)).toList() as M;

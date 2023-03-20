@@ -104,8 +104,11 @@ class GetUpperReturnSingleUpperreturncountstafflist {
 	String? createddate;
 	String? staffname;
 	String? idcardno;
-  
-  GetUpperReturnSingleUpperreturncountstafflist();
+	String? deaprtment;
+	String? departmentname;
+
+
+	GetUpperReturnSingleUpperreturncountstafflist();
 
   factory GetUpperReturnSingleUpperreturncountstafflist.fromJson(Map<String, dynamic> json) => $GetUpperReturnSingleUpperreturncountstafflistFromJson(json);
 

@@ -219,6 +219,8 @@ class GetUpperPlanCountStaffcountlist {
 	String? planno;
 	String? staffname;
 	String? idcardno;
+	String? deaprtment;
+	String? departmentname;
   
   GetUpperPlanCountStaffcountlist();
 

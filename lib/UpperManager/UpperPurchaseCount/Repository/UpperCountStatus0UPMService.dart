@@ -4,8 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/UpperManager/UpperPurchasePlan/Model/response_entity_entity.dart';
 
 import '../../../CustomWidget/CustomSnackBar.dart';
+import '../../../Godown/StockGd/Model/get_size_details_entity.dart';
 import '../../../Utils/DioConfig.dart';
 import '../../../generated/json/base/json_convert_content.dart';
+import '../Model/get_department_list_entity.dart';
 import '../Model/get_purchse_plan_entity.dart';
 import '../Model/get_staff_entity.dart';
 import '../Model/get_upper_plan_count_entity.dart';
@@ -14,6 +16,7 @@ import '../Model/get_upper_purchase_plan_for_count_single_entity.dart';
 class UpperCountStatus0UPMServie{
   Dio _dio = Dio(DioConfig.options);
   Future<GetPurchsePlanEntity?>getUpperPurchseOrder(String upmId)async{
+    print("upm"+upmId.toString());
     try{
       final response=await _dio.post('apigetcupperpurchaseplanforcount',data: {"id":upmId});
       if(response.statusCode==200){
@@ -59,7 +62,7 @@ class UpperCountStatus0UPMServie{
       });
       if(response.statusCode==200){
         var data=response.data;
-        print(response.data.toString());
+        print("res"+response.data.toString());
         return JsonConvert.fromJsonAsT<GetUpperPlanCountEntity>(data);
 
       }
@@ -183,6 +186,51 @@ class UpperCountStatus0UPMServie{
     }
     catch(e){
       CustomSnackbar().InfoSnackBar('Error', e.toString());
+    }
+  }
+
+  Future<GetDepartmentListEntity?>getDepartments()async{
+    try{
+      final response=await _dio.post('apigetdepartmentlists');
+      if(response.statusCode==200){
+        var data=response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<GetDepartmentListEntity>(data);
+      }
+    }
+    catch(e){
+      print(e);
+    }
+  }
+
+  Future<GetStaffEntity?>getStaffbyDepartment(String id)async{
+
+    try{
+      final response=await _dio.post('apiget_staffbydepartment',data: {
+        "departmentid":id
+      });
+      if(response.statusCode==200){
+        var data=response.data;
+        print(response.data.toString());
+        return JsonConvert.fromJsonAsT<GetStaffEntity>(data);
+
+      }
+    }
+    catch(e){
+      CustomSnackbar().InfoSnackBar('Error', e.toString());
+    }
+  }
+
+  Future<GetSizeDetailsEntity?>getSizeByArtNo(String artnoId)async{
+    try{
+      final response=await _dio.post('apigetpsizelistofproducts',data: {"artnoid":artnoId});
+      if(response.statusCode==200){
+        var data=response.data;
+        return JsonConvert.fromJsonAsT<GetSizeDetailsEntity>(data);
+      }
+    }
+    catch(e){
+      print(e);
     }
   }
 

@@ -279,6 +279,14 @@ GetUpperReturnSingleUpperreturncountstafflist $GetUpperReturnSingleUpperreturnco
 	if (idcardno != null) {
 		getUpperReturnSingleUpperreturncountstafflist.idcardno = idcardno;
 	}
+	final String? deaprtment = jsonConvert.convert<String>(json['deaprtment']);
+	if (deaprtment != null) {
+		getUpperReturnSingleUpperreturncountstafflist.deaprtment = deaprtment;
+	}
+	final String? departmentname = jsonConvert.convert<String>(json['departmentname']);
+	if (departmentname != null) {
+		getUpperReturnSingleUpperreturncountstafflist.departmentname = departmentname;
+	}
 	return getUpperReturnSingleUpperreturncountstafflist;
 }
 
@@ -293,5 +301,8 @@ Map<String, dynamic> $GetUpperReturnSingleUpperreturncountstafflistToJson(GetUpp
 	data['createddate'] = entity.createddate;
 	data['staffname'] = entity.staffname;
 	data['idcardno'] = entity.idcardno;
+	data['deaprtment'] = entity.deaprtment;
+	data['departmentname'] = entity.departmentname;
+
 	return data;
 }

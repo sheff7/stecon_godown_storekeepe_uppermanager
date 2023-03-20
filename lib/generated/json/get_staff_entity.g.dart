@@ -131,6 +131,10 @@ GetStaffStafflist $GetStaffStafflistFromJson(Map<String, dynamic> json) {
 	if (status != null) {
 		getStaffStafflist.status = status;
 	}
+	final String? departmentname = jsonConvert.convert<String>(json['departmentname']);
+	if (departmentname != null) {
+		getStaffStafflist.departmentname = departmentname;
+	}
 	return getStaffStafflist;
 }
 
@@ -163,5 +167,6 @@ Map<String, dynamic> $GetStaffStafflistToJson(GetStaffStafflist entity) {
 	data['salary'] = entity.salary;
 	data['createddate'] = entity.createddate;
 	data['status'] = entity.status;
+	data['departmentname'] = entity.departmentname;
 	return data;
 }

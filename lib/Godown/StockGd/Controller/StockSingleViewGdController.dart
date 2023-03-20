@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 import '../../../CustomWidget/CustomBox1.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../Utils/InternetConnectivity.dart';
+import '../Model/get_size_details_entity.dart';
 import '../Model/product_single_view_rep_entity.dart';
 import '../Repository/StockSingleViewServices.dart';
 
@@ -17,6 +20,8 @@ class ProductListSingleViewRepController extends GetxController {
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   Rx<ProductSingleViewRepEntity> productListEntity = ProductSingleViewRepEntity().obs;
+  Rx<GetSizeDetailsEntity>getSizeEntity=GetSizeDetailsEntity().obs;
+
   RxList<Widget> sizeListGrid = (List<Widget>.of([])).obs;
   final size1controller = TextEditingController();
   final size2controller = TextEditingController();
@@ -179,45 +184,45 @@ class ProductListSingleViewRepController extends GetxController {
             size13controller.text=productListEntity.value.stock![0].s13.toString();
 
 
-            if(productListEntity.value.stock![0].s1.toString().length!=0){
-              sizeListGrid.add(size1());
-            }
-            if(productListEntity.value.stock![0].s2.toString().length!=0){
-              sizeListGrid.add(size2());
-            }
-            if(productListEntity.value.stock![0].s3.toString().length!=0){
-              sizeListGrid.add(size3());
-            }
-            if(productListEntity.value.stock![0].s4.toString().length!=0){
-              sizeListGrid.add(size4());
-            }
-            if(productListEntity.value.stock![0].s5.toString().length!=0){
-              sizeListGrid.add(size5());
-            }
-            if(productListEntity.value.stock![0].s6.toString().length!=0){
-              sizeListGrid.add(size6());
-            }
-            if(productListEntity.value.stock![0].s7.toString().length!=0){
-              sizeListGrid.add(size7());
-            }
-            if(productListEntity.value.stock![0].s8.toString().length!=0){
-              sizeListGrid.add(size8());
-            }
-            if(productListEntity.value.stock![0].s9.toString().length!=0){
-              sizeListGrid.add(size9());
-            }
-            if(productListEntity.value.stock![0].s10.toString().length!=0){
-              sizeListGrid.add(size10());
-            }
-            if(productListEntity.value.stock![0].s11.toString().length!=0){
-              sizeListGrid.add(size11());
-            }
-            if(productListEntity.value.stock![0].s12.toString().length!=0){
-              sizeListGrid.add(size12());
-            }
-            if(productListEntity.value.stock![0].s13.toString().length!=0){
-              sizeListGrid.add(size13());
-            }
+            // if(productListEntity.value.stock![0].s1.toString().length!=0){
+            //   sizeListGrid.add(size1());
+            // }
+            // if(productListEntity.value.stock![0].s2.toString().length!=0){
+            //   sizeListGrid.add(size2());
+            // }
+            // if(productListEntity.value.stock![0].s3.toString().length!=0){
+            //   sizeListGrid.add(size3());
+            // }
+            // if(productListEntity.value.stock![0].s4.toString().length!=0){
+            //   sizeListGrid.add(size4());
+            // }
+            // if(productListEntity.value.stock![0].s5.toString().length!=0){
+            //   sizeListGrid.add(size5());
+            // }
+            // if(productListEntity.value.stock![0].s6.toString().length!=0){
+            //   sizeListGrid.add(size6());
+            // }
+            // if(productListEntity.value.stock![0].s7.toString().length!=0){
+            //   sizeListGrid.add(size7());
+            // }
+            // if(productListEntity.value.stock![0].s8.toString().length!=0){
+            //   sizeListGrid.add(size8());
+            // }
+            // if(productListEntity.value.stock![0].s9.toString().length!=0){
+            //   sizeListGrid.add(size9());
+            // }
+            // if(productListEntity.value.stock![0].s10.toString().length!=0){
+            //   sizeListGrid.add(size10());
+            // }
+            // if(productListEntity.value.stock![0].s11.toString().length!=0){
+            //   sizeListGrid.add(size11());
+            // }
+            // if(productListEntity.value.stock![0].s12.toString().length!=0){
+            //   sizeListGrid.add(size12());
+            // }
+            // if(productListEntity.value.stock![0].s13.toString().length!=0){
+            //   sizeListGrid.add(size13());
+            // }
 
           }
 
@@ -226,6 +231,62 @@ class ProductListSingleViewRepController extends GetxController {
 
       loadingBool.value = false;
       print("shahhh" + loadingBool.value.toString());
+      getSizeList(productListEntity.value.productlist![0].id.toString());
+    }
+  }
+
+  getSizeList( String artnoId)async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      CustomSnackbar().LoadingBottomSheet();
+      getSizeEntity.value=(await ProductListSingleViewRepServices().getSizeList(artnoId))!;
+      Get.back();
+      sizeListGrid.clear();
+      if(getSizeEntity.value.response=='Success'){
+        if (getSizeEntity.value.sizearray!.length!=0) {
+          for(int i=0; i<getSizeEntity.value.sizearray!.length;i++){
+            if(getSizeEntity.value.sizearray![i].toString()=='1'){
+              sizeListGrid.add(size1());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='2'){
+              sizeListGrid.add(size2());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='3'){
+              sizeListGrid.add(size3());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='4'){
+              sizeListGrid.add(size4());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='5'){
+              sizeListGrid.add(size5());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='6'){
+              sizeListGrid.add(size6());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='7'){
+              sizeListGrid.add(size7());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='8'){
+              sizeListGrid.add(size8());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='9'){
+              sizeListGrid.add(size9());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='10'){
+              sizeListGrid.add(size10());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='11'){
+              sizeListGrid.add(size1());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='12'){
+              sizeListGrid.add(size12());
+            }
+            else if(getSizeEntity.value.sizearray![i].toString()=='13'){
+              sizeListGrid.add(size13());
+            }
+          }
+        }
+      }
     }
   }
 

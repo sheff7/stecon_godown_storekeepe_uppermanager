@@ -9,7 +9,9 @@ import '../../../CustomFont/BoldText.dart';
 import '../../../CustomWidget/CustomBox1.dart';
 import '../../../CustomWidget/CustomSnackBar.dart';
 import '../../../Utils/InternetConnectivity.dart';
+import '../../UpperPurchaseCount/Model/get_department_list_entity.dart';
 import '../../UpperPurchaseCount/Model/get_staff_entity.dart';
+import '../../UpperPurchaseCount/Repository/UpperCountStatus0UPMService.dart';
 import '../../UpperPurchasePlan/Model/get_comapany_entity.dart';
 import '../../UpperPurchasePlan/Repository/AddProductionPlanUMPService.dart';
 import '../Model/get_mr_no_entity.dart';
@@ -46,6 +48,11 @@ class AddUpperReturnCountController extends GetxController{
   RxString typeSelected=''.obs;
   RxString artno=''.obs;
   RxString companyplanno=''.obs;
+
+  Rx<GetDepartmentListEntity>departmentEntity=GetDepartmentListEntity().obs;
+  RxList<String> departmentList = (List<String>.of([])).obs;
+  RxString departmentSeleted=''.obs;
+  RxString departmentId=''.obs;
 
   typeTye(String value){
     typeSelected.value=value;
@@ -1242,12 +1249,64 @@ class AddUpperReturnCountController extends GetxController{
 
     }
   }
+
+  getDepartment()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      CustomSnackbar().LoadingBottomSheet();
+      departmentEntity.value= (await UpperCountStatus0UPMServie().getDepartments())!;
+      Get.back();
+      if(departmentEntity.value!=null && departmentEntity.value.response=='Success'){
+        if(departmentEntity.value.departmentlist!.length!=0){
+          for (int i=0;i<departmentEntity.value.departmentlist!.length;i++){
+            departmentList.add(departmentEntity.value.departmentlist![i].departmentname.toString());
+          }
+        }
+      }
+      // getUpperOrder();
+    }
+  }
+
+  departmentType(String value){
+    if(value.length!=0){
+      departmentSeleted.value=value;
+      for(int i=0;i<departmentEntity.value.departmentlist!.length;i++){
+        if(value==departmentEntity.value.departmentlist![i].departmentname){
+          departmentId.value=departmentEntity.value.departmentlist![i].id.toString();
+          getSatffByDep();
+        }
+      }
+    }
+  }
+
+  getSatffByDep()async{
+    bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
+    if (nBool == true){
+      dynamicChips.clear();
+      filters.clear();
+      CustomSnackbar().LoadingBottomSheet();
+      staffEnebtity.value=(await UpperCountStatus0UPMServie().getStaffbyDepartment(departmentId.value.toString()))!;
+      Get.back();
+      if (staffEnebtity.value.response == 'Success') {
+        for (int i = 0; i < staffEnebtity.value.stafflist!.length; i++) {
+          dynamicChips.add(staffEnebtity.value.stafflist![i].name.toString());
+        }
+
+
+      }
+      else if(staffEnebtity.value.response=='No data found'){
+        CustomSnackbar().InfoSnackBar('Satff', 'No Staff Found');
+      }
+    }
+
+  }
   @override
   void onInit() {
     // TODO: implement onInit
     checkNetworkStatus();
     getCompnay();
-    getUpperStaf();
+    getDepartment();
+    // getUpperStaf();
     super.onInit();
   }
 }

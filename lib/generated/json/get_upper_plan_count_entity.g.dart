@@ -645,6 +645,14 @@ GetUpperPlanCountStaffcountlist $GetUpperPlanCountStaffcountlistFromJson(Map<Str
 	if (idcardno != null) {
 		getUpperPlanCountStaffcountlist.idcardno = idcardno;
 	}
+	final String? deaprtment = jsonConvert.convert<String>(json['deaprtment']);
+	if (deaprtment != null) {
+		getUpperPlanCountStaffcountlist.deaprtment = deaprtment;
+	}
+	final String? departmentname = jsonConvert.convert<String>(json['departmentname']);
+	if (departmentname != null) {
+		getUpperPlanCountStaffcountlist.departmentname = departmentname;
+	}
 	return getUpperPlanCountStaffcountlist;
 }
 
@@ -658,6 +666,9 @@ Map<String, dynamic> $GetUpperPlanCountStaffcountlistToJson(GetUpperPlanCountSta
 	data['planno'] = entity.planno;
 	data['staffname'] = entity.staffname;
 	data['idcardno'] = entity.idcardno;
+	data['deaprtment'] = entity.deaprtment;
+	data['departmentname'] = entity.departmentname;
+
 	return data;
 }
 
