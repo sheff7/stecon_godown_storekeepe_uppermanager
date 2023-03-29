@@ -668,7 +668,6 @@ Map<String, dynamic> $GetUpperPlanCountStaffcountlistToJson(GetUpperPlanCountSta
 	data['idcardno'] = entity.idcardno;
 	data['deaprtment'] = entity.deaprtment;
 	data['departmentname'] = entity.departmentname;
-
 	return data;
 }
 

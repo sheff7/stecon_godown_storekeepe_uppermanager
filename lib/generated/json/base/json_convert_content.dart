@@ -15,6 +15,9 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/pro
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/get_size_details_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/product_single_view_rep_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/StockGd/Model/stock_list_gd_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/ViewBill/Model/get_billing_list_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/ViewBill/Model/get_distributor_list_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/ViewBill/Model/view_bill_single_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/get_distributors_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_list_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/viewOrderGD/model/orders_single_view_entity.dart';
@@ -95,6 +98,13 @@ class JsonConvert {
 		(ProductSingleViewRepStock).toString(): ProductSingleViewRepStock.fromJson,
 		(StockListGdEntity).toString(): StockListGdEntity.fromJson,
 		(StockListGdStocklist).toString(): StockListGdStocklist.fromJson,
+		(GetBillingListEntity).toString(): GetBillingListEntity.fromJson,
+		(GetBillingListBillingdetailslist).toString(): GetBillingListBillingdetailslist.fromJson,
+		(GetDistributorListEntity).toString(): GetDistributorListEntity.fromJson,
+		(GetDistributorListDistributorslist).toString(): GetDistributorListDistributorslist.fromJson,
+		(ViewBillSingleEntity).toString(): ViewBillSingleEntity.fromJson,
+		(ViewBillSingleBillingdetailslist).toString(): ViewBillSingleBillingdetailslist.fromJson,
+		(ViewBillSingleBillingproductlist).toString(): ViewBillSingleBillingproductlist.fromJson,
 		(GetDistributorsEntity).toString(): GetDistributorsEntity.fromJson,
 		(GetDistributorsDistributorslist).toString(): GetDistributorsDistributorslist.fromJson,
 		(ViewOrdersListViewEntity).toString(): ViewOrdersListViewEntity.fromJson,
@@ -353,6 +363,27 @@ class JsonConvert {
 		}
 		if(<StockListGdStocklist>[] is M){
 			return data.map<StockListGdStocklist>((Map<String, dynamic> e) => StockListGdStocklist.fromJson(e)).toList() as M;
+		}
+		if(<GetBillingListEntity>[] is M){
+			return data.map<GetBillingListEntity>((Map<String, dynamic> e) => GetBillingListEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetBillingListBillingdetailslist>[] is M){
+			return data.map<GetBillingListBillingdetailslist>((Map<String, dynamic> e) => GetBillingListBillingdetailslist.fromJson(e)).toList() as M;
+		}
+		if(<GetDistributorListEntity>[] is M){
+			return data.map<GetDistributorListEntity>((Map<String, dynamic> e) => GetDistributorListEntity.fromJson(e)).toList() as M;
+		}
+		if(<GetDistributorListDistributorslist>[] is M){
+			return data.map<GetDistributorListDistributorslist>((Map<String, dynamic> e) => GetDistributorListDistributorslist.fromJson(e)).toList() as M;
+		}
+		if(<ViewBillSingleEntity>[] is M){
+			return data.map<ViewBillSingleEntity>((Map<String, dynamic> e) => ViewBillSingleEntity.fromJson(e)).toList() as M;
+		}
+		if(<ViewBillSingleBillingdetailslist>[] is M){
+			return data.map<ViewBillSingleBillingdetailslist>((Map<String, dynamic> e) => ViewBillSingleBillingdetailslist.fromJson(e)).toList() as M;
+		}
+		if(<ViewBillSingleBillingproductlist>[] is M){
+			return data.map<ViewBillSingleBillingproductlist>((Map<String, dynamic> e) => ViewBillSingleBillingproductlist.fromJson(e)).toList() as M;
 		}
 		if(<GetDistributorsEntity>[] is M){
 			return data.map<GetDistributorsEntity>((Map<String, dynamic> e) => GetDistributorsEntity.fromJson(e)).toList() as M;

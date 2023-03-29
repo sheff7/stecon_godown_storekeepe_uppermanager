@@ -14,6 +14,7 @@ import '../../../LoginPage/View/LoginPage.dart';
 import '../../DeliverySchedulefn/View/DeliveryScheduleListGd.dart';
 import '../../ProductionPlanFn/View/ProductionPlans0.dart';
 import '../../StockGd/View/StockListGd.dart';
+import '../../ViewBill/View/DistributorList.dart';
 import '../../viewOrderGD/view/orderListView.dart';
 
 class HomeGodown extends StatelessWidget {
@@ -512,6 +513,7 @@ class HomeGodown extends StatelessWidget {
           menuItem(1, 'Profile', Icons.person),
           menuItem(2, 'About us', Icons.info),
           menuItem(3, 'Stock', Icons.logout),
+          menuItem(5, 'View Bill', Icons.logout),
           menuItem(4, 'Logout', Icons.logout),
         ],
       ),
@@ -545,6 +547,9 @@ class HomeGodown extends StatelessWidget {
           }
           else if (id == 4) {
             _logout();
+          }
+          else if(id==5){
+            Get.to(DistributorList());
           }
         },
         child: Padding(

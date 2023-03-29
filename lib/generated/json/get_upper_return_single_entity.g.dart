@@ -303,6 +303,5 @@ Map<String, dynamic> $GetUpperReturnSingleUpperreturncountstafflistToJson(GetUpp
 	data['idcardno'] = entity.idcardno;
 	data['deaprtment'] = entity.deaprtment;
 	data['departmentname'] = entity.departmentname;
-
 	return data;
 }

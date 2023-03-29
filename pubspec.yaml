@@ -49,6 +49,10 @@ dependencies:
   url_launcher: ^6.1.5
   dropdown_search: ^5.0.5
   flutter_launcher_icons: ^0.12.0
+  pdf: ^3.9.0
+  path_provider: ^2.0.13
+  open_filex: ^4.3.2
+  number_to_character: ^0.0.12
 
 
 
