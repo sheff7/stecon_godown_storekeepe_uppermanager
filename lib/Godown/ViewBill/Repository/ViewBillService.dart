@@ -26,7 +26,7 @@ class ViewBillService{
 
   Future<GetBillingListEntity?>getBillList(String id)async{
     try {
-      final response = await _dio.post('apiget_savedbillbydid',data: {"did":"1"});
+      final response = await _dio.post('apiget_savedbillbydid',data: {"did":id});
       print(response.statusCode);
       if (response.statusCode == 200) {
         var data = response.data;
@@ -39,7 +39,7 @@ class ViewBillService{
   }
   Future<GetBillingListEntity?>getBillListByDate(String id,String sDate,String eDate)async{
     try {
-      final response = await _dio.post('api_get_filterinsavedgstbill',data: {"did":"1",
+      final response = await _dio.post('api_get_filterinsavedgstbill',data: {"did":id,
       "fdate":sDate,
       "tdate":eDate});
       print(response.statusCode);
