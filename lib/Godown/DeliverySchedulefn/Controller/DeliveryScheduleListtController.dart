@@ -14,6 +14,8 @@ class DeliveryScheduleListGdController extends GetxController {
   Rx<DeliveryScheduleListEntity> deliveryScheduleListEntity = DeliveryScheduleListEntity().obs;
   RxList <bool> itemList=<bool>[].obs;
   RxBool allSelect=false.obs;
+  RxBool searchBool=false.obs;
+  RxList<DeliveryScheduleListDeliveryschedulelist> filterList=(List<DeliveryScheduleListDeliveryschedulelist>.of([])).obs;
 
 
 
@@ -26,6 +28,28 @@ class DeliveryScheduleListGdController extends GetxController {
       print(e);
     }
   }
+
+
+  filterSearch(String value) {
+    RxList<DeliveryScheduleListDeliveryschedulelist> reslutList =
+        List<DeliveryScheduleListDeliveryschedulelist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = deliveryScheduleListEntity.value.deliveryschedulelist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = deliveryScheduleListEntity.value.deliveryschedulelist!
+          .where((element) => element.distributorname
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase()))
+          .toList();
+
+
+    }
+    filterList.value=reslutList.value;
+  }
+
 
   getDeliverySchedule() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;

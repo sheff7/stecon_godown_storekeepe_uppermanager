@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   sizer: ^2.0.15
   flutter_svg: ^1.0.3
-  google_fonts: ^3.0.1
+  google_fonts: ^6.1.0
   flutter_bloc: ^8.0.1
   dio: ^5.0.1
   shared_preferences: ^2.0.15

@@ -559,6 +559,14 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                   SizedBox(
                                                     height: 1.h,
                                                   ),
+                                                  _status(_controller
+                                                      .deliveryScheduleSingleViewGdEntity
+                                                      .value
+                                                      .deliveryschedule![
+                                                  index]
+                                                      .status
+                                                      .toString())
+                                                  
 
                                                 ],
                                               ),
@@ -1084,6 +1092,23 @@ class DeliverySchedule1GD extends StatelessWidget {
                 ),
               ],
             ));
+  }
+
+
+  _status(String status){
+    if(status == 'Pending'){
+      return
+        Text(status,style: GoogleFonts.radioCanada(fontSize: 15, color: Colors.orange));
+    }else if(status == 'Cancelled'){
+      return
+        Text(status,style: GoogleFonts.radioCanada(fontSize: 15, color: Colors.red));
+    }else if(status =='Delivered'){
+      return
+        Text(status,style: GoogleFonts.radioCanada(fontSize: 15, color: const Color(0xFF5FEB1D)));
+    }else if(status == 'Confirmed'){
+      return
+        Text(status,style: GoogleFonts.radioCanada(fontSize: 15, color: const Color(0xFF5FEB1D)));
+    }else{ return Container();}
   }
 
 // Future openDialog(BuildContext context) =>

@@ -23,6 +23,8 @@ class StockListGd extends StatelessWidget {
   late final productListController = Get.put(StockListGdController());
   final searchController = TextEditingController();
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

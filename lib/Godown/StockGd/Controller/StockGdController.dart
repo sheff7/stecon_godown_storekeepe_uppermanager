@@ -78,6 +78,12 @@ class StockListGdController extends GetxController{
 
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+
+    super.dispose();
+  }
+  @override
   void onInit() {
     // TODO: implement onInit
     checkNetworkStatus();
