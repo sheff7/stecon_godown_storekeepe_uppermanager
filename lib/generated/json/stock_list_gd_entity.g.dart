@@ -11,6 +11,18 @@ StockListGdEntity $StockListGdEntityFromJson(Map<String, dynamic> json) {
 	if (stocklist != null) {
 		stockListGdEntity.stocklist = stocklist;
 	}
+	final int? totalPages = jsonConvert.convert<int>(json['total_pages']);
+	if (totalPages != null) {
+		stockListGdEntity.totalPages = totalPages;
+	}
+	final dynamic previouspage = jsonConvert.convert<dynamic>(json['previouspage']);
+	if (previouspage != null) {
+		stockListGdEntity.previouspage = previouspage;
+	}
+	final int? nextpage = jsonConvert.convert<int>(json['nextpage']);
+	if (nextpage != null) {
+		stockListGdEntity.nextpage = nextpage;
+	}
 	return stockListGdEntity;
 }
 
@@ -18,6 +30,9 @@ Map<String, dynamic> $StockListGdEntityToJson(StockListGdEntity entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['response'] = entity.response;
 	data['stocklist'] =  entity.stocklist?.map((v) => v.toJson()).toList();
+	data['total_pages'] = entity.totalPages;
+	data['previouspage'] = entity.previouspage;
+	data['nextpage'] = entity.nextpage;
 	return data;
 }
 
@@ -71,6 +86,26 @@ StockListGdStocklist $StockListGdStocklistFromJson(Map<String, dynamic> json) {
 	if (price != null) {
 		stockListGdStocklist.price = price;
 	}
+	final String? mrp = jsonConvert.convert<String>(json['mrp']);
+	if (mrp != null) {
+		stockListGdStocklist.mrp = mrp;
+	}
+	final String? dieno = jsonConvert.convert<String>(json['dieno']);
+	if (dieno != null) {
+		stockListGdStocklist.dieno = dieno;
+	}
+	final String? solecolor = jsonConvert.convert<String>(json['solecolor']);
+	if (solecolor != null) {
+		stockListGdStocklist.solecolor = solecolor;
+	}
+	final String? outprice = jsonConvert.convert<String>(json['outprice']);
+	if (outprice != null) {
+		stockListGdStocklist.outprice = outprice;
+	}
+	final String? outmrp = jsonConvert.convert<String>(json['outmrp']);
+	if (outmrp != null) {
+		stockListGdStocklist.outmrp = outmrp;
+	}
 	final String? categoryname = jsonConvert.convert<String>(json['categoryname']);
 	if (categoryname != null) {
 		stockListGdStocklist.categoryname = categoryname;
@@ -96,6 +131,11 @@ Map<String, dynamic> $StockListGdStocklistToJson(StockListGdStocklist entity) {
 	data['createddate'] = entity.createddate;
 	data['coverimageurl'] = entity.coverimageurl;
 	data['price'] = entity.price;
+	data['mrp'] = entity.mrp;
+	data['dieno'] = entity.dieno;
+	data['solecolor'] = entity.solecolor;
+	data['outprice'] = entity.outprice;
+	data['outmrp'] = entity.outmrp;
 	data['categoryname'] = entity.categoryname;
 	data['colorname'] = entity.colorname;
 	return data;

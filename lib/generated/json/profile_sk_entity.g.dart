@@ -83,7 +83,7 @@ ProfileSkStorekeeperlist $ProfileSkStorekeeperlistFromJson(Map<String, dynamic> 
 	if (joiningdate != null) {
 		profileSkStorekeeperlist.joiningdate = joiningdate;
 	}
-	final dynamic? resignationdate = jsonConvert.convert<dynamic>(json['resignationdate']);
+	final dynamic resignationdate = jsonConvert.convert<dynamic>(json['resignationdate']);
 	if (resignationdate != null) {
 		profileSkStorekeeperlist.resignationdate = resignationdate;
 	}

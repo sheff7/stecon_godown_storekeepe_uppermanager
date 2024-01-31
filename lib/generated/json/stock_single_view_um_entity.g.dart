@@ -31,7 +31,7 @@ StockSingleViewUmStocklist $StockSingleViewUmStocklistFromJson(Map<String, dynam
 	if (productid != null) {
 		stockSingleViewUmStocklist.productid = productid;
 	}
-	final dynamic? categoryid = jsonConvert.convert<dynamic>(json['categoryid']);
+	final dynamic categoryid = jsonConvert.convert<dynamic>(json['categoryid']);
 	if (categoryid != null) {
 		stockSingleViewUmStocklist.categoryid = categoryid;
 	}
@@ -99,7 +99,7 @@ StockSingleViewUmStocklist $StockSingleViewUmStocklistFromJson(Map<String, dynam
 	if (laststockupdateddate != null) {
 		stockSingleViewUmStocklist.laststockupdateddate = laststockupdateddate;
 	}
-	final dynamic? laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
+	final dynamic laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
 	if (laststocktakendate != null) {
 		stockSingleViewUmStocklist.laststocktakendate = laststocktakendate;
 	}

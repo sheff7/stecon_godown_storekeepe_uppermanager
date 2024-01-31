@@ -35,7 +35,7 @@ DeliveryScheduleListDeliveryschedulelist $DeliveryScheduleListDeliveryscheduleli
 	if (orderno != null) {
 		deliveryScheduleListDeliveryschedulelist.orderno = orderno;
 	}
-	final dynamic? deliverybox = jsonConvert.convert<dynamic>(json['deliverybox']);
+	final dynamic deliverybox = jsonConvert.convert<dynamic>(json['deliverybox']);
 	if (deliverybox != null) {
 		deliveryScheduleListDeliveryschedulelist.deliverybox = deliverybox;
 	}
@@ -47,17 +47,33 @@ DeliveryScheduleListDeliveryschedulelist $DeliveryScheduleListDeliveryscheduleli
 	if (createddate != null) {
 		deliveryScheduleListDeliveryschedulelist.createddate = createddate;
 	}
-	final String? distributorname = jsonConvert.convert<String>(json['distributorname']);
-	if (distributorname != null) {
-		deliveryScheduleListDeliveryschedulelist.distributorname = distributorname;
-	}
-	final String? areacode = jsonConvert.convert<String>(json['areacode']);
-	if (areacode != null) {
-		deliveryScheduleListDeliveryschedulelist.areacode = areacode;
+	final String? notes = jsonConvert.convert<String>(json['notes']);
+	if (notes != null) {
+		deliveryScheduleListDeliveryschedulelist.notes = notes;
 	}
 	final String? priority = jsonConvert.convert<String>(json['priority']);
 	if (priority != null) {
 		deliveryScheduleListDeliveryschedulelist.priority = priority;
+	}
+	final String? distributorname = jsonConvert.convert<String>(json['distributorname']);
+	if (distributorname != null) {
+		deliveryScheduleListDeliveryschedulelist.distributorname = distributorname;
+	}
+	final String? repname = jsonConvert.convert<String>(json['repname']);
+	if (repname != null) {
+		deliveryScheduleListDeliveryschedulelist.repname = repname;
+	}
+	final String? representativename = jsonConvert.convert<String>(json['representativename']);
+	if (representativename != null) {
+		deliveryScheduleListDeliveryschedulelist.representativename = representativename;
+	}
+	final int? rn = jsonConvert.convert<int>(json['rn']);
+	if (rn != null) {
+		deliveryScheduleListDeliveryschedulelist.rn = rn;
+	}
+	final String? areacode = jsonConvert.convert<String>(json['areacode']);
+	if (areacode != null) {
+		deliveryScheduleListDeliveryschedulelist.areacode = areacode;
 	}
 	return deliveryScheduleListDeliveryschedulelist;
 }
@@ -70,8 +86,12 @@ Map<String, dynamic> $DeliveryScheduleListDeliveryschedulelistToJson(DeliverySch
 	data['deliverybox'] = entity.deliverybox;
 	data['status'] = entity.status;
 	data['createddate'] = entity.createddate;
-	data['distributorname'] = entity.distributorname;
-	data['areacode'] = entity.areacode;
+	data['notes'] = entity.notes;
 	data['priority'] = entity.priority;
+	data['distributorname'] = entity.distributorname;
+	data['repname'] = entity.repname;
+	data['representativename'] = entity.representativename;
+	data['rn'] = entity.rn;
+	data['areacode'] = entity.areacode;
 	return data;
 }

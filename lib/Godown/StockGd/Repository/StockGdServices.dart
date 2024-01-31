@@ -9,9 +9,11 @@ import '../Model/stock_list_gd_entity.dart';
 
 class StockGdServices{
   Dio _dio = Dio(DioConfig.options);
-  Future<StockListGdEntity?>getPrdouctList()async{
+  Future<StockListGdEntity?>getPrdouctList(String page)async{
     try{
-      final response=await _dio.post('apigetlistinproductstock',data:{});
+      final response=await _dio.post('apigetlistinproductstock',data:{
+        "page":page,
+      });
       if(response.statusCode==200){
         var data=response.data;
         print(response.data.toString());

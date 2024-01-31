@@ -229,7 +229,7 @@ ProductSingleViewRepStock $ProductSingleViewRepStockFromJson(Map<String, dynamic
 	if (laststockupdateddate != null) {
 		productSingleViewRepStock.laststockupdateddate = laststockupdateddate;
 	}
-	final dynamic? laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
+	final dynamic laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
 	if (laststocktakendate != null) {
 		productSingleViewRepStock.laststocktakendate = laststocktakendate;
 	}

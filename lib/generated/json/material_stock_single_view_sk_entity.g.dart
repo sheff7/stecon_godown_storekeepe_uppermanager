@@ -51,7 +51,7 @@ MaterialStockSingleViewSkStocklist $MaterialStockSingleViewSkStocklistFromJson(M
 	if (laststockupdateddate != null) {
 		materialStockSingleViewSkStocklist.laststockupdateddate = laststockupdateddate;
 	}
-	final dynamic? laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
+	final dynamic laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
 	if (laststocktakendate != null) {
 		materialStockSingleViewSkStocklist.laststocktakendate = laststocktakendate;
 	}

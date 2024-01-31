@@ -75,7 +75,7 @@ ProfileGDStorekeeperlist $ProfileGDStorekeeperlistFromJson(Map<String, dynamic> 
 	if (idcardno != null) {
 		profileGDStorekeeperlist.idcardno = idcardno;
 	}
-	final dynamic? idproofurl = jsonConvert.convert<dynamic>(json['idproofurl']);
+	final dynamic idproofurl = jsonConvert.convert<dynamic>(json['idproofurl']);
 	if (idproofurl != null) {
 		profileGDStorekeeperlist.idproofurl = idproofurl;
 	}
@@ -83,7 +83,7 @@ ProfileGDStorekeeperlist $ProfileGDStorekeeperlistFromJson(Map<String, dynamic> 
 	if (joiningdate != null) {
 		profileGDStorekeeperlist.joiningdate = joiningdate;
 	}
-	final dynamic? resignationdate = jsonConvert.convert<dynamic>(json['resignationdate']);
+	final dynamic resignationdate = jsonConvert.convert<dynamic>(json['resignationdate']);
 	if (resignationdate != null) {
 		profileGDStorekeeperlist.resignationdate = resignationdate;
 	}

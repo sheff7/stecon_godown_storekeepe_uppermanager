@@ -47,7 +47,8 @@ class StockListGd extends StatelessWidget {
         ),
       ),
       body: Obx(() => ListView(
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
+        controller: productListController.controller,
         shrinkWrap: true,
         children: [
           Container(
@@ -159,8 +160,7 @@ class StockListGd extends StatelessWidget {
                   ListView.separated(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: productListController
-                        .productListEntity.value.stocklist!.length,
+                    itemCount: productListController.productList.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         children: [
@@ -174,20 +174,13 @@ class StockListGd extends StatelessWidget {
                               child: InkWell(
                                 onTap: () {
                                   Get.to(StockSingleView(
-                                    categoryid: productListController
-                                        .productListEntity
-                                        .value
-                                        .stocklist![index]
+                                    categoryid: productListController.productList![index]
                                         .category
                                         .toString(),
-                                    productid: productListController
-                                        .productListEntity
-                                        .value
-                                        .stocklist![index]
+                                    productid: productListController.productList![index]
                                         .id
                                         .toString(),
-                                    artno: productListController.productListEntity
-                                        .value.stocklist![index].artno
+                                    artno: productListController.productList![index].artno
                                         .toString(),
                                   ));
                                 },
@@ -204,10 +197,7 @@ class StockListGd extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            productListController
-                                                .productListEntity
-                                                .value
-                                                .stocklist![index]
+                                            productListController.productList![index]
                                                 .artno
                                                 .toString(),
                                             style: GoogleFonts.radioCanada(
@@ -219,26 +209,30 @@ class StockListGd extends StatelessWidget {
                                             height: 1.h,
                                           ),
                                           NormalText(
-                                              text: productListController
-                                                  .productListEntity
-                                                  .value
-                                                  .stocklist![index]
+                                              text: productListController.productList![index]
                                                   .categoryname
                                                   .toString()),
                                         ],
                                       ),
                                     ),
-                                    leading: _image(productListController
-                                        .productListEntity
-                                        .value
-                                        .stocklist![index]
-                                        .coverimageurl
-                                        .toString()),
+                                    leading:   SizedBox(
+                      height: 4.h,
+                      width: 4.h,
+                      child: productListController
+                          .productList.value[index]
+                          .coverimageurl
+                          .toString()=='null'?Container(
+                      child: Icon(Icons.error),
+                      ) :Image.network(ApiConstants.BASE_URL+productListController
+                          .productList.value[index]
+                          .coverimageurl
+                          .toString(),
+                      cacheHeight: 150,
+                      cacheWidth: 200,),
+                      ),
+
                                     trailing: NormalText(
-                                        text: productListController
-                                            .productListEntity
-                                            .value
-                                            .stocklist![index]
+                                        text: productListController.productList![index]
                                             .stockstatus
                                             .toString()),
                                   ),

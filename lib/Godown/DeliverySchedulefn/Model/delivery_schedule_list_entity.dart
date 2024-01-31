@@ -4,43 +4,68 @@ import 'dart:convert';
 
 @JsonSerializable()
 class DeliveryScheduleListEntity {
-
 	String? response;
 	List<DeliveryScheduleListDeliveryschedulelist>? deliveryschedulelist;
-  
-  DeliveryScheduleListEntity();
 
-  factory DeliveryScheduleListEntity.fromJson(Map<String, dynamic> json) => $DeliveryScheduleListEntityFromJson(json);
+	DeliveryScheduleListEntity();
 
-  Map<String, dynamic> toJson() => $DeliveryScheduleListEntityToJson(this);
+	factory DeliveryScheduleListEntity.fromJson(Map<String, dynamic> json) => $DeliveryScheduleListEntityFromJson(json);
 
-  @override
-  String toString() {
-    return jsonEncode(this);
-  }
+	Map<String, dynamic> toJson() => $DeliveryScheduleListEntityToJson(this);
+
+	DeliveryScheduleListEntity copyWith({String? response, List<DeliveryScheduleListDeliveryschedulelist>? deliveryschedulelist}) {
+		return DeliveryScheduleListEntity()
+			..response= response ?? this.response
+			..deliveryschedulelist= deliveryschedulelist ?? this.deliveryschedulelist;
+	}
+
+	@override
+	String toString() {
+		return jsonEncode(this);
+	}
 }
 
 @JsonSerializable()
 class DeliveryScheduleListDeliveryschedulelist {
-
 	int? id;
 	String? deliverydate;
 	String? orderno;
 	dynamic deliverybox;
 	String? status;
 	String? createddate;
+	String? notes;
+	String? priority;
 	String? distributorname;
-  String? areacode;
-  String? priority;
-  
-  DeliveryScheduleListDeliveryschedulelist();
+	String? repname;
+	String? representativename;
+	int? rn;
+	String? areacode;
 
-  factory DeliveryScheduleListDeliveryschedulelist.fromJson(Map<String, dynamic> json) => $DeliveryScheduleListDeliveryschedulelistFromJson(json);
+	DeliveryScheduleListDeliveryschedulelist();
 
-  Map<String, dynamic> toJson() => $DeliveryScheduleListDeliveryschedulelistToJson(this);
+	factory DeliveryScheduleListDeliveryschedulelist.fromJson(Map<String, dynamic> json) => $DeliveryScheduleListDeliveryschedulelistFromJson(json);
 
-  @override
-  String toString() {
-    return jsonEncode(this);
-  }
+	Map<String, dynamic> toJson() => $DeliveryScheduleListDeliveryschedulelistToJson(this);
+
+	DeliveryScheduleListDeliveryschedulelist copyWith({int? id, String? deliverydate, String? orderno, dynamic deliverybox, String? status, String? createddate, String? notes, String? priority, String? distributorname, String? repname, String? representativename, int? rn, String? areacode}) {
+		return DeliveryScheduleListDeliveryschedulelist()
+			..id= id ?? this.id
+			..deliverydate= deliverydate ?? this.deliverydate
+			..orderno= orderno ?? this.orderno
+			..deliverybox= deliverybox ?? this.deliverybox
+			..status= status ?? this.status
+			..createddate= createddate ?? this.createddate
+			..notes= notes ?? this.notes
+			..priority= priority ?? this.priority
+			..distributorname= distributorname ?? this.distributorname
+			..repname= repname ?? this.repname
+			..representativename= representativename ?? this.representativename
+			..rn= rn ?? this.rn
+			..areacode= areacode ?? this.areacode;
+	}
+
+	@override
+	String toString() {
+		return jsonEncode(this);
+	}
 }

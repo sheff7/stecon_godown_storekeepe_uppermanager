@@ -51,7 +51,7 @@ MaterialStockListSkStocklist $MaterialStockListSkStocklistFromJson(Map<String, d
 	if (laststockupdateddate != null) {
 		materialStockListSkStocklist.laststockupdateddate = laststockupdateddate;
 	}
-	final dynamic? laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
+	final dynamic laststocktakendate = jsonConvert.convert<dynamic>(json['laststocktakendate']);
 	if (laststocktakendate != null) {
 		materialStockListSkStocklist.laststocktakendate = laststocktakendate;
 	}

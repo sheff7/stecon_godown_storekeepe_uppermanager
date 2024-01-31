@@ -111,7 +111,7 @@ GetStaffStafflist $GetStaffStafflistFromJson(Map<String, dynamic> json) {
 	if (joiningdate != null) {
 		getStaffStafflist.joiningdate = joiningdate;
 	}
-	final dynamic? resigndate = jsonConvert.convert<dynamic>(json['resigndate']);
+	final dynamic resigndate = jsonConvert.convert<dynamic>(json['resigndate']);
 	if (resigndate != null) {
 		getStaffStafflist.resigndate = resigndate;
 	}

@@ -323,12 +323,12 @@ class DeliveryScheduleGD extends StatelessWidget {
                                                             .spaceBetween,
                                                     children: [
                                                       NormalText(
-                                                          text: "Area Code :" +
+                                                          text: "Representative :" +
                                                               _deliveryScheduleListGdController
                                                                   .deliveryScheduleListEntity
                                                                   .value
                                                                   .deliveryschedulelist![
-                                                                      index].distributorname.toString()),
+                                                                      index].representativename.toString()),
                                                       // NormalText(
                                                       //     text: 'Area Code')
                                                     ],
@@ -530,10 +530,10 @@ class DeliveryScheduleGD extends StatelessWidget {
                                                         .spaceBetween,
                                                     children: [
                                                       NormalText(
-                                                          text: "Area Code :" +
+                                                          text: "Representative :" +
                                                               _deliveryScheduleListGdController
                                                                   .filterList.value![
-                                                              index].distributorname.toString()),
+                                                              index].representativename.toString()),
                                                       // NormalText(
                                                       //     text: 'Area Code')
                                                     ],

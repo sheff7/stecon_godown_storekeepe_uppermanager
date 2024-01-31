@@ -138,7 +138,7 @@ ProductinPlanSingleViewProductionlist $ProductinPlanSingleViewProductionlistFrom
 	if (artnoname != null) {
 		productinPlanSingleViewProductionlist.artnoname = artnoname;
 	}
-	final dynamic? coverimageurl = jsonConvert.convert<dynamic>(json['coverimageurl']);
+	final dynamic coverimageurl = jsonConvert.convert<dynamic>(json['coverimageurl']);
 	if (coverimageurl != null) {
 		productinPlanSingleViewProductionlist.coverimageurl = coverimageurl;
 	}

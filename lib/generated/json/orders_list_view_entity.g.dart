@@ -67,7 +67,7 @@ ViewOrdersListViewOrderlist $ViewOrdersListViewOrderlistFromJson(Map<String, dyn
 	if (createddate != null) {
 		viewOrdersListViewOrderlist.createddate = createddate;
 	}
-	final dynamic? ordercancelledby = jsonConvert.convert<dynamic>(json['ordercancelledby']);
+	final dynamic ordercancelledby = jsonConvert.convert<dynamic>(json['ordercancelledby']);
 	if (ordercancelledby != null) {
 		viewOrdersListViewOrderlist.ordercancelledby = ordercancelledby;
 	}

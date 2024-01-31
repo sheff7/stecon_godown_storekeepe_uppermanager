@@ -35,7 +35,7 @@ LatestDeliveryScheduleLimitListGdDeliveryschedulelist $LatestDeliveryScheduleLim
 	if (orderno != null) {
 		latestDeliveryScheduleLimitListGdDeliveryschedulelist.orderno = orderno;
 	}
-	final dynamic? deliverybox = jsonConvert.convert<dynamic>(json['deliverybox']);
+	final dynamic deliverybox = jsonConvert.convert<dynamic>(json['deliverybox']);
 	if (deliverybox != null) {
 		latestDeliveryScheduleLimitListGdDeliveryschedulelist.deliverybox = deliverybox;
 	}

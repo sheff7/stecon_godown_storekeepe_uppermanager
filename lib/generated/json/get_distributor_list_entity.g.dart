@@ -91,7 +91,7 @@ GetDistributorListDistributorslist $GetDistributorListDistributorslistFromJson(M
 	if (joiningdate != null) {
 		getDistributorListDistributorslist.joiningdate = joiningdate;
 	}
-	final dynamic? resignationdate = jsonConvert.convert<dynamic>(json['resignationdate']);
+	final dynamic resignationdate = jsonConvert.convert<dynamic>(json['resignationdate']);
 	if (resignationdate != null) {
 		getDistributorListDistributorslist.resignationdate = resignationdate;
 	}
