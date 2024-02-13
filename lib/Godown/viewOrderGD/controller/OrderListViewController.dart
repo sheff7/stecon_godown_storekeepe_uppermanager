@@ -11,9 +11,11 @@ class OrderListViewController extends GetxController{
 
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxBool searchBool = false.obs;
   Rx<ViewOrdersListViewEntity> orderListViewEntity = ViewOrdersListViewEntity().obs;
   RxString chooseDistributor = ''.obs;
   RxList<String>? distributorList = ['Select Distributor'].obs;
+  RxList<ViewOrdersListViewOrderlist> filterList=List<ViewOrdersListViewOrderlist>.of([]).obs;
   Rx<GetDistributorsEntity> getDistributorEnitityy = GetDistributorsEntity().obs;
   RxString choosestatus="".obs;
   RxList statusList = ["Confirmed","Pending","Cancelled","Completed","Out for delivery","Delivered"].obs;
@@ -31,6 +33,30 @@ class OrderListViewController extends GetxController{
       print(e);
     }
   }
+
+  filterSearch(String value) {
+    RxList<ViewOrdersListViewOrderlist> reslutList =
+        List<ViewOrdersListViewOrderlist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = orderListViewEntity.value.orderlist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = orderListViewEntity.value.orderlist!
+          .where((element) => element.orderno
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase())||
+          element.distributorname
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase())
+      )
+          .toList();
+    }
+    filterList.value=reslutList.value;
+  }
+
   getOrderListView() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
