@@ -8,6 +8,9 @@ class UpperPurchseOrderController extends GetxController{
   final String upmId;
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxBool searchBool = false.obs;
+
+  RxList<GetUpperPurchsePlanPurchaseplanlist>filterList=List<GetUpperPurchsePlanPurchaseplanlist>.of([]).obs;
   Rx<GetUpperPurchsePlanEntity> orderNoEntity=GetUpperPurchsePlanEntity().obs;
   RxString choosestatus="".obs;
   RxList statusList = ["Confirmed","Pending","Cancelled"].obs;
@@ -40,6 +43,30 @@ class UpperPurchseOrderController extends GetxController{
 
     }
   }
+
+  filterSearch(String value) {
+    RxList<GetUpperPurchsePlanPurchaseplanlist> reslutList =
+        List<GetUpperPurchsePlanPurchaseplanlist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = orderNoEntity.value.purchaseplanlist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = orderNoEntity.value.purchaseplanlist!
+          .where((element) => element.companyplanno
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase())||
+          element.orderno
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase())
+      )
+          .toList();
+    }
+    filterList.value=reslutList.value;
+  }
+
 
   getStatustype(String value){
     choosestatus.value= value.toString();

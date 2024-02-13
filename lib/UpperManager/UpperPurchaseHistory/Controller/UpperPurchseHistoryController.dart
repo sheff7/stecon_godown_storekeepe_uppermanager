@@ -10,7 +10,9 @@ class UpperPurchseHistoryController extends GetxController {
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
   RxString startDate=''.obs;
+  RxBool searchBool = false.obs;
   RxString endDate = ''.obs;
+  RxList<GetUpperPurchsePlanPurchaseplanlist> filterList=List<GetUpperPurchsePlanPurchaseplanlist>.of([]).obs;
   Rx<GetUpperPurchsePlanEntity> orderNoEntity=GetUpperPurchsePlanEntity().obs;
 
   UpperPurchseHistoryController({required this.upmId});
@@ -33,6 +35,30 @@ class UpperPurchseHistoryController extends GetxController {
 
     }
   }
+
+  filterSearch(String value) {
+    RxList<GetUpperPurchsePlanPurchaseplanlist> reslutList =
+        List<GetUpperPurchsePlanPurchaseplanlist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = orderNoEntity.value.purchaseplanlist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = orderNoEntity.value.purchaseplanlist!
+          .where((element) => element.companyplanno
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase())||
+          element.orderno
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase())
+      )
+          .toList();
+    }
+    filterList.value=reslutList.value;
+  }
+
   getUpperOrderFilter()async{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true){

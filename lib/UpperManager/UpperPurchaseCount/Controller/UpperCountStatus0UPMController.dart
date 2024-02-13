@@ -9,6 +9,8 @@ class UpperCountStatus0UPMController extends GetxController{
   final String upmId;
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxBool searchBool = false.obs;
+  RxList<GetPurchsePlanPurchaseplanlist> filterList=List<GetPurchsePlanPurchaseplanlist>.of([]).obs;
   Rx<GetPurchsePlanEntity>orderNoEntity=GetPurchsePlanEntity().obs;
 
   UpperCountStatus0UPMController({required this.upmId});
@@ -21,6 +23,30 @@ class UpperCountStatus0UPMController extends GetxController{
       print(e);
     }
   }
+
+  filterSearch(String value) {
+    RxList<GetPurchsePlanPurchaseplanlist> reslutList =
+        List<GetPurchsePlanPurchaseplanlist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = orderNoEntity.value.purchaseplanlist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = orderNoEntity.value.purchaseplanlist!
+          .where((element) => element.companyplanno
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase())||
+          element.orderno
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase())
+      )
+          .toList();
+    }
+    filterList.value=reslutList.value;
+  }
+
 
   getUpperOrder()async{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;

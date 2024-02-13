@@ -9,6 +9,8 @@ class ViewUpperReturnController extends GetxController{
 
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxBool searchBool = false.obs;
+  RxList<GetUpperReturnUpperreturnlist> filterList=List<GetUpperReturnUpperreturnlist>.of([]).obs;
   Rx<GetUpperReturnEntity> orderNoEntity=GetUpperReturnEntity().obs;
   RxString choosestatus="".obs;
   RxList statusList = ["Confirmed","Pending","Cancelled"].obs;
@@ -22,6 +24,30 @@ class ViewUpperReturnController extends GetxController{
       print(e);
     }
   }
+
+  filterSearch(String value) {
+    RxList<GetUpperReturnUpperreturnlist> reslutList =
+        List<GetUpperReturnUpperreturnlist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = orderNoEntity.value.upperreturnlist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = orderNoEntity.value.upperreturnlist!
+          .where((element) => element.name
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase())||
+          element.orderno
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase())
+      )
+          .toList();
+    }
+    filterList.value=reslutList.value;
+  }
+
   getUpperOrder()async{
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true){

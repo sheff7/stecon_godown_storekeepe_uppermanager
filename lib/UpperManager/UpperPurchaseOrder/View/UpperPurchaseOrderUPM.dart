@@ -17,6 +17,8 @@ class UpperPurchaseOrderUPM extends StatelessWidget {
 
   UpperPurchaseOrderUPM({Key? key, required this.upmId}) : super(key: key);
   late final _controller = Get.put(UpperPurchseOrderController(upmId: upmId));
+  final searchController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +157,61 @@ class UpperPurchaseOrderUPM extends StatelessWidget {
                 },
               ),
             ),
-            body: Obx(() => _body())),
+            body: Column(
+              children: [
+                Container(
+                  height: 6.h,
+                  margin: EdgeInsets.fromLTRB(2.h, 0.5.h, 2.h, 0.5.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xFFF8F8F8),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        children: [
+                          Expanded(
+                              flex: 3,
+                              child: TextFormField(
+                                  controller: searchController,
+                                  onChanged: (value) {
+                                    _controller.filterSearch(value);
+                                  },
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 2.2.h, horizontal: 1.8.h),
+                                      labelText: 'Search',
+                                      labelStyle: GoogleFonts.poppins(),
+                                      hintText: 'Enter Order Number',
+                                      hintStyle: GoogleFonts.poppins(),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(0),
+                                          borderSide: const BorderSide(
+                                              width: 0, style: BorderStyle.none)),
+                                      filled: true,
+                                      fillColor: const Color(0xFFF8F8F8)))),
+                          Expanded(
+                              flex: 1,
+                              child: InkWell(
+                                  onTap: () {
+                                    searchController.clear();
+                                    _controller.searchBool.value =
+                                    false;
+                                  },
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: ColorConstants.appThemeColorRed,
+                                  )))
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(child: Obx(() => _body())),
+              ],
+            )),
       ),
     );
   }
@@ -176,31 +232,206 @@ class UpperPurchaseOrderUPM extends StatelessWidget {
           ),
         );
       } else if (_controller.loadingBool.value == false) {
-        if (_controller.orderNoEntity.value == null) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Nodata(response: 'No Data'),
-                RetryButton(onTap: () {
-                  print('ass');
-                  _controller.checkNetworkStatus();
-                  _controller.getUpperOrder();
-                })
-              ],
-            ),
-          );
-        } else if (_controller.orderNoEntity.value != null) {
-          if (_controller.orderNoEntity.value.response == 'Success') {
-            if (_controller.orderNoEntity.value.purchaseplanlist == 0) {
+        if(_controller.searchBool.value==false){
+          if (_controller.orderNoEntity.value == null) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Nodata(response: 'No Data'),
+                  RetryButton(onTap: () {
+                    print('ass');
+                    _controller.checkNetworkStatus();
+                    _controller.getUpperOrder();
+                  })
+                ],
+              ),
+            );
+          } else if (_controller.orderNoEntity.value != null) {
+            if (_controller.orderNoEntity.value.response == 'Success') {
+              if (_controller.orderNoEntity.value.purchaseplanlist == 0) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Nodata(response: 'No data found'),
+                      RetryButton(onTap: () {
+                        _controller.checkNetworkStatus();
+                        _controller.getUpperOrder();
+                      })
+                    ],
+                  ),
+                );
+              }
+              else if (_controller.orderNoEntity.value.purchaseplanlist != 0) {
+                return ListView(
+                  children: [
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          color: Colors.white,
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: _controller
+                                .orderNoEntity.value.purchaseplanlist!.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Column(
+                                children: [
+                                  Material(
+                                    borderRadius: BorderRadius.circular(0),
+                                    elevation: 0,
+                                    // shadowColor: Colors.grey,
+                                    child: Container(
+                                      child: ListTile(
+                                        title: InkWell(
+                                          onTap: () {
+                                            Get.to(UpperPuchaseOrder1UPM(
+                                              upmId: upmId,
+                                              id: _controller.orderNoEntity.value
+                                                  .purchaseplanlist![index].id
+                                                  .toString(),
+                                              orderno: _controller
+                                                  .orderNoEntity
+                                                  .value
+                                                  .purchaseplanlist![index]
+                                                  .orderno
+                                                  .toString(),
+                                            ));
+                                          },
+                                          child: Container(
+                                            color: Colors.white,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 2.h, vertical: 2.h),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                                  children: [
+                                                    HeadingText(
+                                                        text: _controller
+                                                            .orderNoEntity
+                                                            .value
+                                                            .purchaseplanlist![
+                                                        index]
+                                                            .companyname
+                                                            .toString()),
+                                                    NormalText(
+                                                        text: _controller
+                                                            .orderNoEntity
+                                                            .value
+                                                            .purchaseplanlist![
+                                                        index]
+                                                            .orderdate
+                                                            .toString())
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 2.h,
+                                                ),
+                                                Row(
+                                                  // mainAxisAlignment:
+                                                  // MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    NormalText(
+                                                        text: "Order no :  "),
+                                                    NormalText(
+                                                        text: _controller
+                                                            .orderNoEntity
+                                                            .value
+                                                            .purchaseplanlist![
+                                                        index]
+                                                            .orderno
+                                                            .toString())
+                                                    // Text(
+                                                    //   "Oder no: ",
+                                                    //   style: TextStyle(
+                                                    //       color: Colors.grey[800]),
+                                                    // ),
+                                                    // Text(
+                                                    //   "17-11-22",
+                                                    //   style: TextStyle(
+                                                    //       color: Colors.grey[800]),
+                                                    // ),
+                                                  ],
+                                                ),
+                                                SizedBox(height: 1.h),
+                                                Row(
+                                                  // mainAxisAlignment:
+                                                  // MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    NormalText(
+                                                        text: "Plan no :  "),
+                                                    NormalText(
+                                                        text: _controller
+                                                            .orderNoEntity
+                                                            .value
+                                                            .purchaseplanlist![
+                                                        index]
+                                                            .companyplanno
+                                                            .toString())
+                                                    // Text(
+                                                    //   "Oder no: ",
+                                                    //   style: TextStyle(
+                                                    //       color: Colors.grey[800]),
+                                                    // ),
+                                                    // Text(
+                                                    //   "17-11-22",
+                                                    //   style: TextStyle(
+                                                    //       color: Colors.grey[800]),
+                                                    // ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   height: 2.h,
+                                  // )
+                                ],
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return SizedBox();
+                            },
+                          ),
+                        ),
+                        // SizedBox(height:2.h ,),
+                      ],
+                    )
+                  ],
+                );
+              }
+
+              else if (_controller.orderNoEntity.value.response =='null') {
+                return Center(
+                  child: Column(
+                    children: [HeadingText(text: 'Please Wait...')],
+                  ),
+                );
+              }
+            } else {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Nodata(response: 'No data found'),
-                    RetryButton(onTap: () {
+                    Nodata(response: 'No Internet Connection'),
+                    RetryButton(onTap: (){
                       _controller.checkNetworkStatus();
                       _controller.getUpperOrder();
                     })
@@ -208,173 +439,145 @@ class UpperPurchaseOrderUPM extends StatelessWidget {
                 ),
               );
             }
-            else if (_controller.orderNoEntity.value.purchaseplanlist != 0) {
-              return ListView(
-                children: [
-                  SizedBox(
-                    height: 2.h,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+          }
+        }
+        else if(_controller.searchBool.value==true){
+          if(_controller.filterList.value.length!=0){
+            return                         Container(
+              color: Colors.white,
+              child: ListView.separated(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount:_controller
+                    .filterList.value!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
                     children: [
-                      Container(
-                        color: Colors.white,
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: _controller
-                              .orderNoEntity.value.purchaseplanlist!.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Material(
-                                  borderRadius: BorderRadius.circular(0),
-                                  elevation: 0,
-                                  // shadowColor: Colors.grey,
-                                  child: Container(
-                                    child: ListTile(
-                                      title: InkWell(
-                                        onTap: () {
-                                          Get.to(UpperPuchaseOrder1UPM(
-                                            upmId: upmId,
-                                            id: _controller.orderNoEntity.value
-                                                .purchaseplanlist![index].id
-                                                .toString(),
-                                            orderno: _controller
-                                                .orderNoEntity
-                                                .value
-                                                .purchaseplanlist![index]
-                                                .orderno
-                                                .toString(),
-                                          ));
-                                        },
-                                        child: Container(
-                                          color: Colors.white,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 2.h, vertical: 2.h),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  HeadingText(
-                                                      text: _controller
-                                                          .orderNoEntity
-                                                          .value
-                                                          .purchaseplanlist![
-                                                      index]
-                                                          .companyname
-                                                          .toString()),
-                                                  NormalText(
-                                                      text: _controller
-                                                          .orderNoEntity
-                                                          .value
-                                                          .purchaseplanlist![
-                                                      index]
-                                                          .orderdate
-                                                          .toString())
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 2.h,
-                                              ),
-                                              Row(
-                                                // mainAxisAlignment:
-                                                // MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  NormalText(
-                                                      text: "Order no :  "),
-                                                  NormalText(
-                                                      text: _controller
-                                                          .orderNoEntity
-                                                          .value
-                                                          .purchaseplanlist![
-                                                      index]
-                                                          .orderno
-                                                          .toString())
-                                                  // Text(
-                                                  //   "Oder no: ",
-                                                  //   style: TextStyle(
-                                                  //       color: Colors.grey[800]),
-                                                  // ),
-                                                  // Text(
-                                                  //   "17-11-22",
-                                                  //   style: TextStyle(
-                                                  //       color: Colors.grey[800]),
-                                                  // ),
-                                                ],
-                                              ),
-                                              SizedBox(height: 1.h),
-                                              Row(
-                                                // mainAxisAlignment:
-                                                // MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  NormalText(
-                                                      text: "Plan no :  "),
-                                                  NormalText(
-                                                      text: _controller
-                                                          .orderNoEntity
-                                                          .value
-                                                          .purchaseplanlist![
-                                                      index]
-                                                          .companyplanno
-                                                          .toString())
-                                                  // Text(
-                                                  //   "Oder no: ",
-                                                  //   style: TextStyle(
-                                                  //       color: Colors.grey[800]),
-                                                  // ),
-                                                  // Text(
-                                                  //   "17-11-22",
-                                                  //   style: TextStyle(
-                                                  //       color: Colors.grey[800]),
-                                                  // ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
+                      Material(
+                        borderRadius: BorderRadius.circular(0),
+                        elevation: 0,
+                        // shadowColor: Colors.grey,
+                        child: Container(
+                          child: ListTile(
+                            title: InkWell(
+                              onTap: () {
+                                Get.to(UpperPuchaseOrder1UPM(
+                                  upmId: upmId,
+                                  id: _controller
+                                      .filterList.value![index].id
+                                      .toString(),
+                                  orderno: _controller
+                                      .filterList.value![index]
+                                      .orderno
+                                      .toString(),
+                                ));
+                              },
+                              child: Container(
+                                color: Colors.white,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 2.h, vertical: 2.h),
+                                child: Column(
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment
+                                          .spaceBetween,
+                                      children: [
+                                        HeadingText(
+                                            text:_controller
+                                                .filterList.value![
+                                            index]
+                                                .companyname
+                                                .toString()),
+                                        NormalText(
+                                            text: _controller
+                                                .filterList.value![
+                                            index]
+                                                .orderdate
+                                                .toString())
+                                      ],
                                     ),
-                                  ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                    Row(
+                                      // mainAxisAlignment:
+                                      // MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        NormalText(
+                                            text: "Order no :  "),
+                                        NormalText(
+                                            text:_controller
+                                                .filterList.value![
+                                            index]
+                                                .orderno
+                                                .toString())
+                                        // Text(
+                                        //   "Oder no: ",
+                                        //   style: TextStyle(
+                                        //       color: Colors.grey[800]),
+                                        // ),
+                                        // Text(
+                                        //   "17-11-22",
+                                        //   style: TextStyle(
+                                        //       color: Colors.grey[800]),
+                                        // ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 1.h),
+                                    Row(
+                                      // mainAxisAlignment:
+                                      // MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        NormalText(
+                                            text: "Plan no :  "),
+                                        NormalText(
+                                            text: _controller
+                                                .filterList.value![
+                                            index]
+                                                .companyplanno
+                                                .toString())
+                                        // Text(
+                                        //   "Oder no: ",
+                                        //   style: TextStyle(
+                                        //       color: Colors.grey[800]),
+                                        // ),
+                                        // Text(
+                                        //   "17-11-22",
+                                        //   style: TextStyle(
+                                        //       color: Colors.grey[800]),
+                                        // ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                                // SizedBox(
-                                //   height: 2.h,
-                                // )
-                              ],
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox();
-                          },
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      // SizedBox(height:2.h ,),
+                      // SizedBox(
+                      //   height: 2.h,
+                      // )
                     ],
-                  )
-                ],
-              );
-            }
-
-            else if (_controller.orderNoEntity.value.response =='null') {
-              return Center(
-                child: Column(
-                  children: [HeadingText(text: 'Please Wait...')],
-                ),
-              );
-            }
-          } else {
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox();
+                },
+              ),
+            );
+          }
+          else if(_controller.filterList.length==0){
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Nodata(response: 'No Internet Connection'),
-                  RetryButton(onTap: (){
+                  Nodata(response: 'No data found'),
+                  RetryButton(onTap: () {
                     _controller.checkNetworkStatus();
                     _controller.getUpperOrder();
                   })
@@ -382,6 +585,7 @@ class UpperPurchaseOrderUPM extends StatelessWidget {
               ),
             );
           }
+
         }
       }
     } else if (_controller.networkStatus.value == false) {
