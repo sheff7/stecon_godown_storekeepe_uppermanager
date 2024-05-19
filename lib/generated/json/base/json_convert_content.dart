@@ -9,6 +9,8 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/Model/update_order_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/latest_delivery_schedule_limit_list_gd_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/model/loginby_status_g_d_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/OrderTaken/Model/order_taken_entity.dart';
+import 'package:stecon_godown_storekeepe_uppermanager/Godown/OrderTaken/Model/order_taken_single_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/productin_plan_single_view_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProductionPlanFn/Model/production_plan_list_entity.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/model/profile_g_d_entity.dart';
@@ -82,6 +84,10 @@ class JsonConvert {
 		(LatestDeliveryScheduleLimitListGdDeliveryschedulelist).toString(): LatestDeliveryScheduleLimitListGdDeliveryschedulelist.fromJson,
 		(LoginbyStatusGDEntity).toString(): LoginbyStatusGDEntity.fromJson,
 		(LoginbyStatusGDLoginlist).toString(): LoginbyStatusGDLoginlist.fromJson,
+		(OrderTakenEntity).toString(): OrderTakenEntity.fromJson,
+		(OrderTakenDeliveryschedule).toString(): OrderTakenDeliveryschedule.fromJson,
+		(OrderTakenSingleEntity).toString(): OrderTakenSingleEntity.fromJson,
+		(OrderTakenSingleDeliveryschedule).toString(): OrderTakenSingleDeliveryschedule.fromJson,
 		(ProductinPlanSingleViewEntity).toString(): ProductinPlanSingleViewEntity.fromJson,
 		(ProductinPlanSingleViewProductionlist).toString(): ProductinPlanSingleViewProductionlist.fromJson,
 		(ProductinPlanSingleViewProductionplanlist).toString(): ProductinPlanSingleViewProductionplanlist.fromJson,
@@ -316,6 +322,18 @@ List<T>? convertListNotNull<T>(dynamic value, {EnumConvertFunction? enumConvert}
 		}
 		if(<LoginbyStatusGDLoginlist>[] is M){
 			return data.map<LoginbyStatusGDLoginlist>((Map<String, dynamic> e) => LoginbyStatusGDLoginlist.fromJson(e)).toList() as M;
+		}
+		if(<OrderTakenEntity>[] is M){
+			return data.map<OrderTakenEntity>((Map<String, dynamic> e) => OrderTakenEntity.fromJson(e)).toList() as M;
+		}
+		if(<OrderTakenDeliveryschedule>[] is M){
+			return data.map<OrderTakenDeliveryschedule>((Map<String, dynamic> e) => OrderTakenDeliveryschedule.fromJson(e)).toList() as M;
+		}
+		if(<OrderTakenSingleEntity>[] is M){
+			return data.map<OrderTakenSingleEntity>((Map<String, dynamic> e) => OrderTakenSingleEntity.fromJson(e)).toList() as M;
+		}
+		if(<OrderTakenSingleDeliveryschedule>[] is M){
+			return data.map<OrderTakenSingleDeliveryschedule>((Map<String, dynamic> e) => OrderTakenSingleDeliveryschedule.fromJson(e)).toList() as M;
 		}
 		if(<ProductinPlanSingleViewEntity>[] is M){
 			return data.map<ProductinPlanSingleViewEntity>((Map<String, dynamic> e) => ProductinPlanSingleViewEntity.fromJson(e)).toList() as M;

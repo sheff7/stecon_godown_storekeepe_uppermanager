@@ -9,6 +9,8 @@ import '../Model/production_plan_list_entity.dart';
 class ProductionPlanListController extends GetxController {
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxBool searchBool = false.obs;
+  RxList<ProductionPlanListProductionlist> planList=List<ProductionPlanListProductionlist>.of([]).obs;
   Rx<ProductionPlanListEntity> productionPlanEntity =
       ProductionPlanListEntity().obs;
 
@@ -20,6 +22,30 @@ class ProductionPlanListController extends GetxController {
       print(e);
     }
   }
+
+  filterSearch(String value) {
+    RxList<ProductionPlanListProductionlist> reslutList =
+        List<ProductionPlanListProductionlist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = productionPlanEntity.value.productionlist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = productionPlanEntity.value.productionlist!
+          .where((element) => element.id
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase())||
+          element.artnoname
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase())
+      )
+          .toList();
+    }
+    planList.value=reslutList.value;
+  }
+
 
   getProductionPlanList() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;

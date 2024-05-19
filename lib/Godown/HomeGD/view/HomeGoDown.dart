@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/HomeGD/controller/HomeControllerGD.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/Godown/ProfileGD/view/ProfileGDView.dart';
-
 import '../../../AppConstants/ClourConstants.dart';
 import '../../../CustomFont/Heading.dart';
 import '../../../CustomFont/SubHeading.dart';
@@ -12,6 +11,7 @@ import '../../../CustomWidget/Nodata.dart';
 import '../../../CustomWidget/RetryButton.dart';
 import '../../../LoginPage/View/LoginPage.dart';
 import '../../DeliverySchedulefn/View/DeliveryScheduleListGd.dart';
+import '../../OrderTaken/View/OrderTakneList.dart';
 import '../../ProductionPlanFn/View/ProductionPlans0.dart';
 import '../../StockGd/View/StockListGd.dart';
 import '../../ViewBill/View/DistributorList.dart';
@@ -303,7 +303,7 @@ class HomeGodown extends StatelessWidget {
                               flex: 1,
                               child: InkWell(
                                 onTap: (){
-                                  Get.to(StockListGd());
+                                  Get.to(OrderTakenList());
                                 },
                                 child: Container(
                                   height: 16.5.h,
@@ -338,7 +338,7 @@ class HomeGodown extends StatelessWidget {
                                               padding: EdgeInsets.fromLTRB(
                                                   2.5.h, 1.h, 0.h, 0.h),
                                               child: Text(
-                                                "View\nStock",
+                                                "Order\nTaken",
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.w500),
@@ -514,6 +514,7 @@ class HomeGodown extends StatelessWidget {
           menuItem(2, 'About us', Icons.info),
           menuItem(3, 'Stock', Icons.logout),
           menuItem(5, 'View Bill', Icons.logout),
+          menuItem(6, "Order Taken", Icons.add),
           menuItem(4, 'Logout', Icons.logout),
         ],
       ),
@@ -550,6 +551,9 @@ class HomeGodown extends StatelessWidget {
           }
           else if(id==5){
             Get.to(DistributorList());
+          }
+          else if(id==6){
+            Get.to(OrderTakenList());
           }
         },
         child: Padding(

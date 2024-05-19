@@ -7,6 +7,7 @@ import 'package:stecon_godown_storekeepe_uppermanager/Godown/DeliverySchedulefn/
 import 'package:stecon_godown_storekeepe_uppermanager/Utils/InternetConnectivity.dart';
 
 import '../../../StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
+import '../../OrderTaken/Repository/OrderTakenSingleService.dart';
 import '../Model/update_order_entity.dart';
 
 class DeliveryScheduleSingleViewController extends GetxController {
@@ -103,68 +104,78 @@ class DeliveryScheduleSingleViewController extends GetxController {
   updateOrder() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
-      print(itemList.length.toString());
-      if(itemList.contains(true)){
-        if (deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length !=
-            0) {
-          for (int i = 0;
-          i <
-              deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule!.length;
-          i++) {
-            Map<String, dynamic> json = {
-              "orderid": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].orderid
-                  .toString(),
-              "orderno": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].orderno
-                  .toString(),
-              "distributorid": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].distributorid
-                  .toString(),
-              "productid": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].productid
-                  .toString(),
-              "deliveredboxcount": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].deliverybox
-                  .toString(),
-              "deliverybox": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].box
-                  .toString(),
-              "id": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].deliveryproductsid
-                  .toString(),
-              "did": deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![i].did
-                  .toString(),
-              "obox": drfaultList[i].toString(),
-              // "did":drfaultIdList[i].toString(),
-            };
-            producctList!.add(json);
-          }
-          CustomSnackbar().LoadingBottomSheet();
-          updateOrderEntity.value = (await DeliveryScheduleSingleViewtGd()
-              .UpdateOrderGod(
-              deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![0].did
-                  .toString(),
-              deliveryScheduleSingleViewGdEntity
-                  .value.deliveryschedule![0].distributorid
-                  .toString(),
-              producctList!))!;
-          Get.back();
-          if (updateOrderEntity.value != null) {
-            if (updateOrderEntity.value.response.toString() ==
-                'Updated successfully') {
-              addBilling();
-            } else {
-              CustomSnackbar().InfoSnackBar(
-                  'Update Order', updateOrderEntity.value.response.toString());
-            }
-          }
-        }
-
-      }
+      addBilling();
+      // print(itemList.length.toString());
+      // if(itemList.contains(true)){
+      //   if (deliveryScheduleSingleViewGdEntity.value.deliveryschedule!.length !=
+      //       0) {
+      //     for (int i = 0;
+      //     i <
+      //         deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule!.length;
+      //     i++) {
+      //       Map<String, dynamic> json = {
+      //         "orderid": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].orderid
+      //             .toString(),
+      //         "orderno": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].orderno
+      //             .toString(),
+      //         "distributorid": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].distributorid
+      //             .toString(),
+      //         "productid": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].productid
+      //             .toString(),
+      //         "deliveredboxcount": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].deliverybox
+      //             .toString(),
+      //         "deliverybox": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].box
+      //             .toString(),
+      //         "boxpair": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].pair
+      //             .toString(),
+      //         "catid": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].category
+      //             .toString(),
+      //         "sizeid": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].size
+      //             .toString(),
+      //         "deliveryproductid": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].deliveryproductsid
+      //             .toString(),
+      //         "did": deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![i].did
+      //             .toString(),
+      //         "obox": drfaultList[i].toString(),
+      //         // "did":drfaultIdList[i].toString(),
+      //       };
+      //       producctList!.add(json);
+      //     }
+      //     CustomSnackbar().LoadingBottomSheet();
+      //     updateOrderEntity.value = (await DeliveryScheduleSingleViewtGd()
+      //         .UpdateOrderGod(
+      //         deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![0].did
+      //             .toString(),
+      //         deliveryScheduleSingleViewGdEntity
+      //             .value.deliveryschedule![0].distributorid
+      //             .toString(),
+      //         producctList!))!;
+      //     Get.back();
+      //     if (updateOrderEntity.value != null) {
+      //       if (updateOrderEntity.value.response.toString() ==
+      //           'Updated successfully') {
+      //         addBilling();
+      //       } else {
+      //         CustomSnackbar().InfoSnackBar(
+      //             'Update Order', updateOrderEntity.value.response.toString());
+      //       }
+      //     }
+      //   }
+      //
+      // }
     }
   }
 
@@ -181,7 +192,8 @@ class DeliveryScheduleSingleViewController extends GetxController {
               "sizeid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].size,
               "boxpair":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].pair,
               "orderno":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderno,
-              "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderid
+              "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderid,
+              "deliveryproductid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid,
             };
             billingproducts?.add(json);
           }
@@ -192,7 +204,7 @@ class DeliveryScheduleSingleViewController extends GetxController {
       Get.back();
       if(responseEntity.value.response=="Added successfully"){
         Get.back();
-        CustomSnackbar().InfoSnackBar('Delivery Schedule', 'Moved to bill');
+        CustomSnackbar().InfoSnackBar('Delivery Schedule', 'Added successfully');
       }
       else {
         CustomSnackbar().InfoSnackBar('Delivery Schedule', responseEntity.value.response.toString());

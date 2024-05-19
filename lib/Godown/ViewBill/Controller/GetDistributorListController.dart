@@ -8,6 +8,8 @@ import '../Repository/ViewBillService.dart';
 class GetDistributorListController extends GetxController{
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxBool searchBool = false.obs;
+  RxList<GetDistributorListDistributorslist> filterList=List<GetDistributorListDistributorslist>.of([]).obs;
   Rx<GetDistributorListEntity> disListForRepEntity = GetDistributorListEntity().obs;
 
   checkNetworkStatus() async {
@@ -19,6 +21,30 @@ class GetDistributorListController extends GetxController{
       print(e);
     }
   }
+
+  filterSearch(String value) {
+    RxList<GetDistributorListDistributorslist> reslutList =
+        List<GetDistributorListDistributorslist>.of([]).obs;
+    if (value.isEmpty) {
+      searchBool.value=false;
+      reslutList.value = disListForRepEntity.value.distributorslist!;
+    } else {
+      searchBool.value=true;
+      reslutList.value = disListForRepEntity.value.distributorslist!
+          .where((element) => element.name
+          .toString()
+          .toLowerCase()
+          .contains(value.toLowerCase())||
+          element.name
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase())
+      )
+          .toList();
+    }
+    filterList.value=reslutList.value;
+  }
+
   getDisList() async {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {

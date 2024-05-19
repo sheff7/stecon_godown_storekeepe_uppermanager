@@ -33,6 +33,8 @@ class ViewBillController extends GetxController{
 
 
 
+
+
   Rx<GetBillingListEntity>getBillListEntity=GetBillingListEntity().obs;
   Rx<ViewBillSingleEntity>billSingleEntity=ViewBillSingleEntity().obs;
 

@@ -1,31 +1,30 @@
-
-
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
+import 'package:intl/intl.dart';
 
 import '../../../StoreKeeper/IssuedMaterialSkFn/Model/response_entity.dart';
 import '../../../Utils/DioConfig.dart';
-import 'package:intl/intl.dart';
 import '../../../generated/json/base/json_convert_content.dart';
-import '../Model/delivery_schedule_single_view_gd_entity.dart';
-import '../Model/update_order_entity.dart';
+import '../../DeliverySchedulefn/Model/delivery_schedule_single_view_gd_entity.dart';
+import '../../DeliverySchedulefn/Model/update_order_entity.dart';
+import '../Model/order_taken_single_entity.dart';
 
-class DeliveryScheduleSingleViewtGd {
+class OrderTakenSingleService{
   Dio _dio = Dio(DioConfig.options);
 
-  Future<DeliveryScheduleSingleViewGdEntity?> getbyiddeliveryschedule(String id) async {
+  Future<OrderTakenSingleEntity?> getbyiddeliveryschedule(String id) async {
     try {
-      print(id);
-      final response = await _dio.post('api/get_deliveryschedukebyid', data: {
+      log("orderid");
+      final response = await _dio.post('api/get_packing_deliveryschedulebyid', data: {
         "id":id,
       });
       print(response.statusCode);
       print(response.data.toString());
       if (response.statusCode == 200) {
         var data = response.data;
-        return JsonConvert.fromJsonAsT<DeliveryScheduleSingleViewGdEntity>(data);
+        return JsonConvert.fromJsonAsT<OrderTakenSingleEntity>(data);
       }
     } catch (e) {
       print(e);
@@ -62,14 +61,14 @@ class DeliveryScheduleSingleViewtGd {
   Future<ResponseEntity?>addBilling(String deliveryid,String disid,List<Map<String,dynamic>>billingproducts)async{
     try{
       var now = DateTime.now();
-      final response=await _dio.post('api/addpackingdeliveryschedule',data: {
-        "packeddate": DateFormat('dd-MM-yyyy').format(now).toString(),
+      final response=await _dio.post('apiaddbilling',data: {
+        "moveddate": DateFormat('dd-MM-yyyy').format(now).toString(),
         "deliveryid":deliveryid,
-        // "billingdate":"",
-        // "totalamount":"",
+        "billingdate":"",
+        "totalamount":"",
         "disid":disid,
         "status":"Pending",
-        "packingproducts":jsonEncode(billingproducts)
+        "billingproducts":jsonEncode(billingproducts)
       });
       if(response.statusCode==200){
         var data=response.data;
