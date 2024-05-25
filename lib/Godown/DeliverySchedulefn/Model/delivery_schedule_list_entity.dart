@@ -40,6 +40,7 @@ class DeliveryScheduleListDeliveryschedulelist {
 	String? representativename;
 	int? rn;
 	String? areacode;
+	String? total_box_count;
 
 	DeliveryScheduleListDeliveryschedulelist();
 
@@ -47,7 +48,7 @@ class DeliveryScheduleListDeliveryschedulelist {
 
 	Map<String, dynamic> toJson() => $DeliveryScheduleListDeliveryschedulelistToJson(this);
 
-	DeliveryScheduleListDeliveryschedulelist copyWith({int? id, String? deliverydate, String? orderno, dynamic deliverybox, String? status, String? createddate, String? notes, String? priority, String? distributorname, String? repname, String? representativename, int? rn, String? areacode}) {
+	DeliveryScheduleListDeliveryschedulelist copyWith({int? id, String? deliverydate, String? orderno, dynamic deliverybox, String? status, String? createddate, String? notes, String? priority, String? distributorname, String? repname, String? representativename, int? rn, String? areacode,String? total_box_count}) {
 		return DeliveryScheduleListDeliveryschedulelist()
 			..id= id ?? this.id
 			..deliverydate= deliverydate ?? this.deliverydate
@@ -61,6 +62,7 @@ class DeliveryScheduleListDeliveryschedulelist {
 			..repname= repname ?? this.repname
 			..representativename= representativename ?? this.representativename
 			..rn= rn ?? this.rn
+			..total_box_count=total_box_count ?? this.total_box_count
 			..areacode= areacode ?? this.areacode;
 	}
 

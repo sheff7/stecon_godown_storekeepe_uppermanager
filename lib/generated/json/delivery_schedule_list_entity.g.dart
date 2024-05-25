@@ -75,6 +75,10 @@ DeliveryScheduleListDeliveryschedulelist $DeliveryScheduleListDeliveryscheduleli
 	if (areacode != null) {
 		deliveryScheduleListDeliveryschedulelist.areacode = areacode;
 	}
+	final String? total_box_count = jsonConvert.convert<String>(json['total_box_count']);
+	if (total_box_count != null) {
+		deliveryScheduleListDeliveryschedulelist.total_box_count = total_box_count;
+	}
 	return deliveryScheduleListDeliveryschedulelist;
 }
 
@@ -93,5 +97,7 @@ Map<String, dynamic> $DeliveryScheduleListDeliveryschedulelistToJson(DeliverySch
 	data['representativename'] = entity.representativename;
 	data['rn'] = entity.rn;
 	data['areacode'] = entity.areacode;
+	data['total_box_count'] = entity.total_box_count;
+
 	return data;
 }

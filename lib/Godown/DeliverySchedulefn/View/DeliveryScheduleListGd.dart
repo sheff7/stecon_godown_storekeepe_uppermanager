@@ -301,13 +301,13 @@ class DeliveryScheduleGD extends StatelessWidget {
                                                             .spaceBetween,
                                                     children: [
                                                       NormalText(
-                                                          text: "Delivery No. :" +
+                                                          text: "Total case count :" +
                                                               _deliveryScheduleListGdController
                                                                   .deliveryScheduleListEntity
                                                                   .value
                                                                   .deliveryschedulelist![
                                                                       index]
-                                                                  .id
+                                                                  .total_box_count
                                                                   .toString()),
                                                       // NormalText(
                                                       //     text: 'Area Code')
@@ -510,7 +510,7 @@ class DeliveryScheduleGD extends StatelessWidget {
                                                         .spaceBetween,
                                                     children: [
                                                       NormalText(
-                                                          text: "Delivery No. :" +
+                                                          text: "Total case count :" +
                                                               _deliveryScheduleListGdController
                                                                   .filterList.value![
                                                               index]
