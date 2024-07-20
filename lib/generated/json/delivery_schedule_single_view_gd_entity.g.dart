@@ -183,6 +183,14 @@ DeliveryScheduleSingleViewGdDeliveryschedule $DeliveryScheduleSingleViewGdDelive
 	if (colorname != null) {
 		deliveryScheduleSingleViewGdDeliveryschedule.colorname = colorname;
 	}
+	final String? remainingpacked = jsonConvert.convert<String>(json['remainingpacked']);
+	if (remainingpacked != null) {
+		deliveryScheduleSingleViewGdDeliveryschedule.remainingpacked = remainingpacked;
+	}
+	final String? packedboxes = jsonConvert.convert<String>(json['packedboxes']);
+	if (packedboxes != null) {
+		deliveryScheduleSingleViewGdDeliveryschedule.packedboxes = packedboxes;
+	}
 	return deliveryScheduleSingleViewGdDeliveryschedule;
 }
 
@@ -228,5 +236,7 @@ Map<String, dynamic> $DeliveryScheduleSingleViewGdDeliveryscheduleToJson(Deliver
 	data['productname'] = entity.productname;
 	data['categoryname'] = entity.categoryname;
 	data['colorname'] = entity.colorname;
+	data['remainingpacked'] = entity.remainingpacked;
+	data['packedboxes'] = entity.packedboxes;
 	return data;
 }

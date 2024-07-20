@@ -793,10 +793,22 @@ class OrderTakenSingle extends StatelessWidget {
                                                                   ),
                                                                   NormalText(
                                                                       text:
-                                                                      'Delivery box : '),
-                                                                  SizedBox(
-                                                                    height: 2.h,
-                                                                  ),
+                                                                      'Scheduled box : '),
+                                                                  // SizedBox(
+                                                                  //   height: 2.h,
+                                                                  // ),
+                                                                  // NormalText(
+                                                                  //     text:
+                                                                  //     'Packed box : '),
+                                                                  // SizedBox(
+                                                                  //   height: 2.h,
+                                                                  // ),
+                                                                  // NormalText(
+                                                                  //     text:
+                                                                  //     'Balance box : '),
+                                                                  // SizedBox(
+                                                                  //   height: 2.h,
+                                                                  // ),
                                                                 ],
                                                               ),
                                                             ),
@@ -852,37 +864,57 @@ class OrderTakenSingle extends StatelessWidget {
                                                                   SizedBox(
                                                                     height: 2.h,
                                                                   ),
+                                                                  // BoldText(
+                                                                  //     text: _controller
+                                                                  //         .deliveryScheduleSingleViewGdEntity
+                                                                  //         .value
+                                                                  //         .deliveryschedule![
+                                                                  //     index].deliverybox
+                                                                  //         .toString()),
+                                                                  // SizedBox(
+                                                                  //   height: 2.h,
+                                                                  // ),
+                                                                  // BoldText(
+                                                                  //     text: _controller
+                                                                  //         .deliveryScheduleSingleViewGdEntity
+                                                                  //         .value
+                                                                  //         .deliveryschedule![
+                                                                  //     index].deliverybox
+                                                                  //         .toString()),
+                                                                  // SizedBox(
+                                                                  //   height: 2.h,
+                                                                  // ),
                                                                 ],
                                                               ),
                                                             ),
                                                           )
                                                         ],
                                                       ),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(
-                                                            left: 2.8.h),
-                                                        child: Align(
-                                                          alignment:
-                                                          Alignment.centerLeft,
-                                                          child: InkWell(
-                                                            onTap: () {
-                                                              editDialog(
-                                                                  context,
-                                                                  index,
-                                                                  _controller
-                                                                      .deliveryScheduleSingleViewGdEntity
-                                                                      .value
-                                                                      .deliveryschedule![
-                                                                  index]
-                                                                      .box
-                                                                      .toString());
-                                                            },
-                                                            child: BoldText(
-                                                              text: 'Edit',
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
+                                                      // Padding(
+                                                      //   padding: EdgeInsets.only(
+                                                      //       left: 2.8.h),
+                                                      //   child: Align(
+                                                      //     alignment:
+                                                      //     Alignment.centerLeft,
+                                                      //     child: InkWell(
+                                                      //       onTap: () {
+                                                      //         editDialog(
+                                                      //             context,
+                                                      //             index,
+                                                      //             _controller
+                                                      //                 .deliveryScheduleSingleViewGdEntity
+                                                      //                 .value
+                                                      //                 .deliveryschedule![
+                                                      //             index]
+                                                      //                 .box
+                                                      //                 .toString());
+                                                      //       },
+                                                      //       child: BoldText(
+                                                      //         text: 'Edit',
+                                                      //       ),
+                                                      //     ),
+                                                      //   ),
+                                                      // ),
                                                       SizedBox(
                                                         height: 1.h,
                                                       ),

@@ -168,6 +168,14 @@ class StockSingleView extends StatelessWidget {
                                           SizedBox(
                                             height: 2.h,
                                           ),
+                                          NormalText(text: "Box pair: "),
+                                          SizedBox(
+                                            height: 2.h,
+                                          ),
+                                          NormalText(text: "Box count: "),
+                                          SizedBox(
+                                            height: 2.h,
+                                          ),
                                           NormalText(text: "Stock: "),
                                         ],
                                       ),
@@ -192,6 +200,18 @@ class StockSingleView extends StatelessWidget {
                                           ),
                                           NormalText(
                                             text:productListController.productListEntity.value.productsizelist![0].sizename.toString(),
+                                          ),
+                                          SizedBox(
+                                            height: 2.h,
+                                          ),
+                                          NormalText(
+                                            text:productListController.productListEntity.value.productlist![0].boxpair.toString(),
+                                          ),
+                                          SizedBox(
+                                            height: 2.h,
+                                          ),
+                                          NormalText(
+                                            text:productListController.boxCount.toString(),
                                           ),
                                           SizedBox(
                                             height: 2.h,

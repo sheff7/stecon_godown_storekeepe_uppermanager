@@ -1,5 +1,7 @@
 
 
+import 'dart:developer';
+
 import'package:dio/dio.dart';
 
 import '../../../Utils/DioConfig.dart';
@@ -19,7 +21,7 @@ class ProductListSingleViewRepServices{
       });
       if(response.statusCode==200){
         var data=response.data;
-        print(response.data.toString());
+        log(response.data.toString());
         return JsonConvert.fromJsonAsT<ProductSingleViewRepEntity>(data);
 
       }

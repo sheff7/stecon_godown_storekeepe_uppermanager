@@ -19,6 +19,7 @@ class ProductListSingleViewRepController extends GetxController {
   final String categoryid;
   RxBool networkStatus = true.obs;
   RxBool loadingBool = false.obs;
+  RxString boxCount="".obs;
   Rx<ProductSingleViewRepEntity> productListEntity = ProductSingleViewRepEntity().obs;
   Rx<GetSizeDetailsEntity>getSizeEntity=GetSizeDetailsEntity().obs;
 
@@ -162,13 +163,16 @@ class ProductListSingleViewRepController extends GetxController {
     bool nBool = (await NetworkConnectivity().checkConnectivityState())!;
     if (nBool == true) {
       loadingBool.value = true;
+      int total=0;
       productListEntity.value = (await ProductListSingleViewRepServices()
           .getPrdouctList(Productid, artNo, categoryid))!;
 
       if(productListEntity.value!=null){
         if(productListEntity.value.response=='Success'){
           sizeListGrid.clear();
+          int boxPair=int.parse(productListEntity.value.productlist![0].boxpair.toString());
           if(productListEntity.value.stock!.length!=0){
+
             size1controller.text=productListEntity.value.stock![0].s1.toString();
             size2controller.text=productListEntity.value.stock![0].s2.toString();
             size3controller.text=productListEntity.value.stock![0].s3.toString();
@@ -184,45 +188,48 @@ class ProductListSingleViewRepController extends GetxController {
             size13controller.text=productListEntity.value.stock![0].s13.toString();
 
 
-            // if(productListEntity.value.stock![0].s1.toString().length!=0){
-            //   sizeListGrid.add(size1());
-            // }
-            // if(productListEntity.value.stock![0].s2.toString().length!=0){
-            //   sizeListGrid.add(size2());
-            // }
-            // if(productListEntity.value.stock![0].s3.toString().length!=0){
-            //   sizeListGrid.add(size3());
-            // }
-            // if(productListEntity.value.stock![0].s4.toString().length!=0){
-            //   sizeListGrid.add(size4());
-            // }
-            // if(productListEntity.value.stock![0].s5.toString().length!=0){
-            //   sizeListGrid.add(size5());
-            // }
-            // if(productListEntity.value.stock![0].s6.toString().length!=0){
-            //   sizeListGrid.add(size6());
-            // }
-            // if(productListEntity.value.stock![0].s7.toString().length!=0){
-            //   sizeListGrid.add(size7());
-            // }
-            // if(productListEntity.value.stock![0].s8.toString().length!=0){
-            //   sizeListGrid.add(size8());
-            // }
-            // if(productListEntity.value.stock![0].s9.toString().length!=0){
-            //   sizeListGrid.add(size9());
-            // }
-            // if(productListEntity.value.stock![0].s10.toString().length!=0){
-            //   sizeListGrid.add(size10());
-            // }
-            // if(productListEntity.value.stock![0].s11.toString().length!=0){
-            //   sizeListGrid.add(size11());
-            // }
-            // if(productListEntity.value.stock![0].s12.toString().length!=0){
-            //   sizeListGrid.add(size12());
-            // }
-            // if(productListEntity.value.stock![0].s13.toString().length!=0){
-            //   sizeListGrid.add(size13());
-            // }
+            if(productListEntity.value.stock![0].s1!.length!=0 || productListEntity.value.stock![0].s1!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s1.toString());
+            }
+            if(productListEntity.value.stock![0].s2!.length!=0 || productListEntity.value.stock![0].s2!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s2.toString());
+            }
+            if(productListEntity.value.stock![0].s3!.length!=0 || productListEntity.value.stock![0].s3!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s3.toString());
+            }
+            if(productListEntity.value.stock![0].s4!.length!=0 || productListEntity.value.stock![0].s4!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s4.toString());
+            }
+            if(productListEntity.value.stock![0].s5!.length!=0 || productListEntity.value.stock![0].s5!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s5.toString());
+            }
+            if(productListEntity.value.stock![0].s6!.length!=0 || productListEntity.value.stock![0].s6!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s6.toString());
+            }
+            if(productListEntity.value.stock![0].s7!.length!=0 || productListEntity.value.stock![0].s7!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s7.toString());
+            }
+            if(productListEntity.value.stock![0].s8!.length!=0 || productListEntity.value.stock![0].s8!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s8.toString());
+            }
+            if(productListEntity.value.stock![0].s9!.length!=0 || productListEntity.value.stock![0].s9!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s9.toString());
+            }
+            if(productListEntity.value.stock![0].s10!.length!=0 || productListEntity.value.stock![0].s10!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s10.toString());
+            }
+            if(productListEntity.value.stock![0].s11!.length!=0 || productListEntity.value.stock![0].s11!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s11.toString());
+            }
+            if(productListEntity.value.stock![0].s12!.length!=0 || productListEntity.value.stock![0].s12!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s12.toString());
+            }
+            if(productListEntity.value.stock![0].s13!.length!=0 || productListEntity.value.stock![0].s13!.isNotEmpty){
+              total=total+int.parse(productListEntity.value.stock![0].s13.toString());
+            }
+
+            double boxC=total/boxPair;
+            boxCount.value=boxC.toInt().toString();
 
           }
 

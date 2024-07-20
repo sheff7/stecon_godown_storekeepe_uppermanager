@@ -63,6 +63,8 @@ class DeliveryScheduleSingleViewGdDeliveryschedule {
 	String? productname;
 	String? categoryname;
 	String? colorname;
+	String? remainingpacked;
+	String? packedboxes;
   
   DeliveryScheduleSingleViewGdDeliveryschedule();
 

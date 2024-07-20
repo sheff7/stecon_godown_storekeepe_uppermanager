@@ -1,6 +1,7 @@
 
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:stecon_godown_storekeepe_uppermanager/CustomWidget/CustomSnackBar.dart';
@@ -73,11 +74,12 @@ class DeliveryScheduleSingleViewtGd {
       });
       if(response.statusCode==200){
         var data=response.data;
+        print(response.data.toString());
         return JsonConvert.fromJsonAsT<ResponseEntity>(data);
       }
     }
-    catch(e){
-      print(e);
+     on DioError catch(e){
+      log(e.response.toString());
     }
   }
 }
