@@ -927,6 +927,12 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                               SizedBox(
                                                                 height: 2.h,
                                                               ),
+                                                              NormalText(
+                                                                  text:
+                                                                  'Box to pack : '),
+                                                              SizedBox(
+                                                                height: 2.h,
+                                                              ),
                                                             ],
                                                           ),
                                                         ),
@@ -999,6 +1005,16 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                               SizedBox(
                                                                 height: 2.h,
                                                               ),
+                                                              BoldText(
+                                                                  text: _controller
+                                                                      .deliveryScheduleSingleViewGdEntity
+                                                                      .value
+                                                                      .deliveryschedule![
+                                                                  index]
+                                                                      .remainingpacked??''),
+                                                              SizedBox(
+                                                                height: 2.h,
+                                                              ),
                                                             ],
                                                           ),
                                                         ),
@@ -1021,7 +1037,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                                                                   .value
                                                                   .deliveryschedule![
                                                                       index]
-                                                                  .deliverybox
+                                                                  .remainingpacked
                                                                   .toString());
                                                         },
                                                         child: BoldText(
@@ -1184,13 +1200,13 @@ class DeliverySchedule1GD extends StatelessWidget {
                         var numberTwo =
                             int.parse(boxController.text.toString());
                         if (boxController.text.isNotEmpty &&
-                            boxController.text.toString() != '0') {
+                            boxController.text.toString() != '0' && int.parse(no.toString())>= numberTwo) {
                           if (numberTwo <= numberOne) {
                             _controller
                                 .deliveryScheduleSingleViewGdEntity
                                 .value
                                 .deliveryschedule![index]
-                                .deliverybox = boxController.text.toString();
+                                .remainingpacked = boxController.text.toString();
                             _controller.deliveryScheduleSingleViewGdEntity
                                 .refresh();
                             Get.back();
@@ -1203,7 +1219,7 @@ class DeliverySchedule1GD extends StatelessWidget {
                           }
                         } else {
                           CustomSnackbar()
-                              .InfoSnackBar("wrong...!", "Enter value>0");
+                              .InfoSnackBar("wrong...!", "not valid");
                         }
                       },
                       child: Text(

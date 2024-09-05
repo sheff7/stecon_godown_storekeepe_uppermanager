@@ -67,6 +67,7 @@ class OrderTakenSingleDeliveryschedule {
 	String? productname;
 	String? categoryname;
 	String? colorname;
+	String? balancebox;
 
 	OrderTakenSingleDeliveryschedule();
 
@@ -115,7 +116,8 @@ class OrderTakenSingleDeliveryschedule {
 			..representativename= representativename ?? this.representativename
 			..productname= productname ?? this.productname
 			..categoryname= categoryname ?? this.categoryname
-			..colorname= colorname ?? this.colorname;
+			..colorname= colorname ?? this.colorname
+				..balancebox=balancebox??this.balancebox;
 	}
 
 	@override

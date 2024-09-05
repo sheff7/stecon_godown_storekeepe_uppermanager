@@ -183,6 +183,10 @@ OrderTakenSingleDeliveryschedule $OrderTakenSingleDeliveryscheduleFromJson(Map<S
 	if (colorname != null) {
 		orderTakenSingleDeliveryschedule.colorname = colorname;
 	}
+	final String? balancebox = jsonConvert.convert<String>(json['balancebox']);
+	if (balancebox != null) {
+		orderTakenSingleDeliveryschedule.balancebox = balancebox;
+	}
 	return orderTakenSingleDeliveryschedule;
 }
 
@@ -228,5 +232,6 @@ Map<String, dynamic> $OrderTakenSingleDeliveryscheduleToJson(OrderTakenSingleDel
 	data['productname'] = entity.productname;
 	data['categoryname'] = entity.categoryname;
 	data['colorname'] = entity.colorname;
+	data['balancebox'] = entity.balancebox;
 	return data;
 }

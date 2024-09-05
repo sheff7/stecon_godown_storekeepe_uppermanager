@@ -271,6 +271,12 @@ class OrderTakenSingle extends StatelessWidget {
                                   .deliveryschedule!
                                   .length,
                               itemBuilder: (BuildContext context, int index) {
+                                int bBox=0;
+                                int dBox=int.parse(_controller.deliveryScheduleSingleViewGdEntity.value.deliveryschedule![index].deliverybox??"0");
+                                if(_controller.deliveryScheduleSingleViewGdEntity.value.deliveryschedule![index].balancebox!=""){
+                                   bBox=int.parse(_controller.deliveryScheduleSingleViewGdEntity.value.deliveryschedule![index].balancebox??"0");
+                                }
+                                int sBox=dBox+bBox;
                                 final categoryController = TextEditingController();
                                 final colorController = TextEditingController();
                                 final size1controller = TextEditingController();
@@ -793,16 +799,22 @@ class OrderTakenSingle extends StatelessWidget {
                                                                   ),
                                                                   NormalText(
                                                                       text:
+                                                                      'Packed box : '),
+                                                                  SizedBox(
+                                                                    height: 2.h,
+                                                                  ),
+                                                                  NormalText(
+                                                                      text:
+                                                                      'Remaining  box : '),
+                                                                  SizedBox(
+                                                                    height: 2.h,
+                                                                  ),
+                                                                  NormalText(
+                                                                      text:
                                                                       'Scheduled box : '),
-                                                                  // SizedBox(
-                                                                  //   height: 2.h,
-                                                                  // ),
-                                                                  // NormalText(
-                                                                  //     text:
-                                                                  //     'Packed box : '),
-                                                                  // SizedBox(
-                                                                  //   height: 2.h,
-                                                                  // ),
+                                                                  SizedBox(
+                                                                    height: 2.h,
+                                                                  ),
                                                                   // NormalText(
                                                                   //     text:
                                                                   //     'Balance box : '),
@@ -864,16 +876,21 @@ class OrderTakenSingle extends StatelessWidget {
                                                                   SizedBox(
                                                                     height: 2.h,
                                                                   ),
-                                                                  // BoldText(
-                                                                  //     text: _controller
-                                                                  //         .deliveryScheduleSingleViewGdEntity
-                                                                  //         .value
-                                                                  //         .deliveryschedule![
-                                                                  //     index].deliverybox
-                                                                  //         .toString()),
-                                                                  // SizedBox(
-                                                                  //   height: 2.h,
-                                                                  // ),
+                                                                  BoldText(
+                                                                      text: _controller
+                                                                          .deliveryScheduleSingleViewGdEntity
+                                                                          .value
+                                                                          .deliveryschedule![
+                                                                      index].balancebox
+                                                                          .toString()),
+                                                                  SizedBox(
+                                                                    height: 2.h,
+                                                                  ),
+                                                                  BoldText(
+                                                                      text: sBox.toString()),
+                                                                  SizedBox(
+                                                                    height: 2.h,
+                                                                  ),
                                                                   // BoldText(
                                                                   //     text: _controller
                                                                   //         .deliveryScheduleSingleViewGdEntity

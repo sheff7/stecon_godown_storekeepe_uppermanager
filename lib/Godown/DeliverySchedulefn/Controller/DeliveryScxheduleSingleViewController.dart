@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -34,6 +36,8 @@ class DeliveryScheduleSingleViewController extends GetxController {
   final size12controller = TextEditingController();
   final size13controller = TextEditingController();
   final BoxController = TextEditingController();
+
+  RxString boxToPack="".obs;
 
   List<Map<String, dynamic>> billingproducts=[];
 
@@ -187,15 +191,16 @@ class DeliveryScheduleSingleViewController extends GetxController {
           if(itemList[i]==true){
             Map<String,dynamic> json={
               "productid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].productid,
-              "deliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox,
+              "deliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].remainingpacked,
               "catid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].category,
               "sizeid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].size,
               "boxpair":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].pair,
               "orderno":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderno,
               "orderid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].orderid,
               "deliveryproductid":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliveryproductsid,
-              "totaldeliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].remainingpacked
+              "totaldeliverybox":deliveryScheduleSingleViewGdEntity.value.deliveryschedule![i].deliverybox
             };
+            log("addBilling${json.toString()}");
             billingproducts?.add(json);
           }
         }

@@ -21,7 +21,7 @@ class OrderTakenSingleService{
         "id":id,
       });
       print(response.statusCode);
-      print(response.data.toString());
+      log(response.data.toString());
       if (response.statusCode == 200) {
         var data = response.data;
         return JsonConvert.fromJsonAsT<OrderTakenSingleEntity>(data);

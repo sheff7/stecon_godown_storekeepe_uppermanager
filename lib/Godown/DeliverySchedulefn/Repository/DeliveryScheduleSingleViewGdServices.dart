@@ -79,7 +79,7 @@ class DeliveryScheduleSingleViewtGd {
       }
     }
      on DioError catch(e){
-      log(e.response.toString());
+      log(e.message.toString());
     }
   }
 }
